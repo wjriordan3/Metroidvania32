@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bj5mybcpm8evf"]
+
+[ext_resource type="FontFile" uid="uid://c4sxmcj3u2nfi" path="res://ui/font/default_font.tres" id="1_mcy2b"]
+
+[resource]
+default_font = ExtResource("1_mcy2b")
+default_font_size = 30

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dwcic17kcqxcw"]
+
+[ext_resource type="PackedScene" uid="uid://cmwxim12yjvso" path="res://ui/counter/counter.tscn" id="1_sjkjf"]
+
+[node name="Bar" type="HBoxContainer" unique_id=77891363]
+offset_right = 234.0
+offset_bottom = 40.0
+
+[node name="Counter" parent="." unique_id=1576804852 instance=ExtResource("1_sjkjf")]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=784854445]
+layout_mode = 2

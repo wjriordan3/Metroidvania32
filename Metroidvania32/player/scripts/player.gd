@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 #region /// export variables (used to expose variable to inspector)
 @export var move_speed : float = 250.0
+
 #endregion
 
 const SPEED = 150.0
@@ -111,3 +112,9 @@ func add_debug_indicator() -> void:
 	#d.global_position = global_position
 	pass
 	
+#region Items and Inventory
+func will_pickup(item):
+	$Inventory.pickup(item)
+func get_item(itemData):
+	$Inventory.get_item(itemData)
+#endregion
