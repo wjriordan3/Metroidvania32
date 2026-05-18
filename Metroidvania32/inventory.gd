@@ -20,22 +20,23 @@ func pickup( item : Object ) -> void :
 	for row in self.contents:
 		for col in self.contents[row] :
 			if not self.contents[row][col] :
+				print( item.to_string() )
 				print( "item added to inventory at {row},{col}"  )
 				self.contents[row][col] = item
 				return
 	print( "no space for item!" )
 
-	#Called when the player selects "drop" with an inventory cell highlighted
-	#Inputs
-	#x : int - The x position of the highlighted cell
-	#y : int - The y position of the highlighted cell
-	
+#Called when the player selects "drop" with an inventory cell highlighted
+#Inputs
+#x : int - The x position of the highlighted cell
+#y : int - The y position of the highlighted cell
+
 #Returns 
 #item : Object - The selected item to be passed accordingly (eg. placed into the world or sent to workshop table)
 func drop( x : int, y : int ):
 	var item : Object = self.contents[x][y]
 	self.contents[x][y] = null
-	print( item.to_string())
+	print( item.to_string() )
 	return item
 	
 # Called when the node enters the scene tree for the first time.
