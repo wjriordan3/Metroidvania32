@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dpxme8xin1hhh"]
+
+[ext_resource type="Script" uid="uid://b8imbqdftig4m" path="res://sprite_2d.gd" id="1_tnite"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ttk8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg5e7"]
+
+[node name="Item" type="Sprite2D" unique_id=1173138469]
+scale = Vector2(3.3200018, 1)
+texture = SubResource("PlaceholderTexture2D_ttk8k")
+script = ExtResource("1_tnite")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=931531325]
+scale = Vector2(1.0158458, 1.098337)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1112131734]
+scale = Vector2(-0.049741317, 0.04516303)
+shape = SubResource("RectangleShape2D_kg5e7")
