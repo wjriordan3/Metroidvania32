@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://laf0uncnodbs"]
+
+[ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="1_2u6qw"]
+
+[node name="Slot1" type="TextureRect" unique_id=435637463]
+custom_minimum_size = Vector2(60, 60)
+texture = ExtResource("1_2u6qw")
+expand_mode = 1
