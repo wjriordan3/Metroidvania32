@@ -17,13 +17,17 @@ config/icon="uid://bnif6nxl5t2sc"
 
 [autoload]
 
-inventory="*uid://b2blbi83pnsjn"
+Inventory="*uid://b2blbi83pnsjn"
 
 [display]
 
 window/size/viewport_width=1440
 window/size/viewport_height=810
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+player=""
 
 [input]
 

@@ -1,25 +1,26 @@
 extends Node
 
+var contents : Array
 # 5x5 grid, 20 backpack slots, 5 equipped
 # leftarm=[4][0], leftleg=[4][1], core=[4][2], rightleg=[4][3], rightarm=[4][4]
 # equipment mirrored ordering left to right to make GUI placement more logical
 func _init() -> void :
-	self.contents = \
+	contents = \
 	[
-		[null, null, null, null, null],
-		[null, null, null, null, null],
-		[null, null, null, null, null],
-		[null, null, null, null, null],
-		[null, null, null, null, null]
+		['', '', '', '', ''],
+		['', '', '', '', ''],
+		['', '', '', '', ''],
+		['', '', '', '', ''],
+		['', '', '', '', '']
 	]
 
 #Called when the player walks over an item in the world
 #Inputs
 #item : Object - The target item
 func pickup( item : Object ) -> void :
-	for row in self.contents:
-		for col in self.contents[row] :
-			if not self.contents[row][col] :
+	for row in self.contents.size() :
+		for col in self.contents[row].size() :
+			if self.contents[row][col] == '':
 				print( item.to_string() )
 				print( "item added to inventory at {row},{col}"  )
 				self.contents[row][col] = item
@@ -41,6 +42,7 @@ func drop( x : int, y : int ):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_init()
 	pass # Replace with function body.
 
 
