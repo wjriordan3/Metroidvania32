@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://xrnin63r0043"]
+
+[ext_resource type="Script" uid="uid://blyid26bwdsk3" path="res://key.gd" id="1_yk2u2"]
+[ext_resource type="Texture2D" uid="uid://dyosmbi2jjhg1" path="res://assets/Tiles/tile_0027.png" id="2_fttkb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fttkb"]
+size = Vector2(18, 12)
+
+[node name="Key" type="Node2D" unique_id=614238665]
+script = ExtResource("1_yk2u2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1346154349]
+texture = ExtResource("2_fttkb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1460590933]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=655598749]
+shape = SubResource("RectangleShape2D_fttkb")

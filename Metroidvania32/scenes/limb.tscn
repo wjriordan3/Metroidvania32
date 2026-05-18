@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cyjb5g2r83631"]
+
+[ext_resource type="Script" uid="uid://dn6xq1bv1w152" path="res://tool.gd" id="1_prxvl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prxvl"]
+
+[node name="Tool" type="Node2D" unique_id=577504851]
+script = ExtResource("1_prxvl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=757615178]
+sprite_frames = SubResource("SpriteFrames_prxvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032056095]
