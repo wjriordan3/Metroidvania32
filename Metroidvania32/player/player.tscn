@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ddabc1fjxyc28"]
+
+[ext_resource type="Script" uid="uid://ksw5xnx5w7gp" path="res://player/scripts/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://d04j41x1q60pm" path="res://player/states/idle.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://btvuyk1mp3biw" path="res://player/states/run.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://dwrvv6oxcw66n" path="res://player/states/jump.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://cccorfay77glb" path="res://player/states/fall.gd" id="5_g6k8r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
+size = Vector2(120, 120)
+
+[node name="Player" type="CharacterBody2D" unique_id=1485163958]
+script = ExtResource("1_oul6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018520919]
+texture = SubResource("PlaceholderTexture2D_kqu6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000211783]
+shape = SubResource("RectangleShape2D_kqu6x")
+
+[node name="States" type="Node" parent="." unique_id=507809353]
+
+[node name="Idle" type="Node" parent="States" unique_id=285448255]
+unique_name_in_owner = true
+script = ExtResource("2_rkbax")
+
+[node name="Run" type="Node" parent="States" unique_id=530559786]
+unique_name_in_owner = true
+script = ExtResource("3_g1dw6")
+
+[node name="Jump" type="Node" parent="States" unique_id=1138392310]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+
+[node name="Fall" type="Node" parent="States" unique_id=123130589]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
+
+[node name="Label" type="Label" parent="." unique_id=1975791434]
+offset_left = -23.0
+offset_top = -97.0
+offset_right = 23.0
+offset_bottom = -72.0
+text = "Label"
+horizontal_alignment = 1
