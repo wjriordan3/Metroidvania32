@@ -7,11 +7,11 @@ var contents : Array
 func _init() -> void :
 	contents = \
 	[
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', ''],
-		['', '', '', '', '']
+		[null, null, null, null, null],
+		[null, null, null, null, null],
+		[null, null, null, null, null],
+		[null, null, null, null, null],
+		[null, null, null, null, null]
 	]
 
 #Called when the player walks over an item in the world
@@ -20,10 +20,11 @@ func _init() -> void :
 func pickup( item : Object ) -> void :
 	for row in self.contents.size() :
 		for col in self.contents[row].size() :
-			if self.contents[row][col] == '':
+			if not self.contents[row][col]:
 				print( item.to_string() )
-				print( "item added to inventory at {row},{col}"  )
+				print( "item added to inventory at ", row, ", ", col )
 				self.contents[row][col] = item
+				print( "confirm: [", row, "][", col, "] = ", self.contents[row][col].to_string() )
 				return
 	print( "no space for item!" )
 
