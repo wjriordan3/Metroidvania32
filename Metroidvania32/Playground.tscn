@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ce67udljbkcfy"]
 
 [ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="1_80c3a"]
+[ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://item.tscn" id="2_1cwr0"]
+[ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory.tscn" id="2_d17em"]
 
 [sub_resource type="Gradient" id="Gradient_3invt"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -65,5 +67,11 @@ position = Vector2(-4.048364e-21, -4.425312e-21)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_d17em")
 
-[node name="Player" parent="." unique_id=1485163958 instance=ExtResource("1_80c3a")]
+[node name="Player" parent="." unique_id=1485163958 groups=["player"] instance=ExtResource("1_80c3a")]
 position = Vector2(170, 302)
+
+[node name="Item" parent="." unique_id=1173138469 instance=ExtResource("2_1cwr0")]
+position = Vector2(653, 699)
+scale = Vector2(69.32001, 27.839998)
+
+[node name="Inventory" parent="." unique_id=2056972072 instance=ExtResource("2_d17em")]
