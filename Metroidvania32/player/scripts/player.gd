@@ -1,5 +1,15 @@
 class_name Player extends CharacterBody2D
 
+const DEBUG_JUMP_INDICATOR = preload("uid://bumavi7f2fef")
+
+#region /// onready variables
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+#endregion
+
+
 #region /// export variables (used to expose variable to inspector)
 @export var move_speed : float = 250.0
 
@@ -30,6 +40,8 @@ var previous_state : PlayerState :
 #region /// Standard Variables
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = 980
+var gravity_multiplier : float = 1.0
+var crouch_multiplier : float = 1.0
 var base_move_speed : int = 100
 var rotation_speed : float = 10.0
 #endregion 
@@ -51,7 +63,7 @@ func _process( _delta: float) -> void:
 	pass
 	
 func _physics_process( _delta: float ) -> void:
-	velocity.y += gravity * _delta
+	velocity.y += gravity * _delta * gravity_multiplier
 	move_and_slide()
 	change_state( current_state.physics_process( _delta ) )
 	pass 
@@ -106,10 +118,13 @@ func update_direction():
 	#$Label.text = str(direction)
 	pass
 	
-func add_debug_indicator() -> void:
-	#var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
-	#get_tree().root.add_child( d )
-	#d.global_position = global_position
+func add_debug_indicator( color : Color = Color.RED ) -> void:
+	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
+	get_tree().root.add_child( d )
+	d.global_position = global_position
+	d.modulate = color
+	await get_tree().create_timer( 3.0 ).timeout
+	d.queue_free()
 	pass
 	
 #region Items and Inventory
