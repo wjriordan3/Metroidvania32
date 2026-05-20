@@ -5,20 +5,20 @@
 [ext_resource type="Script" uid="uid://d04j41x1q60pm" path="res://player/states/idle.gd" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://btvuyk1mp3biw" path="res://player/states/run.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://dwrvv6oxcw66n" path="res://player/states/jump.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://gy7qbnpat8tt" path="res://player/states/crouch.gd" id="4_rgyib"]
 [ext_resource type="Script" uid="uid://cccorfay77glb" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="6_g6k8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
 size = Vector2(120, 120)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgyib"]
+size = Vector2(120, 54)
+
 [node name="Player" type="CharacterBody2D" unique_id=1485163958]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_oul6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018520919]
-texture = ExtResource("2_boad6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000211783]
-shape = SubResource("RectangleShape2D_kqu6x")
 
 [node name="States" type="Node" parent="." unique_id=507809353]
 
@@ -38,6 +38,22 @@ script = ExtResource("4_qjkh3")
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
 
+[node name="Crouch" type="Node" parent="States" unique_id=1628870215]
+unique_name_in_owner = true
+script = ExtResource("4_rgyib")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018520919]
+texture = ExtResource("2_boad6")
+
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]
+shape = SubResource("RectangleShape2D_kqu6x")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=466451521]
+position = Vector2(0, 33)
+shape = SubResource("RectangleShape2D_rgyib")
+disabled = true
+debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
+
 [node name="Label" type="Label" parent="." unique_id=1975791434]
 offset_left = -23.0
 offset_top = -97.0
@@ -46,4 +62,13 @@ offset_bottom = -72.0
 text = "Label"
 horizontal_alignment = 1
 
+[node name="OneWayPlatformRaycast" type="RayCast2D" parent="." unique_id=1618981037]
+position = Vector2(0, 55)
+target_position = Vector2(0, 10)
+collision_mask = 2
+
 [node name="Inventory" parent="." unique_id=1529211788 instance=ExtResource("6_g6k8r")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1184247044]
+zoom = Vector2(0.5, 0.5)

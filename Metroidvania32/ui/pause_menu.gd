@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name PauseMenu extends Control 
 
 func _ready() -> void:
 	visible = false
