@@ -14,6 +14,15 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
+	player.mech_animate_play(
+		"PlayerAnims/standard_jump_core",
+		"PlayerAnims/standard_jump_leftarm",
+		"PlayerAnims/standard_jump_leftleg",
+		"PlayerAnims/standard_jump_rightarm",
+		"PlayerAnims/standard_jump_rightleg"
+	)
+	player.mech_animate_pause()
+	
 	player.gravity_multiplier = fall_gravity_multiplier
 	if player.previous_state == jump:
 		coyote_timer = 0
@@ -39,6 +48,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 func process( _delta: float ) -> PlayerState:
 	coyote_timer -= _delta
 	buffer_timer -= _delta
+	set_jump_frame()
 	return next_state 
 	
 func physics_process( _delta: float ) -> PlayerState:
@@ -49,3 +59,12 @@ func physics_process( _delta: float ) -> PlayerState:
 		return idle
 	return next_state 
 	
+func set_jump_frame() -> void:
+	# [0.0, max_fall_speed (semi high # for fall velocity)] mapped to [0.5, 0.0 (end of fall in sprite animation)] 
+	var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
+	player.animation_player_core.seek( frame, true )
+	player.animation_player_left_arm.seek( frame, true )
+	player.animation_player_left_leg.seek( frame, true )
+	player.animation_player_right_arm.seek( frame, true )
+	player.animation_player_right_leg.seek( frame, true )
+	pass

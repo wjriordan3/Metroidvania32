@@ -32,9 +32,9 @@ func exit() -> void:
 func handle_input( _event : InputEvent ) -> PlayerState:
 	# Handle inputs
 	if _event.is_action_pressed("jump"):
-		#if player.one_way_platform_raycast.is_colliding() == true:
+		player.one_way_platform_shapecast.force_shapecast_update()
 		if player.one_way_platform_shapecast.is_colliding():
-			player.position.y += 4
+			player.position.y += 4 # move player enough to fall through platform
 			return fall
 		return jump
 	return next_state

@@ -2,7 +2,31 @@ class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://bumavi7f2fef")
 
+enum LimbSlot {
+	CORE,
+	LEFT_ARM,
+	RIGHT_ARM,
+	LEFT_LEG,
+	RIGHT_LEG
+}
+
+var equipped_parts := {
+	LimbSlot.CORE: null,
+	LimbSlot.LEFT_ARM: null,
+	LimbSlot.RIGHT_ARM: null,
+	LimbSlot.LEFT_LEG: null,
+	LimbSlot.RIGHT_LEG: null
+}
+
 #region /// onready variables
+@onready var limb_sprites := {
+	LimbSlot.CORE: $Core,
+	LimbSlot.LEFT_ARM: $LeftArm,
+	LimbSlot.RIGHT_ARM: $RightArm,
+	LimbSlot.LEFT_LEG: $LeftLeg,
+	LimbSlot.RIGHT_LEG: $RightLeg
+}
+
 @onready var core: Sprite2D = $Core
 @onready var right_leg: Sprite2D = $RightLeg
 @onready var left_leg: Sprite2D = $LeftLeg
@@ -24,6 +48,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://bumavi7f2fef")
 
 #region /// export variables (used to expose variable to inspector)
 @export var move_speed : float = 250.0
+@export var max_fall_velocity : float = 600.0
 
 #endregion
 
@@ -76,6 +101,7 @@ func _process( _delta: float) -> void:
 	
 func _physics_process( _delta: float ) -> void:
 	velocity.y += gravity * _delta * gravity_multiplier
+	velocity.y = clampf(velocity.y, -10000, max_fall_velocity)
 	move_and_slide()
 	change_state( current_state.physics_process( _delta ) )
 	pass 
@@ -143,13 +169,7 @@ func update_direction():
 			left_arm.flip_h = false
 			right_arm.flip_h = false
 	pass
-	
-func animate_mech( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):
-	animation_player_core.play(coreAnim)
-	animation_player_left_arm.play(leftArmAnim)
-	animation_player_left_leg.play(leftLegAnim)
-	animation_player_right_arm.play(rightArmAnim)
-	animation_player_right_leg.play(rightLegAnim)
+
 	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
 	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
@@ -165,4 +185,39 @@ func will_pickup(item):
 	$Inventory.pickup(item)
 func get_item(itemData):
 	$Inventory.get_item(itemData)
+#endregion
+
+#region Animation
+func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):
+	animation_player_core.play(coreAnim)
+	animation_player_left_arm.play(leftArmAnim)
+	animation_player_left_leg.play(leftLegAnim)
+	animation_player_right_arm.play(rightArmAnim)
+	animation_player_right_leg.play(rightLegAnim)
+	
+func mech_animate_pause():
+	animation_player_core.pause()
+	animation_player_left_arm.pause()
+	animation_player_left_leg.pause()
+	animation_player_right_arm.pause()
+	animation_player_right_leg.pause()
+
+func play_slot_animation(slot: LimbSlot, anim_name: StringName) -> void:
+	var sprite: AnimatedSprite2D = limb_sprites[slot]
+
+	if sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+
+func play_mech_animation(anim_name: String) -> void:
+	for slot in equipped_parts:
+		var part: MechPart = equipped_parts[slot]
+
+		if part == null:
+			continue
+
+		if part.animations.has(anim_name):
+			play_slot_animation(
+				slot,
+				part.animations[anim_name]
+			)
 #endregion
