@@ -3,10 +3,22 @@ class_name Player extends CharacterBody2D
 const DEBUG_JUMP_INDICATOR = preload("uid://bumavi7f2fef")
 
 #region /// onready variables
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var core: Sprite2D = $Core
+@onready var right_leg: Sprite2D = $RightLeg
+@onready var left_leg: Sprite2D = $LeftLeg
+@onready var left_arm: Sprite2D = $LeftArm
+@onready var right_arm: Sprite2D = $RightArm
+
+
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+@onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
+
+@onready var animation_player_core: AnimationPlayer = $AnimationPlayer_Core
+@onready var animation_player_left_arm: AnimationPlayer = $AnimationPlayer_LeftArm
+@onready var animation_player_left_leg: AnimationPlayer = $AnimationPlayer_LeftLeg
+@onready var animation_player_right_arm: AnimationPlayer = $AnimationPlayer_RightArm
+@onready var animation_player_right_leg: AnimationPlayer = $AnimationPlayer_RightLeg
 #endregion
 
 
@@ -109,14 +121,35 @@ func change_state( new_state : PlayerState ) -> void:
 	pass
 	
 func update_direction():
-	#var prev_direction : Vector2 = direction 
+	var prev_direction : Vector2 = direction 
 	# negative x is left, positive x is right, negative y is up, positive y is down
 	# calculating axis to help avoid deadzone/stick drift issues for gamepads
 	var x_axis = Input.get_axis("left", "right")
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
 	#$Label.text = str(direction)
+	
+	if prev_direction.x != direction.x:
+		if direction.x < 0: # character facing left
+			core.flip_h = true
+			right_leg.flip_h = true
+			left_leg.flip_h = true
+			left_arm.flip_h = true
+			right_arm.flip_h = true
+		if direction.x > 0: # character facing right
+			core.flip_h = false
+			right_leg.flip_h = false
+			left_leg.flip_h = false
+			left_arm.flip_h = false
+			right_arm.flip_h = false
 	pass
+	
+func animate_mech( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):
+	animation_player_core.play(coreAnim)
+	animation_player_left_arm.play(leftArmAnim)
+	animation_player_left_leg.play(leftLegAnim)
+	animation_player_right_arm.play(rightArmAnim)
+	animation_player_right_leg.play(rightLegAnim)
 	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
 	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
