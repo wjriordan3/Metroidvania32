@@ -111,6 +111,10 @@ pause={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="OneWayPlatform"
 2d_physics/layer_3="Collectible"
+2d_physics/layer_6="Player"
+2d_physics/layer_7="Enemy"
+2d_physics/layer_8="Breakable"
+2d_physics/layer_9="SlamBreakable"
 
 [physics]
 

@@ -8,12 +8,15 @@
 [ext_resource type="Script" uid="uid://gy7qbnpat8tt" path="res://player/states/crouch.gd" id="4_rgyib"]
 [ext_resource type="Script" uid="uid://cccorfay77glb" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://damage_area.gd" id="9_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
 size = Vector2(120, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgyib"]
 size = Vector2(120, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebec5"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1485163958]
 collision_layer = 4
@@ -72,3 +75,13 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1184247044]
 zoom = Vector2(0.5, 0.5)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=107658167]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("9_8t03j")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1395115565]
+scale = Vector2(5.88, 5.88)
+shape = SubResource("RectangleShape2D_ebec5")
