@@ -20,6 +20,7 @@ itemIcon = ExtResource("7_ta15a")
 position = Vector2(103, 269)
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
+layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("4_threo")]
 visible = false
