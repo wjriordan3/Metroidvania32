@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://gy7qbnpat8tt" path="res://player/states/crouch.gd" id="4_rgyib"]
 [ext_resource type="Script" uid="uid://cccorfay77glb" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqu6x"]
 size = Vector2(120, 120)
@@ -72,3 +73,5 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1184247044]
 zoom = Vector2(0.5, 0.5)
+
+[node name="Health" parent="." unique_id=1767944466 instance=ExtResource("8_rgyib")]
