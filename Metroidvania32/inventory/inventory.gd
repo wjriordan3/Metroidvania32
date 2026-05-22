@@ -12,6 +12,9 @@ var inventoryDict = {}
 
 var items = ["res://inventory/itemresources/DrillArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
 
+@export var scrap = 150
+signal add_scrap(scrap: int)
+
 #region Drag Drop Functions
 func _get_drag_data(at_position):
 	var dragSlotNode = get_slot_node_at_position(at_position)
@@ -102,6 +105,13 @@ func _init() -> void :
 #Inputs
 #item : Object - The target item
 func pickup( item : Object ) -> void :
+	
+	# Item obtained is scrap, do not add to inventory
+	if item.itemName == "Scrap":
+		scrap += 1
+		emit_signal("add_scrap", scrap)
+		return
+	
 	for row in self.contents.size() :
 		for col in self.contents[row].size() :
 			if not self.contents[row][col]:
