@@ -33,6 +33,7 @@ func enter() -> void:
 # What happens when we exit this state?
 func exit() -> void:
 	player.gravity_multiplier = 1.0
+	buffer_timer = 0
 	pass 
 	
 func handle_input( _event : InputEvent ) -> PlayerState:
@@ -53,7 +54,7 @@ func process( _delta: float ) -> PlayerState:
 	
 func physics_process( _delta: float ) -> PlayerState:
 	if player.is_on_floor():
-		player.add_debug_indicator( ) 
+		#player.add_debug_indicator( ) 
 		if buffer_timer > 0:
 			return jump
 		return idle
