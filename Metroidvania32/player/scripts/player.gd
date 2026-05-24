@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-const DEBUG_JUMP_INDICATOR = preload("uid://bumavi7f2fef")
+const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
 enum LimbSlot {
 	CORE,
@@ -56,9 +56,6 @@ const SPEED = 150.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 const ATTACK_DURATION = 0.3
-
-# Player Stats
-var HEALTH = 100.0
 
 # Status Flags
 var can_attack = true

@@ -2,9 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="1_1cwr0"]
 [ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="1_80c3a"]
+[ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
+[ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
 [ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="4_threo"]
+[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="7_ta15a"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
+
+[node name="Scrap" parent="." unique_id=1737353739 instance=ExtResource("2_1cwr0")]
+position = Vector2(843, 515)
+itemName = "Scrap"
+itemIcon = ExtResource("7_ta15a")
 
 [node name="Level" parent="." unique_id=548619226 instance=ExtResource("1_1cwr0")]
 
@@ -12,6 +20,47 @@
 position = Vector2(103, 269)
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
+layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("4_threo")]
 visible = false
+
+[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory") instance=ExtResource("3_46faf")]
+scale = Vector2(0.5, 0.5)
+player_health = NodePath("../../Level/Player/Health")
+player_inventory = NodePath("../../Level/Player/Inventory")
+
+[node name="HealthBar" parent="InterfaceLayer/Interface" index="0" unique_id=77891363]
+offset_left = 124.0
+offset_top = -2.0
+offset_right = 674.0
+offset_bottom = 103.0
+
+[node name="ScrapCounter" parent="InterfaceLayer/Interface" index="1" unique_id=1576804852]
+offset_left = 1066.0
+offset_top = 6.0
+offset_right = 1280.0
+offset_bottom = 96.0
+
+[node name="Icon" parent="InterfaceLayer/Interface/ScrapCounter" index="0" unique_id=1354789444]
+offset_left = -204.0
+offset_top = -31.0
+offset_right = -140.0
+offset_bottom = 25.5
+
+[node name="Label" parent="InterfaceLayer/Interface/ScrapCounter" index="1" unique_id=165129159]
+offset_left = 136.0
+offset_top = -25.0
+offset_right = 203.0
+offset_bottom = 23.0
+
+[connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
+[connection signal="health_changed" from="Level/Player/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
+[connection signal="health_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/HealthBar" method="_on_interface_health_changed"]
+[connection signal="scrap_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/ScrapCounter" method="_on_interface_scrap_changed"]
+
+[editable path="Level/Player"]
+[editable path="InterfaceLayer/Interface"]
+[editable path="InterfaceLayer/Interface/HealthBar"]
+[editable path="InterfaceLayer/Interface/HealthBar/Counter"]
+[editable path="InterfaceLayer/Interface/ScrapCounter"]

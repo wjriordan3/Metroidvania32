@@ -1,13 +1,28 @@
 [gd_scene format=3 uid="uid://dwcic17kcqxcw"]
 
+[ext_resource type="Script" uid="uid://ber2j7sei2vh1" path="res://ui/bar/health_bar/healthbar.gd" id="1_kjo6j"]
 [ext_resource type="PackedScene" uid="uid://cmwxim12yjvso" path="res://ui/counter/counter.tscn" id="1_sjkjf"]
+[ext_resource type="Texture2D" uid="uid://pk1sswharahu" path="res://ui/ui_resources/bar_bg.png" id="2_snfvg"]
+[ext_resource type="Texture2D" uid="uid://hckj2343aod4" path="res://ui/ui_resources/life_bar.png" id="3_kjo6j"]
 
-[node name="Bar" type="HBoxContainer" unique_id=77891363]
-offset_right = 234.0
-offset_bottom = 40.0
+[node name="HealthBar" type="HBoxContainer" unique_id=77891363]
+offset_left = 67.999985
+offset_top = 5.0000005
+offset_right = 618.0
+offset_bottom = 110.0
+scale = Vector2(0.5199988, 0.52000076)
+script = ExtResource("1_kjo6j")
 
 [node name="Counter" parent="." unique_id=1576804852 instance=ExtResource("1_sjkjf")]
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=784854445]
+[node name="Label" parent="Counter" index="1" unique_id=165129159]
+visible = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1329561051]
 layout_mode = 2
+value = 50.0
+texture_under = ExtResource("2_snfvg")
+texture_progress = ExtResource("3_kjo6j")
+
+[editable path="Counter"]
