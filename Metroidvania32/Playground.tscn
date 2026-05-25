@@ -12,6 +12,9 @@
 [node name="Player" parent="Level" unique_id=1485163958 groups=["player"] instance=ExtResource("1_80c3a")]
 position = Vector2(103, 269)
 
+[node name="DamageArea" parent="Level/Player" index="8" unique_id=107658167]
+collision_mask = 32
+
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
 
 [node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("4_threo")]
@@ -20,3 +23,11 @@ visible = false
 [node name="Enemy" parent="." unique_id=976216826 instance=ExtResource("4_46faf")]
 position = Vector2(1067, 560)
 scale = Vector2(0.40000004, 0.40000004)
+
+[node name="HazardArea" parent="Enemy" index="3" unique_id=1563116352]
+collision_mask = 32
+monitoring = true
+monitorable = true
+
+[editable path="Level/Player"]
+[editable path="Enemy"]
