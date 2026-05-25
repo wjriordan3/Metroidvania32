@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bw3voqv7yomfc"]
+
+[ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="1_fe3x3"]
+[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="2_lqifc"]
+[ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="3_nhluo"]
+[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="4_agmrh"]
+[ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="5_5mbu6"]
+[ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="6_wa38d"]
+
+[node name="Game" type="Node2D" unique_id=1314119285]
+
+[node name="Scrap" parent="." unique_id=1737353739 instance=ExtResource("1_fe3x3")]
+position = Vector2(843, 515)
+itemName = "Scrap"
+itemIcon = ExtResource("2_lqifc")
+
+[node name="Level" parent="." unique_id=548619226 instance=ExtResource("3_nhluo")]
+
+[node name="Player" parent="Level" unique_id=1485163958 groups=["player"] instance=ExtResource("4_agmrh")]
+position = Vector2(103, 269)
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
+layer = 100
+
+[node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("5_5mbu6")]
+visible = false
+
+[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory", "limb_health") instance=ExtResource("6_wa38d")]
+player_health = NodePath("../../Level/Player/Health")
+player_inventory = NodePath("../../Level/Player/Inventory")
+limb_health = NodePath("../../Level/Player/LimbHealth")
+
+[connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
+[connection signal="health_changed" from="Level/Player/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
+[connection signal="limb_health_changed" from="Level/Player/LimbHealth" to="InterfaceLayer/Interface" method="_on_limb_health_limb_health_changed"]
+
+[editable path="Level/Player"]
