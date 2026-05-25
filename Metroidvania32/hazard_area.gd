@@ -7,6 +7,7 @@ func _ready() -> void:
 	area_entered.connect( _on_body_entered )
 	monitorable = false
 	set_active()
+	print( "Hazard area ready")
 	pass # Replace with function body.
 
 func _on_body_entered( body : Node2D ) -> void:
@@ -25,6 +26,7 @@ func activate( duration : float = 0.1 ) -> void:
 func set_active( value : bool = true ) -> void:
 	monitoring = value
 	visible = value
+	print( "Hazard area active")
 	pass
 	
 func flip( direction_x : float ):

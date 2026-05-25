@@ -9,6 +9,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func take_damage( area : Area2D ) -> void:
+	print( "take_damage called")
 	if area is AttackArea:
 		damage_taken.emit( area )
 		print( "Attack damage taken", area.damage )
