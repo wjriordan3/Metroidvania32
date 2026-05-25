@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ctiivlc441vqu"]
+
+[ext_resource type="Script" uid="uid://b3h0llta0l8gj" path="res://ui/limb_display/limb_display.gd" id="1_f2ihv"]
+[ext_resource type="PackedScene" uid="uid://dwcic17kcqxcw" path="res://ui/bar/health_bar/healthbar.tscn" id="2_1ohfp"]
+
+[node name="LimbDisplay" type="GridContainer" unique_id=1159084191]
+offset_right = 404.0
+offset_bottom = 204.0
+scale = Vector2(0.25, 0.25)
+columns = 2
+script = ExtResource("1_f2ihv")
+
+[node name="LeftArm" parent="." unique_id=77891363 instance=ExtResource("2_1ohfp")]
+layout_mode = 2
+
+[node name="TextureProgressBar" parent="LeftArm" index="1" unique_id=1329561051]
+visible = false
+
+[node name="RightArm" parent="." unique_id=1634843416 instance=ExtResource("2_1ohfp")]
+layout_mode = 2
+
+[node name="TextureProgressBar" parent="RightArm" index="1" unique_id=1329561051]
+visible = false
+
+[node name="LeftLeg" parent="." unique_id=1159179228 instance=ExtResource("2_1ohfp")]
+layout_mode = 2
+
+[node name="TextureProgressBar" parent="LeftLeg" index="1" unique_id=1329561051]
+visible = false
+
+[node name="RightLeg" parent="." unique_id=201874733 instance=ExtResource("2_1ohfp")]
+layout_mode = 2
+
+[node name="TextureProgressBar" parent="RightLeg" index="1" unique_id=1329561051]
+visible = false
+
+[editable path="LeftArm"]
+[editable path="LeftArm/Counter"]
+[editable path="RightArm"]
+[editable path="RightArm/Counter"]
+[editable path="LeftLeg"]
+[editable path="LeftLeg/Counter"]
+[editable path="RightLeg"]
+[editable path="RightLeg/Counter"]

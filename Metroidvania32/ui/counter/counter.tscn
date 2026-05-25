@@ -1,45 +1,29 @@
-[gd_scene format=3 uid="uid://cmwxim12yjvso"]
+[gd_scene format=3 uid="uid://ckyc2pfe3x07t"]
 
-[ext_resource type="Theme" uid="uid://bj5mybcpm8evf" path="res://ui/theme/default_theme.tres" id="1_60xx1"]
+[ext_resource type="Script" uid="uid://o61clnwicwdd" path="res://ui/counter/scripts/counter.gd" id="1_60xx1"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="1_adbw7"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_my0e8"]
+[node name="Counter" type="Panel" unique_id=1837503517]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 103.0
+offset_bottom = 48.0
+script = ExtResource("1_60xx1")
 
-[node name="Counter" type="NinePatchRect" unique_id=1576804852]
-offset_right = 334.0
-offset_bottom = 146.0
-theme = ExtResource("1_60xx1")
-texture = SubResource("PlaceholderTexture2D_my0e8")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="Icon" type="TextureRect" parent="." unique_id=1354789444]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -48.0
-offset_right = -35.0
-offset_bottom = 52.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417807379]
+position = Vector2(71, 20)
+scale = Vector2(0.1446591, 0.11851039)
 texture = ExtResource("1_adbw7")
-expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=165129159]
+[node name="Label" type="Label" parent="." unique_id=1353080062]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = -26.5
-offset_right = 122.0
-offset_bottom = 31.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 49.0
+offset_bottom = 16.0
 grow_vertical = 2
 text = "10"
 horizontal_alignment = 1
