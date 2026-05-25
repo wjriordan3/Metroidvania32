@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c107nptagd87e"]
+
+[sub_resource type="GDScript" id="GDScript_u14nr"]
+script/source = "class_name DamageArea extends Area2D
+
+signal damage_taken( attack_area )
+
+@export var audio : AudioStream
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func take_damage( area : Area2D ) -> void:
+	print( \"take_damage called\")
+	if area is AttackArea:
+		damage_taken.emit( area )
+		print( \"Attack damage taken\", area.damage )
+	elif area is HazardArea:
+		damage_taken.emit( area )
+		print( \"Hazard damage taken\", area.damage )
+	pass
+	
+
+func make_invulnerable(duration : float = 1.0 ) -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer( duration ).timeout
+	process_mode = Node.PROCESS_MODE_INHERIT
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wujgv"]
+
+[node name="DamageArea" type="Area2D" unique_id=1086178816]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = SubResource("GDScript_u14nr")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191672561]
+scale = Vector2(13.480001, 15.519999)
+shape = SubResource("RectangleShape2D_wujgv")

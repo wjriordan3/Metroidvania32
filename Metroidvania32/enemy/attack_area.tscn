@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b16u8a6rqpdq0"]
+
+[sub_resource type="GDScript" id="GDScript_ommru"]
+script/source = "class_name AttackArea extends Area2D
+
+@export var damage : float = 1
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	body_entered.connect( _on_body_entered )
+	area_entered.connect( _on_body_entered )
+	set_active( false )
+	monitorable = false
+	pass # Replace with function body.
+
+func _on_body_entered( body : Node2D ) -> void:
+	print( \"Body entered: \", body.name )
+	if body is DamageArea:
+		body.take_damage( self )
+		pass
+	pass
+
+func activate( duration : float = 0.1 ) -> void:
+	set_active()
+	await get_tree().create_timer( duration ).timeout
+	set_active( false )
+	pass
+	
+func set_active( value : bool = true ) -> void:
+	monitoring = value
+	visible = value
+	pass
+	
+func flip( direction_x : float ):
+	if direction_x > 0:
+		scale.x = 1
+	elif direction_x < 0:
+		scale.x = -1
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqyl"]
+
+[node name="AttackArea" type="Area2D" unique_id=1600257482]
+scale = Vector2(1.1200004, 1.0399996)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = SubResource("GDScript_ommru")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291323762]
+scale = Vector2(13.5599985, 15.56)
+shape = SubResource("RectangleShape2D_3yqyl")

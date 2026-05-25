@@ -21,9 +21,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
-}
+directories/dch_directory={}
 directories/dtl_directory={}
 layout/style_directory={}
 glossary/default_case_sensitive=true
@@ -178,6 +176,10 @@ dialogic_default_action={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="OneWayPlatform"
 2d_physics/layer_3="Collectible"
+2d_physics/layer_6="Player"
+2d_physics/layer_7="Enemy"
+2d_physics/layer_8="Breakable"
+2d_physics/layer_9="SlamBreakable"
 
 [physics]
 
