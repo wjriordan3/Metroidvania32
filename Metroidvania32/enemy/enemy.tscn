@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_qi2p4"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
-[ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
-[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
-[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="5_y5vj3"]
+[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://enemy/hazard_area.gd" id="3_pmsee"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="4_1wwld"]
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="5_y5vj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ffra"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=976216826]
 collision_layer = 0
@@ -22,13 +24,32 @@ texture = ExtResource("2_epg4t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317822677]
 
-[node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("3_pmsee")]
-position = Vector2(0, -4.9999995)
+[node name="HazardArea" type="Area2D" parent="." unique_id=660179412]
+collision_layer = 32
 collision_mask = 32
+script = ExtResource("3_pmsee")
+metadata/_custom_type_script = "uid://i0l20hll14ud"
 
-[node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("4_1wwld")]
-position = Vector2(0, -4.9999995)
-collision_mask = 32
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea" unique_id=301802593]
+scale = Vector2(14.339984, 16.270016)
+shape = SubResource("RectangleShape2D_5ffra")
 
-[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("5_y5vj3")]
+[node name="DamageArea" type="Area2D" parent="." unique_id=707208585]
+collision_layer = 64
 collision_mask = 64
+script = ExtResource("4_1wwld")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=423561572]
+scale = Vector2(14.339984, 16.270016)
+shape = SubResource("RectangleShape2D_5ffra")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1132571913]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("5_y5vj3")
+metadata/_custom_type_script = "uid://buwg2sy4gk7ge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1712462131]
+scale = Vector2(14.339984, 16.270016)
+shape = SubResource("RectangleShape2D_5ffra")
