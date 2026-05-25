@@ -25,8 +25,9 @@ layer = 100
 [node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("4_threo")]
 visible = false
 
-[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_inventory") instance=ExtResource("3_46faf")]
+[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory") instance=ExtResource("3_46faf")]
 scale = Vector2(0.5, 0.5)
+player_health = NodePath("../../Level/Player/Health")
 player_inventory = NodePath("../../Level/Player/Inventory")
 
 [node name="HealthBar" parent="InterfaceLayer/Interface" index="0" unique_id=77891363]

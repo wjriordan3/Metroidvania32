@@ -1,4 +1,4 @@
-extends Control
+class_name Interface extends Control
 
 signal health_changed(health)
 signal scrap_changed(scrap)
