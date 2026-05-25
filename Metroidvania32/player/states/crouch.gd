@@ -14,8 +14,8 @@ func enter() -> void:
 	player.crouch_multiplier = crouch_move_multiplier
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.sprite.scale.y = 0.625
-	player.sprite.position.y = 30
+	player.core.scale.y = 0.625
+	player.core.position.y = 30
 	pass
 	
 # What happens when we exit this state?
@@ -25,15 +25,16 @@ func exit() -> void:
 	player.crouch_multiplier = 1.0
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.sprite.scale.y = 1.0
-	player.sprite.position.y = 0.0
+	player.core.scale.y = 1.0
+	player.core.position.y = 0.0
 	pass 
 	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	# Handle inputs
 	if _event.is_action_pressed("jump"):
-		if player.one_way_platform_raycast.is_colliding() == true:
-			player.position.y += 4
+		player.one_way_platform_shapecast.force_shapecast_update()
+		if player.one_way_platform_shapecast.is_colliding():
+			player.position.y += 4 # move player enough to fall through platform
 			return fall
 		return jump
 	return next_state

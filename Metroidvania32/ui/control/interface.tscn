@@ -5,25 +5,29 @@
 [ext_resource type="PackedScene" uid="uid://cmwxim12yjvso" path="res://ui/counter/counter.tscn" id="3_rm7hh"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="4_badti"]
 [ext_resource type="Script" uid="uid://b2m5lgff5anud" path="res://ui/counter/scripts/scrap_counter.gd" id="4_hfser"]
+[ext_resource type="PackedScene" uid="uid://dyw7pmpphku4l" path="res://ui/counter/scrap_counter_example.tscn" id="6_5wrt2"]
 
 [node name="Interface" type="Control" unique_id=1735007707]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rm7hh")
 
 [node name="HealthBar" parent="." unique_id=77891363 instance=ExtResource("1_y0u1y")]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 6.0
-offset_right = 583.0
-offset_bottom = 111.0
+layout_mode = 1
 
 [node name="ScrapCounter" parent="." unique_id=1576804852 instance=ExtResource("3_rm7hh")]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 126.0
-offset_right = 210.0
-offset_bottom = 207.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -209.0
+offset_right = 0.0
+offset_bottom = 81.0
+grow_horizontal = 0
 script = ExtResource("4_hfser")
 
 [node name="Icon" parent="ScrapCounter" index="0" unique_id=1354789444]
@@ -38,6 +42,18 @@ offset_left = 111.0
 offset_top = -29.0
 offset_right = 205.0
 offset_bottom = 29.0
+
+[node name="ScrapCounterExample" parent="." unique_id=1837503517 instance=ExtResource("6_5wrt2")]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 51.0
+grow_horizontal = 0
 
 [editable path="HealthBar"]
 [editable path="HealthBar/Counter"]

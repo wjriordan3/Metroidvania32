@@ -7,9 +7,28 @@ func init() -> void:
 	
 # What happens when we enter this state?
 func enter() -> void:
-	player.add_debug_indicator( Color.LIME_GREEN )
 	# Play animation here
+	player.mech_animate_play(
+		"PlayerAnims/standard_jump_core",
+		"PlayerAnims/standard_jump_leftarm",
+		"PlayerAnims/standard_jump_leftleg",
+		"PlayerAnims/standard_jump_rightarm",
+		"PlayerAnims/standard_jump_rightleg"
+	)
+	player.mech_animate_pause()
+	#player.add_debug_indicator( Color.LIME_GREEN )
 	player.velocity.y = -jump_velocity
+	
+	
+	# CHeck if this is a buffer jump
+	# If it is, handle jump button release condition retroactively
+	if player.previous_state == fall and not Input.is_action_pressed( "jump" ):
+		await get_tree().physics_frame
+		player.velocity.y *= 0.5
+		player.change_state( fall )
+		pass
+		
+	
 	pass
 	
 # What happens when we exit this state?
@@ -25,6 +44,7 @@ func handle_input( event : InputEvent ) -> PlayerState:
 	return next_state
 	
 func process( _delta: float) -> PlayerState:
+	set_jump_frame()
 	player.update_direction()
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state 
@@ -37,4 +57,14 @@ func physics_process( _delta: float ) -> PlayerState:
 		return fall
 	
 	return next_state 
+	
+func set_jump_frame() -> void:
+	# [-jump_velocity, 0.0 (apex of jump)] mapped to [0.0, 0.5 (apex in sprite animation)] 
+	var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
+	player.animation_player_core.seek( frame, true )
+	player.animation_player_left_arm.seek( frame, true )
+	player.animation_player_left_leg.seek( frame, true )
+	player.animation_player_right_arm.seek( frame, true )
+	player.animation_player_right_leg.seek( frame, true )
+	pass
 	

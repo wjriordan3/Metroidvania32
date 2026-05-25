@@ -20,13 +20,13 @@ itemIcon = ExtResource("7_ta15a")
 position = Vector2(103, 269)
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
+layer = 100
 
 [node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("4_threo")]
 visible = false
 
-[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory") instance=ExtResource("3_46faf")]
+[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_inventory") instance=ExtResource("3_46faf")]
 scale = Vector2(0.5, 0.5)
-player_health = NodePath("../../Level/Player/Health")
 player_inventory = NodePath("../../Level/Player/Inventory")
 
 [node name="HealthBar" parent="InterfaceLayer/Interface" index="0" unique_id=77891363]
@@ -54,7 +54,6 @@ offset_right = 203.0
 offset_bottom = 23.0
 
 [connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
-[connection signal="health_changed" from="Level/Player/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
 [connection signal="health_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/HealthBar" method="_on_interface_health_changed"]
 [connection signal="scrap_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/ScrapCounter" method="_on_interface_scrap_changed"]
 
