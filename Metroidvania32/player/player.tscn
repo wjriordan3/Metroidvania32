@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d3c68iq6hyc5w" path="res://player/sprites/standard/standard_run/standard_core_run.png" id="10_x7c3f"]
 [ext_resource type="Texture2D" uid="uid://0klv65ljuhy2" path="res://player/sprites/standard/standard_run/standard_armR_run.png" id="11_bjvpn"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_wodsf"]
+[ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="14_32hag"]
 [ext_resource type="PackedScene" uid="uid://c1yktw6v7p3pi" path="res://combat/gun.tscn" id="14_kb6p2"]
 [ext_resource type="AnimationLibrary" uid="uid://dbelw0g27iey8" path="res://player/sprites/animlibraries/PlayerAnims.res" id="18_s7qer"]
 
@@ -548,6 +549,8 @@ visible = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="Health" parent="." unique_id=1767944466 instance=ExtResource("13_wodsf")]
+
+[node name="LimbHealth" parent="." unique_id=393853738 instance=ExtResource("14_32hag")]
 
 [node name="AnimationPlayer_Core" type="AnimationPlayer" parent="." unique_id=1621509004]
 libraries/ = SubResource("AnimationLibrary_kb6p2")

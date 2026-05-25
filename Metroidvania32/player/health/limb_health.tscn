@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://4bss3pewlwm1"]
+
+[ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="1_dcw7r"]
+[ext_resource type="Script" uid="uid://davu714mlu1mr" path="res://player/health/limb_health.gd" id="1_uuo74"]
+
+[node name="LimbHealth" type="Node" unique_id=393853738]
+script = ExtResource("1_uuo74")
+
+[node name="LeftArmHealth" parent="." unique_id=1767944466 instance=ExtResource("1_dcw7r")]
+
+[node name="RightArmHealth" parent="." unique_id=1780402189 instance=ExtResource("1_dcw7r")]
+
+[node name="LeftLegHealth" parent="." unique_id=660276221 instance=ExtResource("1_dcw7r")]
+
+[node name="RightLegHealth" parent="." unique_id=457533541 instance=ExtResource("1_dcw7r")]
+
+[connection signal="health_changed" from="LeftArmHealth" to="." method="_on_left_arm_health_health_changed"]
+[connection signal="health_changed" from="RightArmHealth" to="." method="_on_right_arm_health_health_changed"]
+[connection signal="health_changed" from="LeftLegHealth" to="." method="_on_left_leg_health_health_changed"]
+[connection signal="health_changed" from="RightLegHealth" to="." method="_on_right_leg_health_health_changed"]

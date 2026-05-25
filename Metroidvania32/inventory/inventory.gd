@@ -109,7 +109,7 @@ func pickup( item : Object ) -> void :
 	# Item obtained is scrap, do not add to inventory
 	if item.itemName == "Scrap":
 		scrap += 1
-		emit_signal("add_scrap", scrap)
+		add_scrap.emit(scrap)
 		return
 	
 	for row in self.contents.size() :

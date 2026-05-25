@@ -8,14 +8,14 @@ var health = 0
 
 func _ready():
 	health = max_health
-	emit_signal("health_changed", health)
+	health_changed.emit(health)
 
 func take_damage(amount):
 	health -= amount
 	health = max(0, health)
-	emit_signal("health_changed", health)
+	health_changed.emit(health)
 
 func heal(amount):
 	health += amount
 	health = max(health, max_health)
-	emit_signal("health_changed", health)
+	health_changed.emit(health)
