@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="1_80c3a"]
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
 [ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
+[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy.tscn" id="4_46faf"]
 [ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="4_threo"]
 [ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="7_bia53"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="7_ta15a"]
@@ -19,6 +20,9 @@ itemIcon = ExtResource("7_ta15a")
 
 [node name="Player" parent="Level" unique_id=1485163958 groups=["player"] instance=ExtResource("1_80c3a")]
 position = Vector2(103, 269)
+
+[node name="DamageArea" parent="Level/Player" index="8" unique_id=107658167]
+collision_mask = 32
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
 layer = 100
@@ -76,4 +80,14 @@ collision_mask = 64
 [editable path="InterfaceLayer/Interface/HealthBar"]
 [editable path="InterfaceLayer/Interface/HealthBar/Counter"]
 [editable path="InterfaceLayer/Interface/ScrapCounter"]
+[node name="Enemy" parent="." unique_id=976216826 instance=ExtResource("4_46faf")]
+position = Vector2(1067, 560)
+scale = Vector2(0.40000004, 0.40000004)
+
+[node name="HazardArea" parent="Enemy" index="3" unique_id=1563116352]
+collision_mask = 32
+monitoring = true
+monitorable = true
+
+[editable path="Level/Player"]
 [editable path="Enemy"]
