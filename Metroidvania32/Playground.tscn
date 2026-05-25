@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
 [ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
 [ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="4_threo"]
+[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="7_bia53"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="7_ta15a"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
@@ -53,6 +54,19 @@ offset_top = -25.0
 offset_right = 203.0
 offset_bottom = 23.0
 
+[node name="Enemy" parent="." unique_id=976216826 instance=ExtResource("7_bia53")]
+position = Vector2(1021, 556)
+scale = Vector2(0.36, 0.39999998)
+
+[node name="HazardArea" parent="Enemy" index="3" unique_id=1563116352]
+collision_mask = 32
+
+[node name="AttackArea" parent="Enemy" index="4" unique_id=780120176]
+collision_mask = 32
+
+[node name="DamageArea" parent="Enemy" index="5" unique_id=472307162]
+collision_mask = 64
+
 [connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
 [connection signal="health_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/HealthBar" method="_on_interface_health_changed"]
 [connection signal="scrap_changed" from="InterfaceLayer/Interface" to="InterfaceLayer/Interface/ScrapCounter" method="_on_interface_scrap_changed"]
@@ -62,3 +76,4 @@ offset_bottom = 23.0
 [editable path="InterfaceLayer/Interface/HealthBar"]
 [editable path="InterfaceLayer/Interface/HealthBar/Counter"]
 [editable path="InterfaceLayer/Interface/ScrapCounter"]
+[editable path="Enemy"]
