@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bs5owdmwdvjcb"]
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://bs5owdmwdvjcb"]
 
-[ext_resource type="Script" uid="uid://dly07xrnsv835" path="res://inventory/item_resource.gd" id="1_21ymv"]
-[ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="1_mei1c"]
+[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="1_mei1c"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://inventory/item_mechpart.gd" id="2_dtfq2"]
 
 [resource]
-script = ExtResource("1_21ymv")
-name = "Propeller Legs"
-description = "Chop chop chop"
+script = ExtResource("2_dtfq2")
+limb_slot = 3
+name = "Gun"
+description = "A shooty shooty gun!"
 icon = ExtResource("1_mei1c")
-inventorySlot = "BagSlots"
-inventoryPosition = 1
-metadata/_custom_type_script = "uid://dly07xrnsv835"
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

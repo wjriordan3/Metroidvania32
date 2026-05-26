@@ -7,11 +7,11 @@ func init() -> void:
 func enter() -> void:
 	# Play animation here
 	player.mech_animate_play(
-		"run",
-		"run",
-		"run",
-		"run",
-		"run"
+		"standard_run",
+		"standard_run",
+		"standard_run",
+		"standard_run",
+		"standard_run"
 	)
 	pass
 	

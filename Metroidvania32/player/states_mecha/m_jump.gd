@@ -9,11 +9,11 @@ func init() -> void:
 func enter() -> void:
 	# Play animation here
 	player.mech_animate_play(
-		"jump",
-		"jump",
-		"jump",
-		"jump",
-		"jump"
+		"standard_jump",
+		"standard_jump",
+		"standard_jump",
+		"standard_jump",
+		"standard_jump"
 	)
 	player.mech_animate_pause()
 	#player.add_debug_indicator( Color.LIME_GREEN )

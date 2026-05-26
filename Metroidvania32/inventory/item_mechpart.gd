@@ -16,5 +16,7 @@ enum LimbSlot {
 @export var animations := {
 	"idle": "",
 	"run": "",
-	"jump": ""
+	"jump": "",
+	"hang": "",
+	"action": ""
 }

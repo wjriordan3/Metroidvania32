@@ -7,11 +7,11 @@ func init() -> void:
 func enter() -> void:
 	# Play animation here
 	player.mech_animate_play(
-		"idle",
-		"idle",
-		"idle",
-		"idle",
-		"idle"
+		"standard_idle",
+		"standard_idle",
+		"standard_idle",
+		"standard_idle",
+		"standard_idle"
 	)
 	
 	# TODO: replace mech_animate_play with play_mech_animation

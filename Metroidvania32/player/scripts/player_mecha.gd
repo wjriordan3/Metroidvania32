@@ -224,7 +224,7 @@ func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : S
 	left_arm.play(leftArmAnim)
 	left_leg.play(leftLegAnim)
 	right_arm.play(rightArmAnim)
-	right_leg.play(rightArmAnim)
+	right_leg.play(rightLegAnim)
 	
 	
 func mech_animate_pause():
