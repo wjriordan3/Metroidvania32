@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://b54e2n66cjf4s"]
 
 [ext_resource type="Script" uid="uid://br8xp2o0ejqp6" path="res://combat/projectile.gd" id="1_n1lw2"]
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="2_5v1ly"]
 
 [sub_resource type="Gradient" id="Gradient_rto3f"]
 colors = PackedColorArray(1, 0.5789182, 0.5789182, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n1lw2"]
 gradient = SubResource("Gradient_rto3f")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hafwc"]
 
 [node name="Projectile" type="Node2D" unique_id=2105320040]
 script = ExtResource("1_n1lw2")
@@ -16,4 +19,15 @@ texture = SubResource("GradientTexture2D_n1lw2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=946788331]
 
+[node name="AttackArea" type="Area2D" parent="." unique_id=2143612065]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("2_5v1ly")
+metadata/_custom_type_script = "uid://buwg2sy4gk7ge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1475863098]
+scale = Vector2(3.2592657, 3.1199386)
+shape = SubResource("RectangleShape2D_hafwc")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

@@ -49,8 +49,11 @@ player_health = NodePath("../../Level/Player/Health")
 player_inventory = NodePath("../../Level/Player/Inventory")
 limb_health = NodePath("../../Level/Player/LimbHealth")
 
+[connection signal="body_entered" from="Level/Enemy/HazardArea" to="Level/Enemy/HazardArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Enemy/AttackArea" to="Level/Enemy/AttackArea" method="_on_body_entered"]
 [connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
 [connection signal="health_changed" from="Level/Player/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
 [connection signal="limb_health_changed" from="Level/Player/LimbHealth" to="InterfaceLayer/Interface" method="_on_limb_health_limb_health_changed"]
 
+[editable path="Level/Enemy"]
 [editable path="Level/Player"]
