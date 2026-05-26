@@ -1,7 +1,7 @@
 @icon("res://player/states/state.svg")
 class_name PlayerState extends Node
 
-var player : Player
+var player : PlayerHero
 var next_state : PlayerState
 
 #region /// State References

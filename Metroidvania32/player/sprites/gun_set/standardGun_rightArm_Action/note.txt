@@ -1,0 +1,1 @@
+Fire from right gun on rotator, animation may be unnecessary.
