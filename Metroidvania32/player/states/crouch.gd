@@ -14,8 +14,8 @@ func enter() -> void:
 	player.crouch_multiplier = crouch_move_multiplier
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.core.scale.y = 0.625
-	player.core.position.y = 30
+	player.hero_sprite.scale.y = 0.625
+	player.hero_sprite.position.y = 0.25
 	pass
 	
 # What happens when we exit this state?
@@ -25,8 +25,8 @@ func exit() -> void:
 	player.crouch_multiplier = 1.0
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.core.scale.y = 1.0
-	player.core.position.y = 0.0
+	player.hero_sprite.scale.y = 1.0
+	player.hero_sprite.position.y = 0.0
 	pass 
 	
 func handle_input( _event : InputEvent ) -> PlayerState:

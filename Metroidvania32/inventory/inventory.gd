@@ -10,7 +10,7 @@ extends Control
 
 var inventoryDict = {}
 
-var items = ["res://inventory/itemresources/DrillArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
+var items = ["res://inventory/itemresources/Drill_LArm.tres", "res://inventory/itemresources/Gun_RArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
 
 @export var scrap = 150
 signal add_scrap(scrap: int)

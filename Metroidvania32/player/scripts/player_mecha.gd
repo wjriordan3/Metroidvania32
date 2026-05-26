@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+class_name PlayerMecha extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
@@ -27,22 +27,17 @@ var equipped_parts := {
 	LimbSlot.RIGHT_LEG: $RightLeg
 }
 
-@onready var core: Sprite2D = $Core
-@onready var right_leg: Sprite2D = $RightLeg
-@onready var left_leg: Sprite2D = $LeftLeg
-@onready var left_arm: Sprite2D = $LeftArm
-@onready var right_arm: Sprite2D = $RightArm
+@onready var core: AnimatedSprite2D = $Core
+@onready var right_leg: AnimatedSprite2D = $RightLeg
+@onready var left_leg: AnimatedSprite2D = $LeftLeg
+@onready var left_arm: AnimatedSprite2D = $LeftArm
+@onready var right_arm: AnimatedSprite2D = $RightArm
 
+@onready var enter_hint_label: Label = $EntryLabel
 
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
-
-@onready var animation_player_core: AnimationPlayer = $AnimationPlayer_Core
-@onready var animation_player_left_arm: AnimationPlayer = $AnimationPlayer_LeftArm
-@onready var animation_player_left_leg: AnimationPlayer = $AnimationPlayer_LeftLeg
-@onready var animation_player_right_arm: AnimationPlayer = $AnimationPlayer_RightArm
-@onready var animation_player_right_leg: AnimationPlayer = $AnimationPlayer_RightLeg
 #endregion
 
 
@@ -58,16 +53,17 @@ const DASH_DURATION = 0.2
 const ATTACK_DURATION = 0.3
 
 # Status Flags
+var activePlayer = false
 var can_attack = true
 var is_attacking = false
 var is_climbing = false
 var is_interacting = false # for handling dialogue or object interaction
 
 #region /// State Machine Variables
-var states : Array[ PlayerState ]
-var current_state : PlayerState : 
+var states : Array[ MechaState ]
+var current_state : MechaState : 
 	get : return states.front()
-var previous_state : PlayerState :
+var previous_state : MechaState :
 	get : return states[ 1 ]
 #endregion
 
@@ -83,31 +79,35 @@ var rotation_speed : float = 10.0
 #@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
+	enter_hint_label.visible = false
 	#initialize states
-	initalize_states()
+	initialize_states()
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
+	if not activePlayer: return
 	change_state( current_state.handle_input( event ))
 	pass
 
 func _process( _delta: float) -> void:
+	if not activePlayer: return
 	update_direction()
 	change_state( current_state.process( _delta ) )
 	pass
 	
 func _physics_process( _delta: float ) -> void:
+	if not activePlayer: return
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf(velocity.y, -10000, max_fall_velocity)
 	move_and_slide()
 	change_state( current_state.physics_process( _delta ) )
 	pass 
 
-func initalize_states() -> void:
+func initialize_states() -> void:
 	states = []
 	# Gather all states
 	for c in $States.get_children():
-		if c is PlayerState:
+		if c is MechaState:
 			states.append( c )
 			c.player = self
 		pass
@@ -127,7 +127,7 @@ func initalize_states() -> void:
 	pass
 	
 	
-func change_state( new_state : PlayerState ) -> void:
+func change_state( new_state : MechaState ) -> void:
 	if new_state == null:
 		return  
 	elif new_state == current_state:
@@ -167,6 +167,39 @@ func update_direction():
 			right_arm.flip_h = false
 	pass
 
+func _input(event):
+	if event.is_action_pressed("action") && event.is_pressed() && enter_hint_label.visible:
+		_control_mech()
+	elif activePlayer && event.is_action_pressed("action") && event.is_pressed():
+		_leave_mech()
+		
+func _control_mech():
+	var player = get_tree().get_first_node_in_group("player")
+	
+	activePlayer = true
+	player.queue_free()
+	
+	# Switch to mech camera
+	$Camera2D.make_current()
+	
+func _leave_mech():
+	var player = preload("res://player/player_hero.tscn").instantiate()
+	
+	activePlayer = false
+	get_tree().current_scene.add_child(player)
+	player.global_position = global_position
+	
+	# Switch to player camera
+	var player_camera = player.get_node("Camera2D")
+	player_camera.make_current()
+	
+func _on_mech_area_collision_body_entered(body: Node2D) -> void:
+	if body == get_tree().get_first_node_in_group("player"):
+		enter_hint_label.show()
+
+func _on_mech_area_collision_body_exited(body: Node2D) -> void:
+	if body == get_tree().get_first_node_in_group("player"):
+		enter_hint_label.hide()
 	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
 	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
@@ -185,19 +218,21 @@ func get_item(itemData):
 #endregion
 
 #region Animation
-func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):
-	animation_player_core.play(coreAnim)
-	animation_player_left_arm.play(leftArmAnim)
-	animation_player_left_leg.play(leftLegAnim)
-	animation_player_right_arm.play(rightArmAnim)
-	animation_player_right_leg.play(rightLegAnim)
+
+func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):	
+	core.play(coreAnim)
+	left_arm.play(leftArmAnim)
+	left_leg.play(leftLegAnim)
+	right_arm.play(rightArmAnim)
+	right_leg.play(rightLegAnim)
+	
 	
 func mech_animate_pause():
-	animation_player_core.pause()
-	animation_player_left_arm.pause()
-	animation_player_left_leg.pause()
-	animation_player_right_arm.pause()
-	animation_player_right_leg.pause()
+	core.pause()
+	left_arm.pause()
+	left_leg.pause()
+	right_arm.pause()
+	right_leg.pause()
 
 func play_slot_animation(slot: LimbSlot, anim_name: StringName) -> void:
 	var sprite: AnimatedSprite2D = limb_sprites[slot]
