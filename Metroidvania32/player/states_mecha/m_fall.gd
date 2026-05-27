@@ -57,12 +57,14 @@ func physics_process( _delta: float ) -> MechaState:
 		#player.add_debug_indicator( ) 
 		if buffer_timer > 0:
 			return jump
+		CameraManager.screen_shake(3.0, 0.25)
 		return idle
 	return next_state 
 	
 func set_jump_frame() -> void:
 	# [0.0, max_fall_speed (semi high # for fall velocity)] mapped to [0.5, 0.0 (end of fall in sprite animation)] 
-	var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
+	# TODO: Need to implement set_jump_frame
+	#var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
 	#player.animation_player_core.seek( frame, true )
 	#player.animation_player_left_arm.seek( frame, true )
 	#player.animation_player_left_leg.seek( frame, true )

@@ -9,7 +9,7 @@ func _ready() -> void:
 	visible = false
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if canFire:
 		look_at(get_global_mouse_position())
 		

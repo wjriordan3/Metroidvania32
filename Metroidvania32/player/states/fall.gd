@@ -57,6 +57,7 @@ func physics_process( _delta: float ) -> PlayerState:
 	
 func set_jump_frame() -> void:
 	# [0.0, max_fall_speed (semi high # for fall velocity)] mapped to [0.5, 0.0 (end of fall in sprite animation)] 
-	var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
+	# TODO: Need to implement set_jump_frame
+	#var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
 	#player.animation_player.seek( frame, true )
 	pass
