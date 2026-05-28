@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://df2cw40nlss5t"]
+
+[ext_resource type="Script" uid="uid://doebn0wx4yj56" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
+[ext_resource type="Texture2D" uid="uid://6ohj4psmejoy" path="res://assets/concepts/pilot_concept.png" id="1_g2mvh"]
+[ext_resource type="Texture2D" uid="uid://bnif6nxl5t2sc" path="res://HardenedCriminalsLogo.png" id="2_dxpbd"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=1062812768]
+layer = 5
+script = ExtResource("1_2dq6q")
+
+[node name="Control" type="Control" parent="." unique_id=237802275]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1554173155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundContainer" type="Control" parent="Control" unique_id=218508991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/BackgroundContainer" unique_id=1192943737]
+modulate = Color(0.61960787, 0.38431373, 0.38431373, 0.75686276)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g2mvh")
+expand_mode = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=2011425308]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -85.0
+offset_right = 80.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="GameLogo" type="Control" parent="Control/MainMenu" unique_id=226861824]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MainMenu/GameLogo" unique_id=2020702073]
+position = Vector2(0, 26)
+texture = ExtResource("2_dxpbd")
+
+[node name="NewGameButton" type="Button" parent="Control/MainMenu" unique_id=524785741]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="Control/MainMenu" unique_id=1584577594]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Game"
+
+[node name="NewGameMenu" type="VBoxContainer" parent="Control" unique_id=1170745554]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -31.0
+offset_right = 80.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Control/NewGameMenu" unique_id=1938712942]
+layout_mode = 2
+text = "Start a new game..."
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/NewGameMenu" unique_id=1846159762]
+layout_mode = 2
+
+[node name="NewSlot01" type="Button" parent="Control/NewGameMenu" unique_id=280280609]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Slot 01"
+
+[node name="NewSlot02" type="Button" parent="Control/NewGameMenu" unique_id=1517381557]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Slot 02"
+
+[node name="NewSlot03" type="Button" parent="Control/NewGameMenu" unique_id=200915374]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Slot 03"
+
+[node name="LoadGameMenu" type="VBoxContainer" parent="Control" unique_id=616299994]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -31.0
+offset_right = 80.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Control/LoadGameMenu" unique_id=2069946567]
+layout_mode = 2
+text = "Load a saved game..."
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/LoadGameMenu" unique_id=689475375]
+layout_mode = 2
+
+[node name="LoadSlot01" type="Button" parent="Control/LoadGameMenu" unique_id=319414160]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Slot 01"
+
+[node name="LoadSlot02" type="Button" parent="Control/LoadGameMenu" unique_id=353165390]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Slot 02"
+
+[node name="LoadSlot03" type="Button" parent="Control/LoadGameMenu" unique_id=819119672]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Slot 03"

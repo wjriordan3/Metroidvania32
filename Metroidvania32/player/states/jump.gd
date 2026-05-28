@@ -40,7 +40,7 @@ func handle_input( event : InputEvent ) -> PlayerState:
 func process( _delta: float) -> PlayerState:
 	set_jump_frame()
 	player.update_direction()
-	player.velocity.x = player.direction.x * player.move_speed
+	player.velocity.x = player.direction.x * player.stats.base_move_speed
 	return next_state 
 	
 func physics_process( _delta: float ) -> PlayerState:

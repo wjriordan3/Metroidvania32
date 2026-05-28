@@ -11,9 +11,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
 
 #region /// export variables (used to expose variable to inspector)
-@export var move_speed : float = 250.0
-@export var max_fall_velocity : float = 600.0
-
+@export var stats : Stats
 #endregion
 
 const SPEED = 150.0
@@ -36,8 +34,7 @@ var previous_state : PlayerState :
 	get : return states[ 1 ]
 #endregion
 
-#region /// Player Stats
-@onready var health: HealthComponent = $Health
+#region /// Ability Flags
 var double_jump : bool = false
 #endregion
 
@@ -46,23 +43,18 @@ var direction : Vector2 = Vector2.ZERO
 var gravity : float = 980
 var gravity_multiplier : float = 1.0
 var crouch_multiplier : float = 1.0
-var base_move_speed : int = 100
 var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
-	#if get_tree().get_first_node_in_group("player") != self:
-	#	self.queue_free()
-	
 	add_to_group("player")
-	#initialize states
 	initalize_states()
-	#self.call_deferred("reparent", get_tree().root)
 	CameraManager.set_target(self)
-	#check_for_camera()
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
+	if event.is_action_pressed( "action" ):
+		Messages.player_interacted.emit( self )
 	change_state( current_state.handle_input( event ))
 	pass
 
@@ -75,7 +67,7 @@ func _process( _delta: float) -> void:
 func _physics_process( _delta: float ) -> void:
 	if not activePlayer: return
 	velocity.y += gravity * _delta * gravity_multiplier
-	velocity.y = clampf(velocity.y, -10000, max_fall_velocity)
+	velocity.y = clampf(velocity.y, -10000, stats.max_fall_velocity)
 	move_and_slide()
 	change_state( current_state.physics_process( _delta ) )
 	pass 
@@ -144,13 +136,6 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
-	
-func check_for_camera() -> void:
-	if !get_tree().get_first_node_in_group("main_camera"):
-		var scene = preload("res://general/camera_2d.tscn")
-		var camera = scene.instantiate()
-		
-		get_tree().current_scene.call_deferred("add_child", camera)
 		
 func _exit_tree():
 	CameraManager.clear_target(self)

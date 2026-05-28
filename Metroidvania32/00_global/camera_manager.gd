@@ -61,6 +61,8 @@ func end_transition() -> void:
 	transition_state = false	
 	
 func _physics_process(delta: float) -> void:
+	if current_target == null:
+		return
 	if active_shake_time > 0:
 		shake_duration += delta * shake_time_speed
 		active_shake_time -= delta
