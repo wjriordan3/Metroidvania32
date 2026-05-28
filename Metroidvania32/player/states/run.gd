@@ -27,7 +27,7 @@ func process( _delta: float) -> PlayerState:
 	return next_state 
 	
 func physics_process( _delta: float ) -> PlayerState:
-	player.velocity.x = player.direction.x * player.move_speed 
+	player.velocity.x = player.direction.x * player.stats.base_move_speed 
 	if player.is_on_floor() == false:
 		return fall
 	return next_state 
