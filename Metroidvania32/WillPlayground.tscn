@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="1_fe3x3"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="2_lqifc"]
 [ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="3_nhluo"]
-[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="4_agmrh"]
+[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player_mecha.tscn" id="4_agmrh"]
 [ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="4_nhluo"]
 [ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="5_5mbu6"]
 [ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="5_lqifc"]
