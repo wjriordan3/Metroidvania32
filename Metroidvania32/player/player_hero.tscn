@@ -169,7 +169,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1485163958]
 z_index = 1
-collision_layer = 36
+collision_layer = 32
 collision_mask = 7
 script = ExtResource("1_vvdj0")
 
@@ -201,7 +201,7 @@ sprite_frames = SubResource("SpriteFrames_vmuhc")
 animation = &"idle"
 frame_progress = 0.49935147
 
-[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783 groups=["player"]]
 shape = SubResource("CapsuleShape2D_e7oew")
 
 [node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=466451521]

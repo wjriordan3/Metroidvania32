@@ -1,10 +1,10 @@
-extends Node
+class_name HealthComponent extends Node
 
 signal health_changed(health)
 signal health_depleted
 
-var health = 0
-@export var max_health = 100.0
+@export var health : float = 100.0
+@export var max_health : float = 100.0
 
 func _ready():
 	health = max_health

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ksw5xnx5w7gp" path="res://player/scripts/player_mecha.gd" id="1_4jtkn"]
 [ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://player/states_mecha/m_idle.gd" id="2_4jtkn"]
 [ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://player/states_mecha/m_run.gd" id="3_4jtkn"]
+[ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://player/states_mecha/m_deactivate.gd" id="3_6o7q1"]
 [ext_resource type="Script" uid="uid://clhife5hx4vdj" path="res://player/states_mecha/m_jump.gd" id="4_3xpiw"]
 [ext_resource type="Script" uid="uid://bfmx84gdatp8s" path="res://player/states_mecha/m_fall.gd" id="5_c6l4s"]
 [ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://player/states_mecha/m_crouch.gd" id="6_rqnse"]
@@ -2803,7 +2804,7 @@ size = Vector2(70, 3)
 
 [node name="PlayerMecha" type="CharacterBody2D" unique_id=1485163958]
 z_index = 1
-collision_layer = 4
+collision_layer = 32
 collision_mask = 7
 script = ExtResource("1_4jtkn")
 
@@ -2812,6 +2813,10 @@ script = ExtResource("1_4jtkn")
 [node name="Idle" type="Node" parent="States" unique_id=285448255]
 unique_name_in_owner = true
 script = ExtResource("2_4jtkn")
+
+[node name="Deactivate" type="Node" parent="States" unique_id=1679863130]
+unique_name_in_owner = true
+script = ExtResource("3_6o7q1")
 
 [node name="Run" type="Node" parent="States" unique_id=530559786]
 unique_name_in_owner = true
@@ -2864,6 +2869,7 @@ debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
 scale = Vector2(6.05, 6.05)
 collision_layer = 0
 collision_mask = 32
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MechAreaCollision" unique_id=294249760]
 shape = SubResource("RectangleShape2D_4jtkn")

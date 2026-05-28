@@ -7,7 +7,6 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
-#@onready var camera_2d: Camera2D = $Camera2D
 #endregion
 
 
@@ -37,6 +36,11 @@ var previous_state : PlayerState :
 	get : return states[ 1 ]
 #endregion
 
+#region /// Player Stats
+@onready var health: HealthComponent = $Health
+var double_jump : bool = false
+#endregion
+
 #region /// Standard Variables
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = 980
@@ -47,10 +51,13 @@ var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
+	#if get_tree().get_first_node_in_group("player") != self:
+	#	self.queue_free()
+	
 	add_to_group("player")
 	#initialize states
 	initalize_states()
-	
+	#self.call_deferred("reparent", get_tree().root)
 	CameraManager.set_target(self)
 	#check_for_camera()
 	pass

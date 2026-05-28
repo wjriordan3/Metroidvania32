@@ -10,6 +10,7 @@ var next_state : MechaState
 @onready var jump: MechaStateJump = %Jump
 @onready var fall: MechaStateFall = %Fall
 @onready var crouch: MechaStateCrouch = %Crouch
+@onready var deactivate: MechaStateDeactivate = %Deactivate
 #endregion
 
 # What occurs when the state is initialized?

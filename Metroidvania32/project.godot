@@ -19,6 +19,8 @@ config/icon="uid://bnif6nxl5t2sc"
 
 Dialogic="*uid://ds2q0uclmolvu"
 CameraManager="*uid://bwsuuyy8rrud1"
+SceneManager="*uid://bhmrbfr4hiigg"
+SaveManager="*uid://ce6gnlqwk3fqp"
 
 [dialogic]
 

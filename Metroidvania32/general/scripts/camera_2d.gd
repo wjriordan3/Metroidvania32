@@ -12,6 +12,7 @@ func _ready():
 	
 	CameraManager.zoom_changed.connect(_on_zoom_changed)
 	CameraManager.shake_requested.connect(_on_shake_requested)
+	SceneManager.new_scene_ready.connect(_on_scene_transition)
 	
 	find_player()
 	find_level_bounds()
@@ -83,3 +84,7 @@ func _update_camera_limits(current_camera : Camera2D, width : int, height : int)
 	current_camera.limit_right = int(global_position.x) + width
 	current_camera.limit_top = int(global_position.y) 
 	current_camera.limit_bottom = int(global_position.y) + height
+	
+func _on_scene_transition( _t, _o ) -> void:
+	reset_smoothing.call_deferred()
+	pass
