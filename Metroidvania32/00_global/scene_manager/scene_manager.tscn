@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bhmrbfr4hiigg"]
+
+[ext_resource type="Script" uid="uid://cwqejnekc5el0" path="res://00_global/scene_manager/scene_manager.gd" id="1_4wb0k"]
+
+[node name="SceneManager" type="CanvasLayer" unique_id=605382178]
+script = ExtResource("1_4wb0k")
+
+[node name="Control" type="Control" parent="." unique_id=46581567]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=758144625]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Test"
