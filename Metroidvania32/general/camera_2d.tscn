@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://14t10yqpxkfy" path="res://general/scripts/camera_2d.gd" id="1_7ln20"]
 
 [node name="Camera2D" type="Camera2D" unique_id=618193592]
+process_mode = 3
+position_smoothing_enabled = true
 script = ExtResource("1_7ln20")

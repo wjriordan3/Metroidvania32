@@ -82,7 +82,7 @@ func get_offset( player : Node2D ) -> Vector2:
 	else:
 		offset.x = player_pos.x - self.global_position.x
 		if location == SIDE.TOP:
-			offset.y = -2
+			offset.y = -60
 		else: 
 			offset.y = 20
 			
