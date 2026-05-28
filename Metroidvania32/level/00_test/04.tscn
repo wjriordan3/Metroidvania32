@@ -32,4 +32,4 @@ target_level = "uid://bkokrqme7etip"
 target_area_name = "LevelTransition2"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("5_moxer")]
-position = Vector2(1166, 74)
+position = Vector2(1168, 40)
