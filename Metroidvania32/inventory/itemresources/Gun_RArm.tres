@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://d02i5ncaat1pd"]
+
+[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="1_jijgu"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://inventory/item_mechpart.gd" id="2_w04v6"]
+
+[resource]
+script = ExtResource("2_w04v6")
+limb_slot = 2
+name = "Gun"
+description = "A shooty shooty gun!"
+icon = ExtResource("1_jijgu")
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

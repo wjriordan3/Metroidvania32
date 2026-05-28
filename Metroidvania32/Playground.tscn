@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce67udljbkcfy"]
 
 [ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="1_1cwr0"]
-[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player.tscn" id="1_80c3a"]
+[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player_mecha.tscn" id="1_80c3a"]
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
 [ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
 [ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="4_threo"]

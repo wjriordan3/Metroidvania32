@@ -10,7 +10,7 @@ extends Control
 
 var inventoryDict = {}
 
-var items = ["res://inventory/itemresources/DrillArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
+var items = ["res://inventory/itemresources/Drill_LArm.tres", "res://inventory/itemresources/Gun_RArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
 
 @export var scrap = 150
 signal add_scrap(scrap: int)
@@ -27,20 +27,20 @@ func _get_drag_data(at_position):
 	
 	return dragSlotNode
 	
-func _can_drop_data(at_position, data):
+func _can_drop_data(at_position, _data):
 	var targetSlotNode = get_slot_node_at_position(at_position)
 	
 	return targetSlotNode != null
 	
 func _drop_data(at_position, dragSlotNode):
 	var targetSlotNode = get_slot_node_at_position(at_position)
-	var targetTexture = targetSlotNode.texture
+	var _targetTexture = targetSlotNode.texture
 	var targetResource = targetSlotNode.itemResource
 	
 	targetSlotNode.set_new_data(dragSlotNode.itemResource)
 	dragSlotNode.set_new_data(targetResource)
 
-func get_slot_node_at_position(position):
+func get_slot_node_at_position(_pos):
 	var allSlotNodes = (
 		bag_slots.get_children() + equipment_core.get_children() + 
 		equipment_left_arm.get_children() + equipment_right_arm.get_children() +
@@ -78,7 +78,7 @@ func _refresh_ui():
 
 		var inventorySlot = item["inventorySlot"]
 		var inventoryPosition = item["inventoryPosition"]
-		var icon = item["icon"]
+		var _icon = item["icon"]
 		
 		for slot in inventoryDict[inventorySlot].get_children():
 			var slotNumber = int(slot.name.split("Slot")[1])
@@ -152,5 +152,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

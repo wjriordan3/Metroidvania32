@@ -1,48 +1,13 @@
-class_name Player extends CharacterBody2D
+class_name PlayerHero extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
-enum LimbSlot {
-	CORE,
-	LEFT_ARM,
-	RIGHT_ARM,
-	LEFT_LEG,
-	RIGHT_LEG
-}
-
-var equipped_parts := {
-	LimbSlot.CORE: null,
-	LimbSlot.LEFT_ARM: null,
-	LimbSlot.RIGHT_ARM: null,
-	LimbSlot.LEFT_LEG: null,
-	LimbSlot.RIGHT_LEG: null
-}
-
 #region /// onready variables
-@onready var limb_sprites := {
-	LimbSlot.CORE: $Core,
-	LimbSlot.LEFT_ARM: $LeftArm,
-	LimbSlot.RIGHT_ARM: $RightArm,
-	LimbSlot.LEFT_LEG: $LeftLeg,
-	LimbSlot.RIGHT_LEG: $RightLeg
-}
-
-@onready var core: Sprite2D = $Core
-@onready var right_leg: Sprite2D = $RightLeg
-@onready var left_leg: Sprite2D = $LeftLeg
-@onready var left_arm: Sprite2D = $LeftArm
-@onready var right_arm: Sprite2D = $RightArm
-
-
+@onready var hero_sprite: AnimatedSprite2D = $HeroSprite
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
-
-@onready var animation_player_core: AnimationPlayer = $AnimationPlayer_Core
-@onready var animation_player_left_arm: AnimationPlayer = $AnimationPlayer_LeftArm
-@onready var animation_player_left_leg: AnimationPlayer = $AnimationPlayer_LeftLeg
-@onready var animation_player_right_arm: AnimationPlayer = $AnimationPlayer_RightArm
-@onready var animation_player_right_leg: AnimationPlayer = $AnimationPlayer_RightLeg
+#@onready var camera_2d: Camera2D = $Camera2D
 #endregion
 
 
@@ -58,6 +23,7 @@ const DASH_DURATION = 0.2
 const ATTACK_DURATION = 0.3
 
 # Status Flags
+var activePlayer = true
 var can_attack = true
 var is_attacking = false
 var is_climbing = false
@@ -80,11 +46,13 @@ var base_move_speed : int = 100
 var rotation_speed : float = 10.0
 #endregion 
 
-#@onready var animated_sprite = $AnimatedSprite2D
-
 func _ready() -> void:
+	add_to_group("player")
 	#initialize states
 	initalize_states()
+	
+	CameraManager.set_target(self)
+	#check_for_camera()
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
@@ -92,11 +60,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 	pass
 
 func _process( _delta: float) -> void:
+	if not activePlayer: return
 	update_direction()
 	change_state( current_state.process( _delta ) )
 	pass
 	
 func _physics_process( _delta: float ) -> void:
+	if not activePlayer: return
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf(velocity.y, -10000, max_fall_velocity)
 	move_and_slide()
@@ -154,20 +124,11 @@ func update_direction():
 	
 	if prev_direction.x != direction.x:
 		if direction.x < 0: # character facing left
-			core.flip_h = true
-			right_leg.flip_h = true
-			left_leg.flip_h = true
-			left_arm.flip_h = true
-			right_arm.flip_h = true
+			hero_sprite.flip_h = true
 		if direction.x > 0: # character facing right
-			core.flip_h = false
-			right_leg.flip_h = false
-			left_leg.flip_h = false
-			left_arm.flip_h = false
-			right_arm.flip_h = false
+			hero_sprite.flip_h = false
 	pass
 
-	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
 	var d : Node2D = DEBUG_JUMP_INDICATOR.instantiate()
 	get_tree().root.add_child( d )
@@ -177,44 +138,19 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	d.queue_free()
 	pass
 	
+func check_for_camera() -> void:
+	if !get_tree().get_first_node_in_group("main_camera"):
+		var scene = preload("res://general/camera_2d.tscn")
+		var camera = scene.instantiate()
+		
+		get_tree().current_scene.call_deferred("add_child", camera)
+		
+func _exit_tree():
+	CameraManager.clear_target(self)
+	
 #region Items and Inventory
 func will_pickup(item):
 	$Inventory.pickup(item)
 func get_item(itemData):
 	$Inventory.get_item(itemData)
-#endregion
-
-#region Animation
-func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):
-	animation_player_core.play(coreAnim)
-	animation_player_left_arm.play(leftArmAnim)
-	animation_player_left_leg.play(leftLegAnim)
-	animation_player_right_arm.play(rightArmAnim)
-	animation_player_right_leg.play(rightLegAnim)
-	
-func mech_animate_pause():
-	animation_player_core.pause()
-	animation_player_left_arm.pause()
-	animation_player_left_leg.pause()
-	animation_player_right_arm.pause()
-	animation_player_right_leg.pause()
-
-func play_slot_animation(slot: LimbSlot, anim_name: StringName) -> void:
-	var sprite: AnimatedSprite2D = limb_sprites[slot]
-
-	if sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
-
-func play_mech_animation(anim_name: String) -> void:
-	for slot in equipped_parts:
-		var part: MechPart = equipped_parts[slot]
-
-		if part == null:
-			continue
-
-		if part.animations.has(anim_name):
-			play_slot_animation(
-				slot,
-				part.animations[anim_name]
-			)
 #endregion

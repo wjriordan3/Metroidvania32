@@ -1,0 +1,1 @@
+gun should be firing from left leg while mech is grounded. Think of this as a Kick Shot.
