@@ -38,6 +38,9 @@ var equipped_parts := {
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
+
+@onready var idle_state: MechaStateIdle = %States/Idle
+@onready var deactivate_state : MechaState = $States/Deactivate
 #endregion
 
 
@@ -171,10 +174,12 @@ func update_direction():
 func _input(event):
 	if event.is_action_pressed("action") && event.is_pressed() && enter_hint_label.visible:
 		_control_mech()
-	elif activePlayer && event.is_action_pressed("action") && event.is_pressed() && self.is_on_floor():
+	elif activePlayer && event.is_action_pressed("action") && event.is_pressed() && self.is_on_floor(): # && current_state == MechaStateIdle
 		_leave_mech()
 		
 func _control_mech():
+	change_state(idle_state) # TODO: Change to activate state
+	
 	var player = get_tree().get_first_node_in_group("player")
 	
 	activePlayer = true
@@ -183,7 +188,11 @@ func _control_mech():
 	# Switch to mech camera
 	CameraManager.set_target(self)
 	CameraManager.set_zoom(Vector2(1.0, 1.0))
+	
 func _leave_mech():
+	# Change state here
+	change_state(deactivate_state)
+	
 	var player = preload("res://player/player_hero.tscn").instantiate()
 	
 	activePlayer = false

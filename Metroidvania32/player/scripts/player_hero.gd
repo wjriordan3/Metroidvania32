@@ -47,10 +47,13 @@ var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
+	#if get_tree().get_first_node_in_group("player") != self:
+	#	self.queue_free()
+	
 	add_to_group("player")
 	#initialize states
 	initalize_states()
-	
+	#self.call_deferred("reparent", get_tree().root)
 	CameraManager.set_target(self)
 	#check_for_camera()
 	pass

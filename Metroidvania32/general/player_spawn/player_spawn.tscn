@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b8rmtkm8cog7a"]
+
+[ext_resource type="Texture2D" uid="uid://dyvvdlfcccrj6" path="res://player/sprites/hero/player_idle_wArms.png" id="1_2y6re"]
+[ext_resource type="Script" uid="uid://i8dipvpvfqsb" path="res://general/player_spawn/player_spawn.gd" id="1_h1cw5"]
+
+[node name="PlayerSpawn" type="Node2D" unique_id=465789814]
+script = ExtResource("1_h1cw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1585093619]
+modulate = Color(0, 1.8247963, 0.18973513, 1)
+z_index = 100
+texture = ExtResource("1_2y6re")
+hframes = 8
