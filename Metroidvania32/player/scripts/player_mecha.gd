@@ -79,6 +79,7 @@ var rotation_speed : float = 10.0
 #@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
+	#add_to_group("player")
 	enter_hint_label.visible = false
 	#initialize states
 	initialize_states()
@@ -170,7 +171,7 @@ func update_direction():
 func _input(event):
 	if event.is_action_pressed("action") && event.is_pressed() && enter_hint_label.visible:
 		_control_mech()
-	elif activePlayer && event.is_action_pressed("action") && event.is_pressed():
+	elif activePlayer && event.is_action_pressed("action") && event.is_pressed() && self.is_on_floor():
 		_leave_mech()
 		
 func _control_mech():
@@ -180,8 +181,8 @@ func _control_mech():
 	player.queue_free()
 	
 	# Switch to mech camera
-	$Camera2D.make_current()
-	
+	CameraManager.set_target(self)
+	CameraManager.set_zoom(Vector2(1.0, 1.0))
 func _leave_mech():
 	var player = preload("res://player/player_hero.tscn").instantiate()
 	
@@ -189,9 +190,9 @@ func _leave_mech():
 	get_tree().current_scene.add_child(player)
 	player.global_position = global_position
 	
-	# Switch to player camera
-	var player_camera = player.get_node("Camera2D")
-	player_camera.make_current()
+	# Switch to main player camera
+	CameraManager.set_target(player)
+	CameraManager.set_zoom(Vector2(1.0, 1.0))
 	
 func _on_mech_area_collision_body_entered(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("player"):
@@ -209,6 +210,13 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
+	
+func check_for_camera() -> void:
+	if !get_tree().get_first_node_in_group("main_camera"):
+		var scene = preload("res://general/camera_2d.tscn")
+		var camera = scene.instantiate()
+		
+		get_tree().current_scene.call_deferred("add_child", camera)
 	
 #region Items and Inventory
 func will_pickup(item):

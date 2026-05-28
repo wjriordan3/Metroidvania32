@@ -14,7 +14,6 @@ func enter() -> void:
 	#player.add_debug_indicator( Color.LIME_GREEN )
 	player.velocity.y = -jump_velocity
 	
-	
 	# CHeck if this is a buffer jump
 	# If it is, handle jump button release condition retroactively
 	if player.previous_state == fall and not Input.is_action_pressed( "jump" ):
@@ -55,7 +54,8 @@ func physics_process( _delta: float ) -> PlayerState:
 	
 func set_jump_frame() -> void:
 	# [-jump_velocity, 0.0 (apex of jump)] mapped to [0.0, 0.5 (apex in sprite animation)] 
-	var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
+	# TODO: Need to implement set_jump_frame
+	#var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
 	#player.animation_player.seek( frame, true )
 	pass
 	

@@ -7,6 +7,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
+#@onready var camera_2d: Camera2D = $Camera2D
 #endregion
 
 
@@ -49,6 +50,9 @@ func _ready() -> void:
 	add_to_group("player")
 	#initialize states
 	initalize_states()
+	
+	CameraManager.set_target(self)
+	#check_for_camera()
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
@@ -133,6 +137,16 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
+	
+func check_for_camera() -> void:
+	if !get_tree().get_first_node_in_group("main_camera"):
+		var scene = preload("res://general/camera_2d.tscn")
+		var camera = scene.instantiate()
+		
+		get_tree().current_scene.call_deferred("add_child", camera)
+		
+func _exit_tree():
+	CameraManager.clear_target(self)
 	
 #region Items and Inventory
 func will_pickup(item):

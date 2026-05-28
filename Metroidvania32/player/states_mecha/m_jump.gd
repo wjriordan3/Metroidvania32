@@ -18,7 +18,7 @@ func enter() -> void:
 	player.mech_animate_pause()
 	#player.add_debug_indicator( Color.LIME_GREEN )
 	player.velocity.y = -jump_velocity
-	
+	CameraManager.screen_shake(3.0, 0.25)
 	
 	# CHeck if this is a buffer jump
 	# If it is, handle jump button release condition retroactively
@@ -60,7 +60,8 @@ func physics_process( _delta: float ) -> MechaState:
 	
 func set_jump_frame() -> void:
 	# [-jump_velocity, 0.0 (apex of jump)] mapped to [0.0, 0.5 (apex in sprite animation)] 
-	var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
+	# TODO: Need to implement set_jump_frame
+	#var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
 	#player.animation_player_core.seek( frame, true )
 	#player.animation_player_left_arm.seek( frame, true )
 	#player.animation_player_left_leg.seek( frame, true )
