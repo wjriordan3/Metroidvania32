@@ -2,8 +2,8 @@
 #@icon()
 class_name LevelBounds extends Node2D
 
-@export_range( 640, 1280, 32, "suffix:px" ) var width : int = 640 : set = _on_width_changed
-@export_range( 360, 720, 32, "suffix:px" ) var height : int = 360 : set = _on_height_changed
+@export_range( 640, 1280*2, 32, "suffix:px" ) var width : int = 640 : set = _on_width_changed
+@export_range( 360, 720*2, 32, "suffix:px" ) var height : int = 360 : set = _on_height_changed
 
 func _ready() -> void:
 	add_to_group("level_bounds")

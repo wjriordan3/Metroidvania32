@@ -23,14 +23,14 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	apply_area_settings()
 	SceneManager.new_scene_ready.connect( _on_new_scene_ready )
 	SceneManager.load_scene_finished.connect( _on_load_scene_finished )
-	
 	pass
 	
 func _on_player_entered( body: Node2D ) -> void:
 	# Transition to attached level
-	SceneManager.transition_scene(target_level, target_area_name, get_offset( body ), "left" )
+	SceneManager.transition_scene(target_level, target_area_name, get_offset( body ), get_transition_direction() )
 	pass
 	
 func _on_new_scene_ready( target_name : String, offset : Vector2 ) -> void:
@@ -49,6 +49,7 @@ func _on_load_scene_finished() -> void:
 	pass
 
 func apply_area_settings() -> void:
+	print(name, ":apply_area_settings()")
 	area_2d = get_node_or_null( "Area2D" )
 	if not area_2d:
 		return
@@ -75,9 +76,9 @@ func get_offset( player : Node2D ) -> Vector2:
 	if location == SIDE.LEFT or location == SIDE.RIGHT:	
 		offset.y = player_pos.y - self.global_position.y
 		if location == SIDE.LEFT:
-			offset.x = -10
+			offset.x = -20
 		else:
-			offset.x = 10
+			offset.x = 20
 	else:
 		offset.x = player_pos.x - self.global_position.x
 		if location == SIDE.TOP:
@@ -86,3 +87,14 @@ func get_offset( player : Node2D ) -> Vector2:
 			offset.y = 20
 			
 	return offset
+	
+func get_transition_direction() -> String:
+	match location:
+		SIDE.LEFT:
+			return "left"
+		SIDE.RIGHT:
+			return "right"
+		SIDE.TOP:
+			return "up"
+		_:
+			return "down"

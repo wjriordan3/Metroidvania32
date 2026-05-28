@@ -5,17 +5,28 @@ signal load_scene_started
 signal new_scene_ready( target_name : String, offset : Vector2 )
 signal load_scene_finished
 
+@onready var fade: Control = $Fade
+
 func _ready() -> void:
+	fade.visible = false
 	await get_tree().process_frame
 	load_scene_finished.emit()
 	pass
 
-# print("Player ventured to a new level")
+
 func transition_scene( new_scene : String, target_area : String, player_offset : Vector2, dir : String ) -> void:
+	# print("Player ventured to a new level")
+	get_tree().paused = true
+		
+	var fade_pos : Vector2 = get_fade_pos( dir )
+	
+	fade.visible = true
 	
 	load_scene_started.emit()
 	
-	# Fade new scene out
+	await get_tree().physics_frame 
+	
+	await fade_screen( fade_pos, Vector2.ZERO )
 	
 	get_tree().change_scene_to_file( new_scene )
 	
@@ -23,8 +34,31 @@ func transition_scene( new_scene : String, target_area : String, player_offset :
 	
 	new_scene_ready.emit( target_area, player_offset )
 	
-	# Fade new scene in
+	await fade_screen( Vector2.ZERO, -fade_pos )
 	
+	fade.visible = false
+	get_tree().paused = false
 	load_scene_finished.emit()
 	
 	pass
+	
+func fade_screen( from : Vector2, to : Vector2 ) -> Signal:
+	fade.position = from
+	var tween : Tween = create_tween()
+	tween.tween_property( fade, "position", to, 0.2 )
+	return tween.finished 
+	
+func get_fade_pos(dir : String) -> Vector2:
+	var pos : Vector2 = Vector2( 640 * 2, 360 * 2 )
+	
+	match dir: 
+		"left":
+			pos *= Vector2( -1, 0 )
+		"right":
+			pos *= Vector2( 1, 0 )
+		"up": 
+			pos *= Vector2( 0, -1 )
+		"down":
+			pos *= Vector2( 0, 1 )
+	
+	return pos
