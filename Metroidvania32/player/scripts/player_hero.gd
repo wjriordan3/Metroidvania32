@@ -14,10 +14,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @export var stats : Stats
 #endregion
 
-const SPEED = 150.0
-const DASH_SPEED = 600.0
-const DASH_DURATION = 0.2
-const ATTACK_DURATION = 0.3
+var current_mech: MechaUnit = null
+var current_interactable = null
+var pilot_tag := "player"
 
 # Status Flags
 var activePlayer = true
@@ -112,6 +111,9 @@ func change_state( new_state : PlayerState ) -> void:
 	
 	pass
 	
+func is_in_mech() -> bool:
+	return current_mech != null	
+
 func update_direction():
 	var prev_direction : Vector2 = direction 
 	# negative x is left, positive x is right, negative y is up, positive y is down

@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="1_5gx2l"]
 [ext_resource type="Texture2D" uid="uid://by6gnyprrdqvo" path="res://icon.svg" id="2_qohg2"]
+[ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="3_44x8d"]
+[ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="4_ivpvi"]
+[ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="5_0v1st"]
+[ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="6_6gtgk"]
 
 [sub_resource type="Gradient" id="Gradient_3invt"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -23,6 +27,11 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkbyq"]
 size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_cw150"]
+resource_local_to_scene = true
+script = ExtResource("5_0v1st")
+metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
 
 [node name="Level" type="Node" unique_id=548619226]
 
@@ -93,3 +102,12 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OneWayPlatform/StaticBody2D" unique_id=698007715]
 shape = SubResource("RectangleShape2D_vkbyq")
 one_way_collision = true
+
+[node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("3_44x8d")]
+position = Vector2(139, 559)
+
+[node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("4_ivpvi")]
+position = Vector2(365, 562)
+stats = SubResource("Resource_cw150")
+
+[node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("6_6gtgk")]

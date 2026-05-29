@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ct272m37mlao0" path="res://player/sprites/hero/player_run_noArms.png" id="8_rhq0w"]
 [ext_resource type="Texture2D" uid="uid://8rnpom1s6crp" path="res://player/sprites/hero/player_jump_noGun.png" id="8_vvdj0"]
 [ext_resource type="Script" uid="uid://cwetv0y8g6lup" path="res://player/scripts/input_hints.gd" id="12_05wrh"]
+[ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="12_ht5xn"]
 [ext_resource type="Texture2D" uid="uid://dxydr83ulipn7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
 
@@ -225,6 +226,9 @@ collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1473857177]
 libraries/ = SubResource("AnimationLibrary_et6tg")
+
+[node name="Inventory" parent="." unique_id=334559857 instance=ExtResource("12_ht5xn")]
+visible = false
 
 [node name="Label" type="Label" parent="." unique_id=73150711]
 offset_left = -24.0
