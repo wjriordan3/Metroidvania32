@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhbr5t466xqyq" path="res://player/scripts/player_hero.gd" id="1_vvdj0"]
 [ext_resource type="Script" uid="uid://d04j41x1q60pm" path="res://player/states/idle.gd" id="2_7bd53"]
+[ext_resource type="Resource" uid="uid://hpu8syyc26j2" path="res://resources/player_stats.tres" id="2_vvdj0"]
 [ext_resource type="Script" uid="uid://btvuyk1mp3biw" path="res://player/states/run.gd" id="3_wl54r"]
 [ext_resource type="Script" uid="uid://dwrvv6oxcw66n" path="res://player/states/jump.gd" id="4_rabo4"]
 [ext_resource type="Script" uid="uid://cccorfay77glb" path="res://player/states/fall.gd" id="5_vkggp"]
@@ -9,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dyvvdlfcccrj6" path="res://player/sprites/hero/player_idle_wArms.png" id="6_j7yxw"]
 [ext_resource type="Texture2D" uid="uid://ct272m37mlao0" path="res://player/sprites/hero/player_run_noArms.png" id="8_rhq0w"]
 [ext_resource type="Texture2D" uid="uid://8rnpom1s6crp" path="res://player/sprites/hero/player_jump_noGun.png" id="8_vvdj0"]
+[ext_resource type="Script" uid="uid://cwetv0y8g6lup" path="res://player/scripts/input_hints.gd" id="12_05wrh"]
+[ext_resource type="Texture2D" uid="uid://dxydr83ulipn7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwusy"]
@@ -168,10 +171,11 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1485163958]
-z_index = 1
+z_index = 2
 collision_layer = 32
 collision_mask = 7
 script = ExtResource("1_vvdj0")
+stats = ExtResource("2_vvdj0")
 
 [node name="States" type="Node" parent="." unique_id=507809353]
 
@@ -229,3 +233,10 @@ offset_right = 22.0
 offset_bottom = -18.0
 text = "Label"
 horizontal_alignment = 1
+
+[node name="InputHints" type="Node2D" parent="." unique_id=1809666026]
+position = Vector2(0, -22)
+script = ExtResource("12_05wrh")
+
+[node name="Sprite2D" type="Sprite2D" parent="InputHints" unique_id=1350771356]
+texture = ExtResource("13_05wrh")
