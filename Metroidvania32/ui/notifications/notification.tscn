@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c5gw6h433d3en"]
+
+[ext_resource type="Script" uid="uid://dvh4sm4bpd4hn" path="res://ui/notifications/notification.gd" id="1_gbqma"]
+[ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_5ol3d"]
+
+[node name="Notification" type="Panel" unique_id=1639322358]
+custom_minimum_size = Vector2(60, 30)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_gbqma")
+
+[node name="Label" type="Label" parent="." unique_id=710671606]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 4
+
+[node name="Timer" type="Timer" parent="." unique_id=292415299]
+wait_time = 5.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1477694302]
+position = Vector2(14, 15.000001)
+scale = Vector2(0.08031818, 0.062799506)
+texture = ExtResource("2_5ol3d")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

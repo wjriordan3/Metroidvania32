@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://uiok302n0qb0"]
 
-[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_qi2p4"]
+[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_pmsee"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
 [ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
 [ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
@@ -8,10 +8,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=976216826]
-collision_layer = 0
+[node name="Enemy" type="CharacterBody2D" unique_id=976216826 groups=["damage"]]
+collision_layer = 64
 collision_mask = 3
-script = ExtResource("1_qi2p4")
+script = ExtResource("1_pmsee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578582076]
 scale = Vector2(13.520002, 15.44)
