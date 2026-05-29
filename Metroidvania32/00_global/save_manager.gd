@@ -57,7 +57,7 @@ func create_new_game_save( slot : int ) -> void:
 	
 func save_game() -> void:
 	print("Trying to save the game...")
-	var player : PlayerHero = get_tree().get_first_node_in_group( "player" )
+	var player : Player = get_tree().get_first_node_in_group( "player" )
 	
 	# Update Save Data
 	save_data = {
@@ -96,7 +96,7 @@ func load_game( slot : int ) -> void:
 	pass
 	
 func setup_player() -> void:
-	var player : PlayerHero = null
+	var player : Player = null
 	while not player:
 		get_tree().get_first_node_in_group( "player" )
 		await get_tree().process_frame

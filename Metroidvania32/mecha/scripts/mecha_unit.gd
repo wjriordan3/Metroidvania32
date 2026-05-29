@@ -176,7 +176,7 @@ func _input(event):
 	if event.is_action_pressed("action") && is_on_floor():
 		_leave_mech()
 	
-func _on_player_interacted( player : PlayerHero ) -> void:
+func _on_player_interacted( player : Player ) -> void:
 	print("Player interacted with MechaUnit: ", self.name)
 	if potential_pilot != player:
 		return

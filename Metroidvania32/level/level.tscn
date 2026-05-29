@@ -28,7 +28,7 @@ fill_to = Vector2(0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkbyq"]
 size = Vector2(64, 64)
 
-[sub_resource type="Resource" id="Resource_cw150"]
+[sub_resource type="Resource" id="Resource_44x8d"]
 resource_local_to_scene = true
 script = ExtResource("5_0v1st")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -108,6 +108,7 @@ position = Vector2(139, 559)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("4_ivpvi")]
 position = Vector2(365, 562)
-stats = SubResource("Resource_cw150")
+allowed_tags = null
+stats = SubResource("Resource_44x8d")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("6_6gtgk")]

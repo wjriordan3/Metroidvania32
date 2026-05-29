@@ -1,4 +1,4 @@
-class_name PlayerHero extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 

@@ -24,7 +24,7 @@ func _on_player_exited( _n : Node2D ) -> void:
 	Messages.input_hint_changed.emit( "" )
 	pass
 
-func _on_player_interacted( player : PlayerHero ) -> void:
+func _on_player_interacted( player : Player ) -> void:
 	print("Player interacted")
 	# Heal player?
 	if HealPlayerOnInteract:
