@@ -60,6 +60,26 @@ func _ready() -> void:
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "action" ):
 		Messages.player_interacted.emit( self )
+	elif event.is_action_pressed( "pause" ):
+		get_tree().paused = true # will pause any node with process set to inherit
+		var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
+		add_child( pause_menu )
+		return
+		
+	# For testing health, remove later
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_MINUS:
+			if Input.is_key_pressed( KEY_SHIFT ):
+				stats.take_damage(10)
+			else:
+				stats.take_damage(2)
+		elif event.keycode == KEY_EQUAL:
+			if Input.is_key_pressed( KEY_SHIFT ):
+				stats.current_max_health += 10
+			else:
+				stats.health += 2
+	# end for remove code later
+	
 	change_state( current_state.handle_input( event ))
 	pass
 

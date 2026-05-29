@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://e83nnh8a6sid"]
+
+[ext_resource type="Script" uid="uid://dpoawmrug3syj" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
+[ext_resource type="Texture2D" uid="uid://dildrfame786r" path="res://assets/placeholder/images_-_2026-05-19T004008.948.jpg" id="2_rd7dy"]
+[ext_resource type="Texture2D" uid="uid://c6px33xav00mu" path="res://assets/concepts/rough_map_02.png" id="2_uwtdo"]
+[ext_resource type="PackedScene" uid="uid://d2n83sy0a3xvu" path="res://pause_menu/map_node.tscn" id="3_b4s0c"]
+
+[sub_resource type="FontVariation" id="FontVariation_5hbt6"]
+spacing_glyph = 7
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1924141426]
+process_mode = 3
+script = ExtResource("1_5hbt6")
+
+[node name="Control" type="Control" parent="." unique_id=1925972034]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=91719017]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.5294118)
+
+[node name="GameStatusRect" type="ColorRect" parent="Control" unique_id=1610700019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Control/GameStatusRect" unique_id=791891135]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.5
+offset_top = 16.0
+offset_right = 38.5
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_5hbt6")
+text = "PAUSED"
+
+[node name="NavigationRect" type="ColorRect" parent="Control" unique_id=170920532]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NavigationButtons" type="HBoxContainer" parent="Control/NavigationRect" unique_id=972773939]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="MapNavButton" type="Button" parent="Control/NavigationRect/NavigationButtons" unique_id=993207130]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "MAP"
+
+[node name="GearNavButton" type="Button" parent="Control/NavigationRect/NavigationButtons" unique_id=848591598]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "GEAR
+"
+
+[node name="SystemNavButton" type="Button" parent="Control/NavigationRect/NavigationButtons" unique_id=367837383]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "SYSTEM"
+
+[node name="PauseScreen" type="Control" parent="Control" unique_id=495420720]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Control" parent="Control/PauseScreen" unique_id=1539135347]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map" unique_id=926746644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uwtdo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MapNode" parent="Control/PauseScreen/Map" unique_id=58816206 instance=ExtResource("3_b4s0c")]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 48.0
+offset_bottom = 49.0
+
+[node name="Gear" type="Control" parent="Control/PauseScreen" unique_id=1552218014]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Gear" unique_id=430328218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rd7dy")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="System" type="Control" parent="Control/PauseScreen" unique_id=897343260]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/System" unique_id=951644288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rd7dy")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PauseScreen/System" unique_id=871177638]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 280.0
+grow_horizontal = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer_MenuQuit" type="HBoxContainer" parent="Control/PauseScreen/System/VBoxContainer" unique_id=1981351072]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_MenuQuit" unique_id=1526405276]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Return to Main Menu"
+
+[node name="QuitGameButton" type="Button" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_MenuQuit" unique_id=1102315967]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit Game"
+
+[node name="Label" type="Label" parent="Control/PauseScreen/System/VBoxContainer" unique_id=1756083092]
+layout_mode = 2
+text = "Audio Settings"
+
+[node name="HBoxContainer_Music" type="HBoxContainer" parent="Control/PauseScreen/System/VBoxContainer" unique_id=631356797]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_Music" unique_id=824689027]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_Music" unique_id=2086807428]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer_SoundFX" type="HBoxContainer" parent="Control/PauseScreen/System/VBoxContainer" unique_id=1200184936]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_SoundFX" unique_id=1782717250]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_SoundFX" unique_id=1544824513]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer_Music3" type="HBoxContainer" parent="Control/PauseScreen/System/VBoxContainer" unique_id=277623511]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_Music3" unique_id=587432791]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "UI"
+
+[node name="UISlider" type="HSlider" parent="Control/PauseScreen/System/VBoxContainer/HBoxContainer_Music3" unique_id=1141634863]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
