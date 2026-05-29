@@ -10,10 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://dyvvdlfcccrj6" path="res://player/sprites/hero/player_idle_wArms.png" id="6_j7yxw"]
 [ext_resource type="Texture2D" uid="uid://ct272m37mlao0" path="res://player/sprites/hero/player_run_noArms.png" id="8_rhq0w"]
 [ext_resource type="Texture2D" uid="uid://8rnpom1s6crp" path="res://player/sprites/hero/player_jump_noGun.png" id="8_vvdj0"]
+[ext_resource type="Script" uid="uid://cy8kijh717r5y" path="res://player/states/attack.gd" id="8_wodsf"]
 [ext_resource type="Script" uid="uid://cwetv0y8g6lup" path="res://player/scripts/input_hints.gd" id="12_05wrh"]
+[ext_resource type="Texture2D" uid="uid://2isymf5fs8pl" path="res://player/sprites/hero/player_pistol.png" id="12_32hag"]
 [ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="12_ht5xn"]
 [ext_resource type="Texture2D" uid="uid://dxydr83ulipn7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
+[ext_resource type="Script" uid="uid://kivthlmdiugl" path="res://combat/gun.gd" id="13_tqiix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwusy"]
 atlas = ExtResource("6_j7yxw")
@@ -178,6 +181,10 @@ collision_mask = 7
 script = ExtResource("1_vvdj0")
 stats = ExtResource("2_vvdj0")
 
+[node name="ShootAnimation" type="Timer" parent="." unique_id=1371386133]
+wait_time = 0.2
+one_shot = true
+
 [node name="States" type="Node" parent="." unique_id=507809353]
 
 [node name="Idle" type="Node" parent="States" unique_id=285448255]
@@ -200,11 +207,27 @@ script = ExtResource("5_vkggp")
 unique_name_in_owner = true
 script = ExtResource("6_8kgh6")
 
+[node name="Attack" type="Node" parent="States" unique_id=891785135]
+unique_name_in_owner = true
+script = ExtResource("8_wodsf")
+
 [node name="HeroSprite" type="AnimatedSprite2D" parent="." unique_id=267078169]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_vmuhc")
 animation = &"idle"
-frame_progress = 0.49935147
+
+[node name="GunSprite" type="Sprite2D" parent="." unique_id=487224621]
+texture = ExtResource("12_32hag")
+
+[node name="Gun" type="Marker2D" parent="GunSprite" unique_id=1624114168]
+position = Vector2(12, 3)
+script = ExtResource("13_tqiix")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="GunSprite/Gun" unique_id=1661699363]
+
+[node name="Cooldown" type="Timer" parent="GunSprite/Gun" unique_id=1643979232]
+wait_time = 0.3
+one_shot = true
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783 groups=["player"]]
 shape = SubResource("CapsuleShape2D_e7oew")

@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="14_2nexr"]
 [ext_resource type="Texture2D" uid="uid://dnf7dbv54tixm" path="res://player/sprites/gun_set/standardGun_run/standardGun_legR_run.png" id="14_hwcth"]
 [ext_resource type="Texture2D" uid="uid://x7qghrs0c317" path="res://player/sprites/standard/standard_jump/standard_armL_jump.png" id="14_u3twx"]
-[ext_resource type="PackedScene" uid="uid://c1yktw6v7p3pi" path="res://combat/gun.tscn" id="16_pa10n"]
 [ext_resource type="Texture2D" uid="uid://yerhk2xsrtgs" path="res://player/sprites/standard/standard_idle/standard_core_idle.png" id="16_rhuop"]
 [ext_resource type="Texture2D" uid="uid://cv1dk0hpeea0r" path="res://player/sprites/standard/standard_jump/standard_core_jump.png" id="17_owmes"]
 [ext_resource type="Texture2D" uid="uid://bpdaitnqwm1bk" path="res://player/sprites/drill_set/drill_leftLeg_Action/drill_legR_leftLeg_Action.png" id="18_m70xx"]
@@ -2903,10 +2902,6 @@ visible = false
 [node name="Health" parent="." unique_id=1767944466 instance=ExtResource("13_owmes")]
 
 [node name="LimbHealth" parent="." unique_id=393853738 instance=ExtResource("14_2nexr")]
-
-[node name="Gun" parent="." unique_id=1320441830 instance=ExtResource("16_pa10n")]
-visible = false
-position = Vector2(32, -28)
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]

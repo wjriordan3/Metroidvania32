@@ -193,7 +193,7 @@ func _leave_mech():
 	# Change state here
 	change_state(deactivate_state)
 	
-	var player = preload("res://player/player_hero.tscn").instantiate()
+	var player = preload("res://player/player.tscn").instantiate()
 	
 	activePlayer = false
 	get_tree().current_scene.add_child(player)

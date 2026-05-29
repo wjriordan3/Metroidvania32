@@ -7,6 +7,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
+@onready var shoot_timer := $ShootAnimation as Timer
+@onready var gun_sprite: Sprite2D = $GunSprite
+@onready var gun = gun_sprite.get_node(^"Gun") as Gun
 #endregion
 
 
@@ -17,11 +20,13 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 var current_mech: MechaUnit = null
 var current_interactable = null
 var pilot_tag := "player"
+var muzzle_position
 
 # Status Flags
 var activePlayer = true
 var can_attack = true
 var is_attacking = false
+var is_shooting = false
 var is_climbing = false
 var is_interacting = false # for handling dialogue or object interaction
 
@@ -48,6 +53,7 @@ var rotation_speed : float = 10.0
 func _ready() -> void:
 	add_to_group("player")
 	initalize_states()
+	muzzle_position = gun.position
 	CameraManager.set_target(self)
 	pass
 
@@ -68,6 +74,7 @@ func _physics_process( _delta: float ) -> void:
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf(velocity.y, -10000, stats.max_fall_velocity)
 	move_and_slide()
+	
 	change_state( current_state.physics_process( _delta ) )
 	pass 
 
@@ -126,8 +133,10 @@ func update_direction():
 	if prev_direction.x != direction.x:
 		if direction.x < 0: # character facing left
 			hero_sprite.flip_h = true
+			gun_sprite.flip_h = true
 		if direction.x > 0: # character facing right
 			hero_sprite.flip_h = false
+			gun_sprite.flip_h = false
 	pass
 
 func add_debug_indicator( color : Color = Color.RED ) -> void:
@@ -138,6 +147,13 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
+
+	
+func set_muzzle_position():
+	if direction.x > 0:
+		gun.position.x = muzzle_position.x
+	elif direction.x < 0:
+		gun.position.x = -muzzle_position.x
 		
 func _exit_tree():
 	CameraManager.clear_target(self)

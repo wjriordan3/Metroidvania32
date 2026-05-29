@@ -74,4 +74,5 @@ func _physics_process(delta: float) -> void:
 		
 		shake_amount = max(shake_amount - shake_decay * delta, 0)
 	else:
-		active_camera.offset = lerp(active_camera.offset, Vector2.ZERO, 10.5 * delta)
+		if active_camera != null:
+			active_camera.offset = lerp(active_camera.offset, Vector2.ZERO, 10.5 * delta)
