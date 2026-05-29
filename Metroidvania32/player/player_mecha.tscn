@@ -2868,7 +2868,7 @@ debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
 [node name="MechAreaCollision" type="Area2D" parent="." unique_id=1813236294]
 scale = Vector2(6.05, 6.05)
 collision_layer = 0
-collision_mask = 32
+collision_mask = 96
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MechAreaCollision" unique_id=294249760]
@@ -2907,6 +2907,9 @@ visible = false
 [node name="Gun" parent="." unique_id=1320441830 instance=ExtResource("16_pa10n")]
 visible = false
 position = Vector2(32, -28)
+
+[node name="DamageNumOrigin" type="Node2D" parent="." unique_id=1332736635]
+position = Vector2(0, -60)
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]
