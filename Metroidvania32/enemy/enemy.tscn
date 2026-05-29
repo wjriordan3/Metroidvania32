@@ -1,20 +1,17 @@
 [gd_scene format=3 uid="uid://uiok302n0qb0"]
 
-[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_5ffra"]
+[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_pmsee"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
 [ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
-[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://enemy/hazard_area.gd" id="3_y5vj3"]
 [ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
-[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="5_5ffra"]
 [ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="5_y5vj3"]
-[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="7_e355f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=976216826]
-collision_layer = 0
+[node name="Enemy" type="CharacterBody2D" unique_id=976216826 groups=["damage"]]
+collision_layer = 64
 collision_mask = 3
-script = ExtResource("1_5ffra")
+script = ExtResource("1_pmsee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578582076]
 scale = Vector2(13.520002, 15.44)
@@ -28,16 +25,10 @@ texture = ExtResource("2_epg4t")
 [node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("3_pmsee")]
 position = Vector2(0, -4.9999995)
 collision_mask = 32
-script = ExtResource("3_y5vj3")
-damage = 1.0
 
 [node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("4_1wwld")]
 position = Vector2(0, -4.9999995)
 collision_mask = 32
-script = ExtResource("5_5ffra")
-damage = 1.0
 
 [node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("5_y5vj3")]
 collision_mask = 64
-script = ExtResource("7_e355f")
-audio = null

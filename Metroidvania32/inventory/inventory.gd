@@ -14,6 +14,7 @@ var items = ["res://inventory/itemresources/Drill_LArm.tres", "res://inventory/i
 
 @export var scrap = 150
 signal add_scrap(scrap: int)
+signal new_item(item: Object)
 
 #region Drag Drop Functions
 func _get_drag_data(at_position):
@@ -118,6 +119,7 @@ func pickup( item : Object ) -> void :
 				print( item.to_string() )
 				print( "item added to inventory at ", row, ", ", col )
 				self.contents[row][col] = item
+				new_item.emit(item)
 				print( "confirm: [", row, "][", col, "] = ", self.contents[row][col].to_string() )
 				return
 	print( "no space for item!" )

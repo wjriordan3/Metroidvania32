@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://ddabc1fjxyc28"]
 
 [ext_resource type="Script" uid="uid://ksw5xnx5w7gp" path="res://player/scripts/player_mecha.gd" id="1_4jtkn"]
-[ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://mecha/states/m_idle.gd" id="2_4jtkn"]
-[ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://mecha/states/m_run.gd" id="3_4jtkn"]
-[ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://mecha/states/m_deactivate.gd" id="3_6o7q1"]
-[ext_resource type="Script" uid="uid://clhife5hx4vdj" path="res://mecha/states/m_jump.gd" id="4_3xpiw"]
-[ext_resource type="Script" uid="uid://bfmx84gdatp8s" path="res://mecha/states/m_fall.gd" id="5_c6l4s"]
-[ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://mecha/states/m_crouch.gd" id="6_rqnse"]
+[ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://player/states_mecha/m_idle.gd" id="2_4jtkn"]
+[ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://player/states_mecha/m_run.gd" id="3_4jtkn"]
+[ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://player/states_mecha/m_deactivate.gd" id="3_6o7q1"]
+[ext_resource type="Script" uid="uid://clhife5hx4vdj" path="res://player/states_mecha/m_jump.gd" id="4_3xpiw"]
+[ext_resource type="Script" uid="uid://bfmx84gdatp8s" path="res://player/states_mecha/m_fall.gd" id="5_c6l4s"]
+[ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://player/states_mecha/m_crouch.gd" id="6_rqnse"]
 [ext_resource type="Texture2D" uid="uid://dbqm8bochmfby" path="res://player/sprites/standard/standard_run/standard_legR_run.png" id="7_7tl6a"]
 [ext_resource type="Texture2D" uid="uid://cr11v36o4jytk" path="res://player/sprites/drill_set/drill_rightLeg_Action/drill_legL_rightLeg_Action.png" id="7_b0e25"]
 [ext_resource type="Texture2D" uid="uid://cues0ukbjvw65" path="res://player/sprites/standard/standard_idle/standard_legR_idle.png" id="7_c6l4s"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="14_2nexr"]
 [ext_resource type="Texture2D" uid="uid://dnf7dbv54tixm" path="res://player/sprites/gun_set/standardGun_run/standardGun_legR_run.png" id="14_hwcth"]
 [ext_resource type="Texture2D" uid="uid://x7qghrs0c317" path="res://player/sprites/standard/standard_jump/standard_armL_jump.png" id="14_u3twx"]
+[ext_resource type="PackedScene" uid="uid://c1yktw6v7p3pi" path="res://combat/gun.tscn" id="16_pa10n"]
 [ext_resource type="Texture2D" uid="uid://yerhk2xsrtgs" path="res://player/sprites/standard/standard_idle/standard_core_idle.png" id="16_rhuop"]
 [ext_resource type="Texture2D" uid="uid://cv1dk0hpeea0r" path="res://player/sprites/standard/standard_jump/standard_core_jump.png" id="17_owmes"]
 [ext_resource type="Texture2D" uid="uid://bpdaitnqwm1bk" path="res://player/sprites/drill_set/drill_leftLeg_Action/drill_legR_leftLeg_Action.png" id="18_m70xx"]
@@ -2867,7 +2868,7 @@ debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
 [node name="MechAreaCollision" type="Area2D" parent="." unique_id=1813236294]
 scale = Vector2(6.05, 6.05)
 collision_layer = 0
-collision_mask = 32
+collision_mask = 96
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MechAreaCollision" unique_id=294249760]
@@ -2902,6 +2903,13 @@ visible = false
 [node name="Health" parent="." unique_id=1767944466 instance=ExtResource("13_owmes")]
 
 [node name="LimbHealth" parent="." unique_id=393853738 instance=ExtResource("14_2nexr")]
+
+[node name="Gun" parent="." unique_id=1320441830 instance=ExtResource("16_pa10n")]
+visible = false
+position = Vector2(32, -28)
+
+[node name="DamageNumOrigin" type="Node2D" parent="." unique_id=1332736635]
+position = Vector2(0, -60)
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]
