@@ -183,7 +183,7 @@ offset_top = 128.0
 offset_right = 127.0
 offset_bottom = 137.0
 linked_scene = "uid://beln0e1ghjnm"
-entrances_right = Array[float]([2.0])
+entrances_right = Array[float]([4.0])
 
 [node name="MapNode2" parent="Control/PauseScreen/Map" unique_id=219059578 instance=ExtResource("3_b4s0c")]
 layout_mode = 0
@@ -192,8 +192,8 @@ offset_top = 128.0
 offset_right = 167.0
 offset_bottom = 137.0
 linked_scene = "uid://dm4pd5nxnrnf3"
-entrances_right = Array[float]([2.0])
-entrances_left = Array[float]([2.0])
+entrances_right = Array[float]([4.0])
+entrances_left = Array[float]([4.0])
 
 [node name="MapNode3" parent="Control/PauseScreen/Map" unique_id=475265231 instance=ExtResource("3_b4s0c")]
 layout_mode = 0
@@ -202,8 +202,8 @@ offset_top = 128.0
 offset_right = 206.0
 offset_bottom = 137.0
 linked_scene = "uid://bkokrqme7etip"
-entrances_bottom = Array[float]([9.05])
-entrances_left = Array[float]([2.0])
+entrances_bottom = Array[float]([27.25])
+entrances_left = Array[float]([4.0])
 
 [node name="MapNode4" parent="Control/PauseScreen/Map" unique_id=1439050485 instance=ExtResource("3_b4s0c")]
 layout_mode = 0
@@ -212,7 +212,7 @@ offset_top = 139.0
 offset_right = 206.0
 offset_bottom = 148.0
 linked_scene = "uid://dee00j2bkjguw"
-entrances_top = Array[float]([2.0])
+entrances_top = Array[float]([27.225])
 
 [node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map" unique_id=1637270056]
 unique_name_in_owner = true

@@ -3,6 +3,7 @@
 class_name MapNode extends Control
 
 const SCALE_FACTOR : float = 40
+const transition_block_size : int = 3
 
 # Variables
 @export_file( "*.tscn" ) var linked_scene : String : set = _on_scene_set
@@ -14,6 +15,7 @@ const SCALE_FACTOR : float = 40
 @export var entrances_left : Array[ float ] = []
 
 var indicator_offset : Vector2 = Vector2.ZERO
+
 
 @onready var label: Label = $Label
 @onready var transition_blocks: Control = %TransitionBlocks
@@ -79,28 +81,29 @@ func create_entrance_data( transitions : Array[ LevelTransition ]) -> void:
 	entrances_top.clear()
 	
 	for t in transitions:
+		var pos : Vector2 = ( t.position - indicator_offset ) / SCALE_FACTOR # indicator offset is from the level bounds
 		if t.location == LevelTransition.SIDE.LEFT:
 			var offset : float = clampf( 
-				self.size.y + ( -t.global_position.y / SCALE_FACTOR ),
-				2.0, self.size.y - 2
+				pos.y - transition_block_size,
+				2.0, self.size.y - 5
 			)
 			entrances_left.append( offset )
 		elif t.location == LevelTransition.SIDE.RIGHT:
 			var offset : float = clampf( 
-				self.size.y + ( -t.global_position.y / SCALE_FACTOR ),
-				2.0, self.size.y - 2
+				pos.y - transition_block_size,
+				2.0, self.size.y - 5
 			)
 			entrances_right.append( offset )
 		elif t.location == LevelTransition.SIDE.TOP:
 			var offset : float = clampf( 
-				t.global_position.y / SCALE_FACTOR,
-				2.0, self.size.x - 2
+				pos.x,
+				2.0, self.size.x - 5
 			)
 			entrances_top.append( offset )
 		elif t.location == LevelTransition.SIDE.BOTTOM:
 			var offset : float = clampf( 
-				t.global_position.y / SCALE_FACTOR,
-				2.0, self.size.x - 2
+				pos.x,
+				2.0, self.size.x - 5
 			)
 			entrances_bottom.append( offset )
 	pass
@@ -114,25 +117,25 @@ func create_transition_blocks() -> void:
 		
 	for t in entrances_left:
 		var block : ColorRect = add_block()
-		block.size.y = 3
+		block.size.y = transition_block_size
 		block.position.x = 0
 		block.position.y = t
 		
 	for t in entrances_right:
 		var block : ColorRect = add_block()
-		block.size.y = 3
+		block.size.y = transition_block_size
 		block.position.x = self.size.x - 1
 		block.position.y = t
 		
 	for t in entrances_top:
 		var block : ColorRect = add_block()
-		block.size.x = 3
+		block.size.x = transition_block_size
 		block.position.x = t
 		block.position.y = 0 
 		
 	for t in entrances_bottom:
 		var block : ColorRect = add_block()
-		block.size.x = 3
+		block.size.x = transition_block_size
 		block.position.x = t
 		block.position.y = self.size.y - 1
 		

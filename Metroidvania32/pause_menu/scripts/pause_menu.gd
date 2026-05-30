@@ -31,7 +31,10 @@ func _ready() -> void:
 	gear_nav_button.pressed.connect( show_gear_menu )
 	map_nav_button.pressed.connect( show_map_menu )
 	# show map
+	
 	# audio setup
+	Audio.setup_button_audio( self )
+	
 	# setup system
 	show_gear_menu()
 			

@@ -1,3 +1,4 @@
+@icon( "res://general/icons/camera_2d.svg" )
 extends Camera2D
 
 @onready var screen_size: Vector2 = get_viewport_rect().size

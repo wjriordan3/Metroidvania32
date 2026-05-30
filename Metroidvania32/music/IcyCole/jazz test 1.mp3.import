@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7vg4nkki40en"
+path="res://.godot/imported/jazz test 1.mp3-f187844689e3ef13e18aa85ef68eadf4.mp3str"
+
+[deps]
+
+source_file="res://music/IcyCole/jazz test 1.mp3"
+dest_files=["res://.godot/imported/jazz test 1.mp3-f187844689e3ef13e18aa85ef68eadf4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
