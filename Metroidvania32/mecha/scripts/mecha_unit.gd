@@ -1,6 +1,7 @@
-class_name PlayerMecha extends CharacterBody2D
+class_name MechaUnit extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
+
 
 enum LimbSlot {
 	CORE,
@@ -33,10 +34,6 @@ var equipped_parts := {
 @onready var left_arm: AnimatedSprite2D = $LeftArm
 @onready var right_arm: AnimatedSprite2D = $RightArm
 
-@onready var health: Node = $Health
-
-@onready var damage_num_origin: Node2D = $DamageNumOrigin
-
 @onready var enter_hint_label: Label = $EntryLabel
 
 @onready var collision_stand: CollisionShape2D = $CollisionStand
@@ -49,24 +46,20 @@ var equipped_parts := {
 
 
 #region /// export variables (used to expose variable to inspector)
-@export var move_speed : float = 250.0
-@export var max_fall_velocity : float = 600.0
-
+#@export var allowed_pilot_types: Array[String] = ["player", "ai"]
+@export var allowed_tags: Array[String] = ["player"] 
+@export var stats : Stats
 #endregion
 
-const SPEED = 150.0
-const DASH_SPEED = 600.0
-const DASH_DURATION = 0.2
-const ATTACK_DURATION = 0.3
-
 # Status Flags
-var activePlayer = false
 var can_attack = true
 var is_attacking = false
 var is_climbing = false
 var is_interacting = false # for handling dialogue or object interaction
 
-var is_taking_damage = false
+# reference to controlling pilot
+var active_pilot = null
+var potential_pilot = null
 
 #region /// State Machine Variables
 var states : Array[ MechaState ]
@@ -88,27 +81,27 @@ var rotation_speed : float = 10.0
 #@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
-	#add_to_group("player")
 	enter_hint_label.visible = false
+	Messages.player_interacted.connect(_on_player_interacted)
 	#initialize states
 	initialize_states()
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
-	if not activePlayer: return
+	if active_pilot == null: return
 	change_state( current_state.handle_input( event ))
 	pass
 
 func _process( _delta: float) -> void:
-	if not activePlayer: return
+	if active_pilot == null: return
 	update_direction()
 	change_state( current_state.process( _delta ) )
 	pass
 	
 func _physics_process( _delta: float ) -> void:
-	if not activePlayer: return
+	if active_pilot == null: return
 	velocity.y += gravity * _delta * gravity_multiplier
-	velocity.y = clampf(velocity.y, -10000, max_fall_velocity)
+	velocity.y = clampf(velocity.y, -10000, stats.max_fall_velocity)
 	move_and_slide()
 	change_state( current_state.physics_process( _delta ) )
 	pass 
@@ -119,7 +112,7 @@ func initialize_states() -> void:
 	for c in $States.get_children():
 		if c is MechaState:
 			states.append( c )
-			c.player = self
+			c.mecha = self
 		pass
 	
 	if states.size() == 0:
@@ -135,7 +128,6 @@ func initialize_states() -> void:
 	$Label.text = current_state.name
 	
 	pass
-	
 	
 func change_state( new_state : MechaState ) -> void:
 	if new_state == null:
@@ -178,49 +170,80 @@ func update_direction():
 	pass
 
 func _input(event):
-	if event.is_action_pressed("action") && event.is_pressed() && enter_hint_label.visible:
-		_control_mech()
-	elif activePlayer && event.is_action_pressed("action") && event.is_pressed() && self.is_on_floor(): # && current_state == MechaStateIdle
+	if active_pilot == null:
+		return
+
+	if event.is_action_pressed("action") && is_on_floor():
 		_leave_mech()
+	
+func _on_player_interacted( player : Player ) -> void:
+	print("Player interacted with MechaUnit: ", self.name)
+	if potential_pilot != player:
+		return
+	
+	if active_pilot == player && is_on_floor():
+		_leave_mech()
+		return
+
+	# Mech empty, try to enter
+	if active_pilot == null and can_be_entered_by(player):
+		print("Player now entering MechaUnit: ", name)
+		_control_mech(player)
+	
+	pass
 		
-func _control_mech():
+func set_pilot(new_pilot):
+	active_pilot = new_pilot
+		
+func _control_mech(pilot):
 	change_state(idle_state) # TODO: Change to activate state
 	
-	var player = get_tree().get_first_node_in_group("player")
+	# Assign player to pilot
+	active_pilot = pilot
+	# Hide player
+	active_pilot.visible = false
+	active_pilot.process_mode = Node.PROCESS_MODE_DISABLED
+
+	# Maybe assign to a cockpit position placed on mech in scene?
+	#player.global_position = cockpit_marker.global_position
+	pilot.global_position = self.global_position
 	
-	activePlayer = true
-	player.queue_free()
-	
-	# Switch to mech camera
+	# Switch camera target to mech
 	CameraManager.set_target(self)
-	CameraManager.set_zoom(Vector2(1.0, 1.0))
+	CameraManager.set_zoom(Vector2.ONE)
 	
 func _leave_mech():
+	if active_pilot == null:
+		return
+	
+	var player = active_pilot
 	# Change state here
 	change_state(deactivate_state)
 	
-	var player = preload("res://player/player.tscn").instantiate()
+	player.global_position = self.global_position
 	
-	activePlayer = false
-	get_tree().current_scene.add_child(player)
-	player.global_position = global_position
+	player.visible = true
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	player.current_mech = null
+	active_pilot = null
 	
 	# Switch to main player camera
 	CameraManager.set_target(player)
-	CameraManager.set_zoom(Vector2(1.0, 1.0))
+	CameraManager.set_zoom(Vector2.ONE)
 	
+func can_be_entered_by(pilot) -> bool:
+	return pilot.pilot_tag in allowed_tags
+
 func _on_mech_area_collision_body_entered(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("player"):
+		potential_pilot = body
 		enter_hint_label.show()
-	elif body.is_in_group("damage"):
-		is_taking_damage = true
-		# temp hardcode enemy collision dmg value
-		health.take_damage(20)
-		# last input is critical hit true/false
-		DamageNum.display_number(20, damage_num_origin.global_position, false)
+		
 
 func _on_mech_area_collision_body_exited(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("player"):
+		potential_pilot = null
 		enter_hint_label.hide()
 	
 func add_debug_indicator( color : Color = Color.RED ) -> void:
@@ -231,23 +254,8 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
-	
-func check_for_camera() -> void:
-	if !get_tree().get_first_node_in_group("main_camera"):
-		var scene = preload("res://general/camera_2d.tscn")
-		var camera = scene.instantiate()
-		
-		get_tree().current_scene.call_deferred("add_child", camera)
-	
-#region Items and Inventory
-func will_pickup(item):
-	$Inventory.pickup(item)
-func get_item(itemData):
-	$Inventory.get_item(itemData)
-#endregion
 
 #region Animation
-
 func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):	
 	core.play(coreAnim)
 	left_arm.play(leftArmAnim)

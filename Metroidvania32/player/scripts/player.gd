@@ -1,4 +1,4 @@
-class_name PlayerHero extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
@@ -7,6 +7,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
+@onready var shoot_timer := $ShootAnimation as Timer
+@onready var gun_sprite: Sprite2D = $GunSprite
+@onready var gun = gun_sprite.get_node(^"Gun") as Gun
 #endregion
 
 
@@ -14,15 +17,16 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @export var stats : Stats
 #endregion
 
-const SPEED = 150.0
-const DASH_SPEED = 600.0
-const DASH_DURATION = 0.2
-const ATTACK_DURATION = 0.3
+var current_mech: MechaUnit = null
+var current_interactable = null
+var pilot_tag := "player"
+var muzzle_position
 
 # Status Flags
 var activePlayer = true
 var can_attack = true
 var is_attacking = false
+var is_shooting = false
 var is_climbing = false
 var is_interacting = false # for handling dialogue or object interaction
 
@@ -49,12 +53,33 @@ var rotation_speed : float = 10.0
 func _ready() -> void:
 	add_to_group("player")
 	initalize_states()
+	muzzle_position = gun.position
 	CameraManager.set_target(self)
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "action" ):
 		Messages.player_interacted.emit( self )
+	elif event.is_action_pressed( "pause" ):
+		get_tree().paused = true # will pause any node with process set to inherit
+		var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
+		add_child( pause_menu )
+		return
+		
+	# For testing health, remove later
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_MINUS:
+			if Input.is_key_pressed( KEY_SHIFT ):
+				stats.take_damage(10)
+			else:
+				stats.take_damage(2)
+		elif event.keycode == KEY_EQUAL:
+			if Input.is_key_pressed( KEY_SHIFT ):
+				stats.current_max_health += 10
+			else:
+				stats.health += 2
+	# end for remove code later
+	
 	change_state( current_state.handle_input( event ))
 	pass
 
@@ -69,6 +94,7 @@ func _physics_process( _delta: float ) -> void:
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf(velocity.y, -10000, stats.max_fall_velocity)
 	move_and_slide()
+	
 	change_state( current_state.physics_process( _delta ) )
 	pass 
 
@@ -112,6 +138,9 @@ func change_state( new_state : PlayerState ) -> void:
 	
 	pass
 	
+func is_in_mech() -> bool:
+	return current_mech != null	
+
 func update_direction():
 	var prev_direction : Vector2 = direction 
 	# negative x is left, positive x is right, negative y is up, positive y is down
@@ -124,8 +153,10 @@ func update_direction():
 	if prev_direction.x != direction.x:
 		if direction.x < 0: # character facing left
 			hero_sprite.flip_h = true
+			gun_sprite.flip_h = true
 		if direction.x > 0: # character facing right
 			hero_sprite.flip_h = false
+			gun_sprite.flip_h = false
 	pass
 
 func add_debug_indicator( color : Color = Color.RED ) -> void:
@@ -136,6 +167,13 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
+
+	
+func set_muzzle_position():
+	if direction.x > 0:
+		gun.position.x = muzzle_position.x
+	elif direction.x < 0:
+		gun.position.x = -muzzle_position.x
 		
 func _exit_tree():
 	CameraManager.clear_target(self)

@@ -14,17 +14,17 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	player.mech_animate_play(
+	mecha.mech_animate_play(
 		"standard_jump",
 		"standard_jump",
 		"standard_jump",
 		"standard_jump",
 		"standard_jump"
 	)
-	player.mech_animate_pause()
+	mecha.mech_animate_pause()
 	
-	player.gravity_multiplier = fall_gravity_multiplier
-	if player.previous_state == jump:
+	mecha.gravity_multiplier = fall_gravity_multiplier
+	if mecha.previous_state == jump:
 		coyote_timer = 0
 	else:
 		coyote_timer = coyote_time
@@ -32,7 +32,7 @@ func enter() -> void:
 	
 # What happens when we exit this state?
 func exit() -> void:
-	player.gravity_multiplier = 1.0
+	mecha.gravity_multiplier = 1.0
 	buffer_timer = 0
 	pass 
 	
@@ -53,8 +53,8 @@ func process( _delta: float ) -> MechaState:
 	return next_state 
 	
 func physics_process( _delta: float ) -> MechaState:
-	if player.is_on_floor():
-		#player.add_debug_indicator( ) 
+	if mecha.is_on_floor():
+		#mecha.add_debug_indicator( ) 
 		if buffer_timer > 0:
 			return jump
 		CameraManager.screen_shake(3.0, 0.25)
@@ -64,10 +64,10 @@ func physics_process( _delta: float ) -> MechaState:
 func set_jump_frame() -> void:
 	# [0.0, max_fall_speed (semi high # for fall velocity)] mapped to [0.5, 0.0 (end of fall in sprite animation)] 
 	# TODO: Need to implement set_jump_frame
-	#var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )
-	#player.animation_player_core.seek( frame, true )
-	#player.animation_player_left_arm.seek( frame, true )
-	#player.animation_player_left_leg.seek( frame, true )
-	#player.animation_player_right_arm.seek( frame, true )
-	#player.animation_player_right_leg.seek( frame, true )
+	#var frame : float = remap( mecha.velocity.y, 0.0, mecha.max_fall_velocity, 0.5, 1.0 )
+	#mecha.animation_mecha_core.seek( frame, true )
+	#mecha.animation_mecha_left_arm.seek( frame, true )
+	#mecha.animation_mecha_left_leg.seek( frame, true )
+	#mecha.animation_mecha_right_arm.seek( frame, true )
+	#mecha.animation_mecha_right_leg.seek( frame, true )
 	pass

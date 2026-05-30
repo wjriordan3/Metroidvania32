@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
 [ext_resource type="Script" uid="uid://bb28nwnywj8tm" path="res://general/scripts/level_bounds.gd" id="3_threo"]
 [ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="4_3px5j"]
-[ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="4_threo"]
 [ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="5_3321n"]
 [ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="6_5ejyp"]
 [ext_resource type="PackedScene" uid="uid://bjtgr6n8j2te0" path="res://general/save_point/save_point.tscn" id="7_q63b2"]
@@ -49,9 +48,6 @@ position = Vector2(83, 285)
 position = Vector2(400, 256)
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1457878389]
-
-[node name="PauseMenu" parent="InterfaceLayer" unique_id=1993568944 instance=ExtResource("4_threo")]
-visible = false
 
 [node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory", "limb_health") instance=ExtResource("3_46faf")]
 player_health = NodePath("../../PlayerMecha/Health")

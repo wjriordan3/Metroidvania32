@@ -1,6 +1,6 @@
 class_name MechaState extends Node
 
-var player : PlayerMecha
+var mecha : MechaUnit
 var next_state : MechaState
 
 #region /// State References
