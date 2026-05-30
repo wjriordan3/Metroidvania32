@@ -54,6 +54,7 @@ func _ready() -> void:
 	add_to_group("player")
 	initalize_states()
 	muzzle_position = gun.position
+	Messages.back_to_title_screen.connect(queue_free)
 	CameraManager.set_target(self)
 	pass
 
