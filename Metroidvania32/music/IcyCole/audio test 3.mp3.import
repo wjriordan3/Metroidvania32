@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxwirvq1bxaud"
+path="res://.godot/imported/audio test 3.mp3-74d582911513b43d92d55800b3ccf02c.mp3str"
+
+[deps]
+
+source_file="res://music/IcyCole/audio test 3.mp3"
+dest_files=["res://.godot/imported/audio test 3.mp3-74d582911513b43d92d55800b3ccf02c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

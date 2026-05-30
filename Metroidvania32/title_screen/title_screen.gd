@@ -33,7 +33,8 @@ func _ready() -> void:
 	load_slot_03.pressed.connect( _on_load_game_pressed.bind( 2 ) )
 	
 	# add audio to buttons
-	
+	Audio.setup_button_audio( self )
+	Audio.play_music( preload("uid://7vg4nkki40en") )
 	# show main menu
 	show_main_menu()
 	# setup anim transitions
