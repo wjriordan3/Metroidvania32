@@ -87,6 +87,7 @@ func setup_system_menu() -> void:
 func _on_main_menu_button_pressed() -> void:
 	SceneManager.transition_scene("res://title_screen/title_screen.tscn", "", Vector2.ZERO, "up")
 	get_tree().paused = false
+	Messages.back_to_title_screen.emit()
 	queue_free()
 	
 func _on_quit_game_button_pressed() -> void:
