@@ -2843,24 +2843,29 @@ script = ExtResource("8_i3hoj")
 [node name="RightLeg" type="AnimatedSprite2D" parent="." unique_id=941449678]
 sprite_frames = SubResource("SpriteFrames_i0dgw")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
 sprite_frames = SubResource("SpriteFrames_a5c6h")
 animation = &"standard_idle"
 frame_progress = 0.5840357
+speed_scale = 2.0
 
 [node name="LeftArm" type="AnimatedSprite2D" parent="." unique_id=2086251306]
 sprite_frames = SubResource("SpriteFrames_ciyre")
 animation = &"standard_idle"
 frame_progress = 0.6899557
+speed_scale = 2.0
 
 [node name="Core" type="AnimatedSprite2D" parent="." unique_id=778736296]
 sprite_frames = SubResource("SpriteFrames_0gmfr")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="RightArm" type="AnimatedSprite2D" parent="." unique_id=327693266]
 sprite_frames = SubResource("SpriteFrames_6007a")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]
 shape = SubResource("CapsuleShape2D_e7oew")

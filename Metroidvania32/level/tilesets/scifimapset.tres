@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://b6m3dhp60sgnd"]
 
-[ext_resource type="Texture2D" uid="uid://b81epvf6b8mrn" path="res://level/tilesets/sprites/level_tileset_placeholder.png" id="1_obbbs"]
+[ext_resource type="Texture2D" uid="uid://lje5nk1c4d41" path="res://level/tilesets/sprites/vault_tileset_test.png" id="1_obbbs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4x4l"]
 texture = ExtResource("1_obbbs")
@@ -68,6 +68,7 @@ texture_region_size = Vector2i(32, 32)
 6:3/0 = 0
 7:3/0 = 0
 8:3/0 = 0
+0:4/next_alternative_id = 2
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -0.95589256, 16, 16, -16, 16)
 1:4/0 = 0
@@ -131,6 +132,39 @@ texture_region_size = Vector2i(32, 32)
 6:8/0 = 0
 7:8/0 = 0
 8:8/0 = 0
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:1/0 = 0
+11:1/0/z_index = 1
+11:1/0/y_sort_origin = 1
+10:1/0 = 0
+10:0/0 = 0
+9:0/0 = 0
+9:1/0 = 0
+8:0/0 = 0
+8:0/0/z_index = -1
+8:1/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+7:9/0 = 0
+7:10/0 = 0
+8:9/0 = 0
+8:10/0 = 0
+9:9/0 = 0
+9:10/0 = 0
+9:11/0 = 0
+8:11/0 = 0
+7:11/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+8:13/0 = 0
+7:13/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
