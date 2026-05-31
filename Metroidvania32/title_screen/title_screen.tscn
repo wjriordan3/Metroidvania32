@@ -4,8 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://6ohj4psmejoy" path="res://assets/concepts/pilot_concept.png" id="1_g2mvh"]
 [ext_resource type="Texture2D" uid="uid://bnif6nxl5t2sc" path="res://HardenedCriminalsLogo.png" id="2_dxpbd"]
 
+[sub_resource type="Gradient" id="Gradient_2dq6q"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vbjqi"]
+gradient = SubResource("Gradient_2dq6q")
+
 [node name="TitleScreen" type="CanvasLayer" unique_id=1062812768]
-layer = 5
+layer = 10
 script = ExtResource("1_2dq6q")
 
 [node name="Control" type="Control" parent="." unique_id=237802275]
@@ -23,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_vbjqi")
 
 [node name="BackgroundContainer" type="Control" parent="Control" unique_id=218508991]
 layout_mode = 1

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cwetv0y8g6lup" path="res://player/scripts/input_hints.gd" id="12_05wrh"]
 [ext_resource type="Texture2D" uid="uid://2isymf5fs8pl" path="res://player/sprites/hero/player_pistol.png" id="12_32hag"]
 [ext_resource type="PackedScene" uid="uid://bxwg8rgoko70m" path="res://inventory/inventory.tscn" id="12_ht5xn"]
-[ext_resource type="Texture2D" uid="uid://dxydr83ulipn7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
+[ext_resource type="Texture2D" uid="uid://de6v8rw808o7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
 [ext_resource type="Script" uid="uid://kivthlmdiugl" path="res://combat/gun.gd" id="13_tqiix"]
 

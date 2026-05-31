@@ -72,13 +72,21 @@ func _unhandled_input( event: InputEvent ) -> void:
 		if event.keycode == KEY_MINUS:
 			if Input.is_key_pressed( KEY_SHIFT ):
 				stats.take_damage(10)
+				print(stats.health)
+				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
 			else:
 				stats.take_damage(2)
+				print(stats.health)
+				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
 		elif event.keycode == KEY_EQUAL:
 			if Input.is_key_pressed( KEY_SHIFT ):
 				stats.current_max_health += 10
+				print(stats.current_max_health)
+				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
 			else:
 				stats.health += 2
+				print(stats.health)
+				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
 	# end for remove code later
 	
 	change_state( current_state.handle_input( event ))

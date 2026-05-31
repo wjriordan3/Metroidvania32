@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ber2j7sei2vh1" path="res://ui/bar/health_bar/healthbar.gd" id="1_kjo6j"]
 [ext_resource type="PackedScene" uid="uid://ckyc2pfe3x07t" path="res://ui/counter/counter.tscn" id="1_sjkjf"]
-[ext_resource type="Texture2D" uid="uid://pk1sswharahu" path="res://ui/ui_resources/bar_bg.png" id="2_snfvg"]
-[ext_resource type="Texture2D" uid="uid://hckj2343aod4" path="res://ui/ui_resources/life_bar.png" id="3_kjo6j"]
+[ext_resource type="Texture2D" uid="uid://duj66cpughvlt" path="res://ui/ui_resources/bar_bg.png" id="2_snfvg"]
+[ext_resource type="Texture2D" uid="uid://bp1ghts0gm7c" path="res://ui/ui_resources/life_bar.png" id="3_kjo6j"]
 
 [node name="HealthBar" type="HBoxContainer" unique_id=77891363]
 offset_right = 734.0
@@ -28,7 +28,8 @@ offset_top = -38.5
 offset_right = 90.0
 offset_bottom = 39.5
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1329561051]
+[node name="HPBar" type="TextureProgressBar" parent="." unique_id=1329561051]
+unique_name_in_owner = true
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("2_snfvg")
