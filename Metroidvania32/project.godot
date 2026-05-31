@@ -14,6 +14,11 @@ config/name="Metroidvania32"
 run/main_scene="uid://df2cw40nlss5t"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bnif6nxl5t2sc"
+<<<<<<<Updatedupstreamrun/main_scene="uid://df2cw40nlss5t"
+
+[audio]
+
+buses/default_bus_layout="uid://bjo2xowllqqkk"
 
 [autoload]
 
@@ -23,6 +28,9 @@ SceneManager="*uid://bhmrbfr4hiigg"
 SaveManager="*uid://ce6gnlqwk3fqp"
 PromptManager="*uid://dakodwb5spj10"
 Messages="*uid://b6m52dc2ybu5t"
+PoolManager="*uid://dn8y6s70vvjxl"
+DamageNum="*uid://kjljnlxow5sk"
+Audio="*uid://dcm4516cr4j1o"
 
 [dialogic]
 
@@ -87,6 +95,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/inpu
 [global_group]
 
 player=""
+damage=""
 
 [gui]
 

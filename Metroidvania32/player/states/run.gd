@@ -17,6 +17,8 @@ func exit() -> void:
 func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("jump"):
 		return jump
+	if player.direction.x != 0 and _event.is_action_pressed("fire"):
+		return attack
 	return next_state
 	
 func process( _delta: float) -> PlayerState:

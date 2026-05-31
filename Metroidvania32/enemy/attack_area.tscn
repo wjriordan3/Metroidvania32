@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b16u8a6rqpdq0"]
+
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="1_43p2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqyl"]
+
+[node name="AttackArea" type="Area2D" unique_id=1600257482 groups=["damage"]]
+scale = Vector2(1.1200004, 1.0399996)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_43p2n")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291323762]
+scale = Vector2(13.5599985, 15.56)
+shape = SubResource("RectangleShape2D_3yqyl")

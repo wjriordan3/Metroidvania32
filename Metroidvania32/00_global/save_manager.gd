@@ -13,6 +13,7 @@ var persistent_data : Dictionary = {}
 const default_scene_uid : String = "uid://beln0e1ghjnm"
 
 func _ready() -> void:
+	SceneManager.scene_entered.connect( _on_scene_entered )
 	pass
 	
 func _unhandled_key_input( event: InputEvent ) -> void:
@@ -57,7 +58,7 @@ func create_new_game_save( slot : int ) -> void:
 	
 func save_game() -> void:
 	print("Trying to save the game...")
-	var player : PlayerHero = get_tree().get_first_node_in_group( "player" )
+	var player : Player = get_tree().get_first_node_in_group( "player" )
 	
 	# Update Save Data
 	save_data = {
@@ -96,7 +97,7 @@ func load_game( slot : int ) -> void:
 	pass
 	
 func setup_player() -> void:
-	var player : PlayerHero = null
+	var player : Player = null
 	while not player:
 		get_tree().get_first_node_in_group( "player" )
 		await get_tree().process_frame
@@ -119,3 +120,13 @@ func get_file_name( slot : int ) -> String:
 	
 func save_file_exists( slot : int ) -> bool:
 	return FileAccess.file_exists( get_file_name( slot ) )
+	
+func is_area_discovered( scene_uid : String ) -> bool:
+	return discovered_areas.has( scene_uid )
+	
+func _on_scene_entered( scene_uid : String ) -> void:
+	if discovered_areas.has( scene_uid ):
+		return
+	else:
+		discovered_areas.append( scene_uid )
+	pass

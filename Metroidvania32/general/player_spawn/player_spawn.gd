@@ -1,3 +1,4 @@
+@icon( "res://general/icons/player_spawn.svg" )
 class_name PlayerSpawn extends Node2D
 
 func _ready() -> void:
@@ -10,7 +11,7 @@ func _ready() -> void:
 		return
 	
 	print("No player found. Instantiating new player instance.")
-	var player : PlayerHero = load("uid://cufevn3isam0a").instantiate()
+	var player : Player = load("uid://cufevn3isam0a").instantiate()
 	get_tree().root.add_child(player)
 	# Position the player scene
 	player.global_position = self.global_position	

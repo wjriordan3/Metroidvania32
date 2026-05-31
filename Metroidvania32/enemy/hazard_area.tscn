@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cdrmt18vsmxl6"]
+
+[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://enemy/hazard_area.gd" id="1_36rhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb8ge"]
+
+[node name="HazardArea" type="Area2D" unique_id=491208512 groups=["damage"]]
+scale = Vector2(15.119999, 16.280003)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_36rhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=212889857]
+shape = SubResource("RectangleShape2D_hb8ge")

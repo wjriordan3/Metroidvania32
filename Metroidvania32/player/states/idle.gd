@@ -32,5 +32,11 @@ func physics_process( _delta: float) -> PlayerState:
 	player.velocity.x = 0.0
 	if player.is_on_floor() == false:
 		return fall
+		
+	player.is_shooting = false
+	if Input.is_action_just_pressed("fire"):
+		player.is_shooting = player.gun.shoot(player.gun_sprite.scale.x)
+		return attack
+		
 	return next_state 
 	

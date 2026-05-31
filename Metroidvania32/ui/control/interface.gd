@@ -16,6 +16,9 @@ func _on_health_health_changed(health):
 
 func _on_inventory_add_scrap(scrap: int) -> void:
 	$ScrapCounter.update_counter(scrap)
+	
+func _on_inventory_new_item(item: Object) -> void:
+	$Notification.item_notif(item.itemIcon, item.itemName)
 
 func _on_limb_health_limb_health_changed(limb: Variant, health: int) -> void:
 	$LimbDisplay.update_health(limb, health)

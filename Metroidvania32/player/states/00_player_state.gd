@@ -1,7 +1,7 @@
 @icon("res://player/states/state.svg")
 class_name PlayerState extends Node
 
-var player : PlayerHero
+var player : Player
 var next_state : PlayerState
 
 #region /// State References
@@ -11,6 +11,7 @@ var next_state : PlayerState
 @onready var jump: PlayerStateJump = %Jump
 @onready var fall: PlayerStateFall = %Fall
 @onready var crouch: PlayerStateCrouch = %Crouch
+@onready var attack: PlayerStateAttack = %Attack
 #endregion
  
 # What occurs when the state is initialized?

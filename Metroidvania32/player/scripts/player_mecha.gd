@@ -33,6 +33,10 @@ var equipped_parts := {
 @onready var left_arm: AnimatedSprite2D = $LeftArm
 @onready var right_arm: AnimatedSprite2D = $RightArm
 
+@onready var health: Node = $Health
+
+@onready var damage_num_origin: Node2D = $DamageNumOrigin
+
 @onready var enter_hint_label: Label = $EntryLabel
 
 @onready var collision_stand: CollisionShape2D = $CollisionStand
@@ -61,6 +65,8 @@ var can_attack = true
 var is_attacking = false
 var is_climbing = false
 var is_interacting = false # for handling dialogue or object interaction
+
+var is_taking_damage = false
 
 #region /// State Machine Variables
 var states : Array[ MechaState ]
@@ -193,7 +199,7 @@ func _leave_mech():
 	# Change state here
 	change_state(deactivate_state)
 	
-	var player = preload("res://player/player_hero.tscn").instantiate()
+	var player = preload("res://player/player.tscn").instantiate()
 	
 	activePlayer = false
 	get_tree().current_scene.add_child(player)
@@ -206,6 +212,12 @@ func _leave_mech():
 func _on_mech_area_collision_body_entered(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("player"):
 		enter_hint_label.show()
+	elif body.is_in_group("damage"):
+		is_taking_damage = true
+		# temp hardcode enemy collision dmg value
+		health.take_damage(20)
+		# last input is critical hit true/false
+		DamageNum.display_number(20, damage_num_origin.global_position, false)
 
 func _on_mech_area_collision_body_exited(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("player"):
