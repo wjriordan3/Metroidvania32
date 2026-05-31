@@ -130,3 +130,4 @@ func _on_scene_entered( scene_uid : String ) -> void:
 	else:
 		discovered_areas.append( scene_uid )
 	pass
+	
