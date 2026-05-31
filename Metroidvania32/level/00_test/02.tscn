@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="4_ci7x8"]
 [ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="5_3tm37"]
 [ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="5_nf6xl"]
+[ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="6_4vyw5"]
+[ext_resource type="AudioStream" uid="uid://cxwirvq1bxaud" path="res://music/IcyCole/audio test 3.mp3" id="7_6ria1"]
 
 [node name="02" type="Node2D" unique_id=259286333]
 z_index = 256
@@ -34,3 +36,8 @@ position = Vector2(1504, 320)
 size = 6
 location = 1
 target_level = "uid://bkokrqme7etip"
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1987375284]
+script = ExtResource("6_4vyw5")
+track = ExtResource("7_6ria1")
+metadata/_custom_type_script = "uid://cjhdm1eoibi5c"

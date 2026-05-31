@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://0klv65ljuhy2" path="res://player/sprites/standard/standard_run/standard_armR_run.png" id="50_tuvs4"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="52_8k3i7"]
 [ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="53_g7dv2"]
+[ext_resource type="PackedScene" uid="uid://1huxwjbd0ppv" path="res://combat/bullet.tscn" id="54_sd0ak"]
 
 [sub_resource type="Resource" id="Resource_lpl13"]
 resource_local_to_scene = true
@@ -2843,24 +2844,29 @@ script = ExtResource("8_i3hoj")
 [node name="RightLeg" type="AnimatedSprite2D" parent="." unique_id=941449678]
 sprite_frames = SubResource("SpriteFrames_i0dgw")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
 sprite_frames = SubResource("SpriteFrames_a5c6h")
 animation = &"standard_idle"
 frame_progress = 0.5840357
+speed_scale = 2.0
 
 [node name="LeftArm" type="AnimatedSprite2D" parent="." unique_id=2086251306]
 sprite_frames = SubResource("SpriteFrames_ciyre")
 animation = &"standard_idle"
 frame_progress = 0.6899557
+speed_scale = 2.0
 
 [node name="Core" type="AnimatedSprite2D" parent="." unique_id=778736296]
 sprite_frames = SubResource("SpriteFrames_0gmfr")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="RightArm" type="AnimatedSprite2D" parent="." unique_id=327693266]
 sprite_frames = SubResource("SpriteFrames_6007a")
 animation = &"standard_idle"
+speed_scale = 2.0
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]
 shape = SubResource("CapsuleShape2D_e7oew")
@@ -2906,6 +2912,13 @@ collision_mask = 2
 [node name="Health" parent="." unique_id=1767944466 instance=ExtResource("52_8k3i7")]
 
 [node name="LimbHealth" parent="." unique_id=393853738 instance=ExtResource("53_g7dv2")]
+
+[node name="Gun" parent="." unique_id=2057301925 instance=ExtResource("54_sd0ak")]
+visible = false
+position = Vector2(32, -28)
+
+[node name="DamageNumOrigin" type="Node2D" parent="." unique_id=1049312175]
+position = Vector2(0, -60)
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]

@@ -19,12 +19,14 @@ class_name PauseMenu extends CanvasLayer
 @onready var ui_slider: HSlider = %UISlider
 #endregion
 
-var player : Player
+var player : Player = null
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# grab player
+	player = get_tree().get_first_node_in_group( "player" )
+	
 	show_pause_screen()
 	setup_system_menu()
 	system_nav_button.pressed.connect( show_system_menu )
@@ -71,20 +73,26 @@ func show_system_menu() -> void:
 	gear.visible = false
 	map.visible = false
 	system.visible = true
-	main_menu_button.grab_focus()
 	
 func show_gear_menu() -> void:
 	system.visible = false
 	gear.visible = true
 	map.visible = false
-	gear_nav_button.grab_focus()
+	
 
 func setup_system_menu() -> void:
-	
 	main_menu_button.pressed.connect( _on_main_menu_button_pressed )
 	quit_game_button.pressed.connect( _on_quit_game_button_pressed )
 	
 	# setup the sliders
+	music_slider.value = AudioServer.get_bus_volume_linear( 2 )
+	sfx_slider.value = AudioServer.get_bus_volume_linear( 3 ) 
+	ui_slider.value = AudioServer.get_bus_volume_linear( 4 )
+	
+	music_slider.value_changed.connect( _on_music_slider_changed )
+	sfx_slider.value_changed.connect( _on_sfx_slider_changed )
+	ui_slider.value_changed.connect( _on_ui_slider_changed )
+	
 	pass
 	
 func _on_main_menu_button_pressed() -> void:
@@ -95,3 +103,23 @@ func _on_main_menu_button_pressed() -> void:
 	
 func _on_quit_game_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_music_slider_changed( v : float ) -> void:
+	AudioServer.set_bus_volume_linear( 2, v )
+	# save to settings
+	Config.save_configuration()
+	pass
+	
+func _on_sfx_slider_changed( v : float ) -> void:
+	AudioServer.set_bus_volume_linear( 3, v )
+	Audio.play_spatial_sound( Audio.ui_focus_audio, player.global_position)
+	# save to settings
+	Config.save_configuration()
+	pass
+	
+func _on_ui_slider_changed( v : float ) -> void:
+	AudioServer.set_bus_volume_linear( 4, v )
+	Audio.ui_focus_change()
+	# save to settings
+	Config.save_configuration()
+	pass
