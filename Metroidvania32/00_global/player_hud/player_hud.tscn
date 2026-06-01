@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://mk2d6qnssuam"]
+
+[ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="1_hv14i"]
+[ext_resource type="Script" uid="uid://dvrhxp0p885jg" path="res://00_global/player_hud/player_hud.gd" id="1_vb1bs"]
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=1107016232]
+process_mode = 3
+script = ExtResource("1_vb1bs")
+
+[node name="Interface" parent="." unique_id=1735007707 instance=ExtResource("1_hv14i")]
+mouse_filter = 2
+
+[node name="Notification" parent="Interface" index="0" unique_id=1639322358]
+visible = false
+
+[editable path="Interface"]
+[editable path="Interface/HealthBar"]
+[editable path="Interface/HealthBar/Counter"]
+[editable path="Interface/ScrapCounter"]

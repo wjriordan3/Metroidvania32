@@ -28,9 +28,11 @@ SceneManager="*uid://bhmrbfr4hiigg"
 SaveManager="*uid://ce6gnlqwk3fqp"
 PromptManager="*uid://dakodwb5spj10"
 Messages="*uid://b6m52dc2ybu5t"
+PlayerHUD="*uid://mk2d6qnssuam"
 PoolManager="*uid://dn8y6s70vvjxl"
 DamageNum="*uid://kjljnlxow5sk"
 Audio="*uid://dcm4516cr4j1o"
+Config="*uid://cmf2mvylic52w"
 
 [dialogic]
 

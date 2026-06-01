@@ -7,9 +7,10 @@ signal health_changed(health)
 @export var limb_health = Node
 
 func _ready():
-	$HealthBar.initialize(player_health.max_health)
-	$ScrapCounter.update_counter(player_inventory.scrap)
-	$LimbDisplay.initialize(limb_health.limb_healths)
+	#$HealthBar.initialize(player_health.max_health)
+	#$ScrapCounter.update_counter(player_inventory.scrap)
+	#$LimbDisplay.initialize(limb_health.limb_healths)
+	pass
 
 func _on_health_health_changed(health):
 	health_changed.emit(health)

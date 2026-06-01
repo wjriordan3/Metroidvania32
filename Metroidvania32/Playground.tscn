@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player_mecha.tscn" id="1_80c3a"]
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
 [ext_resource type="Texture2D" uid="uid://cpm1b2fhieg1k" path="res://player/states/state.svg" id="2_5ejyp"]
-[ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="3_46faf"]
 [ext_resource type="Script" uid="uid://bb28nwnywj8tm" path="res://general/scripts/level_bounds.gd" id="3_threo"]
 [ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="4_3px5j"]
 [ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="5_3321n"]
@@ -47,26 +46,8 @@ position = Vector2(83, 285)
 [node name="SavePoint" parent="." unique_id=69750532 instance=ExtResource("7_q63b2")]
 position = Vector2(400, 256)
 
-[node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1457878389]
-
-[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory", "limb_health") instance=ExtResource("3_46faf")]
-player_health = NodePath("../../PlayerMecha/Health")
-player_inventory = NodePath("../../PlayerMecha/Inventory")
-limb_health = NodePath("../../PlayerMecha/LimbHealth")
-
-[node name="Notification" parent="InterfaceLayer/Interface" index="0" unique_id=1639322358]
-visible = false
-
 [node name="Enemy" parent="." unique_id=976216826 instance=ExtResource("12_q63b2")]
 position = Vector2(574, 263)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="add_scrap" from="PlayerMecha/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
-[connection signal="new_item" from="PlayerMecha/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_new_item"]
-[connection signal="health_changed" from="PlayerMecha/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
-
 [editable path="PlayerMecha"]
-[editable path="InterfaceLayer/Interface"]
-[editable path="InterfaceLayer/Interface/HealthBar"]
-[editable path="InterfaceLayer/Interface/HealthBar/Counter"]
-[editable path="InterfaceLayer/Interface/ScrapCounter"]
