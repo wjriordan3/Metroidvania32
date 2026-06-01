@@ -3,15 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="1_fe3x3"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="2_lqifc"]
 [ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="3_nhluo"]
-[ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player_mecha.tscn" id="4_agmrh"]
 [ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="4_nhluo"]
-[ext_resource type="PackedScene" uid="uid://hq0f25078nna" path="res://ui/pause_menu.tscn" id="5_5mbu6"]
-[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="5_lqifc"]
-[ext_resource type="PackedScene" uid="uid://qp5h6f31cqi" path="res://ui/control/interface.tscn" id="6_wa38d"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7oew"]
-radius = 30.0
-height = 102.0
+[ext_resource type="Script" uid="uid://i8dipvpvfqsb" path="res://general/player_spawn/player_spawn.gd" id="5_fe3x3"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
 
@@ -24,36 +17,23 @@ itemIcon = ExtResource("2_lqifc")
 
 [node name="Enemy" parent="Level" unique_id=976216826 instance=ExtResource("4_nhluo")]
 position = Vector2(1006, 548)
-scale = Vector2(0.41919336, 0.4055191)
+scale = Vector2(0.2882399, 0.26986417)
 
-[node name="Player" parent="Level" unique_id=1485163958 groups=["player"] instance=ExtResource("4_agmrh")]
-position = Vector2(103, 269)
+[node name="PlayerSpawn2" type="Node2D" parent="Level" unique_id=535079205]
+script = ExtResource("5_fe3x3")
+metadata/_custom_type_script = "uid://i8dipvpvfqsb"
 
-[node name="DamageArea" type="Area2D" parent="Level/Player" unique_id=1401661508]
-collision_layer = 32
-collision_mask = 32
-script = ExtResource("5_lqifc")
-metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+[node name="Enemy2" parent="Level" unique_id=123614336 instance=ExtResource("4_nhluo")]
+position = Vector2(620, 471.99997)
+scale = Vector2(0.258416, 0.26037243)
 
-[node name="HitboxStand" type="CollisionShape2D" parent="Level/Player/DamageArea" unique_id=1124487292]
-shape = SubResource("CapsuleShape2D_e7oew")
-
-[node name="InterfaceLayer" type="CanvasLayer" parent="." unique_id=1986209769]
-layer = 100
-
-[node name="PauseMenu" parent="InterfaceLayer" unique_id=250445893 instance=ExtResource("5_5mbu6")]
-visible = false
-
-[node name="Interface" parent="InterfaceLayer" unique_id=1735007707 node_paths=PackedStringArray("player_health", "player_inventory", "limb_health") instance=ExtResource("6_wa38d")]
-player_health = NodePath("../../Level/Player/Health")
-player_inventory = NodePath("../../Level/Player/Inventory")
-limb_health = NodePath("../../Level/Player/LimbHealth")
+[node name="AnimationPlayer" parent="Level/Enemy2" index="2" unique_id=317822677]
+root_node = NodePath("../../Enemy2")
 
 [connection signal="body_entered" from="Level/Enemy/HazardArea" to="Level/Enemy/HazardArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Enemy/AttackArea" to="Level/Enemy/AttackArea" method="_on_body_entered"]
-[connection signal="add_scrap" from="Level/Player/Inventory" to="InterfaceLayer/Interface" method="_on_inventory_add_scrap"]
-[connection signal="health_changed" from="Level/Player/Health" to="InterfaceLayer/Interface" method="_on_health_health_changed"]
-[connection signal="limb_health_changed" from="Level/Player/LimbHealth" to="InterfaceLayer/Interface" method="_on_limb_health_limb_health_changed"]
+[connection signal="body_entered" from="Level/Enemy2/HazardArea" to="Level/Enemy2/HazardArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Enemy2/AttackArea" to="Level/Enemy2/AttackArea" method="_on_body_entered"]
 
 [editable path="Level/Enemy"]
-[editable path="Level/Player"]
+[editable path="Level/Enemy2"]

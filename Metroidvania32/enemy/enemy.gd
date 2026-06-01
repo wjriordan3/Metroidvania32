@@ -13,12 +13,36 @@ var move_tween : Tween
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var damage_area : DamageArea = $DamageArea
 @onready var attack_area : AttackArea = $AttackArea
+@onready var edge_detector : EdgeDetector = $EdgeDetector
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#animation_player.play("walk")
+	edge_detector.edge_detected.connect( _on_edge_detected )
 	pass # Replace with function body.
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_on_wall():
+		change_direction( -dir ) 
+	velocity += get_gravity() * delta
+	velocity.x = dir * move_speed
+	move_and_slide()
+	pass
+
+func change_direction( new_dir : float ) -> void:
+	dir = new_dir
+	edge_detector.direction_changed( dir )
+	if dir < 0 :
+		sprite.flip_h = true
+	elif dir > 0 :
+		sprite.flip_h = false
+	
+	pass
+
+func _on_edge_detected() -> void:
+	if is_on_floor():
+		change_direction( -dir )
 	pass
