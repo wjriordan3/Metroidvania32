@@ -9,24 +9,22 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
+	player.sprite.play( "crouch" )
+	
 	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false
+	player.da_stand.disabled = true
+	player.da_crouch.disabled = false
 	player.crouch_multiplier = crouch_move_multiplier
-	
-	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.hero_sprite.scale.y = 0.625
-	player.hero_sprite.position.y = 0.25
 	pass
 	
 # What happens when we exit this state?
 func exit() -> void:
 	player.collision_stand.disabled = false
 	player.collision_crouch.disabled = true
+	player.da_stand.disabled = false
+	player.da_crouch.disabled = true
 	player.crouch_multiplier = 1.0
-	
-	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	player.hero_sprite.scale.y = 1.0
-	player.hero_sprite.position.y = 0.0
 	pass 
 	
 func handle_input( _event : InputEvent ) -> PlayerState:

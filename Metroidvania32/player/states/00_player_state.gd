@@ -12,8 +12,10 @@ var next_state : PlayerState
 @onready var fall: PlayerStateFall = %Fall
 @onready var crouch: PlayerStateCrouch = %Crouch
 @onready var attack: PlayerStateAttack = %Attack
+@onready var hurt: PlayerStateHurt = %Hurt
+@onready var death: PlayerStateDeath = %Death
 #endregion
- 
+
 # What occurs when the state is initialized?
 func init() -> void:
 	pass

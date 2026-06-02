@@ -42,3 +42,4 @@ func heal(amount):
 	health += amount
 	health = max(health, current_max_health)
 	health_changed.emit(health, current_max_health)
+	

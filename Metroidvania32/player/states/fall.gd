@@ -14,7 +14,7 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	player.hero_sprite.play( "jump" )
+	player.sprite.play( "jump" )
 	#player.animation_player.play( "jump" )
 	#player.animation_player.pause()
 	
@@ -49,7 +49,7 @@ func process( _delta: float ) -> PlayerState:
 	
 func physics_process( _delta: float ) -> PlayerState:
 	if player.is_on_floor():
-		#player.add_debug_indicator( ) 
+		VisualEffects.land_dust( player.one_way_platform_shapecast.global_position )
 		if buffer_timer > 0:
 			return jump
 		return idle
