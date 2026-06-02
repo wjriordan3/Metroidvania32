@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://depgo30v4d2ib"]
+
+[ext_resource type="Script" uid="uid://3iib1u3w7wcc" path="res://00_global/player_manager.gd" id="1_j2kdb"]
+
+[node name="PlayerManager" type="Node2D" unique_id=1653378763]
+script = ExtResource("1_j2kdb")
