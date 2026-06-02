@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_4xpjf"]
 [ext_resource type="PackedScene" uid="uid://dmmst6d5eohc5" path="res://items/item_pickup/item_pickup.tscn" id="12_vxor6"]
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="13_ghss5"]
+[ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/potion.tres" id="14_ghss5"]
 
 [sub_resource type="Resource" id="Resource_vxor6"]
 resource_local_to_scene = true
@@ -97,3 +98,7 @@ collision_enabled = false
 [node name="ItemPickup" parent="." unique_id=368888410 instance=ExtResource("12_vxor6")]
 position = Vector2(1231, 266)
 item_data = ExtResource("13_ghss5")
+
+[node name="ItemPickup2" parent="." unique_id=1495269914 instance=ExtResource("12_vxor6")]
+position = Vector2(568, 258)
+item_data = ExtResource("14_ghss5")

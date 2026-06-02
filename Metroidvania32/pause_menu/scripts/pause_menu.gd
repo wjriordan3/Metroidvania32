@@ -10,6 +10,7 @@ signal pause_screen_hidden
 @onready var system: Control = %System
 @onready var gear: Control = %Gear
 @onready var map: Control = %Map
+@onready var vitals: Control = %Vitals
 
 # Menu Navigation Tabs
 @onready var system_nav_button: Button = %SystemNavButton
@@ -45,7 +46,7 @@ func _ready() -> void:
 	Audio.setup_button_audio( self )
 	
 	# setup system
-	show_gear_menu()
+	show_vitals_menu()
 			
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed( "pause" ):
@@ -84,20 +85,28 @@ func hide_pause_screen() -> void:
 	pause_screen_hidden.emit()
 	
 func show_map_menu() -> void:
+	vitals.visible = false
 	gear.visible = false
 	system.visible = false
 	map.visible = true
 	
 func show_system_menu() -> void:
+	vitals.visible = false
 	gear.visible = false
 	map.visible = false
 	system.visible = true
 	
 func show_gear_menu() -> void:
+	vitals.visible = false
 	system.visible = false
 	gear.visible = true
 	map.visible = false
 	
+func show_vitals_menu() -> void:
+	vitals.visible = true
+	system.visible = false
+	gear.visible = false
+	map.visible = false
 
 func setup_system_menu() -> void:
 	main_menu_button.pressed.connect( _on_main_menu_button_pressed )

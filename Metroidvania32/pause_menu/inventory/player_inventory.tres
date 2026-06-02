@@ -2,27 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cvdaee2fhbghm" path="res://pause_menu/inventory/scripts/inventory_data.gd" id="1_c3e1l"]
 [ext_resource type="Script" uid="uid://bgjagvvkyx6nh" path="res://pause_menu/inventory/scripts/slot_data.gd" id="2_u6hcn"]
-[ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="3_u6hcn"]
-
-[sub_resource type="Resource" id="Resource_edm2y"]
-script = ExtResource("2_u6hcn")
-item_data = ExtResource("3_u6hcn")
-quantity = 30
-metadata/_custom_type_script = "uid://bgjagvvkyx6nh"
-
-[sub_resource type="Resource" id="Resource_u6hcn"]
-script = ExtResource("2_u6hcn")
-item_data = ExtResource("3_u6hcn")
-quantity = 5
-metadata/_custom_type_script = "uid://bgjagvvkyx6nh"
-
-[sub_resource type="Resource" id="Resource_845nt"]
-script = ExtResource("2_u6hcn")
-item_data = ExtResource("3_u6hcn")
-quantity = 37
-metadata/_custom_type_script = "uid://bgjagvvkyx6nh"
 
 [resource]
 script = ExtResource("1_c3e1l")
-slots = Array[ExtResource("2_u6hcn")]([SubResource("Resource_edm2y"), null, null, null, null, SubResource("Resource_u6hcn"), null, null, SubResource("Resource_845nt"), null])
+slots = Array[ExtResource("2_u6hcn")]([null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://cvdaee2fhbghm"
