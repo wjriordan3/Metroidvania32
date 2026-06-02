@@ -2,15 +2,22 @@ class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
+#region /// Signals
+signal damage_taken
+#endregion
+
 #region /// onready variables
-@onready var hero_sprite: AnimatedSprite2D = $HeroSprite
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var da_stand: CollisionShape2D = $DamageArea/DAStand
+@onready var da_crouch: CollisionShape2D = $DamageArea/DACrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
 @onready var shoot_timer := $ShootAnimation as Timer
-@onready var gun_sprite: Sprite2D = $GunSprite
-@onready var gun = gun_sprite.get_node(^"Gun") as Gun
+@onready var gun: Node2D = $Gun
+@onready var damage_area: DamageArea = %DamageArea
 #endregion
+
 
 
 #region /// export variables (used to expose variable to inspector)
@@ -20,7 +27,6 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 var current_mech: MechaUnit = null
 var current_interactable = null
 var pilot_tag := "player"
-var muzzle_position
 
 # Status Flags
 var activePlayer = true
@@ -53,19 +59,20 @@ var rotation_speed : float = 10.0
 func _ready() -> void:
 	add_to_group("player")
 	initalize_states()
-	muzzle_position = gun.position
 	Messages.back_to_title_screen.connect(queue_free)
+	damage_area.damage_taken.connect( _on_damage_taken )
 	CameraManager.set_target(self)
+	stats.health = stats.current_max_health
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "action" ):
 		Messages.player_interacted.emit( self )
-	elif event.is_action_pressed( "pause" ):
-		get_tree().paused = true # will pause any node with process set to inherit
-		var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
-		add_child( pause_menu )
-		return
+	#elif event.is_action_pressed( "pause" ):
+	#	get_tree().paused = true # will pause any node with process set to inherit
+	#	var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
+	#	add_child( pause_menu )
+	#	return
 		
 	# For testing health, remove later
 	if event is InputEventKey and event.pressed:
@@ -161,11 +168,11 @@ func update_direction():
 	
 	if prev_direction.x != direction.x:
 		if direction.x < 0: # character facing left
-			hero_sprite.flip_h = true
-			gun_sprite.flip_h = true
+			sprite.flip_h = true
+			
 		if direction.x > 0: # character facing right
-			hero_sprite.flip_h = false
-			gun_sprite.flip_h = false
+			sprite.flip_h = false
+			
 	pass
 
 func add_debug_indicator( color : Color = Color.RED ) -> void:
@@ -177,12 +184,6 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	d.queue_free()
 	pass
 
-	
-func set_muzzle_position():
-	if direction.x > 0:
-		gun.position.x = muzzle_position.x
-	elif direction.x < 0:
-		gun.position.x = -muzzle_position.x
 		
 func _exit_tree():
 	CameraManager.clear_target(self)
@@ -193,3 +194,11 @@ func will_pickup(item):
 func get_item(itemData):
 	$Inventory.get_item(itemData)
 #endregion
+
+func _on_damage_taken( attack_area : AttackArea ) -> void:
+	if current_state == current_state.death:
+		return
+	stats.take_damage(attack_area.damage)
+	damage_taken.emit()
+	print("Player took damage: ", stats.health)
+	pass

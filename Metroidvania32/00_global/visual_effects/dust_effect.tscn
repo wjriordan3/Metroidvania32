@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bu422nxeksqfu"]
+
+[ext_resource type="Texture2D" uid="uid://bbsf7jlwj4qjb" path="res://assets/FX052_nyknck/FX052_01.png" id="1_3u3rl"]
+[ext_resource type="Texture2D" uid="uid://yt8qfpxrlc53" path="res://assets/SP103_nyknck/SP103_01.png" id="1_oew7x"]
+[ext_resource type="Texture2D" uid="uid://b76rqv4gj7cys" path="res://assets/SP103_nyknck/SP103_02.png" id="2_jc7j2"]
+[ext_resource type="Texture2D" uid="uid://b4j3qbssa5c0v" path="res://assets/FX052_nyknck/FX052_02.png" id="2_xhib7"]
+[ext_resource type="Texture2D" uid="uid://iynygcyv82bb" path="res://assets/SP103_nyknck/SP103_03.png" id="3_n16h7"]
+[ext_resource type="Texture2D" uid="uid://dcfphqjqiv2n6" path="res://assets/FX052_nyknck/FX052_03.png" id="3_ov40q"]
+[ext_resource type="Texture2D" uid="uid://bqstx5g7bhv3q" path="res://assets/FX052_nyknck/FX052_04.png" id="4_7nc3w"]
+[ext_resource type="Texture2D" uid="uid://dtd5wj1kn4pbg" path="res://assets/SP103_nyknck/SP103_04.png" id="4_enxgx"]
+[ext_resource type="Script" uid="uid://bolyovof87rbr" path="res://00_global/visual_effects/dust_effect.gd" id="9_sk736"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5ko7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oew7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jc7j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n16h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_enxgx")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3u3rl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xhib7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ov40q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7nc3w")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ov40q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7nc3w")
+}],
+"loop": false,
+"name": &"land",
+"speed": 5.0
+}]
+
+[node name="DustEffect" type="AnimatedSprite2D" unique_id=418779452]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_v5ko7")
+animation = &"land"
+script = ExtResource("9_sk736")

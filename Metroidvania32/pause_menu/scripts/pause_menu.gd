@@ -1,4 +1,9 @@
-class_name PauseMenu extends CanvasLayer
+extends CanvasLayer
+
+#region /// Signals
+signal pause_screen_shown
+signal pause_screen_hidden
+#endregion
 
 #region /// On ready variables
 @onready var pause_screen: Control = %PauseScreen
@@ -17,18 +22,20 @@ class_name PauseMenu extends CanvasLayer
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sfx_slider: HSlider = %SFXSlider
 @onready var ui_slider: HSlider = %UISlider
+
+@onready var item_description: Label = $Control/PauseScreen/Gear/ItemDescription
 #endregion
 
+
 var player : Player = null
+var is_paused = false
 
 func _ready() -> void:
+	hide_pause_screen()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# grab player
-	player = get_tree().get_first_node_in_group( "player" )
-	
-	show_pause_screen()
 	setup_system_menu()
+	
 	system_nav_button.pressed.connect( show_system_menu )
 	gear_nav_button.pressed.connect( show_gear_menu )
 	map_nav_button.pressed.connect( show_map_menu )
@@ -42,9 +49,11 @@ func _ready() -> void:
 			
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed( "pause" ):
+		if is_paused == false:
+			show_pause_screen()
+		else:
+			hide_pause_screen()
 		get_viewport().set_input_as_handled()
-		get_tree().paused = false
-		queue_free()
 		
 	if pause_screen.visible == true:
 		if event.is_action_pressed("right") or event.is_action_pressed("down"):
@@ -57,12 +66,22 @@ func _on_button_pressed() -> void:
 	get_tree().paused = false
 	
 func show_pause_screen() -> void:
-	pause_screen.visible = true
+	visible = true
 	gear.visible = false
 	map.visible = false
 	system.visible = false
 	
+	is_paused = true
 	get_tree().paused = true
+	
+	pause_screen_shown.emit()
+	
+func hide_pause_screen() -> void:
+	
+	is_paused = false
+	get_tree().paused = false
+	visible = false
+	pause_screen_hidden.emit()
 	
 func show_map_menu() -> void:
 	gear.visible = false
@@ -112,7 +131,7 @@ func _on_music_slider_changed( v : float ) -> void:
 	
 func _on_sfx_slider_changed( v : float ) -> void:
 	AudioServer.set_bus_volume_linear( 3, v )
-	Audio.play_spatial_sound( Audio.ui_focus_audio, player.global_position)
+	Audio.play_spatial_sound( Audio.ui_select_audio, PlayerManager.player.global_position)
 	# save to settings
 	Config.save_configuration()
 	pass
@@ -122,4 +141,8 @@ func _on_ui_slider_changed( v : float ) -> void:
 	Audio.ui_focus_change()
 	# save to settings
 	Config.save_configuration()
+	pass
+	
+func update_item_description( new_text : String ) -> void:
+	item_description.text = new_text
 	pass

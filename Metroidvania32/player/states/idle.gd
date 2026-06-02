@@ -6,7 +6,7 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	player.hero_sprite.play( "idle" )
+	player.sprite.play( "idle" )
 	#player.animation_player.play( "idle" )
 	
 	pass
@@ -35,7 +35,7 @@ func physics_process( _delta: float) -> PlayerState:
 		
 	player.is_shooting = false
 	if Input.is_action_just_pressed("fire"):
-		player.is_shooting = player.gun.shoot(player.gun_sprite.scale.x)
+		player.is_shooting = true 
 		return attack
 		
 	return next_state 

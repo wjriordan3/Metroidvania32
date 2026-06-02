@@ -6,6 +6,7 @@ class_name Gun extends Marker2D
 const BULLET_VELOCITY = 850.0
 const BULLET_SCENE = preload("res://combat/bullet.tscn")
 
+@onready var gun_sprite: Sprite2D = $".."
 @onready var sound_shoot := $Shoot as AudioStreamPlayer2D
 @onready var timer := $Cooldown as Timer 
 
@@ -13,7 +14,7 @@ var canFire = false
 
 func _process(_delta):
 	if canFire:
-		look_at(get_global_mouse_position())
+		gun_sprite.look_at(get_global_mouse_position())
 		
 		if Input.is_action_just_pressed("fire"):
 			var projectile_instance = BULLET_SCENE.instantiate()

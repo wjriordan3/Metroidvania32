@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dauhr21xl8kwi"]
+
+[ext_resource type="Shader" uid="uid://dj3fd0hihc0vj" path="res://assets/shaders/silhouette.gdshader" id="1_ml108"]
+[ext_resource type="Script" uid="uid://basr3g8hvww0j" path="res://general/scripts/silhouette_sprite.gd" id="2_d7jua"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjnb0"]
+shader = ExtResource("1_ml108")
+shader_parameter/silhouette_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ml108"]
+
+[node name="SilhouetteSprite" type="AnimatedSprite2D" unique_id=959038842]
+z_index = 100
+material = SubResource("ShaderMaterial_hjnb0")
+sprite_frames = SubResource("SpriteFrames_ml108")
+script = ExtResource("2_d7jua")
