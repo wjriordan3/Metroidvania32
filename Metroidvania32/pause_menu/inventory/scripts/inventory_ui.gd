@@ -36,7 +36,7 @@ func _ready() -> void:
 		"EquipmentCore": equipment_core
 	}
 	
-	_refresh_ui()
+	#_refresh_ui()
 	pass
 	
 func clear_inventory() -> void:
