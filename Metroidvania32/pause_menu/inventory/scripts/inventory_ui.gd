@@ -2,6 +2,8 @@ class_name InventoryUI extends Control
 
 const INVENTORY_SLOT = preload("res://pause_menu/inventory/inventory_slot.tscn")
 
+var focus_index : int = 0
+
 @export var data : InventoryData
 
 @onready var pause_menu: CanvasLayer = $"../../../../.."
@@ -16,16 +18,12 @@ const INVENTORY_SLOT = preload("res://pause_menu/inventory/inventory_slot.tscn")
 
 var inventoryDict = {}
 
-var items = ["res://inventory/itemresources/Drill_LArm.tres", "res://inventory/itemresources/Gun_RArm.tres", "res://inventory/itemresources/PropellerLegs.tres"]
-
-@export var scrap = 150
-signal add_scrap(scrap: int)
-signal new_item(item: Object)
-
 func _ready() -> void:
 	pause_menu.pause_screen_shown.connect( update_inventory )
 	pause_menu.pause_screen_hidden.connect( clear_inventory )
 	clear_inventory()
+	
+	data.changed.connect( on_inventory_changed )
 	
 	inventoryDict = {
 		"InventorySlots": inventory_slots,
@@ -43,14 +41,30 @@ func clear_inventory() -> void:
 	for c in get_children():
 		c.queue_free()
 		
-func update_inventory() -> void:
+func update_inventory( i : int = 0 ) -> void:
 	for s in data.slots:
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child( new_slot )
 		new_slot.slot_data = s
-		
-	get_child( 0 ).grab_focus()
+		new_slot.focus_entered.connect( item_focused ) 
 	
+	await get_tree().process_frame
+	get_child( i ).grab_focus()	
+	
+	
+func on_inventory_changed() -> void:
+	var i = focus_index
+	clear_inventory()
+	update_inventory( i )
+	pass
+	
+func item_focused() -> void:
+	for i in get_child_count():
+		if get_child(i).has_focus():
+			focus_index = i
+			return
+	pass
+
 #region Drag Drop Functions
 func _get_drag_data(at_position):
 	var dragSlotNode = get_slot_node_at_position(at_position)
@@ -103,13 +117,9 @@ func _get_next_empty_bag_slot():
 			var slotNumber = int(slot.name.split("Slot")[1])
 			return slotNumber
 
-func get_item(itemData):
-	items.append(itemData)
-	# Need to refresh UI upon getting item
-	#_refresh_ui()
-
+# TODO: update with new inventory data setup
 func _refresh_ui():
-	for item in items:
+	for item in data:
 		print(item)
 		item = load(item)
 
@@ -123,6 +133,3 @@ func _refresh_ui():
 			if slotNumber == inventoryPosition:
 				slot.set_new_data(item)
 				
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

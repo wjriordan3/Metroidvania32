@@ -1,11 +1,14 @@
-# Keeps access to player once instantiated
+# Keeps access to player/mecha once instantiated
 extends Node
 
 const PLAYER = preload("res://player/player.tscn")
 const INVENTORY_DATA : InventoryData = preload("res://pause_menu/inventory/player_inventory.tres")
+const MECHA_UNIT = preload("res://mecha/mecha_unit.tscn")
 
 var player : Player
+var mecha : MechaUnit
 var player_spawned : bool = false
+var mecha_spawned : bool = false
 
 func _ready() -> void:
 	add_player_instance()
@@ -15,6 +18,10 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child( player )
+	pass
+	
+func add_mecha_instance() -> void:
+	mecha = MECHA_UNIT.instantiate()
 	pass
 	
 func set_player_position( _new_pos : Vector2 ) -> void:

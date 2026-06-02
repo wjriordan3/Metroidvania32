@@ -7,6 +7,7 @@ const SLOTS : Array[ String ] = [
 
 var current_slot : int = 0
 var save_data : Dictionary
+var inventory : Array = []
 var discovered_areas : Array = []
 var persistent_data : Dictionary = {}
 
@@ -45,6 +46,7 @@ func create_new_game_save( slot : int ) -> void:
 		# list out unlockable abilities here
 		"double_jump" : false, 
 		# -------------------
+		"inventory" : inventory,
 		"discovered_areas" : discovered_areas,
 		"persistent_data" : persistent_data,
 	}
@@ -58,8 +60,8 @@ func create_new_game_save( slot : int ) -> void:
 	
 func save_game() -> void:
 	print("Trying to save the game...")
-	var player : Player = get_tree().get_first_node_in_group( "player" )
-	
+	var player : Player = PlayerManager.player
+	update_inventory_data()
 	# Update Save Data
 	save_data = {
 		"scene_path" : SceneManager.current_scene_uid,
@@ -70,6 +72,7 @@ func save_game() -> void:
 		# list out unlockable abilities here
 		"double_jump" : player.double_jump, 
 		# -------------------
+		"inventory" : inventory,
 		"discovered_areas" : discovered_areas,
 		"persistent_data" : persistent_data,
 	}
@@ -87,6 +90,8 @@ func load_game( slot : int ) -> void:
 	var save_file = FileAccess.open( get_file_name(current_slot), FileAccess.READ )
 	save_data = JSON.parse_string( save_file.get_line() )
 	
+	#inventory = save_data.get( "inventory", [])
+	PlayerManager.INVENTORY_DATA.parse_save_data(save_data.inventory)
 	persistent_data = save_data.get( "persistent_data", {} )
 	discovered_areas = save_data.get( "discovered_areas", [])
 	var scene_path : String = save_data.get( "scene_path", default_scene_uid )
@@ -131,3 +136,6 @@ func _on_scene_entered( scene_uid : String ) -> void:
 		discovered_areas.append( scene_uid )
 	pass
 	
+func update_inventory_data() -> void:
+	inventory = PlayerManager.INVENTORY_DATA.get_save_data()
+	pass

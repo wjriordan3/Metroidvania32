@@ -1,4 +1,4 @@
-extends Node
+class_name LimbHealth extends Node
 
 # Array of limb health nodes
 @export var limb_healths = []

@@ -188,6 +188,98 @@ texture = ExtResource("2_rd7dy")
 expand_mode = 2
 stretch_mode = 5
 
+[node name="LoadoutContainer" type="PanelContainer" parent="Control/PauseScreen/Vitals" unique_id=1039758977]
+layout_mode = 1
+offset_left = 130.0
+offset_top = 25.0
+offset_right = 507.0
+offset_bottom = 262.0
+
+[node name="EquipmentLeftArm" type="GridContainer" parent="Control/PauseScreen/Vitals/LoadoutContainer" unique_id=125439206]
+layout_mode = 2
+
+[node name="Slot1" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentLeftArm" unique_id=435637463 instance=ExtResource("8_cux0y")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentLeftArm/Slot1" unique_id=1063462621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "L. LEG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipmentRightArm" type="GridContainer" parent="Control/PauseScreen/Vitals/LoadoutContainer" unique_id=1692639623]
+layout_mode = 2
+
+[node name="Slot1" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentRightArm" unique_id=1520714061 instance=ExtResource("8_cux0y")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentRightArm/Slot1" unique_id=243241994]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "L. ARM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipmentCore" type="GridContainer" parent="Control/PauseScreen/Vitals/LoadoutContainer" unique_id=937735994]
+layout_mode = 2
+
+[node name="Slot1" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentCore" unique_id=88341814 instance=ExtResource("8_cux0y")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentCore/Slot1" unique_id=1574173460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipmentLeftLeg" type="GridContainer" parent="Control/PauseScreen/Vitals/LoadoutContainer" unique_id=2076746367]
+layout_mode = 2
+
+[node name="Slot1" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentLeftLeg" unique_id=1616618040 instance=ExtResource("8_cux0y")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentLeftLeg/Slot1" unique_id=510286556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "R. ARM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipmentRightLeg" type="GridContainer" parent="Control/PauseScreen/Vitals/LoadoutContainer" unique_id=257983714]
+layout_mode = 2
+
+[node name="Slot1" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentRightLeg" unique_id=1787065662 instance=ExtResource("8_cux0y")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PauseScreen/Vitals/LoadoutContainer/EquipmentRightLeg/Slot1" unique_id=73741677]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "R. LEG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Map" type="Control" parent="Control/PauseScreen" unique_id=1539135347]
 unique_name_in_owner = true
 visible = false
@@ -387,7 +479,7 @@ alignment = 1
 [node name="EquipmentLeftArm" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=252253277]
 layout_mode = 2
 
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftArm" unique_id=435637463 instance=ExtResource("8_cux0y")]
+[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftArm" unique_id=2144738700 instance=ExtResource("8_cux0y")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftArm/Slot1" unique_id=2035520987]

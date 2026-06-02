@@ -13,12 +13,15 @@ signal health_changed(health)
 
 func _ready() -> void:
 	print("Player HUD added to game")
-	# connect to message bus
-	Messages.player_health_changed.connect ( update_health_bar )
 	
-	#health_bar.initialize(player_health.max_health)
-	#scrap_counter.update_counter(player_inventory.scrap)
-	#limb_display.initialize(limb_health.limb_healths)
+	Messages.player_health_changed.connect ( update_health_bar )
+	Messages.item_pickup.connect(_on_inventory_new_item )
+	PlayerManager.INVENTORY_DATA.add_scrap.connect( _on_inventory_add_scrap )
+	
+	health_bar.initialize(PlayerManager.player.stats.current_max_health)
+	health_bar.update_health(PlayerManager.player.stats.health)
+	scrap_counter.update_counter(PlayerManager.INVENTORY_DATA.scrap)
+	#limb_display.initialize(PlayerManager.mecha.limb_health.limb_healths)
 	
 	game_over.visible = false
 	load_button.pressed.connect( _on_load_pressed )
@@ -65,8 +68,7 @@ func clear_game_over() -> void:
 	
 	await SceneManager.scene_entered
 	game_over.visible = false
-	var player : Player = get_tree().get_first_node_in_group( "player" )
-	player.queue_free()
+	PlayerManager.player.queue_free()
 	pass
 	
 func _on_load_pressed() -> void:
@@ -80,13 +82,15 @@ func _on_quit_pressed() -> void:
 	pass
 	
 func _on_inventory_add_scrap(scrap: int) -> void:
-	$ScrapCounter.update_counter(scrap)
+	$Interface/ScrapCounter.update_counter(scrap)
 	
-func _on_inventory_new_item(item: Object) -> void:
-	$Notification.item_notif(item.itemIcon, item.itemName)
+func _on_inventory_new_item(item: ItemData) -> void:
+	if item.name == "Scrap":
+		return
+	$Interface/Notification.item_notif(item.texture, item.name)
 
 func _on_limb_health_limb_health_changed(limb: Variant, health: int) -> void:
-	$LimbDisplay.update_health(limb, health)
+	$Interface/LimbDisplay.update_health(limb, health)
 
 
 	
