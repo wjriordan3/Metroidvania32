@@ -26,7 +26,6 @@ Dialogic="*uid://ds2q0uclmolvu"
 CameraManager="*uid://bwsuuyy8rrud1"
 SceneManager="*uid://bhmrbfr4hiigg"
 SaveManager="*uid://ce6gnlqwk3fqp"
-PlayerManager="*uid://3iib1u3w7wcc"
 PromptManager="*uid://dakodwb5spj10"
 Messages="*uid://b6m52dc2ybu5t"
 PlayerHUD="*uid://mk2d6qnssuam"
@@ -36,6 +35,7 @@ DamageNum="*uid://kjljnlxow5sk"
 Audio="*uid://dcm4516cr4j1o"
 VisualEffects="*uid://c4s5id8xau14p"
 Config="*uid://cmf2mvylic52w"
+PlayerManager="*uid://depgo30v4d2ib"
 
 [dialogic]
 
