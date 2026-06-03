@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://chjp1fbkaxs05" path="res://combat/bullet.gd" id="1_8hw8y"]
 [ext_resource type="Texture2D" uid="uid://bmajdduueu4i5" path="res://assets/placeholder/bullet.png" id="1_mb61d"]
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="3_srq83"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hw8y"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8qsy"]
+radius = 4.0
+height = 10.0
 
 [node name="Bullet" type="Area2D" unique_id=2057301925]
 script = ExtResource("1_8hw8y")
@@ -14,4 +17,17 @@ region_enabled = true
 region_rect = Rect2(11, 11, 48, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=626189610]
-shape = SubResource("RectangleShape2D_8hw8y")
+rotation = 1.5707964
+scale = Vector2(-0.7736017, 1.0508804)
+shape = SubResource("CapsuleShape2D_t8qsy")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=191192291]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource("3_srq83")
+metadata/_custom_type_script = "uid://buwg2sy4gk7ge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1484692047]
+rotation = 1.5707964
+scale = Vector2(0.7760791, 1.0495154)
+shape = SubResource("CapsuleShape2D_t8qsy")

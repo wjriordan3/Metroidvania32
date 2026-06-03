@@ -2,9 +2,9 @@ class_name Bullet extends Area2D
 
 var FPS = Engine.get_frames_per_second()
 var direction = 1;
-var speed_dir = Vector2(0, 0)
-var speed = 20
-var time = 13
+#var speed_dir = Vector2(0, 0)
+var speed = 10
+var time = 1
 
 func _ready():
 	if FPS == 60:
@@ -19,6 +19,7 @@ var delete_this = false
 var enemy_hit = false
 
 func _physics_process(_delta):
+	position += transform.x * speed * time
 	for enemy in self.get_overlapping_bodies():
 		if not delete_this:
 			pass
