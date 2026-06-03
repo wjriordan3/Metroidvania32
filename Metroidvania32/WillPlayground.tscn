@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://bw3voqv7yomfc"]
 
-[ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="1_fe3x3"]
-[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="2_lqifc"]
 [ext_resource type="PackedScene" uid="uid://gongolf88mbu" path="res://level/level.tscn" id="3_nhluo"]
-[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="4_nhluo"]
+[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/simple_enemy.tscn" id="4_nhluo"]
 [ext_resource type="Script" uid="uid://i8dipvpvfqsb" path="res://general/player_spawn/player_spawn.gd" id="5_fe3x3"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
-
-[node name="Scrap" parent="." unique_id=1737353739 instance=ExtResource("1_fe3x3")]
-position = Vector2(843, 515)
-itemName = "Scrap"
-itemIcon = ExtResource("2_lqifc")
 
 [node name="Level" parent="." unique_id=548619226 instance=ExtResource("3_nhluo")]
 

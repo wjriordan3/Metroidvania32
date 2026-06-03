@@ -1,4 +1,4 @@
-class_name Enemy extends CharacterBody2D
+class_name SimpleEnemy extends CharacterBody2D
 
 
 @export var health : float = 3
