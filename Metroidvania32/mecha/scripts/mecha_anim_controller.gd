@@ -22,7 +22,7 @@ func update(delta: float) -> void:
 		return
 		
 	anim_time += delta * anim_speed * speed_multiplier
-	print("Current Anim_Time: ", anim_time)
+	#print("Current Anim_Time: ", anim_time)
 	
 	
 func play(anim: StringName, loop : bool = true) -> void:

@@ -15,8 +15,7 @@ func enter() -> void:
 	shot_timer = 0.0	
 	
 	# add mech hooks below
-	# mecha.set_drill_active(true)
-	# mecha.play_animation("drill")
+	# mecha.play_animation("gun_fire")
 	
 func exit() -> void:
 	# mecha.set_drill_active(false)
