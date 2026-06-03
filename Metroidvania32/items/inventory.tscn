@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://bxwg8rgoko70m"]
+
+[ext_resource type="Script" uid="uid://b2blbi83pnsjn" path="res://items/inventory.gd" id="1_pohso"]
+[ext_resource type="Texture2D" uid="uid://ctbr6i1bys1nv" path="res://ui/MechaInvConcept.png" id="2_f8i2h"]
+[ext_resource type="PackedScene" uid="uid://laf0uncnodbs" path="res://items/slotNode.tscn" id="3_wbsyq"]
+[ext_resource type="Script" uid="uid://bpwtf078stmpc" path="res://items/slotNode.gd" id="4_rsmrt"]
+
+[node name="Inventory" type="Control" unique_id=334559857]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pohso")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=12580897]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 107.0
+offset_right = 1009.0
+offset_bottom = 712.0
+texture = ExtResource("2_f8i2h")
+
+[node name="BagSlots" type="GridContainer" parent="TextureRect" unique_id=1336542550]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 404.0
+offset_right = 517.0
+offset_bottom = 553.0
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 19
+columns = 6
+
+[node name="Slot1" parent="TextureRect/BagSlots" unique_id=435637463 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot2" parent="TextureRect/BagSlots" unique_id=1182207213 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot3" parent="TextureRect/BagSlots" unique_id=2085648904 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot4" parent="TextureRect/BagSlots" unique_id=1329400751 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot5" parent="TextureRect/BagSlots" unique_id=469713175 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot6" parent="TextureRect/BagSlots" unique_id=1538245205 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot7" parent="TextureRect/BagSlots" unique_id=1171776186 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot8" parent="TextureRect/BagSlots" unique_id=1634952736 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot9" parent="TextureRect/BagSlots" unique_id=1864857476 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot10" parent="TextureRect/BagSlots" unique_id=816327675 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot11" parent="TextureRect/BagSlots" unique_id=100439571 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="Slot12" parent="TextureRect/BagSlots" unique_id=146174957 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+script = ExtResource("4_rsmrt")
+
+[node name="EquipmentLeftArm" type="GridContainer" parent="TextureRect" unique_id=1833416601]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 94.0
+offset_right = 174.0
+offset_bottom = 198.0
+
+[node name="Slot1" parent="TextureRect/EquipmentLeftArm" unique_id=1974667005 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+
+[node name="EquipmentRightArm" type="GridContainer" parent="TextureRect" unique_id=1007472635]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 87.0
+offset_right = 508.0
+offset_bottom = 191.0
+
+[node name="Slot1" parent="TextureRect/EquipmentRightArm" unique_id=734341760 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+
+[node name="EquipmentCore" type="GridContainer" parent="TextureRect" unique_id=1532560301]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 92.0
+offset_right = 336.0
+offset_bottom = 196.0
+
+[node name="Slot1" parent="TextureRect/EquipmentCore" unique_id=1485782407 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+
+[node name="EquipmentLeftLeg" type="GridContainer" parent="TextureRect" unique_id=921027978]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 246.0
+offset_right = 245.0
+offset_bottom = 350.0
+
+[node name="Slot1" parent="TextureRect/EquipmentLeftLeg" unique_id=1668937979 instance=ExtResource("3_wbsyq")]
+layout_mode = 2
+
+[node name="EquipmentRightLeg" type="GridContainer" parent="TextureRect" unique_id=1972203450]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 254.0
+offset_right = 431.0
+offset_bottom = 358.0
+
+[node name="Slot1" parent="TextureRect/EquipmentRightLeg" unique_id=292190287 instance=ExtResource("3_wbsyq")]
+layout_mode = 2

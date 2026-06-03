@@ -1,0 +1,53 @@
+[gd_scene format=4 uid="uid://bu33vmq77g23t"]
+
+[ext_resource type="Script" uid="uid://bb28nwnywj8tm" path="res://general/scripts/level_bounds.gd" id="1_if2c8"]
+[ext_resource type="PackedScene" uid="uid://bjtgr6n8j2te0" path="res://general/save_point/save_point.tscn" id="2_yhmok"]
+[ext_resource type="TileSet" uid="uid://btdy1ysybr8hg" path="res://level/tilesets/02_security.tres" id="3_x7hqx"]
+[ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="4_kdqpt"]
+[ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="5_jksj6"]
+[ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="6_xox3w"]
+[ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_no5n3"]
+[ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_fra82"]
+[ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_g88xd"]
+[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_wuamj"]
+
+[sub_resource type="Resource" id="Resource_if2c8"]
+resource_local_to_scene = true
+script = ExtResource("8_fra82")
+metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
+
+[node name="01" type="Node2D" unique_id=1879023882]
+z_index = 256
+
+[node name="LevelBounds" type="Node2D" parent="." unique_id=2007191477]
+z_index = 256
+script = ExtResource("1_if2c8")
+width = 1504
+metadata/_custom_type_script = "uid://bb28nwnywj8tm"
+
+[node name="SavePoint" parent="." unique_id=69750532 instance=ExtResource("2_yhmok")]
+position = Vector2(363, 320)
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1717276369]
+tile_map_data = PackedByteArray("AAAAAAUAAAALAAIAAAAAAAsAAAALAAIAAAABAAsAAAALAAIAAAATAAoAAAALAAIAAAACAAsAAAALAAIAAAADAAsAAAALAAIAAAAEAAsAAAALAAIAAAAFAAsAAAALAAIAAAAGAAsAAAALAAIAAAAHAAsAAAALAAIAAAAIAAsAAAALAAIAAAAJAAsAAAALAAIAAAAKAAsAAAALAAIAAAALAAsAAAALAAIAAAAMAAsAAAALAAIAAAANAAsAAAALAAIAAAAOAAsAAAALAAIAAAAPAAsAAAALAAIAAAAQAAsAAAALAAIAAAARAAsAAAALAAIAAAASAAsAAAALAAIAAAATAAsAAAALAAIAAAATAAAAAAALAAIAAAABAAUAAAALAAIAAAACAAUAAAALAAIAAAADAAUAAAALAAIAAAAPAAUAAAALAAIAAAAQAAUAAAALAAIAAAARAAUAAAALAAIAAAASAAUAAAALAAIAAAATAAUAAAALAAIAAAATAAYAAAAEAAAAAAATAAcAAAAEAAEAAAATAAgAAAAEAAEAAAATAAkAAAAEAAIAAAATAAEAAAALAAIAAAATAAIAAAALAAIAAAAEAAUAAAALAAIAAAAFAAUAAAALAAIAAAAGAAUAAAALAAIAAAAHAAUAAAALAAIAAAAIAAUAAAALAAIAAAAJAAUAAAALAAIAAAAKAAUAAAALAAIAAAALAAUAAAALAAIAAAAMAAUAAAALAAIAAAANAAUAAAALAAIAAAAOAAUAAAALAAIAAAAAAAoAAAALAAIAAAABAAoAAAALAAIAAAACAAoAAAALAAIAAAADAAoAAAALAAIAAAAEAAoAAAALAAIAAAAFAAoAAAALAAIAAAAGAAoAAAALAAIAAAAHAAoAAAALAAIAAAAIAAoAAAALAAIAAAAJAAoAAAALAAIAAAAKAAoAAAALAAIAAAALAAoAAAALAAIAAAAMAAoAAAALAAIAAAANAAoAAAALAAIAAAAOAAoAAAALAAIAAAAPAAoAAAALAAIAAAAQAAoAAAALAAIAAAARAAoAAAALAAIAAAASAAoAAAALAAIAAAASAAQAAAALAAIAAAATAAQAAAALAAIAAAARAAQAAAAFAAEAAAAAAAQAAAALAAIAAAA=")
+tile_set = ExtResource("3_x7hqx")
+
+[node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_kdqpt")]
+
+[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_jksj6")]
+position = Vector2(1504, 320)
+size = 4
+location = 1
+target_level = "uid://dm4pd5nxnrnf3"
+
+[node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_xox3w")]
+position = Vector2(83, 285)
+
+[node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_no5n3")]
+position = Vector2(224, 256)
+stats = SubResource("Resource_if2c8")
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
+script = ExtResource("9_g88xd")
+track = ExtResource("10_wuamj")
+metadata/_custom_type_script = "uid://cjhdm1eoibi5c"

@@ -2,8 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://b6m3dhp60sgnd" path="res://level/tilesets/scifimapset.tres" id="1_46faf"]
 [ext_resource type="PackedScene" uid="uid://ddabc1fjxyc28" path="res://player/player_mecha.tscn" id="1_80c3a"]
-[ext_resource type="PackedScene" uid="uid://dpxme8xin1hhh" path="res://inventory/item.tscn" id="2_1cwr0"]
-[ext_resource type="Texture2D" uid="uid://cpm1b2fhieg1k" path="res://player/states/state.svg" id="2_5ejyp"]
 [ext_resource type="Script" uid="uid://bb28nwnywj8tm" path="res://general/scripts/level_bounds.gd" id="3_threo"]
 [ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="4_3px5j"]
 [ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="5_3321n"]
@@ -12,12 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/enemy.tscn" id="12_q63b2"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
-
-[node name="Item" parent="." unique_id=1737353739 instance=ExtResource("2_1cwr0")]
-position = Vector2(500, 250)
-collision_mask = 36
-itemName = "Test Item"
-itemIcon = ExtResource("2_5ejyp")
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1589040144]
 z_index = 256

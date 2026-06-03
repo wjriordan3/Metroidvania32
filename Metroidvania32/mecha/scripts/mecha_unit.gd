@@ -40,6 +40,8 @@ var equipped_parts := {
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
 
+@onready var limb_health: LimbHealth = $LimbHealth
+
 @onready var idle_state: MechaState = $States/Idle
 @onready var deactivate_state : MechaState = $States/Deactivate
 #endregion

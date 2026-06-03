@@ -15,6 +15,8 @@ func take_damage( area : Area2D ) -> void:
 	elif area is HazardArea:
 		damage_taken.emit( area )
 		print( "Hazard damage taken", area.damage )
+	if audio:
+		Audio.play_spatial_sound ( audio, global_position )
 	pass
 	
 

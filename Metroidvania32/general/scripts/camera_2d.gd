@@ -2,7 +2,7 @@
 extends Camera2D
 
 @onready var screen_size: Vector2 = get_viewport_rect().size
-@onready var player_node: Node2D
+@onready var player_node: Player
 @onready var level_bounds: LevelBounds
 
 var level_rect: Rect2
@@ -63,7 +63,7 @@ func _on_shake_requested(amount: float, duration: float):
 	CameraManager.shake_duration = duration
 	
 func find_player():
-	player_node = get_tree().get_first_node_in_group("player")
+	player_node = PlayerManager.player
 	
 func find_level_bounds():
 	level_bounds = get_tree().get_first_node_in_group("level_bounds")

@@ -7,8 +7,9 @@ func init() -> void:
 	
 # What happens when we enter this state?
 func enter() -> void:
+	VisualEffects.jump_dust( player.one_way_platform_shapecast.global_position )
 	# Play animation here
-	player.hero_sprite.play( "jump" )
+	player.sprite.play( "jump" )
 	#player.animation_player.play( "jump" )
 	#player.animation_player.pause() 
 	#player.add_debug_indicator( Color.LIME_GREEN )

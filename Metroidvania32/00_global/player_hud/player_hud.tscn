@@ -13,6 +13,67 @@ mouse_filter = 2
 [node name="Notification" parent="Interface" index="0" unique_id=1639322358]
 visible = false
 
+[node name="GameOver" type="Control" parent="Interface" unique_id=714758942]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GameOver" unique_id=396784926]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.58431375)
+
+[node name="Label" type="Label" parent="Interface/GameOver" unique_id=662630731]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -9.0
+offset_right = 30.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/GameOver" unique_id=497232241]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26200002
+anchor_top = 0.62200004
+anchor_right = 0.73700005
+anchor_bottom = 0.73300004
+offset_left = 132.31998
+offset_top = 0.07998657
+offset_right = -131.68002
+offset_bottom = 0.11999512
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="LoadButton" type="Button" parent="Interface/GameOver/HBoxContainer" unique_id=759425016]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Load Last Save"
+
+[node name="QuitButton" type="Button" parent="Interface/GameOver/HBoxContainer" unique_id=1461621745]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Quit to Title"
+
 [editable path="Interface"]
 [editable path="Interface/HealthBar"]
 [editable path="Interface/HealthBar/Counter"]
