@@ -3,14 +3,16 @@ class_name MechaAnimController extends Node
 var current_anim : StringName = "idle"
 
 var anim_time : float = 0.0
-var anim_speed : float = 6.0
+var anim_speed : float = 5.0
 var speed_multiplier : float = 1.0 # could use for slower mechs?
+var looping : bool = true
 
 var paused: bool = false
 
 var hitstop_timer : float = 0.0
 
 func update(delta: float) -> void:
+	#print("delta=", delta,"\npaused=", paused, "\nhitstop=", hitstop_timer)
 	if paused:
 		return
 		
@@ -20,13 +22,21 @@ func update(delta: float) -> void:
 		return
 		
 	anim_time += delta * anim_speed * speed_multiplier
+	print("Current Anim_Time: ", anim_time)
 	
-func play(anim: StringName) -> void:
+	
+func play(anim: StringName, loop : bool = true) -> void:
+	resume()
+	#print("animation: ", anim)
 	if current_anim == anim:
 		return
-
+		
+	#print("playing: ", anim, " at ", Time.get_ticks_msec())
+	
 	current_anim = anim
+	looping = loop
 	anim_time = 0.0
+	
 	
 func pause() -> void:
 	paused = true
@@ -49,10 +59,19 @@ func reset() -> void:
 func get_frame(frame_count: int) -> int:
 	if frame_count <= 0:
 		return 0
-	return int(anim_time) % frame_count
+		
+	var frame := int(anim_time)
+	
+	if looping:
+		return frame % frame_count
+		
+	return min(frame, frame_count - 1)
 	
 func is_playing(anim: StringName) -> bool:
 	return current_anim == anim
+	
+func is_anim_finished(frame_count : int ) -> bool:
+	return !looping and int(anim_time) >= frame_count
 	
 func set_speed( mult: float ) -> void:
 	speed_multiplier = max(mult, 0.0)

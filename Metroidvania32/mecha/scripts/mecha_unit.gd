@@ -14,13 +14,6 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 	MechLoadout.LimbSlot.RIGHT_LEG: $RightLeg
 }
 
-#func apply_loadout( l : MechLoadout ):
-	#equip_slot(LimbSlot.CORE, l.core)
-	#equip_slot(LimbSlot.LEFT_ARM, l.left_arm)
-	#equip_slot(LimbSlot.RIGHT_ARM, l.right_arm)
-	#equip_slot(LimbSlot.LEFT_LEG, l.left_leg)
-	#equip_slot(LimbSlot.RIGHT_LEG, l.right_leg)
-
 func refresh_loadout_visuals():
 	for slot in limb_sprites:
 		var sprite : AnimatedSprite2D = limb_sprites[slot]
@@ -38,7 +31,6 @@ func equip_part(part : MechPart):
 		
 func update_mech_rendering():
 	for slot in limb_sprites.keys():
-
 		var sprite: AnimatedSprite2D = limb_sprites[slot]
 		var eq: EquippedPart = loadout.get_equipped(slot)
 
@@ -65,7 +57,7 @@ func update_mech_rendering():
 		_apply_synced_frame(sprite, mapped)
 
 func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
-
+	
 	if !sprite.sprite_frames.has_animation(anim_name):
 		return
 
@@ -75,21 +67,12 @@ func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
 	var frame := anim_ctrl.get_frame(frame_count)
 
 	sprite.frame = frame
+	
 
 func apply_loadout(l: MechLoadout):
 	print("applying mech loadout")
 	l.rebuild_runtime()
 	update_mech_rendering()
-	#if l.core:
-	#	loadout.equip_part(l.core)
-	#if l.left_arm:
-	#	loadout.equip_part(l.left_arm)
-	#if l.right_arm:
-	#	loadout.equip_part(l.right_arm)
-	#if l.left_leg:
-	#	loadout.equip_part(l.left_leg)
-	#if l.right_leg:
-	#	loadout.equip_part(l.right_leg)
 		
 		
 @onready var core: AnimatedSprite2D = $Core
@@ -108,24 +91,6 @@ func apply_loadout(l: MechLoadout):
 
 @onready var idle_state: MechaState = $States/Idle
 @onready var deactivate_state : MechaState = $States/Deactivate
-#endregion
-
-#region Animation
-func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):	
-	core.play(coreAnim)
-	left_arm.play(leftArmAnim)
-	left_leg.play(leftLegAnim)
-	right_arm.play(rightArmAnim)
-	right_leg.play(rightLegAnim)
-	
-	
-func mech_animate_pause():
-	core.pause()
-	left_arm.pause()
-	left_leg.pause()
-	right_arm.pause()
-	right_leg.pause()
-	
 #endregion
 
 #region /// export variables (used to expose variable to inspector)
@@ -162,7 +127,6 @@ var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
-	print("test warning")
 	if loadout == null:
 		print("MechaUnit has no loadout assigned!")
 		return
@@ -184,6 +148,7 @@ func _process( _delta: float) -> void:
 	update_direction()
 	
 	anim_ctrl.update(_delta)
+	
 	change_state( current_state.process( _delta ) )
 	update_mech_rendering()
 	pass
@@ -289,7 +254,7 @@ func _control_mech(pilot):
 	change_state(idle_state) # TODO: Change to activate state
 	
 	# Assign player to pilot
-	active_pilot = pilot
+	set_pilot(pilot)
 	# Hide player
 	active_pilot.visible = false
 	active_pilot.process_mode = Node.PROCESS_MODE_DISABLED

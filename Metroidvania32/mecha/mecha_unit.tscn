@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ky517mlsqfg5"]
 
 [ext_resource type="Script" uid="uid://bnlaqw3gccw5e" path="res://mecha/scripts/mecha_unit.gd" id="1_sd0ak"]
-[ext_resource type="Resource" uid="uid://bpmnjscj44cfd" path="res://mecha/loadouts/standard_drill_arm.tres" id="2_0p4g1"]
+[ext_resource type="Resource" uid="uid://cajnpdbqxn4x4" path="res://mecha/loadouts/standard_loadout.tres" id="2_0p4g1"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="2_tjcg1"]
 [ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://mecha/states/m_idle.gd" id="3_tjcg1"]
 [ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://mecha/states/m_run.gd" id="4_lpl13"]
@@ -82,21 +82,20 @@ sprite_frames = ExtResource("14_i745k")
 animation = &"standard_idle"
 speed_scale = 2.0
 
-[node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
-sprite_frames = ExtResource("15_st227")
-animation = &"standard_idle"
-frame_progress = 0.5840357
-speed_scale = 2.0
-
 [node name="LeftArm" type="AnimatedSprite2D" parent="." unique_id=2086251306]
 sprite_frames = ExtResource("16_7b33o")
 animation = &"standard_idle"
-frame_progress = 0.6899557
+speed_scale = 2.0
+
+[node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
+sprite_frames = ExtResource("15_st227")
+animation = &"standard_idle"
 speed_scale = 2.0
 
 [node name="Core" type="AnimatedSprite2D" parent="." unique_id=778736296]
 sprite_frames = ExtResource("17_onqfb")
 animation = &"standard_idle"
+frame_progress = 0.85419077
 speed_scale = 2.0
 
 [node name="RightArm" type="AnimatedSprite2D" parent="." unique_id=327693266]

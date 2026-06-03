@@ -16,9 +16,9 @@ signal damage_taken
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var gun: Node2D = $Gun
 @onready var damage_area: DamageArea = %DamageArea
+@onready var ceiling_ray_cast_2d: RayCast2D = $CeilingRayCast2D
+
 #endregion
-
-
 
 #region /// export variables (used to expose variable to inspector)
 @export var stats : Stats
@@ -157,6 +157,12 @@ func change_state( new_state : PlayerState ) -> void:
 func is_in_mech() -> bool:
 	return current_mech != null	
 
+func is_climb_ceiling():
+	return ceiling_ray_cast_2d.is_colliding()
+	
+func release_climb_ceiling():
+	ceiling_ray_cast_2d.enabled = false
+
 func update_direction():
 	var prev_direction : Vector2 = direction 
 	# negative x is left, positive x is right, negative y is up, positive y is down
@@ -189,10 +195,10 @@ func _exit_tree():
 	CameraManager.clear_target(self)
 	
 #region Items and Inventory
-func will_pickup(item):
-	$Inventory.pickup(item)
-func get_item(itemData):
-	$Inventory.get_item(itemData)
+#func will_pickup(item):
+#	$Inventory.pickup(item)
+#func get_item(itemData):
+#	$Inventory.get_item(itemData)
 #endregion
 
 func _on_damage_taken( attack_area : AttackArea ) -> void:

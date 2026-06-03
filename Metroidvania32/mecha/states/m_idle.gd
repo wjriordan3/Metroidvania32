@@ -6,15 +6,6 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	#mecha.mech_animate_play(
-	#	"standard_idle",
-	#	"drill_idle",
-	#	"standard_idle",
-	#	"standard_idle",
-	#	"standard_idle"
-	#)
-	
-	# TODO: substitute mecha animations with new anim ctrl managed animations
 	mecha.anim_ctrl.play("idle")
 	
 	pass

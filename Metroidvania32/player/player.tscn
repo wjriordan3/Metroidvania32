@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cy8kijh717r5y" path="res://player/states/attack.gd" id="8_wodsf"]
 [ext_resource type="Script" uid="uid://wjdug3l604vi" path="res://player/states/hurt.gd" id="9_x7c3f"]
 [ext_resource type="Script" uid="uid://b5l15uosp1pvi" path="res://player/states/death.gd" id="10_s7qer"]
+[ext_resource type="Script" uid="uid://lpsr2sjnm0u5" path="res://player/states/hang.gd" id="11_c35mf"]
 [ext_resource type="SpriteFrames" uid="uid://t36yoj35w5pi" path="res://player/sprites/hero/hero_sprite_frames.tres" id="11_e7oew"]
 [ext_resource type="Script" uid="uid://cwetv0y8g6lup" path="res://player/scripts/input_hints.gd" id="12_05wrh"]
 [ext_resource type="PackedScene" uid="uid://dauhr21xl8kwi" path="res://player/silhouette_sprite.tscn" id="12_e7oew"]
@@ -84,6 +85,10 @@ script = ExtResource("9_x7c3f")
 unique_name_in_owner = true
 script = ExtResource("10_s7qer")
 
+[node name="Hang" type="Node" parent="States" unique_id=707749295]
+unique_name_in_owner = true
+script = ExtResource("11_c35mf")
+
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=267078169]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("11_e7oew")
@@ -148,3 +153,7 @@ position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_c35mf")
 disabled = true
 debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
+
+[node name="CeilingRayCast2D" type="RayCast2D" parent="." unique_id=1966906986]
+position = Vector2(0, -11)
+target_position = Vector2(0, -20)

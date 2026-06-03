@@ -7,4 +7,5 @@ script = ExtResource("1_rhe2m")
 idle = &"standard_idle"
 run = &"standard_run"
 jump = &"standard_jump"
+fall = &"standard_jump"
 metadata/_custom_type_script = "uid://diy4f4wycceuw"

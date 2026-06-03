@@ -5,4 +5,7 @@
 
 [resource]
 script = ExtResource("2_m5qf7")
+part_type = 1
+slot_size = 1
+max_health = 100
 metadata/_custom_type_script = "uid://wfacmefqo5fr"

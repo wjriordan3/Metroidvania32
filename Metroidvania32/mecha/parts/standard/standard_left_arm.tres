@@ -3,7 +3,13 @@
 [ext_resource type="Resource" uid="uid://oilsn5tye6md" path="res://mecha/parts/standard/standard_anims.tres" id="1_u4nbx"]
 [ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="2_qgmjt"]
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="3_8a4pr"]
+[ext_resource type="Script" uid="uid://cnb77dtblyyap" path="res://items/item_effects/item_effect_heal.gd" id="3_8rlxh"]
 [ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="4_8rlxh"]
+[ext_resource type="Texture2D" uid="uid://c3q4g2qcjtfos" path="res://player/sprites/hero/player_hurt.png" id="6_oowsl"]
+
+[sub_resource type="Resource" id="Resource_e0663"]
+script = ExtResource("3_8rlxh")
+metadata/_custom_type_script = "uid://cnb77dtblyyap"
 
 [resource]
 script = ExtResource("3_8a4pr")
@@ -12,4 +18,6 @@ sprite_frames = ExtResource("4_8rlxh")
 animation_set = ExtResource("1_u4nbx")
 name = "Standard Arm (L)"
 description = "A standard mecha arm (Type-L) variant"
+texture = ExtResource("6_oowsl")
+effects = Array[ExtResource("2_qgmjt")]([SubResource("Resource_e0663")])
 metadata/_custom_type_script = "uid://wfacmefqo5fr"
