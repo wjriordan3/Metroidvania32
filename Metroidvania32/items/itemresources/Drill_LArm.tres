@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://cq44fbschnu2l"]
 
-[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/item_mechpart.gd" id="1_l55e6"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="1_l55e6"]
 [ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="1_vvp4g"]
 
 [resource]

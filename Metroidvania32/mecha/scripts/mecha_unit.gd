@@ -2,32 +2,96 @@ class_name MechaUnit extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
+@onready var anim_ctrl: MechaAnimController = $MechaAnimController
 
-enum LimbSlot {
-	CORE,
-	LEFT_ARM,
-	RIGHT_ARM,
-	LEFT_LEG,
-	RIGHT_LEG
-}
+@export var loadout : MechLoadout
 
-var equipped_parts := {
-	LimbSlot.CORE: null,
-	LimbSlot.LEFT_ARM: null,
-	LimbSlot.RIGHT_ARM: null,
-	LimbSlot.LEFT_LEG: null,
-	LimbSlot.RIGHT_LEG: null
-}
-
-#region /// onready variables
 @onready var limb_sprites := {
-	LimbSlot.CORE: $Core,
-	LimbSlot.LEFT_ARM: $LeftArm,
-	LimbSlot.RIGHT_ARM: $RightArm,
-	LimbSlot.LEFT_LEG: $LeftLeg,
-	LimbSlot.RIGHT_LEG: $RightLeg
+	MechLoadout.LimbSlot.CORE: $Core,
+	MechLoadout.LimbSlot.LEFT_ARM: $LeftArm,
+	MechLoadout.LimbSlot.RIGHT_ARM: $RightArm,
+	MechLoadout.LimbSlot.LEFT_LEG: $LeftLeg,
+	MechLoadout.LimbSlot.RIGHT_LEG: $RightLeg
 }
 
+#func apply_loadout( l : MechLoadout ):
+	#equip_slot(LimbSlot.CORE, l.core)
+	#equip_slot(LimbSlot.LEFT_ARM, l.left_arm)
+	#equip_slot(LimbSlot.RIGHT_ARM, l.right_arm)
+	#equip_slot(LimbSlot.LEFT_LEG, l.left_leg)
+	#equip_slot(LimbSlot.RIGHT_LEG, l.right_leg)
+
+func refresh_loadout_visuals():
+	for slot in limb_sprites:
+		var sprite : AnimatedSprite2D = limb_sprites[slot]
+		var equipped : EquippedPart = loadout.get_equipped(slot)
+		if equipped == null:
+			sprite.visible = false
+			continue
+		sprite.visible = true
+		if equipped.part.sprite_frames:
+			sprite.sprite_frames = equipped.part.sprite_frames
+
+func equip_part(part : MechPart):
+	if loadout.equip_part(part):
+		refresh_loadout_visuals()
+		
+func update_mech_rendering():
+	for slot in limb_sprites.keys():
+
+		var sprite: AnimatedSprite2D = limb_sprites[slot]
+		var eq: EquippedPart = loadout.get_equipped(slot)
+
+		if eq == null:
+			sprite.visible = false
+			continue
+
+		sprite.visible = true
+
+		var part := eq.part
+		var anim_set := part.animation_set
+
+		if anim_set == null:
+			continue
+
+		var mapped := anim_set.get_anim(anim_ctrl.current_anim)
+
+		if mapped == "":
+			continue
+
+		if sprite.sprite_frames != part.sprite_frames:
+			sprite.sprite_frames = part.sprite_frames
+
+		_apply_synced_frame(sprite, mapped)
+
+func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
+
+	if !sprite.sprite_frames.has_animation(anim_name):
+		return
+
+	sprite.animation = anim_name
+
+	var frame_count := sprite.sprite_frames.get_frame_count(anim_name)
+	var frame := anim_ctrl.get_frame(frame_count)
+
+	sprite.frame = frame
+
+func apply_loadout(l: MechLoadout):
+	print("applying mech loadout")
+	l.rebuild_runtime()
+	update_mech_rendering()
+	#if l.core:
+	#	loadout.equip_part(l.core)
+	#if l.left_arm:
+	#	loadout.equip_part(l.left_arm)
+	#if l.right_arm:
+	#	loadout.equip_part(l.right_arm)
+	#if l.left_leg:
+	#	loadout.equip_part(l.left_leg)
+	#if l.right_leg:
+	#	loadout.equip_part(l.right_leg)
+		
+		
 @onready var core: AnimatedSprite2D = $Core
 @onready var right_leg: AnimatedSprite2D = $RightLeg
 @onready var left_leg: AnimatedSprite2D = $LeftLeg
@@ -46,10 +110,27 @@ var equipped_parts := {
 @onready var deactivate_state : MechaState = $States/Deactivate
 #endregion
 
+#region Animation
+func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):	
+	core.play(coreAnim)
+	left_arm.play(leftArmAnim)
+	left_leg.play(leftLegAnim)
+	right_arm.play(rightArmAnim)
+	right_leg.play(rightLegAnim)
+	
+	
+func mech_animate_pause():
+	core.pause()
+	left_arm.pause()
+	left_leg.pause()
+	right_arm.pause()
+	right_leg.pause()
+	
+#endregion
 
 #region /// export variables (used to expose variable to inspector)
 #@export var allowed_pilot_types: Array[String] = ["player", "ai"]
-@export var allowed_tags: Array[String] = ["player"] 
+@export var allowed_tags: Array[String] = ["player"] # "cpu"
 @export var stats : Stats
 #endregion
 
@@ -80,12 +161,16 @@ var base_move_speed : int = 100
 var rotation_speed : float = 10.0
 #endregion 
 
-#@onready var animated_sprite = $AnimatedSprite2D
-
 func _ready() -> void:
+	print("test warning")
+	if loadout == null:
+		print("MechaUnit has no loadout assigned!")
+		return
+
+	apply_loadout(loadout)
+	
 	enter_hint_label.visible = false
 	Messages.player_interacted.connect(_on_player_interacted)
-	#initialize states
 	initialize_states()
 	pass
 
@@ -97,7 +182,10 @@ func _unhandled_input( event: InputEvent ) -> void:
 func _process( _delta: float) -> void:
 	if active_pilot == null: return
 	update_direction()
+	
+	anim_ctrl.update(_delta)
 	change_state( current_state.process( _delta ) )
+	update_mech_rendering()
 	pass
 	
 func _physics_process( _delta: float ) -> void:
@@ -256,39 +344,3 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	await get_tree().create_timer( 3.0 ).timeout
 	d.queue_free()
 	pass
-
-#region Animation
-func mech_animate_play( coreAnim : String, leftArmAnim : String, leftLegAnim : String, rightArmAnim : String, rightLegAnim : String ):	
-	core.play(coreAnim)
-	left_arm.play(leftArmAnim)
-	left_leg.play(leftLegAnim)
-	right_arm.play(rightArmAnim)
-	right_leg.play(rightLegAnim)
-	
-	
-func mech_animate_pause():
-	core.pause()
-	left_arm.pause()
-	left_leg.pause()
-	right_arm.pause()
-	right_leg.pause()
-
-func play_slot_animation(slot: LimbSlot, anim_name: StringName) -> void:
-	var sprite: AnimatedSprite2D = limb_sprites[slot]
-
-	if sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
-
-func play_mech_animation(anim_name: String) -> void:
-	for slot in equipped_parts:
-		var part: MechPart = equipped_parts[slot]
-
-		if part == null:
-			continue
-
-		if part.animations.has(anim_name):
-			play_slot_animation(
-				slot,
-				part.animations[anim_name]
-			)
-#endregion

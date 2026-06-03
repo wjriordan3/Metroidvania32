@@ -6,16 +6,17 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.mech_animate_play(
-		"standard_idle",
-		"standard_idle",
-		"standard_idle",
-		"standard_idle",
-		"standard_idle"
-	)
+	#mecha.mech_animate_play(
+	#	"standard_idle",
+	#	"drill_idle",
+	#	"standard_idle",
+	#	"standard_idle",
+	#	"standard_idle"
+	#)
 	
-	# TODO: replace mech_animate_play with play_mech_animation
-	#mecha.play_mech_animation(&"idle")
+	# TODO: substitute mecha animations with new anim ctrl managed animations
+	mecha.anim_ctrl.play("idle")
+	
 	pass
 	
 # What happens when we exit this state?

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://bl231oh6bprvc"]
+
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_1un8g"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_m5qf7"]
+
+[resource]
+script = ExtResource("2_m5qf7")
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

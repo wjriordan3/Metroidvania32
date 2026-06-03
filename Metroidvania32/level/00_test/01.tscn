@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="13_ghss5"]
 [ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/potion.tres" id="14_ghss5"]
 
-[sub_resource type="Resource" id="Resource_vxor6"]
+[sub_resource type="Resource" id="Resource_ghss5"]
 resource_local_to_scene = true
 script = ExtResource("9_edsil")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -79,7 +79,7 @@ position = Vector2(83, 285)
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_tj2tj")]
 z_index = 0
 position = Vector2(224, 256)
-stats = SubResource("Resource_vxor6")
+stats = SubResource("Resource_ghss5")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mueo5")
