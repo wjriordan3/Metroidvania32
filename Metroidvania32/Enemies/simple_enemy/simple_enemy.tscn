@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://uiok302n0qb0"]
 
-[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/simple_enemy.gd" id="1_pmsee"]
+[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://Enemies/simple_enemy/scripts/simple_enemy.gd" id="1_pmsee"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
-[ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
-[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
-[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="5_y5vj3"]
-[ext_resource type="Script" uid="uid://cxisxpiuefrm8" path="res://enemy/scripts/edge_detector.gd" id="6_1wwld"]
+[ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://Enemies/hazard_area.tscn" id="3_pmsee"]
+[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://Enemies/attack_area.tscn" id="4_1wwld"]
+[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://Enemies/damage_area.tscn" id="5_y5vj3"]
+[ext_resource type="Script" uid="uid://cxisxpiuefrm8" path="res://Enemies/scripts/edge_detector.gd" id="6_1wwld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
 

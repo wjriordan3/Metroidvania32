@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdrmt18vsmxl6"]
 
-[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://enemy/hazard_area.gd" id="1_36rhr"]
+[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://Enemies/scripts/hazard_area.gd" id="1_36rhr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb8ge"]
 

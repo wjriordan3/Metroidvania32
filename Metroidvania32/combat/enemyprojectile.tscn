@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5cto34tegpfe"]
 
-[ext_resource type="Script" uid="uid://br8xp2o0ejqp6" path="res://combat/projectile.gd" id="1_gfhwk"]
-[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="2_5ev2r"]
+[ext_resource type="Script" path="res://combat/projectile.gd" id="1_gfhwk"]
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://Enemies/scripts/attack_area.gd" id="2_5ev2r"]
 
 [sub_resource type="Gradient" id="Gradient_rto3f"]
 colors = PackedColorArray(1, 0.5789182, 0.5789182, 1, 1, 0, 0, 1)

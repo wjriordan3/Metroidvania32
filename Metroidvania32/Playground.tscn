@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="5_3321n"]
 [ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="6_5ejyp"]
 [ext_resource type="PackedScene" uid="uid://bjtgr6n8j2te0" path="res://general/save_point/save_point.tscn" id="7_q63b2"]
-[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://enemy/simple_enemy.tscn" id="12_q63b2"]
+[ext_resource type="PackedScene" uid="uid://uiok302n0qb0" path="res://Enemies/simple_enemy/simple_enemy.tscn" id="12_q63b2"]
 
 [node name="Game" type="Node2D" unique_id=1314119285]
 

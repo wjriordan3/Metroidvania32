@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b16u8a6rqpdq0"]
 
-[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://enemy/attack_area.gd" id="1_43p2n"]
+[ext_resource type="Script" uid="uid://buwg2sy4gk7ge" path="res://Enemies/scripts/attack_area.gd" id="1_43p2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqyl"]
 
