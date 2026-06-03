@@ -14,12 +14,18 @@ func _ready() -> void:
 	pass
 	
 func _on_player_entered( _n : Node2D ) -> void:
+	if not _n.is_in_group("player"):
+		return
+		
 	print("Player entered")
 	Messages.player_interacted.connect( _on_player_interacted )
 	Messages.input_hint_changed.emit( "interact" )
 	pass
 
 func _on_player_exited( _n : Node2D ) -> void:
+	if not _n.is_in_group("player"):
+		return
+		
 	print("Player exited")
 	Messages.player_interacted.disconnect( _on_player_interacted )
 	Messages.input_hint_changed.emit( "" )

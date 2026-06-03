@@ -7,6 +7,8 @@ class_name PlayerStateFall extends PlayerState
 var coyote_timer : float = 0
 var buffer_timer : float = 0
 
+var try_grab_ceiling : bool = false
+
 func init() -> void:
 	coyote_timer = coyote_time
 	pass
@@ -39,6 +41,9 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 		else:
 			buffer_timer = jump_buffer_time	
 		
+	if _event.is_action_pressed("up"):
+		player.ceiling_grab_buffer = player.CEILING_GRAB_BUFFER_TIME
+	
 	return next_state
 	
 func process( _delta: float ) -> PlayerState:
@@ -48,11 +53,15 @@ func process( _delta: float ) -> PlayerState:
 	return next_state 
 	
 func physics_process( _delta: float ) -> PlayerState:
+	if player.try_ceiling_hang():
+		return hang
+	
 	if player.is_on_floor():
 		VisualEffects.land_dust( player.one_way_platform_shapecast.global_position )
 		if buffer_timer > 0:
 			return jump
 		return idle
+		
 	return next_state 
 	
 func set_jump_frame() -> void:

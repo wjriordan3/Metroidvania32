@@ -10,11 +10,14 @@
 [ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://mecha/states/m_crouch.gd" id="7_j4c10"]
 [ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://mecha/states/m_deactivate.gd" id="8_i3hoj"]
 [ext_resource type="Script" uid="uid://cmokwjnm1tb0w" path="res://mecha/scripts/mecha_anim_controller.gd" id="9_tjcg1"]
+[ext_resource type="Script" uid="uid://3p5a4pqft61k" path="res://mecha/ability_states/ability_state_machine.gd" id="10_8qqav"]
+[ext_resource type="PackedScene" uid="uid://5mvgu8b3613y" path="res://mecha/ability_states/ability_state_scenes/none.tscn" id="11_i745k"]
 [ext_resource type="SpriteFrames" uid="uid://di84ssl80p76x" path="res://mecha/spriteframes/right_leg_sprite_frames.tres" id="14_i745k"]
 [ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="15_st227"]
 [ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="16_7b33o"]
 [ext_resource type="SpriteFrames" uid="uid://dhcoeg4uo68fl" path="res://mecha/spriteframes/core_sprite_frames.tres" id="17_onqfb"]
 [ext_resource type="SpriteFrames" uid="uid://b5osww4rvdvh0" path="res://mecha/spriteframes/right_arm_sprite_frames.tres" id="18_1pa11"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="21_i745k"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="52_8k3i7"]
 [ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="53_g7dv2"]
 [ext_resource type="PackedScene" uid="uid://1huxwjbd0ppv" path="res://combat/bullet.tscn" id="54_sd0ak"]
@@ -37,6 +40,22 @@ height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7oew"]
 size = Vector2(70, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st227"]
+size = Vector2(40, 40)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b33o"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onqfb"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pa11"]
+size = Vector2(29, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03a8w"]
+size = Vector2(29, 40)
 
 [node name="MechaUnit" type="CharacterBody2D" unique_id=1485163958]
 z_index = 1
@@ -72,6 +91,11 @@ script = ExtResource("7_j4c10")
 [node name="Deactivate" type="Node" parent="States" unique_id=1912845936]
 unique_name_in_owner = true
 script = ExtResource("8_i3hoj")
+
+[node name="AbilityStates" type="Node" parent="." unique_id=308828711]
+script = ExtResource("10_8qqav")
+
+[node name="None" parent="AbilityStates" unique_id=1643006203 instance=ExtResource("11_i745k")]
 
 [node name="MechaAnimController" type="Node" parent="." unique_id=1736226477]
 script = ExtResource("9_tjcg1")
@@ -154,6 +178,39 @@ position = Vector2(32, -28)
 
 [node name="DamageNumOrigin" type="Node2D" parent="." unique_id=1049312175]
 position = Vector2(0, -60)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=131422307]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("21_i745k")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="DALeftArm" type="CollisionShape2D" parent="DamageArea" unique_id=1132149306 groups=["player"]]
+position = Vector2(28, -24)
+shape = SubResource("RectangleShape2D_st227")
+debug_color = Color(0.70196074, 0.010810734, 0, 0.41960785)
+
+[node name="DACrouch" type="CollisionShape2D" parent="DamageArea" unique_id=1111003447 groups=["player"]]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_7b33o")
+disabled = true
+debug_color = Color(0.7019608, 0.011764706, 0, 0.41960785)
+
+[node name="DARightArm" type="CollisionShape2D" parent="DamageArea" unique_id=1495005126 groups=["player"]]
+position = Vector2(-28, -24)
+shape = SubResource("RectangleShape2D_onqfb")
+debug_color = Color(0.7019608, 0.011764706, 0, 0.41960785)
+
+[node name="DARightLeg" type="CollisionShape2D" parent="DamageArea" unique_id=2091800930 groups=["player"]]
+position = Vector2(-17.5, 24)
+shape = SubResource("RectangleShape2D_1pa11")
+debug_color = Color(0.7019608, 0.011764706, 0, 0.41960785)
+
+[node name="DALeftLeg" type="CollisionShape2D" parent="DamageArea" unique_id=1125933873 groups=["player"]]
+position = Vector2(17.5, 24)
+shape = SubResource("RectangleShape2D_03a8w")
+debug_color = Color(0.7019608, 0.011764706, 0, 0.41960785)
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]

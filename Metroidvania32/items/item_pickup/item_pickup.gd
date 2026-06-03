@@ -15,7 +15,7 @@ func _ready() -> void:
 	area_2d.body_entered.connect( _on_body_entered )
 
 func _on_body_entered( b ) -> void:	
-	if b is Player:
+	if b.is_in_group("player"):
 		if item_data:
 			if PlayerManager.INVENTORY_DATA.add_item( item_data ) == true:
 				item_picked_up()

@@ -178,9 +178,9 @@ func update_direction():
 	pass
 
 func _input(event):
-	if event.is_action_pressed("action") && event.is_pressed() && enter_hint_label.visible:
+	if event.is_action_pressed("interact") && event.is_pressed() && enter_hint_label.visible:
 		_control_mech()
-	elif activePlayer && event.is_action_pressed("action") && event.is_pressed() && self.is_on_floor(): # && current_state == MechaStateIdle
+	elif activePlayer && event.is_action_pressed("interact") && event.is_pressed() && self.is_on_floor(): # && current_state == MechaStateIdle
 		_leave_mech()
 		
 func _control_mech():

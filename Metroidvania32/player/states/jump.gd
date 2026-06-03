@@ -36,6 +36,10 @@ func handle_input( event : InputEvent ) -> PlayerState:
 	if event.is_action_released( "jump" ):
 		player.velocity.y *= 0.5
 		return fall 
+		
+	if event.is_action_pressed("up"):
+		player.ceiling_grab_buffer = player.CEILING_GRAB_BUFFER_TIME
+		
 	return next_state
 	
 func process( _delta: float) -> PlayerState:
@@ -47,7 +51,11 @@ func process( _delta: float) -> PlayerState:
 func physics_process( _delta: float ) -> PlayerState:
 	if player.is_on_floor():
 		return idle
-	elif player.velocity.y >= 0: # positive number in y is downwards
+	# Check for ceiling hang
+	if player.try_ceiling_hang():
+		return hang
+		
+	if player.velocity.y >= 0: # positive number in y is downwards
 		#player.add_debug_indicator( Color.LIME_GREEN )
 		return fall
 	

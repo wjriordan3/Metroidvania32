@@ -50,9 +50,12 @@ enum Icons {
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+var current_target : Node = null
+
 func _ready() -> void:
 	visible = false
 	Messages.input_hint_changed.connect( _on_hint_changed )
+	Messages.input_target_changed.connect( _on_input_target_changed )
 	pass
 	
 func _input( event: InputEvent ) -> void:
@@ -88,3 +91,6 @@ func _on_hint_changed( hint : String ) -> void:
 			HINT_MAP.get(controller_type, HINT_MAP["xbox"]).get(hint, "res://addons/input_prompts/icons/keyboard/f.png")
 		)
 	pass
+	
+func _on_input_target_changed(node: Node) -> void:
+	current_target = node

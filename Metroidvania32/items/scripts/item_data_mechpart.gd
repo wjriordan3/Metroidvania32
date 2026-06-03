@@ -33,3 +33,14 @@ enum SlotSize {
 @export var sprite_frames : SpriteFrames
 ## Animations for this part
 @export var animation_set : MechPartAnimations
+
+@export_category("Abilities")
+
+## Abilities granted by this part
+@export var abilities: Array[MechAbility]
+
+## Special ability states unlocked by this part
+@export var ability_states: Array[PackedScene]
+
+## Passive effects
+@export var passive_effects: Array[MechPassive]
