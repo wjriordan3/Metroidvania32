@@ -19,6 +19,15 @@ itemIcon = ExtResource("2_lqifc")
 position = Vector2(1006, 548)
 scale = Vector2(0.2882399, 0.26986417)
 
+[node name="HazardArea" parent="Level/Enemy" index="3" unique_id=491208512]
+collision_layer = 64
+
+[node name="AttackArea" parent="Level/Enemy" index="4" unique_id=1600257482]
+collision_layer = 64
+
+[node name="DamageArea" parent="Level/Enemy" index="5" unique_id=1086178816]
+collision_mask = 32
+
 [node name="PlayerSpawn2" type="Node2D" parent="Level" unique_id=535079205]
 script = ExtResource("5_fe3x3")
 metadata/_custom_type_script = "uid://i8dipvpvfqsb"
@@ -29,6 +38,15 @@ scale = Vector2(0.258416, 0.26037243)
 
 [node name="AnimationPlayer" parent="Level/Enemy2" index="2" unique_id=317822677]
 root_node = NodePath("../../Enemy2")
+
+[node name="HazardArea" parent="Level/Enemy2" index="3" unique_id=491208512]
+collision_layer = 64
+
+[node name="AttackArea" parent="Level/Enemy2" index="4" unique_id=1600257482]
+collision_layer = 64
+
+[node name="DamageArea" parent="Level/Enemy2" index="5" unique_id=1086178816]
+collision_mask = 32
 
 [connection signal="body_entered" from="Level/Enemy/HazardArea" to="Level/Enemy/HazardArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Level/Enemy/AttackArea" to="Level/Enemy/AttackArea" method="_on_body_entered"]

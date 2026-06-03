@@ -269,8 +269,10 @@ script = ExtResource("12_05wrh")
 [node name="Sprite2D" type="Sprite2D" parent="InputHints" unique_id=1350771356]
 texture = ExtResource("13_05wrh")
 
-[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("18_e7oew")]
+[node name="DamageArea" parent="." unique_id=1086178816 groups=["player"] instance=ExtResource("18_e7oew")]
 position = Vector2(0, 1)
 scale = Vector2(0.030588327, 0.05488484)
 collision_layer = 32
-collision_mask = 32
+collision_mask = 64
+monitoring = true
+monitorable = true
