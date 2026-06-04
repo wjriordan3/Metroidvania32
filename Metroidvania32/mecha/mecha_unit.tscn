@@ -9,9 +9,12 @@
 [ext_resource type="Script" uid="uid://bfmx84gdatp8s" path="res://mecha/states/m_fall.gd" id="6_ubnjg"]
 [ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://mecha/states/m_crouch.gd" id="7_j4c10"]
 [ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://mecha/states/m_deactivate.gd" id="8_i3hoj"]
+[ext_resource type="Script" uid="uid://mvugfp48ptud" path="res://mecha/states/m_activate.gd" id="9_onqfb"]
 [ext_resource type="Script" uid="uid://cmokwjnm1tb0w" path="res://mecha/scripts/mecha_anim_controller.gd" id="9_tjcg1"]
 [ext_resource type="Script" uid="uid://3p5a4pqft61k" path="res://mecha/ability_states/ability_state_machine.gd" id="10_8qqav"]
+[ext_resource type="Script" uid="uid://kes77g1t4puo" path="res://mecha/states/m_hurt.gd" id="11_1pa11"]
 [ext_resource type="PackedScene" uid="uid://5mvgu8b3613y" path="res://mecha/ability_states/ability_state_scenes/none.tscn" id="11_i745k"]
+[ext_resource type="Script" uid="uid://cimn6wj2ojcjt" path="res://mecha/states/m_death.gd" id="12_03a8w"]
 [ext_resource type="SpriteFrames" uid="uid://di84ssl80p76x" path="res://mecha/spriteframes/right_leg_sprite_frames.tres" id="14_i745k"]
 [ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="15_st227"]
 [ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="16_7b33o"]
@@ -88,9 +91,21 @@ script = ExtResource("6_ubnjg")
 unique_name_in_owner = true
 script = ExtResource("7_j4c10")
 
+[node name="Activate" type="Node" parent="States" unique_id=241299144]
+unique_name_in_owner = true
+script = ExtResource("9_onqfb")
+
 [node name="Deactivate" type="Node" parent="States" unique_id=1912845936]
 unique_name_in_owner = true
 script = ExtResource("8_i3hoj")
+
+[node name="Hurt" type="Node" parent="States" unique_id=2100503282]
+unique_name_in_owner = true
+script = ExtResource("11_1pa11")
+
+[node name="Death" type="Node" parent="States" unique_id=882209118]
+unique_name_in_owner = true
+script = ExtResource("12_03a8w")
 
 [node name="AbilityStates" type="Node" parent="." unique_id=308828711]
 script = ExtResource("10_8qqav")
@@ -103,28 +118,27 @@ metadata/_custom_type_script = "uid://cmokwjnm1tb0w"
 
 [node name="RightLeg" type="AnimatedSprite2D" parent="." unique_id=941449678]
 sprite_frames = ExtResource("14_i745k")
-animation = &"standard_idle"
+animation = &"drill_rightArm_action"
 speed_scale = 2.0
 
 [node name="LeftArm" type="AnimatedSprite2D" parent="." unique_id=2086251306]
 sprite_frames = ExtResource("16_7b33o")
-animation = &"standard_idle"
+animation = &"drill_rightArm_action"
 speed_scale = 2.0
 
 [node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
 sprite_frames = ExtResource("15_st227")
-animation = &"standard_idle"
+animation = &"drill_rightArm_action"
 speed_scale = 2.0
 
 [node name="Core" type="AnimatedSprite2D" parent="." unique_id=778736296]
 sprite_frames = ExtResource("17_onqfb")
-animation = &"standard_idle"
-frame_progress = 0.85419077
+animation = &"standard_hurt"
 speed_scale = 2.0
 
 [node name="RightArm" type="AnimatedSprite2D" parent="." unique_id=327693266]
 sprite_frames = ExtResource("18_1pa11")
-animation = &"standard_idle"
+animation = &"copter_jump"
 speed_scale = 2.0
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]

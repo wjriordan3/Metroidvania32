@@ -16,6 +16,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 	MechLoadout.LimbSlot.RIGHT_LEG: $RightLeg
 }
 
+# updates the appearance of the mech whenever equipment changes
 func refresh_loadout_visuals():
 	for slot in limb_sprites:
 		var sprite : AnimatedSprite2D = limb_sprites[slot]
@@ -88,6 +89,7 @@ func apply_loadout(l: MechLoadout):
 @onready var limb_health: LimbHealth = $LimbHealth
 
 @onready var idle_state: MechaState = $States/Idle
+@onready var activate_state: MechaStateActivate = $States/Activate
 @onready var deactivate_state : MechaState = $States/Deactivate
 #endregion
 
@@ -257,8 +259,7 @@ func _control_mech(pilot):
 	# Assign player to pilot
 	active_pilot = pilot
 	pilot.on_enter_mech(self)
-	change_state(idle_state) # TODO: Change to activate state
-
+	change_state(idle_state)
 	# Maybe assign to a cockpit position placed on mech in scene?
 	#player.global_position = cockpit_marker.global_position
 	pilot.global_position = self.global_position
@@ -320,11 +321,10 @@ func get_aim_direction() -> Vector2:
 func equip_part(part : MechPart):
 	if loadout.equip_part(part):
 		refresh_loadout_visuals()
-		
-		#apply_stats(part)
-		#apply_abilities(part)
-		#apply_states(part)
-		#apply_passives(part)
+		apply_stats(part)
+		apply_abilities(part)
+		apply_states(part)
+		apply_passives(part)
 		
 var abilities: Array[MechAbility] = []
 func add_ability(ability : MechAbility) -> void:

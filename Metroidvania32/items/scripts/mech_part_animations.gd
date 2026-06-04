@@ -2,6 +2,8 @@ class_name MechPartAnimations
 extends Resource
 
 @export var idle : StringName
+@export var idle_02 : StringName
+
 @export var run : StringName
 @export var jump : StringName
 @export var fall : StringName
@@ -14,18 +16,21 @@ extends Resource
 
 @export_category("Damage")
 
-@export var damaged : StringName
-@export var destroyed : StringName
+@export var hurt : StringName
+@export var death : StringName
+@export var death_02 : StringName
 
 func get_anim(key: StringName) -> StringName:
 	match key:
 		"idle": return idle
+		"idle_02" : return idle_02
 		"run": return run
 		"jump": return jump
 		"fall": return fall
 		"hang": return hang
 		"action": return primary_action
-		"action_2": return secondary_action
-		"damaged": return damaged
-		"destroyed": return destroyed
+		"action_02": return secondary_action
+		"hurt": return hurt
+		"death": return death
+		"death_02" : return death_02
 		_: return ""

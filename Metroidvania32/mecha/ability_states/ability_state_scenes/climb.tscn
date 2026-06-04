@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dlv01sa6fsuac"]
+
+[ext_resource type="Script" uid="uid://nmth3ldnwc0m" path="res://mecha/ability_states/as_climb.gd" id="1_oxdj8"]
+
+[node name="Climb" type="Node" unique_id=1147055952]
+script = ExtResource("1_oxdj8")
