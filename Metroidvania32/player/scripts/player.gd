@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody2D
+class_name Player extends PilotCharacter
 
 const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
@@ -16,15 +16,14 @@ signal damage_taken
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var gun: Node2D = $Gun
 @onready var damage_area: DamageArea = %DamageArea
+@onready var ceiling_ray_cast_2d: RayCast2D = $CeilingRayCast2D
+
 #endregion
-
-
 
 #region /// export variables (used to expose variable to inspector)
 @export var stats : Stats
 #endregion
 
-var current_mech: MechaUnit = null
 var current_interactable = null
 var pilot_tag := "player"
 
@@ -54,6 +53,8 @@ var gravity : float = 980
 var gravity_multiplier : float = 1.0
 var crouch_multiplier : float = 1.0
 var rotation_speed : float = 10.0
+var ceiling_grab_buffer : float = 0.0
+const CEILING_GRAB_BUFFER_TIME := 0.15
 #endregion 
 
 func _ready() -> void:
@@ -66,13 +67,8 @@ func _ready() -> void:
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
-	if event.is_action_pressed( "action" ):
+	if event.is_action_pressed( "interact" ):
 		Messages.player_interacted.emit( self )
-	#elif event.is_action_pressed( "pause" ):
-	#	get_tree().paused = true # will pause any node with process set to inherit
-	#	var pause_menu : PauseMenu = load( "res://pause_menu/pause_menu.tscn" ).instantiate()
-	#	add_child( pause_menu )
-	#	return
 		
 	# For testing health, remove later
 	if event is InputEventKey and event.pressed:
@@ -107,6 +103,14 @@ func _process( _delta: float) -> void:
 	
 func _physics_process( _delta: float ) -> void:
 	if not activePlayer: return
+	
+	# ceiling grab buffering
+	if ceiling_grab_buffer > 0.0:
+		ceiling_grab_buffer = maxf(
+			0.0,
+			ceiling_grab_buffer - _delta
+	)
+	
 	velocity.y += gravity * _delta * gravity_multiplier
 	velocity.y = clampf(velocity.y, -10000, stats.max_fall_velocity)
 	move_and_slide()
@@ -154,16 +158,17 @@ func change_state( new_state : PlayerState ) -> void:
 	
 	pass
 	
-func is_in_mech() -> bool:
-	return current_mech != null	
+
+func is_climb_ceiling():
+	print(ceiling_ray_cast_2d.is_colliding())
+	return ceiling_ray_cast_2d.is_colliding() and is_on_ceiling()
+	
 
 func update_direction():
 	var prev_direction : Vector2 = direction 
 	# negative x is left, positive x is right, negative y is up, positive y is down
 	# calculating axis to help avoid deadzone/stick drift issues for gamepads
-	var x_axis = Input.get_axis("left", "right")
-	var y_axis = Input.get_axis("up", "down")
-	direction = Vector2(x_axis, y_axis)
+	direction = get_move_input()
 	#$Label.text = str(direction)
 	
 	if prev_direction.x != direction.x:
@@ -184,17 +189,9 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	d.queue_free()
 	pass
 
-		
 func _exit_tree():
 	CameraManager.clear_target(self)
 	
-#region Items and Inventory
-func will_pickup(item):
-	$Inventory.pickup(item)
-func get_item(itemData):
-	$Inventory.get_item(itemData)
-#endregion
-
 func _on_damage_taken( attack_area : AttackArea ) -> void:
 	if current_state == current_state.death:
 		return
@@ -202,3 +199,67 @@ func _on_damage_taken( attack_area : AttackArea ) -> void:
 	damage_taken.emit()
 	print("Player took damage: ", stats.health)
 	pass
+	
+func try_ceiling_hang() -> bool:
+	if ceiling_ray_cast_2d.is_colliding() \
+	and ceiling_grab_buffer > 0.0:
+		ceiling_grab_buffer = 0.0
+		return true
+	return false
+	
+#region Pilot Functions
+func get_move_input() -> Vector2:
+	return Vector2(
+		Input.get_axis("left", "right"),
+		Input.get_axis("up", "down")
+	)
+
+func get_left_arm_input() -> bool:
+	return Input.is_action_just_pressed("left_arm")
+
+func get_right_arm_input() -> bool:
+	return Input.is_action_just_pressed("right_arm")
+
+func get_left_leg_input() -> bool:
+	return Input.is_action_just_pressed("left_leg")
+
+func get_right_leg_input() -> bool:
+	return Input.is_action_just_pressed("right_leg")
+	
+func on_enter_mech(mech: MechaUnit) -> void:
+	super(mech)
+	activePlayer = false
+	visible = false
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# have mech act as player
+	remove_from_group("player")
+	mech.add_to_group("player")
+	
+	Messages.input_target_changed.emit(mech)
+	
+		# Switch camera target to mech
+	CameraManager.set_target(mech)
+	CameraManager.set_zoom(Vector2.ONE)
+
+func on_exit_mech() -> void:
+	super()
+	activePlayer = true
+	visible = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	
+	# Remove mech from "player" group if it still has it
+	for mech in get_tree().get_nodes_in_group("player"):
+		if mech is MechaUnit:
+			mech.remove_from_group("player")
+
+	# Put player back in the "player" group
+	add_to_group("player")
+	
+	Messages.input_target_changed.emit(self)
+	
+	# Switch to main player camera
+	CameraManager.set_target(self)
+	CameraManager.set_zoom(Vector2.ONE)
+
+#endregion

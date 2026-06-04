@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MechLoadout" format=3 uid="uid://cajnpdbqxn4x4"]
+
+[ext_resource type="Script" uid="uid://lanx0h5lx3h1" path="res://mecha/scripts/mech_loadout.gd" id="1_ayu7t"]
+[ext_resource type="Resource" uid="uid://cfxdwe6s6e3g0" path="res://mecha/parts/standard/standard_core.tres" id="1_cq1cm"]
+[ext_resource type="Resource" uid="uid://b0uyl5b8lq715" path="res://mecha/parts/standard/standard_left_arm.tres" id="2_ptryn"]
+[ext_resource type="Resource" uid="uid://bj4836yhsja5g" path="res://mecha/parts/standard/standard_left_leg.tres" id="3_dqnw6"]
+[ext_resource type="Resource" uid="uid://llta5pid7tl3" path="res://mecha/parts/standard/standard_right_arm.tres" id="4_veti4"]
+[ext_resource type="Resource" uid="uid://cud315wgjrgcj" path="res://mecha/parts/standard/standard_right_leg.tres" id="5_oi2uf"]
+
+[resource]
+script = ExtResource("1_ayu7t")
+core = ExtResource("1_cq1cm")
+left_arm = ExtResource("2_ptryn")
+right_arm = ExtResource("4_veti4")
+left_leg = ExtResource("3_dqnw6")
+right_leg = ExtResource("5_oi2uf")
+metadata/_custom_type_script = "uid://lanx0h5lx3h1"

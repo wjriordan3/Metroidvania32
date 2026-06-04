@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://5mvgu8b3613y"]
+
+[ext_resource type="Script" uid="uid://eu8mgpyq4m3e" path="res://mecha/ability_states/as_none.gd" id="1_627bk"]
+
+[node name="None" type="Node" unique_id=1643006203]
+script = ExtResource("1_627bk")

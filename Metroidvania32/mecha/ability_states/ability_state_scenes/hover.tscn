@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cnr74ki32m4a5"]
+
+[ext_resource type="Script" uid="uid://c2667wiqelj7c" path="res://mecha/ability_states/as_hover.gd" id="1_rdh17"]
+
+[node name="Hover" type="Node" unique_id=80629106]
+script = ExtResource("1_rdh17")

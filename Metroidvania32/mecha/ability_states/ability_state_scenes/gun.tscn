@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://142nnkmtk15y"]
+
+[ext_resource type="Script" uid="uid://ca4iuhyl0p81j" path="res://mecha/ability_states/as_gun.gd" id="1_y8p6v"]
+
+[node name="Gun" type="Node" unique_id=785711945]
+script = ExtResource("1_y8p6v")
+duration = null
+damage_per_second = null

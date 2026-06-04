@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dnj5kfrnalj02"]
+
+[ext_resource type="Script" uid="uid://cfierx0wju3k2" path="res://mecha/ability_states/as_drill.gd" id="1_s2uy5"]
+
+[node name="Drill" type="Node" unique_id=262540480]
+script = ExtResource("1_s2uy5")

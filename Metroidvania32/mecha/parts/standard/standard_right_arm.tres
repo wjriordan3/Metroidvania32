@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://llta5pid7tl3"]
+
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_0gc50"]
+[ext_resource type="Resource" uid="uid://oilsn5tye6md" path="res://mecha/parts/standard/standard_anims.tres" id="1_506of"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_hw34y"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_syqb2"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_6avij"]
+[ext_resource type="SpriteFrames" uid="uid://b5osww4rvdvh0" path="res://mecha/spriteframes/right_arm_sprite_frames.tres" id="4_qgqfx"]
+
+[resource]
+script = ExtResource("2_syqb2")
+part_type = 1
+sprite_frames = ExtResource("4_qgqfx")
+animation_set = ExtResource("1_506of")
+name = "Standard Arm (R)"
+description = "A standard mecha arm (Type-R) variant"
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

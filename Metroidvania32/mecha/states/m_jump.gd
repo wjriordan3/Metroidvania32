@@ -8,14 +8,8 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.mech_animate_play(
-		"standard_jump",
-		"standard_jump",
-		"standard_jump",
-		"standard_jump",
-		"standard_jump"
-	)
-	mecha.mech_animate_pause()
+	mecha.anim_ctrl.play("jump")
+	mecha.anim_ctrl.pause()
 	#mecha.add_debug_indicator( Color.LIME_GREEN )
 	mecha.velocity.y = -jump_velocity
 	CameraManager.screen_shake(3.0, 0.25)

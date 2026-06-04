@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://cfxdwe6s6e3g0"]
+
+[ext_resource type="Resource" uid="uid://oilsn5tye6md" path="res://mecha/parts/standard/standard_anims.tres" id="1_1idcx"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_roc0a"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_eqp5c"]
+[ext_resource type="SpriteFrames" uid="uid://dhcoeg4uo68fl" path="res://mecha/spriteframes/core_sprite_frames.tres" id="4_j4ls1"]
+
+[resource]
+script = ExtResource("2_eqp5c")
+sprite_frames = ExtResource("4_j4ls1")
+animation_set = ExtResource("1_1idcx")
+name = "Standard Core"
+description = "A standard mecha core"
+metadata/_custom_type_script = "uid://wfacmefqo5fr"
