@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://de6v8rw808o7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
 [ext_resource type="PackedScene" uid="uid://nkfxp4c7kl4q" path="res://player/player_gun.tscn" id="15_x7c3f"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://Enemies/scripts/damage_area.gd" id="18_e7oew"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c35mf"]
 
@@ -38,40 +39,6 @@ resource_name = "hero_idle"
 _data = {
 &"hero_idle": SubResource("Animation_ciamo")
 }
-
-[sub_resource type="GDScript" id="GDScript_32hag"]
-script/source = "class_name DamageArea extends Area2D
-
-signal damage_taken( attack_area )
-
-@export var audio : AudioStream
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-func take_damage( area : Area2D ) -> void:
-	if area is AttackArea:
-		damage_taken.emit( area )
-		print( \"Attack damage taken\", area.damage )
-	elif area is HazardArea:
-		damage_taken.emit( area )
-		print( \"Hazard damage taken\", area.damage )
-	if audio:
-		Audio.play_spatial_sound ( audio, global_position )
-	pass
-	
-
-func make_invulnerable(duration : float = 1.0 ) -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer( duration ).timeout
-	process_mode = Node.PROCESS_MODE_INHERIT
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [node name="Player" type="CharacterBody2D" unique_id=1485163958]
 z_index = 1
@@ -178,8 +145,8 @@ texture = ExtResource("13_05wrh")
 [node name="DamageArea" type="Area2D" parent="." unique_id=1942774184]
 unique_name_in_owner = true
 collision_layer = 32
-collision_mask = 0
-script = SubResource("GDScript_32hag")
+collision_mask = 64
+script = ExtResource("18_e7oew")
 metadata/_custom_type_script = "uid://bxc5n4gal30q4"
 
 [node name="DAStand" type="CollisionShape2D" parent="DamageArea" unique_id=66821033 groups=["player"]]

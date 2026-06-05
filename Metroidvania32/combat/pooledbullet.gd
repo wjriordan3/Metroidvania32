@@ -9,6 +9,7 @@ var scene_path: String # Holds own scene path
 
 # VisibleonScreenNotifier2D node for off-screen detection
 @onready var screen_notifier = $VisibleOnScreenNotifier2D
+@onready var attack_area : AttackArea = $AttackArea
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,8 @@ func _ready() -> void:
 		printerr("Could not determine scene file path for pooling.")
 	# Connect signal to return self to pool when going off-screen
 	screen_notifier.screen_exited.connect(return_to_pool)
+	#Activate attack area (hard set)
+	attack_area.set_active( true )
 
 # Method to set reference to pool manager
 func set_pool_manager(manager: Node):
@@ -53,6 +56,8 @@ func return_to_pool():
 	if pool_manager and scene_path:
 		# Safely return with deferred call
 		pool_manager.call_deferred("return_object", self, scene_path)
+		#Deactivate attack area (hard set)
+		attack_area.set_active( false )
 	else:
 		# Normal destruction if no pool
 		queue_free()

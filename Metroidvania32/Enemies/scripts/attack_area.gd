@@ -14,6 +14,7 @@ func _on_body_entered( body : Node2D ) -> void:
 	print( "Body entered: ", body.name )
 	if body is DamageArea:
 		body.take_damage( self )
+		print( "take damage called")
 		pass
 	pass
 
@@ -26,6 +27,7 @@ func activate( duration : float = 0.1 ) -> void:
 func set_active( value : bool = true ) -> void:
 	monitoring = value
 	visible = value
+	print( "attack area active")
 	pass
 	
 func flip( direction_x : float ):

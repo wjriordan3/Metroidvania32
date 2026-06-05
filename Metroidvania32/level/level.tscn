@@ -101,7 +101,7 @@ position = Vector2(139, 559)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("4_ivpvi")]
 position = Vector2(365, 562)
-allowed_tags = null
+allowed_tags = Array[String](["player"])
 stats = SubResource("Resource_vkbyq")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("6_6gtgk")]
