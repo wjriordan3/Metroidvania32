@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://cmxhwwj4ufehf"]
+
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_g4cy5"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_i558r"]
+[ext_resource type="Resource" uid="uid://c3jycmhskc8hb" path="res://mecha/parts/drill/drill_anims.tres" id="2_mg1xf"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_nxgmp"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_nrrlm"]
+[ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="6_hkqfh"]
+
+[resource]
+script = ExtResource("2_nxgmp")
+part_type = 2
+sprite_frames = ExtResource("6_hkqfh")
+animation_set = ExtResource("2_mg1xf")
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

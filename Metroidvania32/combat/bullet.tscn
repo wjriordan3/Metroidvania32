@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chjp1fbkaxs05" path="res://combat/bullet.gd" id="1_8hw8y"]
 [ext_resource type="Texture2D" uid="uid://bmajdduueu4i5" path="res://assets/placeholder/bullet.png" id="1_mb61d"]
+[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="3_srq83"]
 
 [node name="Bullet" type="Node2D" unique_id=1768208399]
 script = ExtResource("1_8hw8y")
@@ -13,5 +14,11 @@ region_rect = Rect2(11, 11, 48, 48)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2077833988]
 rect = Rect2(-22, -21, 44, 42)
+
+[node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("3_srq83")]
+scale = Vector2(0.6, 0.35)
+collision_layer = 0
+collision_mask = 192
+remove_on_hit = 2
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

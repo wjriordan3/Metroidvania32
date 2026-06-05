@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://b5c4py84b7mar"]
+
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_dog02"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="2_vv1xv"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="3_vo6cd"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="4_fm4so"]
+
+[resource]
+script = ExtResource("4_fm4so")
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

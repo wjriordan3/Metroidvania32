@@ -15,8 +15,9 @@
 [ext_resource type="Resource" uid="uid://b0uyl5b8lq715" path="res://mecha/parts/standard/standard_left_arm.tres" id="13_ghss5"]
 [ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/potion.tres" id="14_ghss5"]
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="15_wfjby"]
+[ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_pdhtj"]
 
-[sub_resource type="Resource" id="Resource_wfjby"]
+[sub_resource type="Resource" id="Resource_pdhtj"]
 resource_local_to_scene = true
 script = ExtResource("9_edsil")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -81,7 +82,7 @@ position = Vector2(83, 285)
 z_index = 0
 position = Vector2(224, 257)
 allowed_tags = Array[String](["player"])
-stats = SubResource("Resource_wfjby")
+stats = SubResource("Resource_pdhtj")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mueo5")
@@ -116,3 +117,6 @@ item_data = ExtResource("15_wfjby")
 [node name="ItemPickup5" parent="." unique_id=44314173 instance=ExtResource("12_vxor6")]
 position = Vector2(1300, 135)
 item_data = ExtResource("15_wfjby")
+
+[node name="TrainingDummy" parent="." unique_id=1609752943 instance=ExtResource("16_pdhtj")]
+position = Vector2(56, 224)

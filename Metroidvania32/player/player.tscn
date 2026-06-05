@@ -92,8 +92,7 @@ script = ExtResource("11_c35mf")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=267078169]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("11_e7oew")
-animation = &"idle"
-frame_progress = 0.36109895
+animation = &"death"
 
 [node name="SilhouetteSprite" parent="Sprite" unique_id=959038842 instance=ExtResource("12_e7oew")]
 unique_name_in_owner = true

@@ -67,7 +67,6 @@ func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
 
 	sprite.frame = frame
 	
-
 func apply_loadout(l: MechLoadout):
 	print("applying mech loadout")
 	l.rebuild_runtime()
@@ -210,7 +209,6 @@ func change_state( new_state : MechaState ) -> void:
 	
 	pass
 
-	
 func update_direction():
 	if active_pilot == null:
 		return
@@ -281,7 +279,6 @@ func _on_mech_area_collision_body_entered(body: Node2D) -> void:
 		potential_pilot = body
 		enter_hint_label.show()
 		
-
 func _on_mech_area_collision_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		potential_pilot = null

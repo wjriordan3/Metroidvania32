@@ -5,10 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wujgv"]
 
 [node name="DamageArea" type="Area2D" unique_id=1086178816 groups=["damage"]]
-collision_layer = 64
+collision_layer = 32
 collision_mask = 0
-monitoring = false
-monitorable = false
 script = ExtResource("1_m70w2")
 metadata/_custom_type_script = "uid://bxc5n4gal30q4"
 

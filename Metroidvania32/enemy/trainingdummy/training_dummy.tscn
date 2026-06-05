@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ebcsgdk2mhej"]
+
+[ext_resource type="Texture2D" uid="uid://c8obocm56sol8" path="res://enemy/trainingdummy/sprites/Armored/Hited/Hited1.png" id="1_13jv4"]
+[ext_resource type="Script" uid="uid://c68niciwc4uaf" path="res://enemy/trainingdummy/training_dummy.gd" id="1_ivgg2"]
+[ext_resource type="Texture2D" uid="uid://b2i1yklh7n0k2" path="res://enemy/trainingdummy/sprites/Armored/Hited/Hited2.png" id="2_nfj1h"]
+[ext_resource type="Texture2D" uid="uid://0didm0vag50i" path="res://enemy/trainingdummy/sprites/Armored/Hited/Hited3.png" id="3_ivgg2"]
+[ext_resource type="Texture2D" uid="uid://cmdjg01gi4vm2" path="res://enemy/trainingdummy/sprites/Armored/Hited/Hited4.png" id="4_phviu"]
+[ext_resource type="Texture2D" uid="uid://bytx4cioqlyka" path="res://enemy/trainingdummy/sprites/Armored/Hited/Hited5.png" id="5_w1ei6"]
+[ext_resource type="Texture2D" uid="uid://c5l4saw2v26vw" path="res://enemy/trainingdummy/sprites/Armored/Idle/Idle.png" id="6_wqf8p"]
+[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="7_nfj1h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wayfa"]
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d27yi"]
+atlas = ExtResource("1_13jv4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrh3d"]
+atlas = ExtResource("6_wqf8p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnldj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d27yi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nfj1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ivgg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_phviu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w1ei6")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrh3d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[node name="TrainingDummy" type="CharacterBody2D" unique_id=1609752943]
+script = ExtResource("1_ivgg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1971206905]
+position = Vector2(0, -18)
+shape = SubResource("CapsuleShape2D_wayfa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=752337092]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_fnldj")
+animation = &"idle"
+frame_progress = 0.04253984
+
+[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("7_nfj1h")]
+position = Vector2(0, -18)
+scale = Vector2(0.05, 0.1)
+collision_layer = 64

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MechLoadout" format=3 uid="uid://dq0d1k8yoqkg7"]
+
+[ext_resource type="Script" uid="uid://lanx0h5lx3h1" path="res://mecha/scripts/mech_loadout.gd" id="1_4nf74"]
+[ext_resource type="Resource" uid="uid://cfxdwe6s6e3g0" path="res://mecha/parts/standard/standard_core.tres" id="1_85rha"]
+[ext_resource type="Resource" uid="uid://bkaygxmnh16g0" path="res://mecha/parts/gun/gun_right_arm.tres" id="2_2dhow"]
+
+[resource]
+script = ExtResource("1_4nf74")
+core = ExtResource("1_85rha")
+left_arm = ExtResource("2_2dhow")
+metadata/_custom_type_script = "uid://lanx0h5lx3h1"

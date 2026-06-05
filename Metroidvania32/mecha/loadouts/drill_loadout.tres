@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MechLoadout" format=3 uid="uid://co8t7hn8to4wi"]
+
+[ext_resource type="Script" uid="uid://lanx0h5lx3h1" path="res://mecha/scripts/mech_loadout.gd" id="1_of7xg"]
+
+[resource]
+script = ExtResource("1_of7xg")
+metadata/_custom_type_script = "uid://lanx0h5lx3h1"

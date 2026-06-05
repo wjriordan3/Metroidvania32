@@ -15,8 +15,8 @@ metadata/_custom_type_script = "uid://cnb77dtblyyap"
 
 [resource]
 script = ExtResource("2_71gen")
-name = "Potion"
-description = "A potion of healing"
+name = "QuikFix Juice"
+description = "An assortment of industrial grade stabilizers, nanotechnology, and garage grit packaged into an aerosol can. Spray it directly into damaged systems to get your gear up and running."
 texture = ExtResource("5_y55n0")
 effects = Array[ExtResource("1_sb0xf")]([SubResource("Resource_y55n0")])
 metadata/_custom_type_script = "uid://ct5aktl6b816b"
