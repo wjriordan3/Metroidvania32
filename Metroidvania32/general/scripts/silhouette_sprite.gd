@@ -38,6 +38,7 @@ extends AnimatedSprite2D
 @onready var parent_sprite: AnimatedSprite2D = get_parent() as AnimatedSprite2D
 
 func _ready() -> void:
+	visible = false
 	if not parent_sprite:
 		push_error("SilhouetteSprite must be a child of an AnimatedSprite2D!")
 		return
@@ -68,7 +69,9 @@ func _on_parent_frame_changed() -> void:
 func _process(_delta: float) -> void:
 	# To keep flips and offset in sync each frame
 	if not is_instance_valid(parent_sprite):
+		visible = false
 		return
 	flip_h = parent_sprite.flip_h
 	flip_v = parent_sprite.flip_v
 	offset = parent_sprite.offset
+	visible = true

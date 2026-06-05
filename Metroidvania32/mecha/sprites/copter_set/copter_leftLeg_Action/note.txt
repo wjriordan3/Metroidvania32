@@ -1,0 +1,3 @@
+copter leg equips to both. Replaces jump, moves player up when space (and/or leg action button) is held.
+
+player drops when button is let go.

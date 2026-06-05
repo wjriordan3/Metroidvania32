@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://bj4836yhsja5g"]
+
+[ext_resource type="Resource" uid="uid://oilsn5tye6md" path="res://mecha/parts/standard/standard_anims.tres" id="1_rkc87"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="2_qpssd"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="3_tcdhc"]
+[ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="4_bn103"]
+
+[resource]
+script = ExtResource("3_tcdhc")
+part_type = 2
+sprite_frames = ExtResource("4_bn103")
+animation_set = ExtResource("1_rkc87")
+name = "Standard Leg (L)"
+description = "A standard mecha leg (Type-L) variant"
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

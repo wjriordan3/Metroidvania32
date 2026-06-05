@@ -6,13 +6,7 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.mech_animate_play(
-		"standard_run",
-		"standard_run",
-		"standard_run",
-		"standard_run",
-		"standard_run"
-	)
+	mecha.anim_ctrl.play("run")
 	pass
 	
 # What happens when we exit this state?

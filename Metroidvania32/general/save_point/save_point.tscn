@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjtgr6n8j2te0"]
 
 [ext_resource type="Script" uid="uid://77gk2jfatjgm" path="res://general/save_point/save_point.gd" id="1_5y7y7"]
-[ext_resource type="Texture2D" uid="uid://j53m2khkq7ko" path="res://general/save_point/save_point.png" id="1_a0gwv"]
+[ext_resource type="Texture2D" uid="uid://ct6lsj5jshpxo" path="res://general/save_point/save_point.png" id="1_a0gwv"]
 [ext_resource type="FontFile" uid="uid://b5mqfxeywdb5j" path="res://general/fonts/Born2bSportyFS.otf" id="2_f82ql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evy65"]

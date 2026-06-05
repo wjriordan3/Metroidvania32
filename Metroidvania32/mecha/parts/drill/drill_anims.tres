@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MechPartAnimations" format=3 uid="uid://c3jycmhskc8hb"]
+
+[ext_resource type="Script" uid="uid://diy4f4wycceuw" path="res://items/scripts/mech_part_animations.gd" id="1_2cngt"]
+
+[resource]
+script = ExtResource("1_2cngt")
+idle = &"drill_idle"
+run = &"drill_run"
+jump = &"drill_jump"
+fall = &"drill_jump"
+primary_action = &"drill_action"
+metadata/_custom_type_script = "uid://diy4f4wycceuw"
