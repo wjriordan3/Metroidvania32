@@ -35,7 +35,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 func process( _delta: float) -> PlayerState:
 	time -= _delta
 	if time <= 0:
-		if player.hp <= 0:
+		if player.stats.health <= 0:
 			return death
 		return idle
 	return null

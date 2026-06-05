@@ -70,8 +70,15 @@ func get_frame(frame_count: int) -> int:
 func is_playing(anim: StringName) -> bool:
 	return current_anim == anim
 	
-func is_anim_finished(frame_count : int ) -> bool:
+func is_anim_finished_by_frame_count(frame_count : int ) -> bool:
 	return !looping and int(anim_time) >= frame_count
+	
+func is_anim_finished() -> bool:
+	return true
+	#if looping:
+	#	return false
+	#var frame_count = anim_frames.get(current_anim, 1)
+	#return int(anim_time) >= frame_count
 	
 func set_speed( mult: float ) -> void:
 	speed_multiplier = max(mult, 0.0)
