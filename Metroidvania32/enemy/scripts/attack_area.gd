@@ -5,8 +5,11 @@ class_name AttackArea extends Area2D
 enum REMOVAL_METHOD { NONE, SELF, PARENT }
 @export var remove_on_hit : REMOVAL_METHOD
 
+var base_position: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	base_position = position
 	body_entered.connect( _on_body_entered )
 	area_entered.connect( _on_body_entered )
 	set_active( false )
@@ -41,11 +44,21 @@ func set_active( value : bool = true ) -> void:
 	pass
 	
 func flip( direction_x : float ):
+	
+	#if direction_x > 0:
+	#	scale.x *= 1
+	#elif direction_x < 0:
+	#	scale.x *= -1
+	
+	# changed from the prior version so we can flip it as a child of whatever its parent is
+	# this way it'll work closer to have a hitbox would be flipped upon changing sides in a fighting game
 	if direction_x > 0:
-		scale.x = 1
+		position = base_position
 	elif direction_x < 0:
-		scale.x = -1
+		position = Vector2(-base_position.x, base_position.y)
 	pass
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

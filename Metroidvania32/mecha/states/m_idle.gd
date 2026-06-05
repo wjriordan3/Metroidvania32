@@ -1,5 +1,6 @@
 class_name MechaStateIdle extends MechaState
 
+
 func init() -> void:
 	pass
 	
@@ -16,6 +17,22 @@ func exit() -> void:
 	
 func handle_input( _event : InputEvent ) -> MechaState:
 	# Handle inputs
+	if _event.is_action_pressed("arm_R"):
+		mecha.limb_used = 0
+		return attack
+	
+	if _event.is_action_pressed("arm_L"):
+		mecha.limb_used = 1
+		return attack
+		
+	if _event.is_action_pressed("leg_L"):
+		mecha.limb_used = 2
+		return attack
+		
+	if _event.is_action_pressed("leg_R"):
+		mecha.limb_used = 3
+		return attack
+	
 	if _event.is_action_pressed("jump"):
 		return jump
 	return next_state

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvhgn0v8d1n1l"
-path="res://.godot/imported/standard_armR_leftKick.png-8524b03f3ef8234fc7c1229c55c928a8.ctex"
+uid="uid://dx0mm27t0ketb"
+path="res://.godot/imported/standard_core_leftKick.png-49c67aafcbdccd8818a6fcc33b2a3dd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mecha/sprites/standard/standard_left_kick/standard_armR_leftKick.png"
-dest_files=["res://.godot/imported/standard_armR_leftKick.png-8524b03f3ef8234fc7c1229c55c928a8.ctex"]
+source_file="res://mecha/sprites/standard/standard_leftLeg_Action/standard_core_leftKick.png"
+dest_files=["res://.godot/imported/standard_core_leftKick.png-49c67aafcbdccd8818a6fcc33b2a3dd7.ctex"]
 
 [params]
 

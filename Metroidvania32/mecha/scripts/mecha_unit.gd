@@ -7,6 +7,7 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 @export var loadout : MechLoadout
 
 @onready var mech_area_collision: Area2D = $MechAreaCollision
+@onready var attack_area: AttackArea = $AttackArea
 
 @onready var limb_sprites := {
 	MechLoadout.LimbSlot.CORE: $Core,
@@ -52,7 +53,8 @@ func update_mech_rendering():
 
 		if sprite.sprite_frames != part.sprite_frames:
 			sprite.sprite_frames = part.sprite_frames
-
+		
+		anim_ctrl.set_frame_count(sprite)
 		_apply_synced_frame(sprite, mapped)
 
 func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
@@ -216,12 +218,20 @@ func update_direction():
 	direction = active_pilot.get_move_input()
 	#$Label.text = str(direction)
 	if prev_direction.x != direction.x:
-		var facing_left := direction.x < 0
-		core.flip_h = facing_left
-		right_leg.flip_h = facing_left
-		left_leg.flip_h = facing_left
-		left_arm.flip_h = facing_left
-		right_arm.flip_h = facing_left
+		attack_area.flip(direction.x)
+		if direction.x < 0:
+			core.flip_h = true
+			right_leg.flip_h = true
+			left_leg.flip_h = true
+			left_arm.flip_h = true
+			right_arm.flip_h = true
+		elif direction.x > 0:
+			core.flip_h = false
+			right_leg.flip_h = false
+			left_leg.flip_h = false
+			left_arm.flip_h = false
+			right_arm.flip_h = false
+			
 	pass
 
 func _input(event):
@@ -345,4 +355,17 @@ func apply_passives( part : MechPart ):
 	for passive in part.passive_effects:
 		passive.apply(self)
 
+#endregion
+
+#region Limb Input Handling
+
+var limb_used = -1
+
+const ATTACK_INPUTS := {
+	"arm_R": 0,
+	"arm_L": 1,
+	"leg_R": 2,
+	"leg_L": 3,
+}
+	
 #endregion
