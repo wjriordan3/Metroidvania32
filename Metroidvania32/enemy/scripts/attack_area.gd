@@ -9,9 +9,7 @@ enum REMOVAL_METHOD { NONE, SELF, PARENT }
 func _ready() -> void:
 	body_entered.connect( _on_body_entered )
 	area_entered.connect( _on_body_entered )
-	#set_active( false )
-	monitoring = true
-	monitorable = false
+	set_active( false )
 	pass # Replace with function body.
 
 func _on_body_entered( body : Node2D ) -> void:

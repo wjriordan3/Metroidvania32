@@ -6,6 +6,7 @@ const SPEED: int = 300
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	attack_area.set_active(true)
 	attack_area.area_entered.connect( _remove_bullet_on_hit )
 	attack_area.body_entered.connect( _remove_bullet_on_hit )	
 	pass # Replace with function body.

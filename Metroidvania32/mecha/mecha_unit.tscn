@@ -20,7 +20,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="16_7b33o"]
 [ext_resource type="SpriteFrames" uid="uid://dhcoeg4uo68fl" path="res://mecha/spriteframes/core_sprite_frames.tres" id="17_onqfb"]
 [ext_resource type="SpriteFrames" uid="uid://b5osww4rvdvh0" path="res://mecha/spriteframes/right_arm_sprite_frames.tres" id="18_1pa11"]
-[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="21_i745k"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/scripts/damage_area.gd" id="21_i745k"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="52_8k3i7"]
 [ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="53_g7dv2"]
 [ext_resource type="PackedScene" uid="uid://1huxwjbd0ppv" path="res://combat/bullet.tscn" id="54_sd0ak"]

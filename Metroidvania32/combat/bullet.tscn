@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1huxwjbd0ppv"]
 
-[ext_resource type="Script" uid="uid://chjp1fbkaxs05" path="res://combat/bullet.gd" id="1_8hw8y"]
+[ext_resource type="Script" uid="uid://chjp1fbkaxs05" path="res://combat/scripts/bullet.gd" id="1_8hw8y"]
 [ext_resource type="Texture2D" uid="uid://bmajdduueu4i5" path="res://assets/placeholder/bullet.png" id="1_mb61d"]
 [ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="3_srq83"]
 

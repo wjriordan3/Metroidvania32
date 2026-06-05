@@ -13,11 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_4xpjf"]
 [ext_resource type="PackedScene" uid="uid://dmmst6d5eohc5" path="res://items/item_pickup/item_pickup.tscn" id="12_vxor6"]
 [ext_resource type="Resource" uid="uid://b0uyl5b8lq715" path="res://mecha/parts/standard/standard_left_arm.tres" id="13_ghss5"]
-[ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/potion.tres" id="14_ghss5"]
+[ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/quikfix.tres" id="14_ghss5"]
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="15_wfjby"]
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_pdhtj"]
+[ext_resource type="PackedScene" uid="uid://c8xko60kdb7bq" path="res://enemy/simple_enemy/simple_enemy.tscn" id="17_cpcr1"]
 
-[sub_resource type="Resource" id="Resource_pdhtj"]
+[sub_resource type="Resource" id="Resource_cpcr1"]
 resource_local_to_scene = true
 script = ExtResource("9_edsil")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -82,7 +83,7 @@ position = Vector2(83, 285)
 z_index = 0
 position = Vector2(224, 257)
 allowed_tags = Array[String](["player"])
-stats = SubResource("Resource_pdhtj")
+stats = SubResource("Resource_cpcr1")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mueo5")
@@ -120,3 +121,7 @@ item_data = ExtResource("15_wfjby")
 
 [node name="TrainingDummy" parent="." unique_id=1609752943 instance=ExtResource("16_pdhtj")]
 position = Vector2(56, 224)
+
+[node name="SimpleEnemy" parent="." unique_id=976216826 instance=ExtResource("17_cpcr1")]
+z_index = 2
+position = Vector2(602, 203)
