@@ -16,8 +16,10 @@ func _ready() -> void:
 	player_spawned = true
 	
 func add_player_instance() -> void:
-	player = PLAYER.instantiate()
-	add_child( player )
+	if player_spawned == false:
+		player = PLAYER.instantiate()
+		add_child( player )
+		player_spawned = true
 	pass
 	
 func add_mecha_instance() -> void:

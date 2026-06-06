@@ -11,7 +11,7 @@ var inventory : Array = []
 var discovered_areas : Array = []
 var persistent_data : Dictionary = {}
 
-const default_scene_uid : String = "uid://beln0e1ghjnm"
+const default_scene_uid : String = "uid://ds408t27584uc"
 
 func _ready() -> void:
 	SceneManager.scene_entered.connect( _on_scene_entered )
@@ -102,8 +102,9 @@ func load_game( slot : int ) -> void:
 	pass
 	
 func setup_player() -> void:
-	var player : Player = null
+	var player : Player = PlayerManager.player
 	while not player:
+		PlayerManager.add_player_instance()
 		get_tree().get_first_node_in_group( "player" )
 		await get_tree().process_frame
 	
