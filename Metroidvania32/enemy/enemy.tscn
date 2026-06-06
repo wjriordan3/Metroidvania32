@@ -6,15 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="3_3yqyl"]
 [ext_resource type="Script" uid="uid://cxisxpiuefrm8" path="res://enemy/scripts/edge_detector.gd" id="4_wujgv"]
 [ext_resource type="Script" uid="uid://dd1lv64ebg68h" path="res://enemy/scripts/enemy_state_machine.gd" id="6_y5vj3"]
-[ext_resource type="Script" uid="uid://csujkqnp0d1lj" path="res://enemy/scripts/decision_engine.gd" id="7_5ffra"]
+[ext_resource type="Script" uid="uid://dt5us522vloka" path="res://enemy/scripts/states/es_walk.gd" id="7_78jik"]
+[ext_resource type="Script" uid="uid://mrlo2rdxd5r" path="res://enemy/scripts/decision_engines/decision_engine_basic.gd" id="7_y5vj3"]
+[ext_resource type="Script" uid="uid://blx6n0buj1rem" path="res://enemy/scripts/states/es_stun.gd" id="8_o3pv7"]
+[ext_resource type="Script" uid="uid://i5ecga03fhwa" path="res://enemy/scripts/states/es_death.gd" id="9_xoplw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb8ge"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=784409238]
+collision_layer = 64
+collision_mask = 3
 script = ExtResource("1_pmsee")
-health = null
-affected_by_gravity = null
-face_left_on_start = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1047071894]
 scale = Vector2(6.86148, 7.7470016)
@@ -47,6 +49,18 @@ metadata/_custom_type_script = "uid://cxisxpiuefrm8"
 script = ExtResource("6_y5vj3")
 metadata/_custom_type_script = "uid://dd1lv64ebg68h"
 
-[node name="DecisionEngine" type="Node" parent="." unique_id=150758260]
-script = ExtResource("7_5ffra")
-metadata/_custom_type_script = "uid://csujkqnp0d1lj"
+[node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=2132948431]
+script = ExtResource("7_78jik")
+metadata/_custom_type_script = "uid://dt5us522vloka"
+
+[node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=504279893]
+script = ExtResource("8_o3pv7")
+metadata/_custom_type_script = "uid://blx6n0buj1rem"
+
+[node name="ESDeath" type="Node" parent="EnemyStateMachine" unique_id=1344416371]
+script = ExtResource("9_xoplw")
+metadata/_custom_type_script = "uid://i5ecga03fhwa"
+
+[node name="DecisionEngineBasic" type="Node" parent="." unique_id=1899875318]
+script = ExtResource("7_y5vj3")
+metadata/_custom_type_script = "uid://mrlo2rdxd5r"

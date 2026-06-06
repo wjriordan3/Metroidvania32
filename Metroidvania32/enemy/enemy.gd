@@ -82,7 +82,7 @@ func play_animation( anim_name : String ) -> void :
 	if animation.has_animation( anim_name ) :
 		animation.play( anim_name )
 	else: 
-		print( "Animation missing: ", anim_name )
+		printerr( "Animation missing: ", anim_name )
 	pass
 	
 	

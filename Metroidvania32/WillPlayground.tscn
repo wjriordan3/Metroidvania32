@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c8xko60kdb7bq" path="res://enemy/simple_enemy/simple_enemy.tscn" id="17_munlb"]
 [ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/enemy.tscn" id="18_jjrpu"]
 
-[sub_resource type="Resource" id="Resource_cefoj"]
+[sub_resource type="Resource" id="Resource_jjrpu"]
 resource_local_to_scene = true
 script = ExtResource("9_gjbl7")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -84,7 +84,7 @@ position = Vector2(83, 285)
 z_index = 0
 position = Vector2(224, 257)
 allowed_tags = Array[String](["player"])
-stats = SubResource("Resource_cefoj")
+stats = SubResource("Resource_jjrpu")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("10_8gwar")
@@ -129,8 +129,5 @@ position = Vector2(600, 236)
 
 [node name="Enemy" parent="." unique_id=784409238 instance=ExtResource("18_jjrpu")]
 position = Vector2(863, 145)
-health = 3.0
-affected_by_gravity = true
-face_left_on_start = false
 
 [editable path="SimpleEnemy"]
