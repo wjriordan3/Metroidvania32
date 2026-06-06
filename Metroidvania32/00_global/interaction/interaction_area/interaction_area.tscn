@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bxshmus16jex2"]
+
+[ext_resource type="Script" uid="uid://7i3q8dyat13p" path="res://00_global/interaction/interaction_area/interaction_area.gd" id="1_ackl7"]
+
+[node name="InteractionArea" type="Area2D" unique_id=1450193662]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_ackl7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1739816610]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

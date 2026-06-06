@@ -76,3 +76,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		if active_camera != null:
 			active_camera.offset = lerp(active_camera.offset, Vector2.ZERO, 10.5 * delta)
+
+# For respawning the player
+func get_left_spawn_position(camera: Camera2D) -> Vector2:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var half_size = viewport_size * camera.zoom / 2.0
+	
+	return camera.global_position + Vector2(-half_size.x + 20, 0)

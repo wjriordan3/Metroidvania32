@@ -36,6 +36,7 @@ DamageNum="*uid://kjljnlxow5sk"
 Audio="*uid://dcm4516cr4j1o"
 VisualEffects="*uid://c4s5id8xau14p"
 Config="*uid://cmf2mvylic52w"
+InteractionManager="*uid://co2ft8wrcmimn"
 
 [dialogic]
 
@@ -251,6 +252,10 @@ aim_down={
 2d_physics/layer_7="Enemy"
 2d_physics/layer_8="Breakable"
 2d_physics/layer_9="SlamBreakable"
+2d_physics/layer_10="PunchAtk"
+2d_physics/layer_11="KickAtk"
+2d_physics/layer_12="DrillAtk"
+2d_physics/layer_13="GunAtk"
 
 [physics]
 

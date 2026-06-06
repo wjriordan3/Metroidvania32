@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dkr61ejcql1ak"]
+
+[ext_resource type="Script" uid="uid://keo445kl50ri" path="res://level/pitfall/pitfall.gd" id="1_qqmv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqmv6"]
+
+[node name="Pitfall" type="Area2D" unique_id=1614727682]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_qqmv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1431358135]
+shape = SubResource("RectangleShape2D_qqmv6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
