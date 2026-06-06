@@ -22,6 +22,7 @@ var is_open = false
 @export var gun_door: SpriteFrames
 @export var button_door: SpriteFrames
 @export var lock_door: SpriteFrames
+@export var switches: Array[Switch]
 
 @onready var door_collision = $CollisionShape2D
 @onready var door_sprite = $AnimatedSprite2D
@@ -29,8 +30,8 @@ var is_open = false
 
 # Set sprite frames based on door type
 func _ready() -> void:
-	# Hide interaction for doors
 	InteractionManager.visible = false
+	Messages.switch_activated.connect(_on_messages_switch_activated)
 	
 	match door_type:
 		DoorType.PUNCH:
@@ -65,19 +66,32 @@ func _on_interact():
 		print("Interact/key door open")
 		open_door()
 
+# Check if all switches active, open door if all active
+func check_switches():
+	for switch in switches:
+		if switch.active == false:
+			return
+	open_door()
+
 func open_door():
-	door_sprite.play("open")
-	door_collision.disabled = true
-	is_open = true
+	if !is_open:
+		door_sprite.play("open")
+		door_collision.set_deferred("disabled", true)
+		is_open = true
 
 # Only open lock doors can close
 func close_door():
 	if door_type == DoorType.LOCK_OPEN:
-		door_collision.disabled = false
+		door_collision.set_deferred("disabled", false)
 		door_sprite.play("close")
 		is_open = false
 
-# Door logic for limb doors
+# Check switch identity, make sure it's associated with this door
+func _on_messages_switch_activated(switch: Switch):
+	if switch in switches:
+		check_switches()
+
+# Only punch and drill doors have hitbox
 func _on_damage_area_damage_taken(attack_area: Variant) -> void:
 	print("Door hit" + attack_area.name)
 	
@@ -85,12 +99,6 @@ func _on_damage_area_damage_taken(attack_area: Variant) -> void:
 	if door_type == DoorType.PUNCH && attack_area.collision_layer == 10:
 		print("Punch door open")
 		open_door()
-	elif door_type == DoorType.KICK && attack_area.collision_layer == 11:
-		print("Kick door open")
-		open_door()
 	elif door_type == DoorType.DRILL && attack_area.collision_layer == 12:
 		print("Drill door open")
-		open_door()
-	elif door_type == DoorType.GUN && attack_area.collision_layer == 13:
-		print("Gun door open")
 		open_door()
