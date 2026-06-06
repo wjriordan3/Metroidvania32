@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8xko60kdb7bq"]
 
-[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_pmsee"]
+[ext_resource type="Script" uid="uid://xq6fjva3ux3h" path="res://enemy/simple_enemy/simple_enemy.gd" id="1_jxaam"]
 [ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
 [ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
 [ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
@@ -12,10 +12,10 @@
 [node name="SimpleEnemy" type="CharacterBody2D" unique_id=976216826 groups=["damage"]]
 collision_layer = 64
 collision_mask = 3
-script = ExtResource("1_pmsee")
+script = ExtResource("1_jxaam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578582076]
-scale = Vector2(3.503, 4)
+scale = Vector2(6.86148, 7.7470016)
 shape = SubResource("RectangleShape2D_epg4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1158714928]
@@ -25,23 +25,24 @@ texture = ExtResource("2_epg4t")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317822677]
 
 [node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("3_pmsee")]
-position = Vector2(0, -4.9999995)
-scale = Vector2(6.795, 6.75)
+position = Vector2(0, -4.7683716e-07)
+scale = Vector2(6.8606653, 7.823597)
 collision_layer = 32
+collision_mask = 32
 
 [node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("4_1wwld")]
 position = Vector2(0, -4.9999995)
-scale = Vector2(1.385, 1.04)
-collision_layer = 0
+scale = Vector2(5.6005697, 2.2410452)
+collision_layer = 32
 collision_mask = 32
 
 [node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("5_y5vj3")]
-scale = Vector2(0.5, 0.495)
+scale = Vector2(0.5116717, 0.5026315)
 collision_layer = 64
 collision_mask = 64
 
 [node name="EdgeDetector" type="RayCast2D" parent="." unique_id=446915575]
 z_index = 1
-position = Vector2(-1, 81)
+position = Vector2(58, 75)
 script = ExtResource("6_1wwld")
 metadata/_custom_type_script = "uid://cxisxpiuefrm8"

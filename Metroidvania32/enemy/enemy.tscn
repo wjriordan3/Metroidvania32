@@ -1,36 +1,52 @@
-[gd_scene format=3 uid="uid://uiok302n0qb0"]
+[gd_scene format=3 uid="uid://beow2xudhsmfb"]
 
+[ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="1_iifgy"]
 [ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_pmsee"]
-[ext_resource type="Texture2D" uid="uid://cjaxiyjsvajlk" path="res://ui/icons/mechicon.png" id="2_epg4t"]
-[ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="3_pmsee"]
-[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="4_1wwld"]
-[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="5_y5vj3"]
+[ext_resource type="PackedScene" uid="uid://cdrmt18vsmxl6" path="res://enemy/hazard_area.tscn" id="2_epg4t"]
+[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="3_3yqyl"]
+[ext_resource type="Script" uid="uid://cxisxpiuefrm8" path="res://enemy/scripts/edge_detector.gd" id="4_wujgv"]
+[ext_resource type="Script" uid="uid://dd1lv64ebg68h" path="res://enemy/scripts/enemy_state_machine.gd" id="6_y5vj3"]
+[ext_resource type="Script" uid="uid://csujkqnp0d1lj" path="res://enemy/scripts/decision_engine.gd" id="7_5ffra"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb8ge"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=976216826 groups=["damage"]]
-collision_layer = 64
-collision_mask = 3
+[node name="Enemy" type="CharacterBody2D" unique_id=784409238]
 script = ExtResource("1_pmsee")
+health = null
+affected_by_gravity = null
+face_left_on_start = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=578582076]
-scale = Vector2(13.520002, 15.44)
-shape = SubResource("RectangleShape2D_epg4t")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1047071894]
+scale = Vector2(6.86148, 7.7470016)
+shape = SubResource("RectangleShape2D_hb8ge")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1158714928]
-texture = ExtResource("2_epg4t")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542454403]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_iifgy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317822677]
-
-[node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("3_pmsee")]
-position = Vector2(0, -4.9999995)
+[node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("2_epg4t")]
+position = Vector2(0, -4.7683716e-07)
+scale = Vector2(6.8606653, 7.823597)
+collision_layer = 32
 collision_mask = 32
 
-[node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("4_1wwld")]
-position = Vector2(0, -4.9999995)
-collision_layer = 0
-collision_mask = 32
-
-[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("5_y5vj3")]
+[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("3_3yqyl")]
+scale = Vector2(0.5116717, 0.5026315)
 collision_layer = 64
 collision_mask = 64
+
+[node name="EdgeDetector" type="RayCast2D" parent="." unique_id=2014935495]
+z_index = 1
+position = Vector2(58, 75)
+script = ExtResource("4_wujgv")
+metadata/_custom_type_script = "uid://cxisxpiuefrm8"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1975503825]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=669872360]
+script = ExtResource("6_y5vj3")
+metadata/_custom_type_script = "uid://dd1lv64ebg68h"
+
+[node name="DecisionEngine" type="Node" parent="." unique_id=150758260]
+script = ExtResource("7_5ffra")
+metadata/_custom_type_script = "uid://csujkqnp0d1lj"
