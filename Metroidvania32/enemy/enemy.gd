@@ -5,9 +5,9 @@ signal direction_changed( new_dir )
 signal was_hit( a : AttackArea )
 signal was_killed()
 
-@export var health : float = 3
+@export var health : float = 10
 @export var affected_by_gravity : bool = true
-@export var face_left_on_start : bool = false
+@export var face_left_on_start : bool = true
 
 @export_category( "Audio" )
 @export var death_sound : AudioStream
@@ -87,12 +87,15 @@ func play_animation( anim_name : String ) -> void :
 	
 	
 func _on_damage_taken( a : AttackArea ) -> void :
+	blackboard.damage_source = a
 	blackboard.health -= a.damage
 	if blackboard.health <= 0:
 		damage_area.queue_free()
 		hazard_area.queue_free()
 		was_killed.emit()
+		print( "Kill signal emitted" )
 	was_hit.emit( a )
+	print( "Hit signal emitted")
 	pass
 	
 func _get_configuration_warnings() -> PackedStringArray :

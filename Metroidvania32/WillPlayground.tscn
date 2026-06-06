@@ -128,6 +128,7 @@ z_index = 2
 position = Vector2(600, 236)
 
 [node name="Enemy" parent="." unique_id=784409238 instance=ExtResource("18_jjrpu")]
-position = Vector2(863, 145)
+position = Vector2(1093, 104)
+scale = Vector2(0.9200049, 0.84000003)
 
 [editable path="SimpleEnemy"]
