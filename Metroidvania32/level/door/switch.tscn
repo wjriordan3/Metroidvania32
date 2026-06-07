@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d38s6kbs31qxh"]
+
+[ext_resource type="Script" uid="uid://ca7nyupd67b1d" path="res://level/door/switch.gd" id="1_op5cv"]
+[ext_resource type="PackedScene" uid="uid://c107nptagd87e" path="res://enemy/damage_area.tscn" id="2_aquvj"]
+[ext_resource type="SpriteFrames" uid="uid://iv25ri1icuyl" path="res://level/door/sprite_frames/gun_switch.tres" id="2_qpm00"]
+[ext_resource type="SpriteFrames" uid="uid://h6fwqdwc8dim" path="res://level/door/sprite_frames/kick_switch.tres" id="3_vtpuh"]
+[ext_resource type="SpriteFrames" uid="uid://cxwp34k7xli03" path="res://level/door/sprite_frames/button_switch.tres" id="4_r6vy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fln0p"]
+size = Vector2(32, 32)
+
+[node name="Switch" type="Area2D" unique_id=1017918547]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_op5cv")
+gun_switch = ExtResource("2_qpm00")
+kick_switch = ExtResource("3_vtpuh")
+button_switch = ExtResource("4_r6vy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=512352041]
+shape = SubResource("RectangleShape2D_fln0p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1670284913]
+
+[node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("2_aquvj")]
+scale = Vector2(0.1, 0.1)
+collision_mask = 5120
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="damage_taken" from="DamageArea" to="." method="_on_damage_area_damage_taken"]

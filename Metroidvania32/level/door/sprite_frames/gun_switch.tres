@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://iv25ri1icuyl"]
+
+[ext_resource type="Texture2D" uid="uid://gf0qrr8q3yeb" path="res://level/tilesets/sprites/door_tileset_01.png" id="1_xsyp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu1mw"]
+atlas = ExtResource("1_xsyp3")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cug3"]
+atlas = ExtResource("1_xsyp3")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmhdn"]
+atlas = ExtResource("1_xsyp3")
+region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au2ll"]
+atlas = ExtResource("1_xsyp3")
+region = Rect2(32, 288, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu1mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cug3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmhdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au2ll")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
