@@ -4,6 +4,9 @@ class_name PlayerSpawn extends Node2D
 func _ready() -> void:
 	visible = false
 	if PlayerManager.player_spawned == false:
+		print("No player found. Instantiating new player instance.")
+		PlayerManager.add_player_instance()
+		print("Now moving player")
 		PlayerManager.set_player_position( global_position )
 		PlayerManager.player_spawned = true
 		

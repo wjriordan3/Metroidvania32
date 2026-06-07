@@ -266,6 +266,7 @@ func _on_player_interacted( player : Player ) -> void:
 func _control_mech(pilot):
 	# Assign player to pilot
 	active_pilot = pilot
+	PlayerManager.mecha = self
 	pilot.on_enter_mech(self)
 	change_state(idle_state)
 	# Maybe assign to a cockpit position placed on mech in scene?
@@ -276,6 +277,7 @@ func _leave_mech():
 	if active_pilot == null:
 		return
 	var pilot := active_pilot
+	PlayerManager.mecha = null
 	pilot.on_exit_mech()
 	change_state(deactivate_state)
 	pilot.global_position = self.global_position

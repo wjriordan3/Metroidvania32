@@ -29,6 +29,10 @@ func add_mecha_instance() -> void:
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
 	pass
+	
+func set_mecha_position( _new_pos : Vector2 ) -> void:
+	mecha.global_position = _new_pos
+	pass
 
 func set_as_parent( _p : Node2D ) -> void:
 	if player.get_parent():
