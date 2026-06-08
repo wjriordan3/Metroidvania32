@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b6qfxj1farp74"]
+
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_5c6v7"]
+[ext_resource type="Script" uid="uid://ct5aktl6b816b" path="res://items/scripts/item_data.gd" id="2_v26yp"]
+[ext_resource type="Texture2D" uid="uid://b4pt8lv3rfwgk" path="res://items/sprites/soulChip_standard.png" id="3_v26yp"]
+
+[resource]
+script = ExtResource("2_v26yp")
+itemType = 3
+name = "Soul Chip (Standard)"
+texture = ExtResource("3_v26yp")
+IsKeyItem = true
+metadata/_custom_type_script = "uid://ct5aktl6b816b"

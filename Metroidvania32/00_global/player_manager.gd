@@ -41,3 +41,14 @@ func set_as_parent( _p : Node2D ) -> void:
 	
 func unparent_player( _p : Node2D ) -> void:
 	_p.remove_child( player )
+	
+func move_player_to_spawn_position() -> bool:
+	var spawn = get_tree().current_scene.get_node_or_null("PlayerSpawn")
+	if spawn:
+		print("Moving player to spawn position")
+		set_player_position(spawn.global_position)
+		return true
+	
+	print("Failed to move player to spawn position")
+	return false	
+	#return Vector2(83.0, 285.0)

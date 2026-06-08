@@ -64,32 +64,39 @@ func _ready() -> void:
 	damage_area.damage_taken.connect( _on_damage_taken )
 	CameraManager.set_target(self)
 	stats.health = stats.current_max_health
+	
+	if OS.is_debug_build():
+		$Label.visible = true
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "interact" ):
 		Messages.player_interacted.emit( self )
-		
-	# For testing health, remove later
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_MINUS:
-			if Input.is_key_pressed( KEY_SHIFT ):
-				stats.take_damage(10)
-				print(stats.health)
-				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
-			else:
-				stats.take_damage(2)
-				print(stats.health)
-				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
-		elif event.keycode == KEY_EQUAL:
-			if Input.is_key_pressed( KEY_SHIFT ):
-				stats.current_max_health += 10
-				print(stats.current_max_health)
-				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
-			else:
-				stats.health += 2
-				print(stats.health)
-				Messages.player_health_changed.emit(stats.health, stats.current_max_health)
+	
+	if OS.is_debug_build():
+		# For testing health, remove later
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_MINUS:
+				if Input.is_key_pressed( KEY_SHIFT ):
+					stats.take_damage(10)
+					print(stats.health)
+					Messages.player_health_changed.emit(stats.health, stats.current_max_health)
+				else:
+					stats.take_damage(2)
+					print(stats.health)
+					Messages.player_health_changed.emit(stats.health, stats.current_max_health)
+			elif event.keycode == KEY_EQUAL:
+				if Input.is_key_pressed( KEY_SHIFT ):
+					stats.current_max_health += 10
+					print(stats.current_max_health)
+					Messages.player_health_changed.emit(stats.health, stats.current_max_health)
+				else:
+					stats.health += 2
+					print(stats.health)
+					Messages.player_health_changed.emit(stats.health, stats.current_max_health)
+			elif event.keycode == KEY_0:
+				if Input.is_key_pressed(KEY_0):
+					PlayerManager.move_player_to_spawn_position()
 	# end for remove code later
 	
 	change_state( current_state.handle_input( event ))
@@ -137,7 +144,8 @@ func initalize_states() -> void:
 	
 	change_state( current_state )
 	current_state.enter()
-	$Label.text = current_state.name
+	if OS.is_debug_build():
+		$Label.text = current_state.name
 	
 	pass
 	

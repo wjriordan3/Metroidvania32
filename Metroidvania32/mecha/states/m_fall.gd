@@ -61,6 +61,9 @@ func physics_process( _delta: float ) -> MechaState:
 			return jump
 		CameraManager.screen_shake(3.0, 0.25)
 		return idle
+	
+	mecha.velocity.x = mecha.direction.x * mecha.stats.base_move_speed	
+	
 	return next_state 
 	
 func set_jump_frame() -> void:

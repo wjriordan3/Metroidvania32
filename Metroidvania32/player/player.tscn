@@ -23,7 +23,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7oew"]
 radius = 5.0
-height = 20.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c35mf"]
 radius = 5.0
@@ -92,7 +92,7 @@ script = ExtResource("11_c35mf")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=267078169]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("11_e7oew")
-animation = &"death"
+animation = &"idle"
 
 [node name="SilhouetteSprite" parent="Sprite" unique_id=959038842 instance=ExtResource("12_e7oew")]
 unique_name_in_owner = true

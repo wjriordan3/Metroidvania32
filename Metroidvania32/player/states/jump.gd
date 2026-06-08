@@ -58,6 +58,8 @@ func physics_process( _delta: float ) -> PlayerState:
 	if player.velocity.y >= 0: # positive number in y is downwards
 		#player.add_debug_indicator( Color.LIME_GREEN )
 		return fall
+		
+	player.velocity.x = player.direction.x * player.stats.base_move_speed
 	
 	return next_state 
 	

@@ -173,6 +173,7 @@ text = "F"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1975791434]
+visible = false
 offset_left = -23.0
 offset_top = -97.0
 offset_right = 23.0

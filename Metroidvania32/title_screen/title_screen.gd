@@ -4,9 +4,12 @@ extends CanvasLayer
 @onready var main_menu: VBoxContainer = %MainMenu
 @onready var new_game_menu: VBoxContainer = %NewGameMenu
 @onready var load_game_menu: VBoxContainer = %LoadGameMenu
+@onready var credits_menu: VBoxContainer = %CreditsMenu
+
 
 @onready var new_game_button: Button = %NewGameButton
 @onready var load_game_button: Button = %LoadGameButton
+@onready var credits_button: Button = %CreditsButton
 @onready var quit_game_button: Button = %QuitGameButton
 
 @onready var new_slot_01: Button = %NewSlot01
@@ -22,6 +25,7 @@ func _ready() -> void:
 	# connect to button signals
 	new_game_button.pressed.connect( show_new_game_menu ) 
 	load_game_button.pressed.connect( show_load_game_menu ) 
+	credits_button.pressed.connect( show_credits_menu )
 	quit_game_button.pressed.connect( _on_quit_game_pressed )
 	
 	new_slot_01.pressed.connect( _on_new_game_pressed.bind( 0 ) )
@@ -77,6 +81,13 @@ func show_load_game_menu() -> void:
 	load_slot_03.disabled = SaveManager.save_file_exists( 2 )
 	
 	pass
+	
+func show_credits_menu() -> void:
+	main_menu.visible = false
+	new_game_menu.visible = false
+	load_game_menu.visible = false
+	credits_menu.visible = true
+	
 
 func _on_new_game_pressed( slot : int ) -> void:
 	SaveManager.create_new_game_save( slot )
@@ -85,6 +96,9 @@ func _on_new_game_pressed( slot : int ) -> void:
 func _on_load_game_pressed( slot : int ) -> void:
 	SaveManager.load_game( slot )
 	
+func _on_credits_pressed() -> void:
+	show_credits_menu()
+	
 func _on_quit_game_pressed() -> void:
 	get_tree().quit()
 
@@ -92,6 +106,7 @@ func show_main_menu() -> void:
 	main_menu.visible = true
 	new_game_menu.visible = false
 	load_game_menu.visible = false
+	credits_menu.visible = false
 	# focus new game button
 	new_game_button.grab_focus()
 	

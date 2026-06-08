@@ -146,6 +146,9 @@ func _ready() -> void:
 	enter_hint_label.visible = false
 	Messages.player_interacted.connect(_on_player_interacted)
 	initialize_states()
+	
+	if OS.is_debug_build():
+		$Label.visible = true
 	pass
 
 func _unhandled_input( event: InputEvent ) -> void:

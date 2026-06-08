@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://i16iugq0d1oo"]
+
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_ocqmp"]
+[ext_resource type="Script" uid="uid://ct5aktl6b816b" path="res://items/scripts/item_data.gd" id="2_ys233"]
+[ext_resource type="Texture2D" uid="uid://dly0e1l3k3avh" path="res://items/sprites/scrap_small_02.png" id="3_ys233"]
+
+[resource]
+script = ExtResource("2_ys233")
+itemType = 5
+name = "Scrap"
+description = "Brittle chunks of old, worn down parts."
+texture = ExtResource("3_ys233")
+quantity = 50
+metadata/_custom_type_script = "uid://ct5aktl6b816b"
