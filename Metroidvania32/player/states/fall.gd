@@ -62,6 +62,8 @@ func physics_process( _delta: float ) -> PlayerState:
 			return jump
 		return idle
 		
+	player.velocity.x = player.direction.x * player.stats.base_move_speed
+		
 	return next_state 
 	
 func set_jump_frame() -> void:

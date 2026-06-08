@@ -49,6 +49,8 @@ func physics_process( _delta: float ) -> MechaState:
 	elif mecha.velocity.y >= 0: # positive number in y is downwards
 		#mecha.add_debug_indicator( Color.LIME_GREEN )
 		return fall
+		
+	mecha.velocity.x = mecha.direction.x * mecha.stats.base_move_speed	
 	
 	return next_state 
 	

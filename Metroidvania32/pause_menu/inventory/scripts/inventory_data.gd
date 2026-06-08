@@ -9,11 +9,11 @@ signal new_item(item: Object)
 func _init() -> void:
 	connect_slots()
 
-func add_item( item : ItemData, quantity : int = 1) -> bool:
+func add_item( item : ItemData ) -> bool:
 	
 	# Item obtained is scrap (currency), do not add to inventory
 	if item.name == "Scrap":
-		scrap += quantity
+		scrap += item.quantity
 		add_scrap.emit(scrap)
 		return true
 	
@@ -21,7 +21,7 @@ func add_item( item : ItemData, quantity : int = 1) -> bool:
 	for s in slots:
 		if s:
 			if s.item_data == item:
-				s.quantity += quantity
+				s.quantity += item.quantity
 				new_item.emit(s.item_data)
 				return true
 	
@@ -29,7 +29,7 @@ func add_item( item : ItemData, quantity : int = 1) -> bool:
 		if slots[ i ] == null:
 			var new = SlotData.new()
 			new.item_data = item
-			new.quantity = quantity
+			new.quantity = item.quantity
 			slots[ i ] = new
 			new.changed.connect( slot_changed )
 			new_item.emit(new.item_data)
