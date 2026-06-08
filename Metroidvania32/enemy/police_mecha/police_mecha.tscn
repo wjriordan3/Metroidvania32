@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://b4jib2yfttres"]
+
+[ext_resource type="Script" uid="uid://bnlaqw3gccw5e" path="res://mecha/scripts/mecha_unit.gd" id="1_uf25m"]
+[ext_resource type="Resource" uid="uid://cajnpdbqxn4x4" path="res://mecha/loadouts/standard_loadout.tres" id="2_5f7wg"]
+[ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="3_2owsx"]
+[ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://mecha/states/m_idle.gd" id="4_w45ou"]
+[ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://mecha/states/m_run.gd" id="5_mj0ff"]
+[ext_resource type="Script" uid="uid://clhife5hx4vdj" path="res://mecha/states/m_jump.gd" id="6_wusma"]
+[ext_resource type="Script" uid="uid://bfmx84gdatp8s" path="res://mecha/states/m_fall.gd" id="7_7pbkv"]
+[ext_resource type="Script" uid="uid://ctl2pu8crpe6h" path="res://mecha/states/m_crouch.gd" id="8_n64aj"]
+[ext_resource type="Script" uid="uid://mvugfp48ptud" path="res://mecha/states/m_activate.gd" id="9_0qm2v"]
+[ext_resource type="Script" uid="uid://brv654q5pc4dm" path="res://mecha/states/m_deactivate.gd" id="10_o4kr5"]
+[ext_resource type="Script" uid="uid://kes77g1t4puo" path="res://mecha/states/m_hurt.gd" id="11_72ywe"]
+[ext_resource type="Script" uid="uid://cimn6wj2ojcjt" path="res://mecha/states/m_death.gd" id="12_2pycj"]
+[ext_resource type="Script" uid="uid://bij8jdvi2smse" path="res://mecha/states/m_attack.gd" id="13_7pxry"]
+[ext_resource type="Script" uid="uid://3p5a4pqft61k" path="res://mecha/ability_states/ability_state_machine.gd" id="14_xq7qb"]
+[ext_resource type="PackedScene" uid="uid://5mvgu8b3613y" path="res://mecha/ability_states/ability_state_scenes/none.tscn" id="15_3ubte"]
+[ext_resource type="Script" uid="uid://cmokwjnm1tb0w" path="res://mecha/scripts/mecha_anim_controller.gd" id="16_gvsqx"]
+[ext_resource type="SpriteFrames" uid="uid://di84ssl80p76x" path="res://mecha/spriteframes/right_leg_sprite_frames.tres" id="17_on1qx"]
+[ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="18_fqujj"]
+[ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="19_dyqui"]
+[ext_resource type="SpriteFrames" uid="uid://dhcoeg4uo68fl" path="res://mecha/spriteframes/core_sprite_frames.tres" id="20_cf0m7"]
+[ext_resource type="SpriteFrames" uid="uid://b5osww4rvdvh0" path="res://mecha/spriteframes/right_arm_sprite_frames.tres" id="21_l51mt"]
+[ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="22_dlxye"]
+[ext_resource type="PackedScene" uid="uid://4bss3pewlwm1" path="res://player/health/limb_health.tscn" id="23_o3mqv"]
+[ext_resource type="PackedScene" uid="uid://1huxwjbd0ppv" path="res://combat/bullet.tscn" id="24_pkc0x"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/scripts/damage_area.gd" id="25_nw7i7"]
+[ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="26_ij8ql"]
+
+[sub_resource type="Resource" id="Resource_lpl13"]
+resource_local_to_scene = true
+script = ExtResource("3_2owsx")
+base_move_speed = 350.0
+metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7oew"]
+radius = 30.0
+height = 102.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c35mf"]
+radius = 30.0
+height = 60.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jtkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7oew"]
+size = Vector2(70, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st227"]
+size = Vector2(40, 40)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b33o"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onqfb"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pa11"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03a8w"]
+size = Vector2(40, 40)
+
+[node name="MechaUnit" type="CharacterBody2D" unique_id=1485163958]
+z_index = 1
+collision_layer = 32
+collision_mask = 7
+script = ExtResource("1_uf25m")
+loadout = ExtResource("2_5f7wg")
+allowed_tags = Array[String](["enemy"])
+stats = SubResource("Resource_lpl13")
+
+[node name="States" type="Node" parent="." unique_id=507809353]
+
+[node name="Idle" type="Node" parent="States" unique_id=490206888]
+unique_name_in_owner = true
+script = ExtResource("4_w45ou")
+
+[node name="Run" type="Node" parent="States" unique_id=1887986100]
+unique_name_in_owner = true
+script = ExtResource("5_mj0ff")
+
+[node name="Jump" type="Node" parent="States" unique_id=5131328]
+unique_name_in_owner = true
+script = ExtResource("6_wusma")
+
+[node name="Fall" type="Node" parent="States" unique_id=488680711]
+unique_name_in_owner = true
+script = ExtResource("7_7pbkv")
+
+[node name="Crouch" type="Node" parent="States" unique_id=232937342]
+unique_name_in_owner = true
+script = ExtResource("8_n64aj")
+
+[node name="Activate" type="Node" parent="States" unique_id=241299144]
+unique_name_in_owner = true
+script = ExtResource("9_0qm2v")
+
+[node name="Deactivate" type="Node" parent="States" unique_id=1912845936]
+unique_name_in_owner = true
+script = ExtResource("10_o4kr5")
+
+[node name="Hurt" type="Node" parent="States" unique_id=2100503282]
+unique_name_in_owner = true
+script = ExtResource("11_72ywe")
+
+[node name="Death" type="Node" parent="States" unique_id=882209118]
+unique_name_in_owner = true
+script = ExtResource("12_2pycj")
+
+[node name="Attack" type="Node" parent="States" unique_id=1001570722]
+unique_name_in_owner = true
+script = ExtResource("13_7pxry")
+
+[node name="AbilityStates" type="Node" parent="." unique_id=308828711]
+script = ExtResource("14_xq7qb")
+
+[node name="None" parent="AbilityStates" unique_id=1643006203 instance=ExtResource("15_3ubte")]
+
+[node name="MechaAnimController" type="Node" parent="." unique_id=1736226477]
+script = ExtResource("16_gvsqx")
+metadata/_custom_type_script = "uid://cmokwjnm1tb0w"
+
+[node name="RightLeg" type="AnimatedSprite2D" parent="." unique_id=941449678]
+sprite_frames = ExtResource("17_on1qx")
+animation = &"standard_leftArm_action"
+speed_scale = 2.0
+
+[node name="LeftArm" type="AnimatedSprite2D" parent="." unique_id=2086251306]
+sprite_frames = ExtResource("18_fqujj")
+animation = &"standard_rightLeg_action"
+speed_scale = 2.0
+
+[node name="LeftLeg" type="AnimatedSprite2D" parent="." unique_id=56878661]
+sprite_frames = ExtResource("19_dyqui")
+animation = &"standard_leftLeg_action"
+speed_scale = 2.0
+
+[node name="Core" type="AnimatedSprite2D" parent="." unique_id=778736296]
+sprite_frames = ExtResource("20_cf0m7")
+animation = &"standard_rightLeg_action"
+speed_scale = 2.0
+
+[node name="RightArm" type="AnimatedSprite2D" parent="." unique_id=327693266]
+sprite_frames = ExtResource("21_l51mt")
+animation = &"standard_rightLeg_action"
+speed_scale = 2.0
+
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1000211783]
+shape = SubResource("CapsuleShape2D_e7oew")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=466451521]
+position = Vector2(0, 21)
+shape = SubResource("CapsuleShape2D_c35mf")
+disabled = true
+debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
+
+[node name="MechAreaCollision" type="Area2D" parent="." unique_id=1813236294]
+scale = Vector2(6.05, 6.05)
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MechAreaCollision" unique_id=294249760]
+shape = SubResource("RectangleShape2D_4jtkn")
+
+[node name="EntryLabel" type="Label" parent="." unique_id=611285634]
+offset_left = -23.0
+offset_top = -39.0
+offset_right = 23.0
+offset_bottom = -14.0
+text = "F"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1975791434]
+visible = false
+offset_left = -23.0
+offset_top = -97.0
+offset_right = 23.0
+offset_bottom = -72.0
+text = "Label"
+horizontal_alignment = 1
+
+[node name="OneWayPlatformShapecast" type="ShapeCast2D" parent="." unique_id=878459651]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_e7oew")
+target_position = Vector2(0, 6)
+max_results = 12
+collision_mask = 2
+
+[node name="Health" parent="." unique_id=1767944466 instance=ExtResource("22_dlxye")]
+
+[node name="LimbHealth" parent="." unique_id=393853738 instance=ExtResource("23_o3mqv")]
+
+[node name="Gun" parent="." unique_id=2057301925 instance=ExtResource("24_pkc0x")]
+visible = false
+position = Vector2(32, -28)
+
+[node name="DamageNumOrigin" type="Node2D" parent="." unique_id=1049312175]
+position = Vector2(0, -60)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=131422307]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("25_nw7i7")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="DALeftArm" type="CollisionShape2D" parent="DamageArea" unique_id=1132149306 groups=["player"]]
+position = Vector2(20, -20)
+shape = SubResource("RectangleShape2D_st227")
+debug_color = Color(0.8025197, 0.3041983, 0.2957042, 0.41960785)
+
+[node name="DACrouch" type="CollisionShape2D" parent="DamageArea" unique_id=1111003447 groups=["player"]]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_7b33o")
+disabled = true
+debug_color = Color(0.7019608, 0.011764706, 0, 0.41960785)
+
+[node name="DARightArm" type="CollisionShape2D" parent="DamageArea" unique_id=1495005126 groups=["player"]]
+position = Vector2(-20, -20)
+shape = SubResource("RectangleShape2D_onqfb")
+debug_color = Color(0.8039216, 0.30588236, 0.29411766, 0.41960785)
+
+[node name="DARightLeg" type="CollisionShape2D" parent="DamageArea" unique_id=2091800930 groups=["player"]]
+position = Vector2(-20, 20)
+shape = SubResource("RectangleShape2D_1pa11")
+debug_color = Color(0.8039216, 0.30588236, 0.29411766, 0.41960785)
+
+[node name="DALeftLeg" type="CollisionShape2D" parent="DamageArea" unique_id=1125933873 groups=["player"]]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_03a8w")
+debug_color = Color(0.8039216, 0.30588236, 0.29411766, 0.41960785)
+
+[node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("26_ij8ql")]
+position = Vector2(60, 0)
+scale = Vector2(2.129626, 2.8187985)
+
+[connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
+[connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]
