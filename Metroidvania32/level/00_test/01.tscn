@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_pdhtj"]
 [ext_resource type="PackedScene" uid="uid://c8xko60kdb7bq" path="res://enemy/simple_enemy/simple_enemy.tscn" id="17_cpcr1"]
 [ext_resource type="Resource" uid="uid://i16iugq0d1oo" path="res://items/itemresources/scrap_50.tres" id="17_job26"]
+[ext_resource type="Resource" uid="uid://b6w4vhdyi2qvl" path="res://items/itemresources/vault_key.tres" id="18_job26"]
 
 [sub_resource type="Resource" id="Resource_djupk"]
 resource_local_to_scene = true
@@ -119,6 +120,10 @@ item_data = ExtResource("15_wfjby")
 [node name="ItemPickup5" parent="." unique_id=44314173 instance=ExtResource("12_vxor6")]
 position = Vector2(1300, 135)
 item_data = ExtResource("17_job26")
+
+[node name="ItemPickup6" parent="." unique_id=768829609 instance=ExtResource("12_vxor6")]
+position = Vector2(140, 286)
+item_data = ExtResource("18_job26")
 
 [node name="TrainingDummy" parent="." unique_id=1609752943 instance=ExtResource("16_pdhtj")]
 position = Vector2(56, 224)

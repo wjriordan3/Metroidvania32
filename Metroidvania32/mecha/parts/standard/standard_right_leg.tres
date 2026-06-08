@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://cud315wgjrgcj"]
 
 [ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_ir1vu"]
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_ltjkd"]
 [ext_resource type="Resource" uid="uid://oilsn5tye6md" path="res://mecha/parts/standard/standard_anims.tres" id="1_n76mv"]
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_qpe25"]
 [ext_resource type="SpriteFrames" uid="uid://di84ssl80p76x" path="res://mecha/spriteframes/right_leg_sprite_frames.tres" id="4_ce3li"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_otp0b"]
 
 [resource]
 script = ExtResource("2_qpe25")
-part_type = 2
+part_type = 4
 sprite_frames = ExtResource("4_ce3li")
 animation_set = ExtResource("1_n76mv")
 name = "Standard Leg (R)"

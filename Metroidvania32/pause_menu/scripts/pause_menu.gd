@@ -40,13 +40,13 @@ func _ready() -> void:
 	system_nav_button.pressed.connect( show_system_menu )
 	gear_nav_button.pressed.connect( show_gear_menu )
 	map_nav_button.pressed.connect( show_map_menu )
-	# show map
 	
 	# audio setup
 	Audio.setup_button_audio( self )
 	
 	# setup system
 	show_vitals_menu()
+	
 			
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed( "pause" ):
@@ -68,6 +68,8 @@ func _on_button_pressed() -> void:
 	
 func show_pause_screen() -> void:
 	visible = true
+	pause_screen.visible = true
+	vitals.visible = false
 	gear.visible = false
 	map.visible = false
 	system.visible = false
@@ -133,6 +135,15 @@ func _on_main_menu_button_pressed() -> void:
 func _on_quit_game_button_pressed() -> void:
 	get_tree().quit()
 
+func focused_item_changed( slot : SlotData ) -> void:
+	if slot:
+		if slot.item_data:
+			update_item_description( slot.item_data.description )
+			# update stats
+	else:
+		update_item_description("")
+		# update stats
+		
 func _on_music_slider_changed( v : float ) -> void:
 	AudioServer.set_bus_volume_linear( 2, v )
 	# save to settings

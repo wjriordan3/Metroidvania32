@@ -162,8 +162,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 48.0
-offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -174,6 +172,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -287,6 +287,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 41.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -366,6 +368,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 41.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -458,6 +462,94 @@ layout_mode = 2
 [node name="InventorySlot25" parent="Control/PauseScreen/Gear/PanelContainer/InventorySlots" unique_id=264457440 instance=ExtResource("6_b0obc")]
 layout_mode = 2
 
+[node name="InventorySlot26" parent="Control/PauseScreen/Gear/PanelContainer/InventorySlots" unique_id=1901027301 instance=ExtResource("6_b0obc")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="Control/PauseScreen/Gear/PanelContainer/InventorySlots" unique_id=676196591 instance=ExtResource("6_b0obc")]
+layout_mode = 2
+
+[node name="InventorySlot28" parent="Control/PauseScreen/Gear/PanelContainer/InventorySlots" unique_id=818108667 instance=ExtResource("6_b0obc")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/PauseScreen/Gear" unique_id=1579088082]
+layout_mode = 1
+offset_left = 126.0
+offset_top = 15.0
+offset_right = 546.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cux0y")
+
+[node name="InventorySlots" type="GridContainer" parent="Control/PauseScreen/Gear/PanelContainer2" unique_id=728181189]
+layout_mode = 2
+theme_override_constants/h_separation = 60
+columns = 5
+
+[node name="InventorySlot_LeftLeg" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots" unique_id=1497269414 instance=ExtResource("6_b0obc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots/InventorySlot_LeftLeg" unique_id=232886081]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 36.0
+offset_bottom = 56.0
+text = "L. LEG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventorySlot_LeftArm" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots" unique_id=226812205 instance=ExtResource("6_b0obc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots/InventorySlot_LeftArm" unique_id=246733901]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 36.0
+offset_bottom = 56.0
+text = "L. ARM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventorySlot_Core" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots" unique_id=1964600700 instance=ExtResource("6_b0obc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots/InventorySlot_Core" unique_id=503747096]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 28.0
+offset_bottom = 56.0
+text = "CORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventorySlot_RightArm" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots" unique_id=2112344929 instance=ExtResource("6_b0obc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots/InventorySlot_RightArm" unique_id=880755930]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 36.0
+offset_bottom = 56.0
+text = "R. ARM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventorySlot_RightLeg" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots" unique_id=1138175526 instance=ExtResource("6_b0obc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/PauseScreen/Gear/PanelContainer2/InventorySlots/InventorySlot_RightLeg" unique_id=225548802]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 34.0
+offset_bottom = 56.0
+text = "R. LEG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ItemDescription" type="Label" parent="Control/PauseScreen/Gear" unique_id=1380666445]
 layout_mode = 0
 offset_left = 340.0
@@ -467,100 +559,6 @@ offset_bottom = 202.0
 text = "Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! Chunks of scrap! "
 autowrap_mode = 2
 
-[node name="LoadoutContainer" type="HBoxContainer" parent="Control/PauseScreen/Gear" unique_id=497248087]
-layout_mode = 1
-offset_left = 130.0
-offset_top = 25.0
-offset_right = 506.00043
-offset_bottom = 85.0
-theme_override_constants/separation = 19
-alignment = 1
-
-[node name="EquipmentLeftArm" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=252253277]
-layout_mode = 2
-
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftArm" unique_id=2144738700 instance=ExtResource("8_cux0y")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftArm/Slot1" unique_id=2035520987]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "L. LEG"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EquipmentRightArm" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=1662504427]
-layout_mode = 2
-
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentRightArm" unique_id=1908223225 instance=ExtResource("8_cux0y")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentRightArm/Slot1" unique_id=1052724720]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "L. ARM"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EquipmentCore" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=1535198841]
-layout_mode = 2
-
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentCore" unique_id=847878385 instance=ExtResource("8_cux0y")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentCore/Slot1" unique_id=1099437506]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "CORE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EquipmentLeftLeg" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=15872924]
-layout_mode = 2
-
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftLeg" unique_id=738600357 instance=ExtResource("8_cux0y")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentLeftLeg/Slot1" unique_id=1623315073]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "R. ARM"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EquipmentRightLeg" type="GridContainer" parent="Control/PauseScreen/Gear/LoadoutContainer" unique_id=1368346614]
-layout_mode = 2
-
-[node name="Slot1" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentRightLeg" unique_id=894067544 instance=ExtResource("8_cux0y")]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/PauseScreen/Gear/LoadoutContainer/EquipmentRightLeg/Slot1" unique_id=1928619224]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "R. LEG"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="System" type="Control" parent="Control/PauseScreen" unique_id=897343260]
 unique_name_in_owner = true
 visible = false
@@ -568,6 +566,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 41.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 

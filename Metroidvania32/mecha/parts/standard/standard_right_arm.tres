@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("2_syqb2")
-part_type = 1
+part_type = 3
 sprite_frames = ExtResource("4_qgqfx")
 animation_set = ExtResource("1_506of")
 name = "Standard Arm (R)"
