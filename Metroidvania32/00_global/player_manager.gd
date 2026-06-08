@@ -16,8 +16,10 @@ func _ready() -> void:
 	player_spawned = true
 	
 func add_player_instance() -> void:
-	player = PLAYER.instantiate()
-	add_child( player )
+	if player_spawned == false:
+		player = PLAYER.instantiate()
+		add_child( player )
+		player_spawned = true
 	pass
 	
 func add_mecha_instance() -> void:
@@ -26,6 +28,10 @@ func add_mecha_instance() -> void:
 	
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
+	pass
+	
+func set_mecha_position( _new_pos : Vector2 ) -> void:
+	mecha.global_position = _new_pos
 	pass
 
 func set_as_parent( _p : Node2D ) -> void:

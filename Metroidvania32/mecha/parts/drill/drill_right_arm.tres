@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://dsesnp6r2cvwb"]
+
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_2g7nk"]
+[ext_resource type="Resource" uid="uid://c3jycmhskc8hb" path="res://mecha/parts/drill/drill_anims.tres" id="2_1exev"]
+[ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="3_8km5j"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_fxn5p"]
+[ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="5_anxq6"]
+[ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="6_vy2yb"]
+
+[resource]
+script = ExtResource("5_anxq6")
+part_type = 1
+sprite_frames = ExtResource("6_vy2yb")
+animation_set = ExtResource("2_1exev")
+name = "Drill Arm (L)"
+description = "L-Type Drill Arm"
+metadata/_custom_type_script = "uid://wfacmefqo5fr"

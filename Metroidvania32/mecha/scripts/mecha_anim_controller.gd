@@ -11,6 +11,13 @@ var paused: bool = false
 
 var hitstop_timer : float = 0.0
 
+signal animation_finished(anim_name : StringName)
+
+var current_frame_count: int = 0
+var finished_emitted := false
+
+var anim_frames := {} # Dictionary: StringName -> int (frame count)
+
 func update(delta: float) -> void:
 	#print("delta=", delta,"\npaused=", paused, "\nhitstop=", hitstop_timer)
 	if paused:
@@ -24,10 +31,15 @@ func update(delta: float) -> void:
 	anim_time += delta * anim_speed * speed_multiplier
 	#print("Current Anim_Time: ", anim_time)
 	
+	# Check if animation finished
+	if !looping and !finished_emitted:
+		if int(anim_time) >= current_frame_count:
+			finished_emitted = true
+			animation_finished.emit(current_anim)
+	
 	
 func play(anim: StringName, loop : bool = true) -> void:
 	resume()
-	#print("animation: ", anim)
 	if current_anim == anim:
 		return
 		
@@ -36,6 +48,8 @@ func play(anim: StringName, loop : bool = true) -> void:
 	current_anim = anim
 	looping = loop
 	anim_time = 0.0
+	
+	finished_emitted = false
 	
 	
 func pause() -> void:
@@ -74,11 +88,30 @@ func is_anim_finished_by_frame_count(frame_count : int ) -> bool:
 	return !looping and int(anim_time) >= frame_count
 	
 func is_anim_finished() -> bool:
-	return true
-	#if looping:
-	#	return false
-	#var frame_count = anim_frames.get(current_anim, 1)
-	#return int(anim_time) >= frame_count
+	if looping:
+		return false
+	var frame_count = anim_frames.get(current_anim, 1)
+	return int(anim_time) >= frame_count
 	
 func set_speed( mult: float ) -> void:
 	speed_multiplier = max(mult, 0.0)
+
+func set_animation_frames(anim_name: StringName, frame_count: int) -> void:
+	anim_frames[anim_name] = frame_count
+	
+func set_frame_count(sprite: AnimatedSprite2D) -> void:
+	if sprite == null or sprite.sprite_frames == null:
+		current_frame_count = 0
+		return
+	
+	# Make sure the animation exists
+	if !sprite.sprite_frames.has_animation(current_anim):
+		current_frame_count = 0
+		return
+	
+	current_frame_count = sprite.sprite_frames.get_frame_count(current_anim)
+	
+func get_frame_count(sprite: AnimatedSprite2D, anim: StringName) -> int:
+	if sprite.sprite_frames == null:
+		return 0
+	return sprite.sprite_frames.get_frame_count(anim)

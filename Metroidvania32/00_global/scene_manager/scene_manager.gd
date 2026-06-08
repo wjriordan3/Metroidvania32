@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func transition_scene( new_scene : String, target_area : String, player_offset : Vector2, dir : String ) -> void:
-	# print("Player ventured to a new level")
+	print("Player ventured to a new level")
 	get_tree().paused = true
 		
 	var fade_pos : Vector2 = get_fade_pos( dir )

@@ -81,6 +81,7 @@ func hide_pause_screen() -> void:
 	
 	is_paused = false
 	get_tree().paused = false
+	pause_screen.visible = false
 	visible = false
 	pause_screen_hidden.emit()
 	

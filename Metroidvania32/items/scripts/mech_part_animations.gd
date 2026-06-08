@@ -11,8 +11,10 @@ extends Resource
 
 @export_category("Actions")
 
-@export var primary_action : StringName
-@export var secondary_action : StringName
+@export var leftArm_action : StringName
+@export var rightArm_action : StringName
+@export var leftLeg_action : StringName
+@export var rightLeg_action : StringName
 
 @export_category("Damage")
 
@@ -28,8 +30,10 @@ func get_anim(key: StringName) -> StringName:
 		"jump": return jump
 		"fall": return fall
 		"hang": return hang
-		"action": return primary_action
-		"action_02": return secondary_action
+		"leftArm": return leftArm_action
+		"rightArm": return rightArm_action
+		"leftLeg": return leftLeg_action
+		"rightLeg": return rightLeg_action
 		"hurt": return hurt
 		"death": return death
 		"death_02" : return death_02

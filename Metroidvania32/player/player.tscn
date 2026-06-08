@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://de6v8rw808o7" path="res://addons/input_prompts/icons/keyboard/f.png" id="13_05wrh"]
 [ext_resource type="PackedScene" uid="uid://gww6s1cnxty6" path="res://player/health/health.tscn" id="13_ciamo"]
 [ext_resource type="PackedScene" uid="uid://nkfxp4c7kl4q" path="res://player/player_gun.tscn" id="15_x7c3f"]
-[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/damage_area.gd" id="20_65viv"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/scripts/damage_area.gd" id="20_65viv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c35mf"]
 
@@ -92,8 +92,7 @@ script = ExtResource("11_c35mf")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=267078169]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("11_e7oew")
-animation = &"idle"
-frame_progress = 0.36109895
+animation = &"death"
 
 [node name="SilhouetteSprite" parent="Sprite" unique_id=959038842 instance=ExtResource("12_e7oew")]
 unique_name_in_owner = true

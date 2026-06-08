@@ -14,6 +14,8 @@ var next_state : MechaState
 @onready var deactivate: MechaStateDeactivate = %Deactivate
 @onready var hurt: MechaStateHurt = %Hurt
 @onready var death: MechaStateDeath = %Death
+@onready var attack: MechaStateAttack = %Attack
+
 #endregion
 
 # What occurs when the state is initialized?
