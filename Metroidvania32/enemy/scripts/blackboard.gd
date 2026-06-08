@@ -1,7 +1,7 @@
 class_name Blackboard extends Resource
 
 var health : float = 3
-var target : Player = null
+var target : CharacterBody2D = null
 var distance_to_target : float = -1
 var can_decide : bool = true
 var edge_detected : bool = false

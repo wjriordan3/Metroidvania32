@@ -17,7 +17,7 @@ func _physics_process( _delta: float) -> void :
 	if colliding != _is_colliding:
 		colliding = _is_colliding
 		if not colliding:
-			edge_detected.emit()	
+			edge_detected.emit()
 	pass
 
 func direction_changed( new_dir : float ) -> void :

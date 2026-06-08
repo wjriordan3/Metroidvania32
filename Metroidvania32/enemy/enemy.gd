@@ -13,7 +13,7 @@ signal was_killed()
 @export var death_sound : AudioStream
 
 var sprite : Sprite2D
-var animation : AnimationPlayer
+@onready var animation : AnimationPlayer = $AnimationPlayer
 var damage_area : DamageArea
 var hazard_area : HazardArea
 

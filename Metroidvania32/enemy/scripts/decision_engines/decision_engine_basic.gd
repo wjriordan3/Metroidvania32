@@ -8,6 +8,8 @@ class_name DecisionEngineBasic extends DecisionEngine
 @onready var es_walk : ESWalk = %ESWalk
 @onready var es_stun : ESStun = %ESStun
 @onready var es_death : ESDeath = %ESDeath
+@onready var es_attack : ESAttack = %ESAttack
+@onready var player_sensor : PlayerSensor = %PlayerSensor
 
 
 func _ready() -> void :
@@ -28,9 +30,17 @@ func decide() -> EnemyState :
 	if blackboard.edge_detected:
 		enemy.change_dir( -blackboard.dir )
 	
-	#if blackboard.target:
-		#if blackboard.distance_to_target < 40:
-			#return attack_state?
-		#return chase_state?
+	if not blackboard.target :
+		blackboard.target = player_sensor.player
+	else:
+		blackboard.update_distance_to_target( enemy.global_position )
+		#print( blackboard.distance_to_target )
+		if blackboard.distance_to_target < 60:
+			#print( "Attack!")
+			return es_attack
+			
+		if player_sensor.target_changed :
+			blackboard.target = null
+		
 	
 	return es_walk

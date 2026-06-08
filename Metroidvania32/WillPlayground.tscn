@@ -16,10 +16,9 @@
 [ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/quikfix.tres" id="14_3frxk"]
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap.tres" id="15_1it0o"]
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_ue2lf"]
-[ext_resource type="PackedScene" uid="uid://c8xko60kdb7bq" path="res://enemy/simple_enemy/simple_enemy.tscn" id="17_munlb"]
 [ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/enemy.tscn" id="18_jjrpu"]
 
-[sub_resource type="Resource" id="Resource_jjrpu"]
+[sub_resource type="Resource" id="Resource_8kew5"]
 resource_local_to_scene = true
 script = ExtResource("9_gjbl7")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -84,7 +83,7 @@ position = Vector2(83, 285)
 z_index = 0
 position = Vector2(224, 257)
 allowed_tags = Array[String](["player"])
-stats = SubResource("Resource_jjrpu")
+stats = SubResource("Resource_8kew5")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("10_8gwar")
@@ -123,12 +122,8 @@ item_data = ExtResource("15_1it0o")
 [node name="TrainingDummy" parent="." unique_id=1609752943 instance=ExtResource("16_ue2lf")]
 position = Vector2(56, 224)
 
-[node name="SimpleEnemy" parent="." unique_id=976216826 instance=ExtResource("17_munlb")]
-z_index = 2
-position = Vector2(600, 236)
+[node name="Enemy2" parent="." unique_id=1232269429 instance=ExtResource("18_jjrpu")]
+position = Vector2(535, 274)
 
 [node name="Enemy" parent="." unique_id=784409238 instance=ExtResource("18_jjrpu")]
-position = Vector2(1093, 104)
-scale = Vector2(0.9200049, 0.84000003)
-
-[editable path="SimpleEnemy"]
+position = Vector2(1149, 161)
