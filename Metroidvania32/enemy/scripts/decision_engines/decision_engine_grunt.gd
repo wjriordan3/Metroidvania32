@@ -13,7 +13,7 @@ extends DecisionEngine
 @onready var es_attack : ESAttack = %ESAttack
 @onready var es_chase : ESChase = %ESChase
 @onready var player_sensor : PlayerSensor = %PlayerSensor
-
+@export var patrol : bool = true
 
 func _ready() -> void :
 	await super() #setup
@@ -48,5 +48,6 @@ func decide() -> EnemyState :
 		if player_sensor.target_changed :
 			blackboard.target = null
 		
-	
+	if patrol :
+		return es_walk
 	return es_idle
