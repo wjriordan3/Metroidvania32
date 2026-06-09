@@ -41,8 +41,6 @@ func set_slot_data( value : SlotData ) -> void:
 	else:
 		label.text = str( slot_data.quantity )
 	
-	#value.inventorySlot = get_parent().name
-	#value.inventoryPosition = int(name.split("Slot")[1])
 
 func item_focused() -> void:
 	if slot_data != null: 
@@ -69,8 +67,9 @@ func item_pressed() -> void:
 				var was_used = item.use()
 				if was_used == false:
 					return
-				item.quantity -= 1
-				label.text = str( item.quantity )
+				if item.quantity > 0:
+					item.quantity -= 1
+					label.text = str( item.quantity )
 				
 			
 	pass

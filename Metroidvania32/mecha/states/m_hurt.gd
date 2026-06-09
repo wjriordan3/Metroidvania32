@@ -14,7 +14,8 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.anim_ctrl.play( "hurt" )
+	mecha.play_animation("hurt")
+	#mecha.anim_ctrl.play( "hurt" )
 	# set length of hitstun
 	time = stun_time
 	# make invulnerable

@@ -7,7 +7,8 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.anim_ctrl.play("idle")
+	mecha.play_animation("idle", true)
+	#mecha.anim_ctrl.play("idle")
 	
 	pass
 	

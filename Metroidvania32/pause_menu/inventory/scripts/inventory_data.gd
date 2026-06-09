@@ -1,6 +1,7 @@
 class_name InventoryData extends Resource
 
 signal equipment_changed
+signal loadout_changed(loadout: MechLoadout)
 
 @export var scrap = 150
 signal add_scrap(scrap: int)
@@ -17,6 +18,17 @@ func get_inventory_slots() -> Array[ SlotData ]:
 
 func get_equipment_slots() -> Array[ SlotData ]:
 	return slots.slice(-equipment_slot_count, slots.size())
+	
+func get_equipment_slot_indices() -> Array[int]:
+	var result: Array[int] = []
+
+	var start_index := slots.size() - equipment_slot_count
+	var end_index := slots.size()
+
+	for i in range(start_index, end_index):
+		result.append(i)
+
+	return result
 
 func add_item( item : ItemData ) -> bool:
 	
@@ -75,34 +87,78 @@ func equip_item( slot : SlotData ) -> void:
 	
 	var item : MechPart = slot.item_data
 	var slot_index : int = slots.find( slot )
-	var equipment_index : int = slots.size() - equipment_slot_count # 28
-	
-	match item.part_type:
-		MechPart.PartType.LLEG:
-			equipment_index += 0
-			pass
-		MechPart.PartType.LARM:
-			equipment_index += 1
-			pass
-		MechPart.PartType.CORE:
-			equipment_index += 2
-			pass
-		MechPart.PartType.RARM:
-			equipment_index += 3
-			pass
-		MechPart.PartType.RLEG:
-			equipment_index += 4
-			pass
-			
+	var equipment_index := part_to_equipment_index(item)
 	var unequipped_slot : SlotData = slots[ equipment_index ]
 	
 	slots[ slot_index ] = unequipped_slot
 	slots[ equipment_index ] = slot
 	
 	equipment_changed.emit()
+	loadout_update()
 	PauseMenu.focused_item_changed(unequipped_slot)
+	
 	pass
 	
+func part_to_equipment_index(part : MechPart) -> int:
+	var base := slots.size() - equipment_slot_count # 28
+	
+	match part.part_type:
+		MechPart.PartType.LLEG:
+			return base + 0
+		MechPart.PartType.LARM:
+			return base + 1
+		MechPart.PartType.CORE:
+			return base + 2
+		MechPart.PartType.RARM:
+			return base + 3
+		MechPart.PartType.RLEG:
+			return base + 4
+			
+	return base
+
+func loadout_update():
+	var new_loadout := MechLoadout.new()
+
+	for slot_index in get_equipment_slot_indices():
+		var slot = slots[slot_index]
+		if slot != null and slot.item_data is MechPart:
+			new_loadout.equip_part(slot.item_data)
+	
+	loadout_changed.emit(new_loadout)
+
+func populate_equipment_from_loadout(loadout: MechLoadout) -> void:
+	# Grab the equipment slot indices
+	var eq_indices = get_equipment_slot_indices()
+	
+	# Map limb slots in order to equipment slots
+	var limb_order = [
+		MechLoadout.LimbSlot.LEFT_LEG,
+		MechLoadout.LimbSlot.LEFT_ARM,
+		MechLoadout.LimbSlot.CORE,
+		MechLoadout.LimbSlot.RIGHT_ARM,
+		MechLoadout.LimbSlot.RIGHT_LEG
+	]
+
+	for i in range(eq_indices.size()):
+		var slot_index = eq_indices[i]
+		var limb_slot = limb_order[i]
+
+		var part_equipped = loadout.get_equipped(limb_slot)
+
+		if slots[slot_index] == null:
+			slots[slot_index] = SlotData.new()
+
+		var slot_data: SlotData = slots[slot_index]
+
+		if part_equipped != null:
+			slot_data.item_data = part_equipped.part
+		else:
+			slot_data.item_data = null
+
+	# Emit signal so any UI updates or hooks trigger
+	equipment_changed.emit()
+	loadout_changed.emit(loadout)
+
 # Gather the inventory data into an array
 func get_save_data() -> Array:
 	var items_to_save : Array = []
