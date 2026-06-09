@@ -14,10 +14,12 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not triggered:
 		triggered = true
+		GameManager.pause_entities()
 		Dialogic.start(timeline)
 
 # Post-dialogue logic
 func _on_dialogic_timeline_ended():
+	GameManager.unpause_entities()
 	await get_tree().create_timer(retrigger_delay).timeout
 	# Set trigger status based on repeatability
 	triggered = !repeatable
