@@ -28,29 +28,41 @@ func update(delta: float) -> void:
 		hitstop_timer -= delta
 		return
 		
+	# Once a non-looping animation is finished,
+	# keep it on the final frame.
+	if !looping and finished_emitted:
+		return
+	
+	
 	anim_time += delta * anim_speed * speed_multiplier
 	#print("Current Anim_Time: ", anim_time)
 	
-	# Check if animation finished
-	if !looping and !finished_emitted:
-		if int(anim_time) >= current_frame_count:
-			finished_emitted = true
-			animation_finished.emit(current_anim)
-	
-	
-func play(anim: StringName, loop : bool = true) -> void:
-	resume()
-	if current_anim == anim:
+	if looping:
 		return
 		
-	#print("playing: ", anim, " at ", Time.get_ticks_msec())
-	
+	var frame_count := get_current_frame_count()
+
+	if frame_count <= 0:
+		return
+
+	var last_frame := frame_count - 1
+
+	if anim_time >= last_frame:
+		anim_time = last_frame
+		finished_emitted = true
+		animation_finished.emit(current_anim)
+			
+		
+func play(anim: StringName, loop := false, restart := false) -> void:
+	resume()
+
+	if current_anim == anim and !restart:
+		return
+
 	current_anim = anim
 	looping = loop
 	anim_time = 0.0
-	
 	finished_emitted = false
-	
 	
 func pause() -> void:
 	paused = true
@@ -115,3 +127,11 @@ func get_frame_count(sprite: AnimatedSprite2D, anim: StringName) -> int:
 	if sprite.sprite_frames == null:
 		return 0
 	return sprite.sprite_frames.get_frame_count(anim)
+	
+
+func get_animation_frame_count(anim_name: StringName) -> int:
+	return anim_frames.get(anim_name, 0)
+
+
+func get_current_frame_count() -> int:
+	return anim_frames.get(current_anim, 0)

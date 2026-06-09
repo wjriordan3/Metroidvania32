@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://8i8v4xxf3cnc"]
+
+[ext_resource type="Script" uid="uid://deagfpcxi5gd5" path="res://general/item_magnet/item_magnet.gd" id="1_1nv1s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcrqw"]
+radius = 45.0
+
+[node name="ItemMagnet" type="Area2D" unique_id=1759759855]
+script = ExtResource("1_1nv1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1785179088]
+shape = SubResource("CircleShape2D_tcrqw")
+debug_color = Color(0.69803923, 0, 0.6688668, 0.12156863)

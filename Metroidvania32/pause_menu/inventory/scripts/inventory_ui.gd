@@ -74,7 +74,11 @@ func connect_item_signals( item : InventorySlotUI ) -> void:
 	pass
 	
 func on_item_drop( item: InventorySlotUI ) -> void:
-	
+	if item == null or item == hovered_item or hovered_item == null:
+		print("cannot drop")
+		return
+	data.swap_items_by_index( item.get_index(), hovered_item.get_index() )
+	update_inventory(false)
 	print("item dropped", item.name)
 	pass
 	

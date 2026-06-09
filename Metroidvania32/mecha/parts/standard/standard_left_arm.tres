@@ -18,6 +18,7 @@ movement_speed_bonus = null
 weight = null
 sprite_frames = ExtResource("4_8rlxh")
 animation_set = ExtResource("1_u4nbx")
+itemType = 1
 name = "Standard Arm (L)"
 description = "A standard mecha arm (Type-L) variant"
 texture = ExtResource("7_8rlxh")

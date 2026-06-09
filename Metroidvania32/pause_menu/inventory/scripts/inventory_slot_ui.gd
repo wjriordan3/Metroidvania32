@@ -62,15 +62,15 @@ func item_pressed() -> void:
 			var item = slot_data.item_data
 			
 			if item is MechPart:
-				PlayerManager.INVENTORY_DATA.equip_item(item)
+				PlayerManager.INVENTORY_DATA.equip_item(slot_data)
 				return
 			
-			if item.itemType == item.ItemType.CONSUMABLE:
+			if item.itemType == MechPart.ItemType.CONSUMABLE:
 				var was_used = item.use()
 				if was_used == false:
 					return
-				slot_data.quantity -= 1
-				label.text = str( slot_data.quantity )
+				item.quantity -= 1
+				label.text = str( item.quantity )
 				
 			
 	pass
@@ -81,6 +81,7 @@ func on_button_down() -> void:
 	dragging = true
 	drag_texture = texture_rect.duplicate()
 	drag_texture.z_index = 10
+	drag_texture.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(drag_texture)
 	drag_texture.modulate = Color.RED
 	pass

@@ -14,15 +14,19 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	execute_attack()
-	mecha.anim_ctrl.animation_finished.connect(_on_animation_finished)
+	#mecha.anim_ctrl.animation_finished.connect(_on_animation_finished)
+	
+	
 	pass
 	
 # What happens when we exit this state?
 func exit() -> void:
 	timer = 0
 	combo = 0
-	mecha.anim_ctrl.animation_finished.disconnect(_on_animation_finished)
-	next_state = null
+	#mecha.anim_ctrl.animation_finished.disconnect(_on_animation_finished)
+	#next_state = null
+	
+	next_state = idle
 	pass 
 	
 func handle_input( _event : InputEvent ) -> MechaState:
@@ -59,6 +63,7 @@ func execute_attack() -> void:
 			mecha.anim_ctrl.play("rightArm", false)
 	
 	mecha.attack_area.activate(0.4)
+	
 	#Audio.play_spatial_sound(AUDIO_ATTACK, mecha.global_position)
 	
 	
@@ -94,11 +99,12 @@ func end_attack() -> void:
 		combo = wrapi( combo + 1, 0, 3 )
 		execute_attack()
 	else:
-		#next_state = idle
-		mecha.change_state(idle)
+		next_state = idle
+		#mecha.change_state(idle)
 	pass
 	
 func _on_animation_finished( _anim_name : StringName ) -> void:
+	print("finished attack animation: ", _anim_name)
 	end_attack()
 	pass
 	

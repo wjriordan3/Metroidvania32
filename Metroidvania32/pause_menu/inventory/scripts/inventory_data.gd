@@ -62,23 +62,13 @@ func slot_changed() -> void:
 				slots [ index ] = null
 				emit_changed()
 	pass
-
-# Gather the inventory data into an array
-func get_save_data() -> Array:
-	var items_to_save : Array = []
-	for i in slots.size():
-		items_to_save.append( item_to_save( slots[i] ) )
-	return items_to_save
-
-# Convert each inventory item into a dictionary
-func item_to_save( slot : SlotData ) -> Dictionary:
-	var result = { item = "", quantity = 0 }
-	if slot != null: 
-		result.quantity = slot.quantity
-		if slot.item_data != null:
-			result.item = slot.item_data.resource_path
-	return result
 	
+func swap_items_by_index( i1 : int, i2 : int ) -> void:
+	var temp : SlotData = slots[ i1 ]
+	slots[ i1 ] = slots[ i2 ]
+	slots[ i2 ] = temp
+	pass
+
 func equip_item( slot : SlotData ) -> void:
 	if slot == null or not slot.item_data is MechPart:
 		return
@@ -113,6 +103,22 @@ func equip_item( slot : SlotData ) -> void:
 	PauseMenu.focused_item_changed(unequipped_slot)
 	pass
 	
+# Gather the inventory data into an array
+func get_save_data() -> Array:
+	var items_to_save : Array = []
+	for i in slots.size():
+		items_to_save.append( item_to_save( slots[i] ) )
+	return items_to_save
+
+# Convert each inventory item into a dictionary
+func item_to_save( slot : SlotData ) -> Dictionary:
+	var result = { item = "", quantity = 0 }
+	if slot != null: 
+		result.quantity = slot.quantity
+		if slot.item_data != null:
+			result.item = slot.item_data.resource_path
+	return result	
+
 func parse_save_data( save_data : Array ) -> void:
 	var array_size = slots.size()
 	slots.clear()

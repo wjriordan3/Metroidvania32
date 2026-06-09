@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://i16iugq0d1oo" path="res://items/itemresources/scrap_50.tres" id="17_job26"]
 [ext_resource type="Resource" uid="uid://b6w4vhdyi2qvl" path="res://items/itemresources/vault_key.tres" id="18_job26"]
 
-[sub_resource type="Resource" id="Resource_djupk"]
+[sub_resource type="Resource" id="Resource_job26"]
 resource_local_to_scene = true
 script = ExtResource("9_edsil")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -85,7 +85,7 @@ position = Vector2(83, 285)
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_tj2tj")]
 z_index = 0
 position = Vector2(224, 257)
-stats = SubResource("Resource_djupk")
+stats = SubResource("Resource_job26")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mueo5")
