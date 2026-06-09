@@ -10,6 +10,7 @@ extends EnemyState
 @export var attack_audio : AudioStream
 var duration : float = 1
 var timer : float = 0
+var gun 
 
 func enter() -> void :
 	var anim : String = animation_name if animation_name else "attack"

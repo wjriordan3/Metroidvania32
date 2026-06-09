@@ -10,6 +10,7 @@ var knockback_strength : float = 100
 var vel_x : float = 0
 var duration : float = 1
 var timer : float = 0
+var flipped = false
 
 func start() -> void :
 	var anim : String = animation_name if animation_name else "stun"
@@ -34,6 +35,8 @@ func re_enter() -> void :
 	
 func exit() -> void :
 	blackboard.can_decide = true
+	if flipped :
+		enemy.sprite.flip_h = true
 	pass
 	
 func physics_update( delta : float ) -> void :
@@ -48,6 +51,12 @@ func _calc_velocity( a : AttackArea ) -> void :
 	vel_x = 1
 	if a.global_position.x > enemy.global_position.x:
 		vel_x = -1
+		if blackboard.dir < 0 :
+			enemy.sprite.flip_h = true
+			flipped = true
+	elif blackboard.dir > 0 :
+		enemy.sprite.flip_h = true
+		flipped = true
 	vel_x *= knockback_strength
 	pass
 	
