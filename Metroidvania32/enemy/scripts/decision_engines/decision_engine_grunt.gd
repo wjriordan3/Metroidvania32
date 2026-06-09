@@ -9,7 +9,9 @@ extends DecisionEngine
 @onready var es_walk : ESWalk = %ESWalk
 @onready var es_stun : ESStun = %ESStun
 @onready var es_death : ESDeath = %ESDeath
+@onready var es_idle : ESIdle = %ESIdle
 @onready var es_attack : ESAttack = %ESAttack
+@onready var es_chase : ESChase = %ESChase
 @onready var player_sensor : PlayerSensor = %PlayerSensor
 
 
@@ -40,9 +42,11 @@ func decide() -> EnemyState :
 		if blackboard.distance_to_target < 60:
 			#print( "Attack!")
 			return es_attack
+		elif blackboard.distance_to_target < 200:
+			return es_chase
 			
 		if player_sensor.target_changed :
 			blackboard.target = null
 		
 	
-	return es_walk
+	return es_idle

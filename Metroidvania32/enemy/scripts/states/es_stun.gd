@@ -8,9 +8,10 @@ class_name ESStun extends EnemyState
 # var blackboard : Blackboard
 var knockback_strength : float = 100
 var vel_x : float = 0
-var duration : float = 1
+@export var duration : float
 var timer : float = 0
-var flipped = false
+var flipped_left = false
+var flipped_right = false
 
 func start() -> void :
 	var anim : String = animation_name if animation_name else "stun"
@@ -18,8 +19,10 @@ func start() -> void :
 		enemy.animation.seek( 0 )
 	else:
 		enemy.play_animation( anim )
+	
+	if not duration:
+		duration = enemy.animation.current_animation_length
 		
-	duration = enemy.animation.current_animation_length
 	timer = 0
 	_calc_velocity( blackboard.damage_source )
 	blackboard.damage_source = null
@@ -34,9 +37,13 @@ func re_enter() -> void :
 	pass
 	
 func exit() -> void :
-	blackboard.can_decide = true
-	if flipped :
+	if flipped_right :
 		enemy.sprite.flip_h = true
+		flipped_right = false
+	if flipped_left :
+		enemy.sprite.flip_h = false
+		flipped_left = false
+	blackboard.can_decide = true
 	pass
 	
 func physics_update( delta : float ) -> void :
@@ -51,12 +58,12 @@ func _calc_velocity( a : AttackArea ) -> void :
 	vel_x = 1
 	if a.global_position.x > enemy.global_position.x:
 		vel_x = -1
-		if blackboard.dir < 0 :
-			enemy.sprite.flip_h = true
-			flipped = true
-	elif blackboard.dir > 0 :
+		if blackboard.dir < 0:
+			enemy.sprite.flip_h = false
+			flipped_right = true
+	elif blackboard.dir > 0:
 		enemy.sprite.flip_h = true
-		flipped = true
+		flipped_left = true
 	vel_x *= knockback_strength
 	pass
 	

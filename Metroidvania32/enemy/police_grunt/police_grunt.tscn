@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bbgm5yi6el02x" path="res://enemy/scripts/states/es_idle.gd" id="11_ixi1r"]
 [ext_resource type="Script" uid="uid://b0p4kbb6qxvvx" path="res://enemy/scripts/states/es_attack.gd" id="12_3kt35"]
 [ext_resource type="Script" uid="uid://bqklbgwkqk4ne" path="res://enemy/weapons/enemy_gun.gd" id="12_b81mh"]
+[ext_resource type="Script" uid="uid://c35k5w07em8j6" path="res://enemy/scripts/states/es_chase.gd" id="13_3kt35"]
 
 [sub_resource type="Animation" id="Animation_gkxnr"]
 length = 0.001
@@ -100,8 +101,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_iq4ev"]
 resource_name = "hurt"
-length = 0.10001
-loop_mode = 1
+length = 0.50001
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -126,6 +126,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0]
 }
 
 [sub_resource type="Animation" id="Animation_n57wf"]
@@ -227,6 +239,7 @@ _data = {
 collision_layer = 64
 collision_mask = 3
 script = ExtResource("1_tbn3a")
+face_left_on_start = false
 metadata/_custom_type_script = "uid://ymmfny6rahds"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=833508500]
@@ -269,6 +282,11 @@ metadata/_custom_type_script = "uid://bbgm5yi6el02x"
 unique_name_in_owner = true
 script = ExtResource("12_3kt35")
 metadata/_custom_type_script = "uid://b0p4kbb6qxvvx"
+
+[node name="ESChase" type="Node" parent="EnemyStateMachine" unique_id=1320730730]
+unique_name_in_owner = true
+script = ExtResource("13_3kt35")
+metadata/_custom_type_script = "uid://c35k5w07em8j6"
 
 [node name="EdgeSensor" type="RayCast2D" parent="." unique_id=1874635038]
 script = ExtResource("7_hg4ff")

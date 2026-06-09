@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dd1lv64ebg68h" path="res://enemy/scripts/enemy_state_machine.gd" id="6_y5vj3"]
 [ext_resource type="Script" uid="uid://dt5us522vloka" path="res://enemy/scripts/states/es_walk.gd" id="7_78jik"]
 [ext_resource type="Script" uid="uid://mrlo2rdxd5r" path="res://enemy/scripts/decision_engines/decision_engine_basic.gd" id="7_y5vj3"]
+[ext_resource type="Script" uid="uid://c35k5w07em8j6" path="res://enemy/scripts/states/es_chase.gd" id="8_6yflr"]
 [ext_resource type="Script" uid="uid://blx6n0buj1rem" path="res://enemy/scripts/states/es_stun.gd" id="8_o3pv7"]
 [ext_resource type="Script" uid="uid://i5ecga03fhwa" path="res://enemy/scripts/states/es_death.gd" id="9_xoplw"]
 [ext_resource type="Script" uid="uid://b0p4kbb6qxvvx" path="res://enemy/scripts/states/es_attack.gd" id="10_o3pv7"]
@@ -136,6 +137,10 @@ unique_name_in_owner = true
 script = ExtResource("7_78jik")
 animation_name = "walk"
 metadata/_custom_type_script = "uid://dt5us522vloka"
+
+[node name="ESChase" type="Node" parent="EnemyStateMachine" unique_id=603685380]
+script = ExtResource("8_6yflr")
+metadata/_custom_type_script = "uid://c35k5w07em8j6"
 
 [node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=504279893]
 unique_name_in_owner = true
