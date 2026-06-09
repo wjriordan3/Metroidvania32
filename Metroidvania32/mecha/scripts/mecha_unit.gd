@@ -99,9 +99,9 @@ func play_animation(anim_name: StringName, loop := false):
 	var frame_count := get_anim_frame_count(anim_name)
 	anim_ctrl.play(anim_name, frame_count, loop)
 	
-func apply_loadout(l: MechLoadout):
+func apply_loadout( new_loadout : MechLoadout):
 	print("applying mech loadout")
-	l.rebuild_runtime()
+	new_loadout.rebuild_runtime()
 	update_mech_rendering()
 		
 		

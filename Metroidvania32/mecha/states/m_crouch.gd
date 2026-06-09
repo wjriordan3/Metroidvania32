@@ -14,8 +14,8 @@ func enter() -> void:
 	mecha.crouch_multiplier = crouch_move_multiplier
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	mecha.core.scale.y = 0.625
-	mecha.core.position.y = 30
+	#mecha.core.scale.y = 0.625
+	#mecha.core.position.y = 30
 	pass
 	
 # What happens when we exit this state?
@@ -25,8 +25,8 @@ func exit() -> void:
 	mecha.crouch_multiplier = 1.0
 	
 	# TODO: Remove sprite scaling upon use of crouch sprite animation
-	mecha.core.scale.y = 1.0
-	mecha.core.position.y = 0.0
+	#mecha.core.scale.y = 1.0
+	#mecha.core.position.y = 0.0
 	pass 
 	
 func handle_input( _event : InputEvent ) -> MechaState:

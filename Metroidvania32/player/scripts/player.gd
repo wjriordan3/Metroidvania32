@@ -62,8 +62,10 @@ func _ready() -> void:
 	initalize_states()
 	Messages.back_to_title_screen.connect(queue_free)
 	damage_area.damage_taken.connect( _on_damage_taken )
+	PlayerManager.INVENTORY_DATA.equipment_changed.connect( _on_equipment_changed )
 	CameraManager.set_target(self)
 	stats.health = stats.current_max_health
+	
 	
 	if OS.is_debug_build():
 		$Label.visible = true
@@ -271,3 +273,11 @@ func on_exit_mech() -> void:
 	CameraManager.set_zoom(Vector2.ONE)
 
 #endregion
+
+func _on_equipment_changed() -> void:
+	print("could update player stats here")
+	
+	if PlayerManager.mecha != null:
+		print("Updating Player Current Piloted Mecha Visuals: ", PlayerManager.mecha)
+		
+		pass

@@ -1,11 +1,22 @@
 [gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://bl231oh6bprvc"]
 
 [ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_1un8g"]
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_qgmti"]
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_m5qf7"]
+[ext_resource type="Resource" uid="uid://bphvn8734x2yh" path="res://mecha/parts/copter/copter_anims.tres" id="2_uv50y"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_x1k4u"]
+[ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="6_hnvjx"]
+[ext_resource type="Texture2D" uid="uid://dqgkxg5i0y53g" path="res://items/sprites/arm_pickup_01.png" id="7_mnm6p"]
 
 [resource]
 script = ExtResource("2_m5qf7")
 part_type = 1
 slot_size = 1
 max_health = 100
+sprite_frames = ExtResource("6_hnvjx")
+animation_set = ExtResource("2_uv50y")
+itemType = 1
+name = "Copter Arm (L)"
+description = "L-Type Copter Arm"
+texture = ExtResource("7_mnm6p")
 metadata/_custom_type_script = "uid://wfacmefqo5fr"

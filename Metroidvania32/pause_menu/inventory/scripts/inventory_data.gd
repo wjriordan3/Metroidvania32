@@ -16,6 +16,39 @@ func _init() -> void:
 func get_inventory_slots() -> Array[ SlotData ]:
 	return slots.slice(0, -equipment_slot_count)
 
+func set_equipment_slot(slot_index: int, item: MechPart) -> void:
+	var eq_indices = get_equipment_slot_indices()
+	# Validate the slot_index
+	if slot_index < 0 or slot_index >= eq_indices.size():
+		push_error("Invalid equipment slot index: %d" % slot_index)
+		return
+		
+	var actual_index = eq_indices[slot_index]
+	
+	# Make sure the slot exists
+	if slots[actual_index] == null:
+		slots[actual_index] = SlotData.new()
+		slots[actual_index].changed.connect(slot_changed)
+	
+	var old_item = slots[actual_index].item_data
+	slots[actual_index].item_data = item
+	
+	# emit if anything changed
+	if old_item != item:
+		equipment_changed.emit()
+		#loadout_update()
+
+func set_equipment_by_part(part: MechPart) -> void:
+	var eq_index = part_to_equipment_index(part)
+	
+	if slots[eq_index] == null:
+		slots[eq_index] = SlotData.new()
+		slots[eq_index].changed.connect(slot_changed)
+	
+	slots[eq_index].item_data = part
+	equipment_changed.emit()
+	loadout_update()
+
 func get_equipment_slots() -> Array[ SlotData ]:
 	return slots.slice(-equipment_slot_count, slots.size())
 	
@@ -158,6 +191,17 @@ func populate_equipment_from_loadout(loadout: MechLoadout) -> void:
 	# Emit signal so any UI updates or hooks trigger
 	equipment_changed.emit()
 	loadout_changed.emit(loadout)
+	
+func build_loadout() -> MechLoadout:
+	var loadout := MechLoadout.new()
+
+	for slot_index in get_equipment_slot_indices():
+		var slot = slots[slot_index]
+
+		if slot and slot.item_data is MechPart:
+			loadout.equip_part(slot.item_data)
+
+	return loadout
 
 # Gather the inventory data into an array
 func get_save_data() -> Array:
