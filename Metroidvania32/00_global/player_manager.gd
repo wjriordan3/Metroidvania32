@@ -23,7 +23,11 @@ func add_player_instance() -> void:
 	pass
 	
 func add_mecha_instance() -> void:
-	mecha = MECHA_UNIT.instantiate()
+	if mecha_spawned == false:
+		mecha = MECHA_UNIT.instantiate()
+		add_child( mecha )
+		self.mecha = mecha
+		mecha_spawned = true	
 	pass
 	
 func set_player_position( _new_pos : Vector2 ) -> void:

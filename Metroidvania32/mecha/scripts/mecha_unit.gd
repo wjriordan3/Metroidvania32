@@ -4,10 +4,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
 @onready var anim_ctrl: MechaAnimController = $MechaAnimController
 
-@export var loadout : MechLoadout
-
-@onready var mech_area_collision: Area2D = $MechAreaCollision
-@onready var attack_area: AttackArea = $AttackArea
+@export var loadout : MechLoadout = preload("uid://cajnpdbqxn4x4")
+@onready var mech_area_collision: Area2D = %MechAreaCollision
+@onready var attack_area: AttackArea = %AttackArea
 
 @onready var limb_sprites := {
 	MechLoadout.LimbSlot.CORE: $Core,
@@ -167,6 +166,11 @@ var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
+	add_to_group("mecha")
+	
+	if PlayerManager.mecha == null:
+		PlayerManager.mecha = self
+	
 	if loadout == null:
 		print("MechaUnit has no loadout assigned!")
 		return
