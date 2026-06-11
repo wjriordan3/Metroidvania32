@@ -23,7 +23,11 @@ func add_player_instance() -> void:
 	pass
 	
 func add_mecha_instance() -> void:
-	mecha = MECHA_UNIT.instantiate()
+	if mecha_spawned == false:
+		mecha = MECHA_UNIT.instantiate()
+		add_child( mecha )
+		self.mecha = mecha
+		mecha_spawned = true	
 	pass
 	
 func set_player_position( _new_pos : Vector2 ) -> void:
@@ -51,4 +55,13 @@ func move_player_to_spawn_position() -> bool:
 	
 	print("Failed to move player to spawn position")
 	return false	
-	#return Vector2(83.0, 285.0)
+	
+func move_mecha_to_spawn_position() -> bool:
+	var spawn = get_tree().current_scene.get_node_or_null("MechaSpawn")
+	if spawn:
+		print("Moving mecha to spawn position")
+		set_mecha_position(spawn.global_position)
+		return true
+	
+	print("Failed to move mecha to spawn position")
+	return false

@@ -8,7 +8,8 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.anim_ctrl.play("death")
+	mecha.play_animation("death")
+	#mecha.anim_ctrl.play("death")
 	# Audio.play_spatial_sound( DEATH_AUDIO, mecha.global_position )
 	# Audio.play_music ( null ) # will transition to no music
 	await mecha.anim_ctrl.animation_finished

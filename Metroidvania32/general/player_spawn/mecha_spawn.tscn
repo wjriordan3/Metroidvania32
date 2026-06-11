@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bwonue7nr7bbj"]
+
+[ext_resource type="Script" uid="uid://df6eg33e3jiq7" path="res://general/player_spawn/mecha_spawn.gd" id="1_2jb5n"]
+
+[node name="MechaSpawn" type="Node2D" unique_id=465789814]
+script = ExtResource("1_2jb5n")
+
+[node name="Label" type="Label" parent="." unique_id=2139499567]
+offset_left = -32.0
+offset_top = -69.0
+offset_right = 32.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.65882355, 0.06666667, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 60
+text = "M"
+horizontal_alignment = 1
+vertical_alignment = 1

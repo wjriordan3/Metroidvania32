@@ -1,7 +1,17 @@
 [gd_resource type="Resource" script_class="MechLoadout" format=3 uid="uid://co8t7hn8to4wi"]
 
+[ext_resource type="Resource" uid="uid://cfxdwe6s6e3g0" path="res://mecha/parts/standard/standard_core.tres" id="1_lmmo8"]
 [ext_resource type="Script" uid="uid://lanx0h5lx3h1" path="res://mecha/scripts/mech_loadout.gd" id="1_of7xg"]
+[ext_resource type="Resource" uid="uid://carooipfilyhd" path="res://mecha/parts/drill/drill_left_arm.tres" id="2_478ve"]
+[ext_resource type="Resource" uid="uid://cmxhwwj4ufehf" path="res://mecha/parts/drill/drill_left_leg.tres" id="3_rwy4v"]
+[ext_resource type="Resource" uid="uid://dsesnp6r2cvwb" path="res://mecha/parts/drill/drill_right_arm.tres" id="4_cnwk5"]
+[ext_resource type="Resource" uid="uid://b5c4py84b7mar" path="res://mecha/parts/drill/drill_right_leg.tres" id="5_eow6i"]
 
 [resource]
 script = ExtResource("1_of7xg")
+core = ExtResource("1_lmmo8")
+left_arm = ExtResource("2_478ve")
+right_arm = ExtResource("4_cnwk5")
+left_leg = ExtResource("3_rwy4v")
+right_leg = ExtResource("5_eow6i")
 metadata/_custom_type_script = "uid://lanx0h5lx3h1"

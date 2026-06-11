@@ -31,9 +31,13 @@ func equip_part(part: MechPart) -> bool:
 	match part.part_type:
 		MechPart.PartType.CORE:
 			return _equip_core(part)
-		MechPart.PartType.ARM:
+		MechPart.PartType.LARM:
 			return _equip_arm(part)
-		MechPart.PartType.LEG:
+		MechPart.PartType.LLEG:
+			return _equip_arm(part)
+		MechPart.PartType.RARM:
+			return _equip_arm(part)
+		MechPart.PartType.RLEG:
 			return _equip_leg(part)
 	return false
 	

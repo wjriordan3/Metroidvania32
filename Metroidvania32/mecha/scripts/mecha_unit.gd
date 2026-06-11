@@ -4,10 +4,9 @@ const DEBUG_JUMP_INDICATOR = preload("uid://c71luhhdj6x5x")
 
 @onready var anim_ctrl: MechaAnimController = $MechaAnimController
 
-@export var loadout : MechLoadout
-
-@onready var mech_area_collision: Area2D = $MechAreaCollision
-@onready var attack_area: AttackArea = $AttackArea
+@export var loadout : MechLoadout = preload("uid://cajnpdbqxn4x4")
+@onready var mech_area_collision: Area2D = %MechAreaCollision
+@onready var attack_area: AttackArea = %AttackArea
 
 @onready var limb_sprites := {
 	MechLoadout.LimbSlot.CORE: $Core,
@@ -54,7 +53,6 @@ func update_mech_rendering():
 		if sprite.sprite_frames != part.sprite_frames:
 			sprite.sprite_frames = part.sprite_frames
 		
-		anim_ctrl.set_frame_count(sprite)
 		_apply_synced_frame(sprite, mapped)
 
 func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
@@ -65,13 +63,44 @@ func _apply_synced_frame(sprite: AnimatedSprite2D, anim_name: StringName):
 	sprite.animation = anim_name
 
 	var frame_count := sprite.sprite_frames.get_frame_count(anim_name)
-	var frame := anim_ctrl.get_frame(frame_count)
-
-	sprite.frame = frame
+	sprite.frame = anim_ctrl.get_frame(frame_count)
 	
-func apply_loadout(l: MechLoadout):
+func get_anim_frame_count(anim: StringName) -> int:
+	var max_frames := 0
+	
+	for slot in limb_sprites.keys():
+		var sprite: AnimatedSprite2D = limb_sprites[slot]
+		var eq: EquippedPart = loadout.get_equipped(slot)
+		
+		if eq == null:
+			continue
+			
+		var anim_set := eq.part.animation_set
+		if anim_set == null:
+			continue
+			
+		var mapped := anim_set.get_anim(anim)
+		
+		if mapped == "":
+			continue
+			
+		if !sprite.sprite_frames.has_animation(mapped):
+			continue
+			
+		max_frames = max(
+			max_frames,
+			sprite.sprite_frames.get_frame_count(mapped)
+		)
+	
+	return max_frames
+	
+func play_animation(anim_name: StringName, loop := false):
+	var frame_count := get_anim_frame_count(anim_name)
+	anim_ctrl.play(anim_name, frame_count, loop)
+	
+func apply_loadout( new_loadout : MechLoadout):
 	print("applying mech loadout")
-	l.rebuild_runtime()
+	new_loadout.rebuild_runtime()
 	update_mech_rendering()
 		
 		
@@ -137,6 +166,11 @@ var rotation_speed : float = 10.0
 #endregion 
 
 func _ready() -> void:
+	add_to_group("mecha")
+	
+	if PlayerManager.mecha == null:
+		PlayerManager.mecha = self
+	
 	if loadout == null:
 		print("MechaUnit has no loadout assigned!")
 		return
@@ -254,6 +288,7 @@ func _on_player_interacted( player : Player ) -> void:
 	if active_pilot == player && is_on_floor():
 		print("exiting through _on_player_interacted")
 		mech_area_collision.monitoring = true
+		PlayerManager.INVENTORY_DATA.loadout_changed.disconnect(_on_loadout_changed)
 		_leave_mech()
 		return
 
@@ -262,6 +297,12 @@ func _on_player_interacted( player : Player ) -> void:
 		print("Player now entering MechaUnit: ", name)
 		enter_hint_label.hide()
 		mech_area_collision.monitoring = false
+		
+		if PlayerManager.INVENTORY_DATA != null:
+			if !PlayerManager.INVENTORY_DATA.loadout_changed.is_connected(_on_loadout_changed):
+				PlayerManager.INVENTORY_DATA.loadout_changed.connect(_on_loadout_changed)
+			PlayerManager.INVENTORY_DATA.populate_equipment_from_loadout(loadout)
+		
 		_control_mech(player)
 	
 	pass
@@ -329,7 +370,32 @@ func get_aim_direction() -> Vector2:
 	
 	return Vector2.RIGHT if direction.x >= 0 else Vector2.LEFT
 
+func update_equipment():
+	print("Updating my mecha")
+	pass
+
 #region Limb Abilities and Stat Modifications
+
+func _on_loadout_changed(new_loadout: MechLoadout):
+	loadout = new_loadout
+	refresh_loadout_visuals()
+
+func apply_inventory_equipment_change(new_part: MechPart, old_slot : SlotData) -> void:
+	if new_part != null:
+		equip_part(new_part)
+		
+	# old part got unequipped
+	if old_slot != null and old_slot.item_data is MechPart:
+		var old_part : MechPart = old_slot.item_data
+		
+		# find limb slot(s) currently holding the part
+		for limb_slot in loadout.slots.keys():
+			var equipped : EquippedPart = loadout.get_equipped(limb_slot)
+			if equipped != null and equipped.part == old_part:
+				loadout.unequip_slot(limb_slot)
+				
+	refresh_loadout_visuals()
+
 func equip_part(part : MechPart):
 	if loadout.equip_part(part):
 		refresh_loadout_visuals()
@@ -345,18 +411,22 @@ func add_ability(ability : MechAbility) -> void:
 	abilities.append(instance)
 
 func apply_stats(_part: MechPart):
+	print("TODO: implement apply_stats")
 	pass
 
 func apply_abilities( part : MechPart):
+	print("TODO: implement apply_abilities")
 	for ability in part.abilities:
 		add_ability(ability.duplicate())
 		
 func apply_states( part : MechPart ):
+	print("TODO: implement apply_states")
 	for state_scene in part.ability_states:
 		var state = state_scene.instantiate()
 		ability_state_machine.add_state(state)
 		
 func apply_passives( part : MechPart ):
+	print("TODO: implement apply_passives")
 	for passive in part.passive_effects:
 		passive.apply(self)
 

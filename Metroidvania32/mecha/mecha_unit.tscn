@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ky517mlsqfg5"]
 
 [ext_resource type="Script" uid="uid://bnlaqw3gccw5e" path="res://mecha/scripts/mecha_unit.gd" id="1_sd0ak"]
-[ext_resource type="Resource" uid="uid://cajnpdbqxn4x4" path="res://mecha/loadouts/standard_loadout.tres" id="2_0p4g1"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="2_tjcg1"]
 [ext_resource type="Script" uid="uid://bj702pn7yh4pq" path="res://mecha/states/m_idle.gd" id="3_tjcg1"]
 [ext_resource type="Script" uid="uid://dn28mnpyt5854" path="res://mecha/states/m_run.gd" id="4_lpl13"]
@@ -65,9 +64,8 @@ size = Vector2(40, 40)
 [node name="MechaUnit" type="CharacterBody2D" unique_id=1485163958]
 z_index = 1
 collision_layer = 32
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_sd0ak")
-loadout = ExtResource("2_0p4g1")
 stats = SubResource("Resource_lpl13")
 
 [node name="States" type="Node" parent="." unique_id=507809353]
@@ -156,6 +154,7 @@ disabled = true
 debug_color = Color(0.5233136, 0.41709378, 1, 0.41960785)
 
 [node name="MechAreaCollision" type="Area2D" parent="." unique_id=1813236294]
+unique_name_in_owner = true
 scale = Vector2(6.05, 6.05)
 collision_layer = 0
 collision_mask = 32
@@ -233,6 +232,7 @@ shape = SubResource("RectangleShape2D_03a8w")
 debug_color = Color(0.8039216, 0.30588236, 0.29411766, 0.41960785)
 
 [node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("26_03a8w")]
+unique_name_in_owner = true
 position = Vector2(60, 0)
 scale = Vector2(2.129626, 2.8187985)
 

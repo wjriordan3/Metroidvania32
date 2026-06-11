@@ -8,7 +8,8 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	# Play animation here
-	mecha.anim_ctrl.play("jump")
+	mecha.play_animation("jump")
+	#mecha.anim_ctrl.play("jump")
 	mecha.anim_ctrl.pause()
 	#mecha.add_debug_indicator( Color.LIME_GREEN )
 	mecha.velocity.y = -jump_velocity

@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://lanx0h5lx3h1" path="res://mecha/scripts/mech_loadout.gd" id="1_4nf74"]
 [ext_resource type="Resource" uid="uid://cfxdwe6s6e3g0" path="res://mecha/parts/standard/standard_core.tres" id="1_85rha"]
-[ext_resource type="Resource" uid="uid://bkaygxmnh16g0" path="res://mecha/parts/gun/gun_right_arm.tres" id="2_2dhow"]
+[ext_resource type="Resource" uid="uid://bl231oh6bprvc" path="res://mecha/parts/copter/copter_arm.tres" id="2_2dhow"]
+[ext_resource type="Resource" uid="uid://c7yiftwgffyx" path="res://mecha/parts/copter/copter_leg.tres" id="3_5y2e6"]
 
 [resource]
 script = ExtResource("1_4nf74")
 core = ExtResource("1_85rha")
 left_arm = ExtResource("2_2dhow")
+right_arm = ExtResource("2_2dhow")
+left_leg = ExtResource("3_5y2e6")
+right_leg = ExtResource("3_5y2e6")
 metadata/_custom_type_script = "uid://lanx0h5lx3h1"

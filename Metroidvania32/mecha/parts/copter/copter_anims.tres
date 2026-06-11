@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MechPartAnimations" format=3 uid="uid://bphvn8734x2yh"]
+
+[ext_resource type="Script" uid="uid://diy4f4wycceuw" path="res://items/scripts/mech_part_animations.gd" id="1_0u1fq"]
+
+[resource]
+script = ExtResource("1_0u1fq")
+idle = &"copter_idle_off"
+idle_02 = &"copter_idle_on"
+run = &"copter_run"
+jump = &"copter_jump"
+leftArm_action = &"copter_leftArm_action"
+rightArm_action = &"copter_rightArm_action"
+leftLeg_action = &"copter_leftLeg_action"
+rightLeg_action = &"copter_rightLeg_action"
+hurt = &"copter_hurt"
+death = &"copter_death_01"
+death_02 = &"copter_death_02"
+metadata/_custom_type_script = "uid://diy4f4wycceuw"

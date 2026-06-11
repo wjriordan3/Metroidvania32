@@ -6,10 +6,15 @@
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_nxgmp"]
 [ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="4_nrrlm"]
 [ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="6_hkqfh"]
+[ext_resource type="Texture2D" uid="uid://3fso0so6vgu5" path="res://items/sprites/leg_pickup_01.png" id="7_mg1xf"]
 
 [resource]
 script = ExtResource("2_nxgmp")
 part_type = 2
 sprite_frames = ExtResource("6_hkqfh")
 animation_set = ExtResource("2_mg1xf")
+itemType = 1
+name = "Drill Leg (L)"
+description = "L-Type Drill Leg"
+texture = ExtResource("7_mg1xf")
 metadata/_custom_type_script = "uid://wfacmefqo5fr"

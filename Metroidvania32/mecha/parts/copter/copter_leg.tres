@@ -1,8 +1,21 @@
 [gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://c7yiftwgffyx"]
 
+[ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_lofrc"]
 [ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="1_ukdjk"]
+[ext_resource type="Resource" uid="uid://bphvn8734x2yh" path="res://mecha/parts/copter/copter_anims.tres" id="2_gaw4g"]
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="2_mo712"]
+[ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="3_l6pqj"]
+[ext_resource type="SpriteFrames" uid="uid://ddulb5qvjhvj4" path="res://mecha/spriteframes/left_leg_sprite_frames.tres" id="6_4tkh2"]
+[ext_resource type="Texture2D" uid="uid://3fso0so6vgu5" path="res://items/sprites/leg_pickup_01.png" id="7_otsl0"]
 
 [resource]
 script = ExtResource("2_mo712")
+part_type = 2
+slot_size = 1
+sprite_frames = ExtResource("6_4tkh2")
+animation_set = ExtResource("2_gaw4g")
+itemType = 1
+name = "Copter Leg (L)"
+description = "L-Type Copter Leg"
+texture = ExtResource("7_otsl0")
 metadata/_custom_type_script = "uid://wfacmefqo5fr"

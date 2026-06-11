@@ -15,6 +15,8 @@ func init() -> void:
 func enter() -> void:
 	execute_attack()
 	mecha.anim_ctrl.animation_finished.connect(_on_animation_finished)
+	
+	
 	pass
 	
 # What happens when we exit this state?
@@ -23,6 +25,8 @@ func exit() -> void:
 	combo = 0
 	mecha.anim_ctrl.animation_finished.disconnect(_on_animation_finished)
 	next_state = null
+	
+	#next_state = idle
 	pass 
 	
 func handle_input( _event : InputEvent ) -> MechaState:
@@ -39,26 +43,29 @@ func physics_process( _delta: float) -> MechaState:
 	return null
 	
 func execute_attack() -> void:
+	
 	match mecha.limb_used:
 		0:
 			var anim_name : String = "rightArm"
 			if combo > 1:
 				anim_name = "leftArm"
-			mecha.anim_ctrl.play(anim_name, false)
+			mecha.play_animation(anim_name)
 			pass
 		1:
-			mecha.anim_ctrl.play("leftArm", false)
+			mecha.play_animation("leftArm")
 			pass
 		2:
-			mecha.anim_ctrl.play("rightLeg", false)
+			mecha.play_animation("rightLeg")
 			pass
 		3:
-			mecha.anim_ctrl.play("leftLeg", false)
+			mecha.play_animation("leftLeg")
 			pass
 		_:
-			mecha.anim_ctrl.play("rightArm", false)
+			mecha.play_animation("rightArm")
+			
 	
 	mecha.attack_area.activate(0.4)
+	
 	#Audio.play_spatial_sound(AUDIO_ATTACK, mecha.global_position)
 	
 	
@@ -94,11 +101,12 @@ func end_attack() -> void:
 		combo = wrapi( combo + 1, 0, 3 )
 		execute_attack()
 	else:
-		#next_state = idle
-		mecha.change_state(idle)
+		next_state = idle
+		#mecha.change_state(idle)
 	pass
 	
 func _on_animation_finished( _anim_name : StringName ) -> void:
+	print("finished attack animation: ", _anim_name)
 	end_attack()
 	pass
 	

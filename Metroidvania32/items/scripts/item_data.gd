@@ -34,8 +34,3 @@ func use() -> bool:
 			e.use()
 		
 	return true
-
-# from old version
-
-@export var inventorySlot : String = "InventorySlots"  
-@export var inventoryPosition: int 

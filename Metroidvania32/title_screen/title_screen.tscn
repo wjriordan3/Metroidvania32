@@ -217,25 +217,18 @@ horizontal_alignment = 1
 [node name="Control" type="Control" parent="Control/CreditsMenu" unique_id=592906599]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Control/CreditsMenu" unique_id=783021731]
-layout_mode = 2
-text = "Caiden Curry - Character Artist"
-underline = 1
-uri = "https://www.artstation.com/caidencurry"
-
 [node name="Label2" type="Label" parent="Control/CreditsMenu" unique_id=1573193708]
 layout_mode = 2
 text = "Caiden Curry - Art/Design
-Kendal Mitchell - Programmer
+Laila Godwin - Concept Art
+Kendal Mitchell - Programmer/Design
 Brian Nguyen - Programmer
 Will Riordan - Programmer
-Cole"
+Cole Gaffin - Music"
 
-[node name="Label3" type="Label" parent="Control/CreditsMenu" unique_id=1829518046]
-visible = false
+[node name="Control2" type="Control" parent="Control/CreditsMenu" unique_id=2002366627]
 layout_mode = 2
-text = "Caiden Curry
-Kendal Mitchell - Programmer
-Brian Nguyen - Programmer
-Will Riordan - Programmer
-Cole"
+
+[node name="Button" type="Button" parent="Control/CreditsMenu" unique_id=201516738]
+layout_mode = 2
+text = "Return"

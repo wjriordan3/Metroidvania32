@@ -2,8 +2,10 @@ class_name MechPart extends ItemData
 
 enum PartType {
 	CORE,
-	ARM,
-	LEG
+	LARM,
+	LLEG,
+	RARM,
+	RLEG
 }
 
 enum SlotSize {

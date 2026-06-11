@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_c3e1l")
-slots = Array[ExtResource("2_u6hcn")]([null, null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_u6hcn")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://cvdaee2fhbghm"

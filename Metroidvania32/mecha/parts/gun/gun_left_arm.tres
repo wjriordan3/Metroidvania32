@@ -1,10 +1,20 @@
 [gd_resource type="Resource" script_class="MechPart" format=3 uid="uid://b25ulgjhjykin"]
 
 [ext_resource type="Script" uid="uid://hrll8530am7j" path="res://items/scripts/mech_ability.gd" id="1_x8hwx"]
+[ext_resource type="Resource" uid="uid://ypfxqo10amro" path="res://mecha/parts/gun/gun_anims.tres" id="2_3iec7"]
 [ext_resource type="Script" uid="uid://sof0vy6i18xv" path="res://items/item_effects/item_effect.gd" id="2_bs0x0"]
 [ext_resource type="Script" uid="uid://b4nvwin6r2fdi" path="res://mecha/scripts/mech_passive.gd" id="3_4n1ht"]
 [ext_resource type="Script" uid="uid://wfacmefqo5fr" path="res://items/scripts/item_data_mechpart.gd" id="4_opx7y"]
+[ext_resource type="SpriteFrames" uid="uid://dgtx3x6qxy87s" path="res://mecha/spriteframes/left_arm_sprite_frames.tres" id="6_25x3l"]
+[ext_resource type="Texture2D" uid="uid://dqgkxg5i0y53g" path="res://items/sprites/arm_pickup_01.png" id="7_25x3l"]
 
 [resource]
 script = ExtResource("4_opx7y")
+part_type = 1
+sprite_frames = ExtResource("6_25x3l")
+animation_set = ExtResource("2_3iec7")
+itemType = 1
+name = "Gun Arm (L)"
+description = "L Type Gun Arm"
+texture = ExtResource("7_25x3l")
 metadata/_custom_type_script = "uid://wfacmefqo5fr"

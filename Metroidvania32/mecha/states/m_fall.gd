@@ -22,7 +22,8 @@ func enter() -> void:
 	#	"standard_jump"
 	#)
 	#mecha.mech_animate_pause()
-	mecha.anim_ctrl.play("jump")
+	mecha.play_animation("jump")
+	#mecha.anim_ctrl.play("jump")
 	mecha.anim_ctrl.pause()
 	
 	mecha.gravity_multiplier = fall_gravity_multiplier
