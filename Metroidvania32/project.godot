@@ -37,6 +37,7 @@ Audio="*uid://dcm4516cr4j1o"
 VisualEffects="*uid://c4s5id8xau14p"
 Config="*uid://cmf2mvylic52w"
 InteractionManager="*uid://co2ft8wrcmimn"
+GameManager="*uid://823mkh0uf2qh"
 
 [dialogic]
 
@@ -103,6 +104,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/gdUn
 
 player=""
 damage=""
+enemy=""
 
 [gui]
 
