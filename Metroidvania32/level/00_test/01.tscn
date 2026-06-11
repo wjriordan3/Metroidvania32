@@ -82,7 +82,7 @@ target_level = "uid://dm4pd5nxnrnf3"
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_rkjl6")]
 position = Vector2(83, 285)
 
-[node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_tj2tj")]
+[node name="MechaUnit" parent="." unique_id=1485163958 groups=["player"] instance=ExtResource("8_tj2tj")]
 z_index = 0
 position = Vector2(224, 257)
 stats = SubResource("Resource_job26")

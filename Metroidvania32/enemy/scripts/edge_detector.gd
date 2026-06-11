@@ -12,12 +12,12 @@ func _ready() -> void :
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void :
+func _physics_process( _delta: float) -> void :
 	var _is_colliding : bool = is_colliding()
 	if colliding != _is_colliding:
 		colliding = _is_colliding
 		if not colliding:
-			edge_detected.emit()	
+			edge_detected.emit()
 	pass
 
 func direction_changed( new_dir : float ) -> void :
