@@ -370,6 +370,10 @@ func get_aim_direction() -> Vector2:
 	
 	return Vector2.RIGHT if direction.x >= 0 else Vector2.LEFT
 
+func update_equipment():
+	print("Updating my mecha")
+	pass
+
 #region Limb Abilities and Stat Modifications
 
 func _on_loadout_changed(new_loadout: MechLoadout):

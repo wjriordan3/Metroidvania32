@@ -279,5 +279,5 @@ func _on_equipment_changed() -> void:
 	
 	if PlayerManager.mecha != null:
 		print("Updating Player Current Piloted Mecha Visuals: ", PlayerManager.mecha)
-		
+		PlayerManager.mecha.update_equipment()
 		pass

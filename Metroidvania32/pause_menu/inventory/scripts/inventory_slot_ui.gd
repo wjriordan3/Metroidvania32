@@ -35,8 +35,7 @@ func set_slot_data( value : SlotData ) -> void:
 		return
 		
 	texture_rect.texture = slot_data.item_data.texture
-	
-	if slot_data.item_data is MechPart:
+	if slot_data.item_data.itemType == ItemData.ItemType.LIMB or slot_data.item_data.itemType == ItemData.ItemType.CORE:
 		label.text = ""
 	else:
 		label.text = str( slot_data.quantity )
@@ -67,11 +66,13 @@ func item_pressed() -> void:
 				var was_used = item.use()
 				if was_used == false:
 					return
-				if item.quantity > 0:
-					item.quantity -= 1
-					label.text = str( item.quantity )
+					
+				slot_data.quantity -= 1
 				
-			
+				if slot_data == null:
+					return
+				
+				label.text = str( slot_data.quantity )
 	pass
 	
 func on_button_down() -> void:
