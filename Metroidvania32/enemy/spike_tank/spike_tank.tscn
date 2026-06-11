@@ -76,7 +76,7 @@ _data = {
 &"walk": SubResource("Animation_o3pv7")
 }
 
-[node name="Enemy" type="CharacterBody2D" unique_id=784409238]
+[node name="SpikeTank" type="CharacterBody2D" unique_id=784409238]
 scale = Vector2(1.5, 1.5)
 collision_layer = 64
 collision_mask = 3

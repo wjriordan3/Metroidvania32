@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap_100.tres" id="15_1it0o"]
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_ue2lf"]
 [ext_resource type="PackedScene" uid="uid://cn2jbq8a76061" path="res://enemy/police_grunt/police_grunt.tscn" id="18_cefoj"]
-[ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/enemy.tscn" id="18_jjrpu"]
+[ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/spike_tank/spike_tank.tscn" id="18_jjrpu"]
 
 [sub_resource type="Resource" id="Resource_jjrpu"]
 resource_local_to_scene = true

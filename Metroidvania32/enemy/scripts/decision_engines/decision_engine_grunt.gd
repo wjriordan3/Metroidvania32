@@ -10,7 +10,7 @@ extends DecisionEngine
 @onready var es_stun : ESStun = %ESStun
 @onready var es_death : ESDeath = %ESDeath
 @onready var es_idle : ESIdle = %ESIdle
-@onready var es_attack : ESAttack = %ESAttack
+@onready var es_shoot : ESShoot = %ESShoot
 @onready var es_chase : ESChase = %ESChase
 @onready var player_sensor : PlayerSensor = %PlayerSensor
 @export var patrol : bool = true
@@ -39,10 +39,10 @@ func decide() -> EnemyState :
 	else:
 		blackboard.update_distance_to_target( enemy.global_position )
 		#print( blackboard.distance_to_target )
-		if blackboard.distance_to_target < 60:
+		if blackboard.distance_to_target < 100 and blackboard.is_level_with_target( enemy.global_position ):
 			#print( "Attack!")
-			return es_attack
-		elif blackboard.distance_to_target < 200:
+			return es_shoot
+		elif blackboard.distance_to_target < 200 or not blackboard.is_level_with_target( enemy.global_position ):
 			return es_chase
 			
 		if player_sensor.target_changed :

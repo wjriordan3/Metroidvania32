@@ -16,6 +16,7 @@ var sprite : Sprite2D
 @onready var animation : AnimationPlayer = $AnimationPlayer
 var damage_area : DamageArea
 var hazard_area : HazardArea
+var enemy_gun : EnemyGun
 
 var state_machine : EnemyStateMachine
 var decision_engine : DecisionEngine
@@ -47,6 +48,8 @@ func setup() -> void :
 			state_machine = c
 		elif c is DecisionEngine and not decision_engine :
 			decision_engine = c
+		elif c is EnemyGun and not enemy_gun :
+			enemy_gun = c
 		pass
 		
 	if state_machine and decision_engine :
