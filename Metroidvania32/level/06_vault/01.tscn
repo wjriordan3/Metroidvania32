@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://bowiepuys42sw" path="res://level/tilesets/sprites/vault_deco1.png" id="12_lqnxr"]
 [ext_resource type="Texture2D" uid="uid://croc8q7k5bmcy" path="res://level/tilesets/sprites/vault_safe_static.png" id="13_4cije"]
 [ext_resource type="Texture2D" uid="uid://bel6nkoklmqit" path="res://level/tilesets/sprites/vault_statues_giants.png" id="14_i5xrh"]
+[ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="15_4cije"]
 
-[sub_resource type="Resource" id="Resource_lqnxr"]
+[sub_resource type="Resource" id="Resource_i5xrh"]
 resource_local_to_scene = true
 script = ExtResource("9_3x7cr")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -34,6 +35,7 @@ z_as_relative = false
 position = Vector2(408, 298)
 
 [node name="TileMapLayer_doors" type="TileMapLayer" parent="." unique_id=629119068]
+visible = false
 z_index = 1
 z_as_relative = false
 tile_map_data = PackedByteArray("AAAAAAUAAAADAAAAAAAAAAYAAAADAAIAAAAAAAcAAAADAAMAAAAAAAgAAAADAAQAAAAAAAkAAAADAAUAAAATAAUAAAAFAAAAAAATAAYAAAAFAAIAAAATAAcAAAAFAAMAAAATAAgAAAAFAAQAAAATAAkAAAAFAAUAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAMAAAAAAAUAAAAHAAoAAAACAAAAAAAIAAoAAAACAAIAAGAJAAoAAAACAAMAAGAKAAoAAAACAAIAAGALAAoAAAACAAMAAGAMAAoAAAACAAAAAAA=")
@@ -82,7 +84,7 @@ position = Vector2(83, 285)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_bknrm")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_lqnxr")
+stats = SubResource("Resource_i5xrh")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1407369649]
 script = ExtResource("10_dxnnf")
@@ -106,3 +108,24 @@ z_index = -9
 z_as_relative = false
 position = Vector2(320, 180)
 texture = ExtResource("14_i5xrh")
+
+[node name="Door" parent="." unique_id=2031919350 node_paths=PackedStringArray("switches") instance=ExtResource("15_4cije")]
+z_index = 1
+position = Vector2(16, 39)
+collision_layer = 1
+door_type = 6
+switches = [NodePath("")]
+
+[node name="Door3" parent="." unique_id=654916053 node_paths=PackedStringArray("switches") instance=ExtResource("15_4cije")]
+z_index = 1
+position = Vector2(333, 337)
+rotation = 1.5707964
+collision_layer = 1
+door_type = 2
+switches = [NodePath("")]
+
+[node name="Door2" parent="." unique_id=1883161789 node_paths=PackedStringArray("switches") instance=ExtResource("15_4cije")]
+z_index = 1
+position = Vector2(624, 232)
+collision_layer = 1
+switches = [NodePath("")]

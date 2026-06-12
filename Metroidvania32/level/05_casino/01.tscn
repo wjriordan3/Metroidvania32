@@ -31,8 +31,9 @@ height = 1440
 metadata/_custom_type_script = "uid://bb28nwnywj8tm"
 
 [node name="SavePoint" parent="." unique_id=69750532 instance=ExtResource("2_548hs")]
-visible = false
-position = Vector2(308, 320)
+z_index = -1
+z_as_relative = false
+position = Vector2(799, 292)
 
 [node name="TileMapLayer2_doors" type="TileMapLayer" parent="." unique_id=101133945]
 visible = false
@@ -158,7 +159,7 @@ z_index = 1
 position = Vector2(623, 1652)
 collision_layer = 1
 door_type = 6
-switches = [NodePath("")]
+switches = [null]
 
 [node name="Switch" parent="." unique_id=1017918547 instance=ExtResource("13_w47h5")]
 z_index = -5
