@@ -129,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p3rl5")
 }],
-"loop": true,
+"loop": false,
 "name": &"close_door",
 "speed": 5.0
 }, {
@@ -195,7 +195,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hvqy7")
 }],
-"loop": true,
+"loop": false,
 "name": &"open_door",
 "speed": 5.0
 }]
@@ -308,8 +308,7 @@ script = ExtResource("1_5y7y7")
 z_index = 1
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_ghss5")
-animation = &"open_door"
-frame_progress = 0.048704635
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1644237424]
 collision_layer = 0

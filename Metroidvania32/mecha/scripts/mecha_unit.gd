@@ -21,10 +21,13 @@ func refresh_loadout_visuals():
 	for slot in limb_sprites:
 		var sprite : AnimatedSprite2D = limb_sprites[slot]
 		var equipped : EquippedPart = loadout.get_equipped(slot)
+		
 		if equipped == null:
 			sprite.visible = false
 			continue
+		
 		sprite.visible = true
+		
 		if equipped.part.sprite_frames:
 			sprite.sprite_frames = equipped.part.sprite_frames
 		
