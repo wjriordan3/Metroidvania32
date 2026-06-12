@@ -13,8 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_1vchp"]
 [ext_resource type="Texture2D" uid="uid://be5wl0eatnbc0" path="res://level/tilesets/sprites/03_Offices_BG_sky.png" id="12_k6qn3"]
 [ext_resource type="Texture2D" uid="uid://c3ami1qla7ktc" path="res://level/tilesets/sprites/03_Offices_BG_sky2.png" id="13_dl815"]
+[ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_0uot8"]
+[ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_dl815"]
 
-[sub_resource type="Resource" id="Resource_2572f"]
+[sub_resource type="Resource" id="Resource_0uot8"]
 resource_local_to_scene = true
 script = ExtResource("8_ocqfv")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -34,6 +36,7 @@ metadata/_custom_type_script = "uid://bb28nwnywj8tm"
 position = Vector2(358, 306)
 
 [node name="TileMapLayer_doors" type="TileMapLayer" parent="." unique_id=94374423]
+visible = false
 tile_map_data = PackedByteArray("AAAAAPX/AAACAAAAAAABAPX/AAACAAIAAGACAPX/AAACAAMAAGADAPX/AAACAAQAAGAEAPX/AAACAAUAAGATAPX/AAABAAAAAAATAPb/AAABAAIAAAATAPf/AAABAAMAAAATAPj/AAABAAQAAAATAPn/AAABAAUAAAAAAAAAAAABAAAAAAABAAAAAAABAAIAAGACAAAAAAABAAMAAGADAAAAAAABAAQAAGAEAAAAAAABAAUAAGAGAAEAAAABAAoAAAARAPX/AAABAAoAAAASAP7/AAABAAYAAAAmAP7/AAABAAYAAAAkAPX/AAABAAoAAAAnAPX/AAABAAAAAAAnAPb/AAABAAIAAAAnAPf/AAABAAMAAAAnAPj/AAABAAQAAAAnAPn/AAABAAUAAAAxAAkAAAADAAYAAAAyAAoAAAADAAAAAAAzAAoAAAADAAQAAGA0AAoAAAADAAUAAGA8APX/AAAFAAAAAAA8APb/AAAFAAIAAAA8APf/AAAFAAMAAAA8APj/AAAFAAQAAAA8APn/AAAFAAUAAABPAOr/AAABAAAAAABPAOv/AAABAAIAAABPAOz/AAABAAMAAABPAO3/AAABAAQAAABPAO7/AAABAAUAAAAAAAUAAAACAAAAAAAAAAYAAAACAAIAAAAAAAcAAAACAAMAAAAAAAgAAAACAAQAAAAAAAkAAAACAAUAAABPAO//AAAAAAAAAABPAPD/AAAAAAIAAABPAPH/AAAAAAMAAABPAPL/AAAAAAQAAABPAPP/AAAAAAUAAABkAO//AAAAAAAAAABkAPD/AAAAAAIAAABkAPH/AAAAAAMAAABkAPL/AAAAAAQAAABkAPP/AAAAAAUAAABkAOr/AAAAAAAAAABkAOv/AAAAAAIAAABkAOz/AAAAAAMAAABkAO3/AAAAAAQAAABkAO7/AAAAAAUAAAA=")
 tile_set = ExtResource("3_2572f")
 collision_enabled = false
@@ -77,12 +80,19 @@ size = 4
 location = 1
 target_level = "uid://dm4pd5nxnrnf3"
 
+[node name="LevelTransition2" parent="." unique_id=1490896648 instance=ExtResource("5_dl815")]
+position = Vector2(1596, 353)
+rotation = 1.5707964
+size = 4
+location = 1
+target_level = "uid://dm4pd5nxnrnf3"
+
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_0uot8")]
-position = Vector2(171, -232)
+position = Vector2(86, -240)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_b75ob")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_2572f")
+stats = SubResource("Resource_0uot8")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_ca6er")
@@ -135,3 +145,84 @@ z_index = -11
 z_as_relative = false
 position = Vector2(3520, -528)
 texture = ExtResource("13_dl815")
+
+[node name="Switch" parent="." unique_id=1017918547 instance=ExtResource("14_0uot8")]
+z_index = -5
+z_as_relative = false
+position = Vector2(1583, 303)
+
+[node name="Door" parent="." unique_id=2031919350 node_paths=PackedStringArray("switches") instance=ExtResource("14_dl815")]
+position = Vector2(1661, 337)
+rotation = -1.5707964
+collision_layer = 1
+door_type = 4
+is_interactable = true
+switches = [NodePath("../Switch")]
+
+[node name="Door6" parent="." unique_id=266547320 instance=ExtResource("14_dl815")]
+position = Vector2(1264, -270)
+collision_layer = 1
+door_type = 3
+is_interactable = true
+
+[node name="Door7" parent="." unique_id=1325749529 instance=ExtResource("14_dl815")]
+position = Vector2(624, -270)
+collision_layer = 1
+door_type = 3
+is_interactable = true
+
+[node name="Door8" parent="." unique_id=1536015026 instance=ExtResource("14_dl815")]
+position = Vector2(1936, -270)
+collision_layer = 1
+is_interactable = true
+
+[node name="Door9" parent="." unique_id=1686325081 instance=ExtResource("14_dl815")]
+position = Vector2(2543, -461)
+collision_layer = 1
+door_type = 6
+is_interactable = true
+
+[node name="Door10" parent="." unique_id=1604009340 instance=ExtResource("14_dl815")]
+position = Vector2(3216, -461)
+collision_layer = 1
+door_type = 6
+is_interactable = true
+
+[node name="Door11" parent="." unique_id=657250506 instance=ExtResource("14_dl815")]
+position = Vector2(2543, -627)
+collision_layer = 1
+door_type = 3
+is_interactable = true
+
+[node name="Door12" parent="." unique_id=1447154703 instance=ExtResource("14_dl815")]
+position = Vector2(3216, -627)
+collision_layer = 1
+door_type = 6
+is_interactable = true
+
+[node name="Door2" parent="." unique_id=404983288 instance=ExtResource("14_dl815")]
+position = Vector2(16, 240)
+collision_layer = 1
+door_type = 2
+is_interactable = true
+
+[node name="Door3" parent="." unique_id=1675242057 instance=ExtResource("14_dl815")]
+position = Vector2(479, 317)
+rotation = -1.5707964
+collision_layer = 1
+door_type = 3
+is_interactable = true
+
+[node name="Door4" parent="." unique_id=806631333 instance=ExtResource("14_dl815")]
+position = Vector2(96, 15)
+rotation = -1.5707964
+collision_layer = 1
+door_type = 3
+is_interactable = true
+
+[node name="Door5" parent="." unique_id=1332539040 instance=ExtResource("14_dl815")]
+position = Vector2(96, -335)
+rotation = -1.5707964
+collision_layer = 1
+door_type = 2
+is_interactable = true
