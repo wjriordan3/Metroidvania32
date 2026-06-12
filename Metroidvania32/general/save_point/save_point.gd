@@ -4,6 +4,7 @@ class_name SavePoint extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var animation_player: AnimationPlayer = $Node2D/AnimationPlayer
 @onready var label: Label = $Node2D/Label
+@onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var HealPlayerOnInteract: bool = true
 
@@ -20,6 +21,9 @@ func _on_player_entered( _n : Node2D ) -> void:
 	print("Player entered")
 	Messages.player_interacted.connect( _on_player_interacted )
 	Messages.input_hint_changed.emit( "interact" )
+	sprite_2d.play("open_door")
+	await sprite_2d.animation_finished
+	sprite_2d.play("idle")
 	pass
 
 func _on_player_exited( _n : Node2D ) -> void:
@@ -29,6 +33,9 @@ func _on_player_exited( _n : Node2D ) -> void:
 	print("Player exited")
 	Messages.player_interacted.disconnect( _on_player_interacted )
 	Messages.input_hint_changed.emit( "" )
+	sprite_2d.play("close_door")
+	await sprite_2d.animation_finished
+	sprite_2d.play("door_closed")
 	pass
 
 func _on_player_interacted( player : Player ) -> void:
