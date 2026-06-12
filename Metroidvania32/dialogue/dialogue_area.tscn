@@ -15,3 +15,4 @@ timeline = "cop_test_timeline_00"
 shape = SubResource("RectangleShape2D_yqgbs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

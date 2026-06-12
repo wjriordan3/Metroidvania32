@@ -21,5 +21,8 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_dialogic_timeline_ended():
 	GameManager.unpause_entities()
 	await get_tree().create_timer(retrigger_delay).timeout
+
+# Trigger changes when player leaves area
+func _on_body_exited(body: Node2D) -> void:
 	# Set trigger status based on repeatability
 	triggered = !repeatable
