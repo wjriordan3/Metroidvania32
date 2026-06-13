@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bssvldjtry4uo" path="res://level/tilesets/sprites/02_security_gradient_MG.png" id="12_kirbt"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_q001h"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_sgym0"]
+[ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_41prx"]
 
-[sub_resource type="Resource" id="Resource_q001h"]
+[sub_resource type="Resource" id="Resource_1yoey"]
 resource_local_to_scene = true
 script = ExtResource("8_1yoey")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -96,6 +97,12 @@ size = 4
 location = 1
 target_level = "uid://bu33vmq77g23t"
 
+[node name="LevelTransition3" parent="." unique_id=490170497 instance=ExtResource("5_sgym0")]
+position = Vector2(-33, 321)
+size = 4
+location = 1
+target_level = "uid://bu33vmq77g23t"
+
 [node name="LevelTransition2" parent="." unique_id=1166221439 instance=ExtResource("5_sgym0")]
 position = Vector2(601, 1338)
 size = 4
@@ -103,11 +110,11 @@ location = 1
 target_level = "uid://bu33vmq77g23t"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_q001h")]
-position = Vector2(127, 125)
+position = Vector2(66, 272)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_41prx")]
 position = Vector2(224, 249)
-stats = SubResource("Resource_q001h")
+stats = SubResource("Resource_1yoey")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mkokt")
@@ -253,3 +260,7 @@ position = Vector2(624, 1274)
 collision_layer = 1
 door_type = 4
 is_interactable = true
+
+[node name="DialogueArea" parent="." unique_id=1895709866 instance=ExtResource("16_41prx")]
+position = Vector2(3101, 251)
+timeline = "security_scene_beforeBoss_01"

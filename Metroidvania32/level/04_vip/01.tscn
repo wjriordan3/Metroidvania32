@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://b71lc1q6enpd1" path="res://level/tilesets/sprites/04_VIP_BG_sky2.png" id="13_mjnka"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_mjnka"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="15_5q5a4"]
+[ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_hqb3m"]
 
-[sub_resource type="Resource" id="Resource_5q5a4"]
+[sub_resource type="Resource" id="Resource_drko3"]
 resource_local_to_scene = true
 script = ExtResource("8_drko3")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -123,11 +124,11 @@ location = 1
 target_level = "uid://dm4pd5nxnrnf3"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_5q5a4")]
-position = Vector2(223, 275)
+position = Vector2(223, 267)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_hqb3m")]
 position = Vector2(46, 256)
-stats = SubResource("Resource_5q5a4")
+stats = SubResource("Resource_drko3")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_t1w30")
@@ -386,3 +387,7 @@ z_as_relative = false
 position = Vector2(431, -208)
 scale = Vector2(-1, 1)
 switch_type = 0
+
+[node name="DialogueArea" parent="." unique_id=1895709866 instance=ExtResource("16_hqb3m")]
+position = Vector2(1184, -1504)
+timeline = "VIP_scene_beforeBoss_01"
