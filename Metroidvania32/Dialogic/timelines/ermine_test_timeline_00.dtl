@@ -1,0 +1,8 @@
+join weasel (weasel_neutral) left
+weasel (weasel_smirk): Knock Knock. It's your favorite partner in crime!
+join ermine (ermine_neutral) right
+update weasel (weasel_laugh)
+ermine (ermine_sneaky_smile): Paws off the support car, rodent.
+update weasel (weasel_neutral)
+ermine (ermine_neutral): Need to save? Press f near the support car and I'll save your game for you.
+ermine (ermine_neutral): Now Heads up, You’ve got a snag up ahead. You might have to fight your way in.

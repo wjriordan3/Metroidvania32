@@ -1,0 +1,11 @@
+join Pale_Wolf_Dark right
+Pale_Wolf_Dark: Watch it, you’re in for it in the next room. I’d bring the MK II if I were you.
+join weasel left
+weasel (weasel_neutral): huh, who is this?
+leave Pale_Wolf_Dark
+weasel (weasel_think): ...
+join ermine right
+ermine (ermine_neutral): Strange, this channel should be reserved for us alone. I’ll do some digging to find out who hi-jacked our frequency.
+update weasel (weasel_neutral)
+ermine (ermine_sneaky_smile): Now get those keys!
+weasel (weasel_cheese): roger!

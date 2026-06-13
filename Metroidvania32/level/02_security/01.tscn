@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_q001h"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_sgym0"]
 
-[sub_resource type="Resource" id="Resource_sgym0"]
+[sub_resource type="Resource" id="Resource_q001h"]
 resource_local_to_scene = true
 script = ExtResource("8_1yoey")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -107,7 +107,7 @@ position = Vector2(127, 125)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_41prx")]
 position = Vector2(224, 249)
-stats = SubResource("Resource_sgym0")
+stats = SubResource("Resource_q001h")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mkokt")

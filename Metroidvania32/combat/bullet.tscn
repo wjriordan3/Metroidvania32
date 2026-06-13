@@ -17,7 +17,7 @@ rect = Rect2(-22, -21, 44, 42)
 
 [node name="AttackArea" parent="." unique_id=1600257482 instance=ExtResource("3_srq83")]
 scale = Vector2(0.6, 0.35)
-collision_layer = 0
+collision_layer = 4096
 collision_mask = 192
 remove_on_hit = 2
 
