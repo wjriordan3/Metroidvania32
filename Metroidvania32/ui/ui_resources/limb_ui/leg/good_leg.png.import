@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duj66cpughvlt"
-path="res://.godot/imported/bar_bg.png-bf2f9a4916e5a2e4d34d98bd2e4c305d.ctex"
+uid="uid://bdn377r6je83o"
+path="res://.godot/imported/good_leg.png-4edfb5ef286aa219383335b0dc8771eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/ui_resources/bar_bg.png"
-dest_files=["res://.godot/imported/bar_bg.png-bf2f9a4916e5a2e4d34d98bd2e4c305d.ctex"]
+source_file="res://ui/ui_resources/limb_ui/leg/good_leg.png"
+dest_files=["res://.godot/imported/good_leg.png-4edfb5ef286aa219383335b0dc8771eb.ctex"]
 
 [params]
 
