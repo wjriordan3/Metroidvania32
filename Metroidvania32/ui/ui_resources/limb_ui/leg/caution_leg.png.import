@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp1ghts0gm7c"
-path="res://.godot/imported/life_bar.png-26527800f8ee72781890413b3faae98f.ctex"
+uid="uid://cui8uhwrgtx4d"
+path="res://.godot/imported/caution_leg.png-760bf2ee11fbd6eaa0b1d05977e5badc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/ui_resources/life_bar.png"
-dest_files=["res://.godot/imported/life_bar.png-26527800f8ee72781890413b3faae98f.ctex"]
+source_file="res://ui/ui_resources/limb_ui/leg/caution_leg.png"
+dest_files=["res://.godot/imported/caution_leg.png-760bf2ee11fbd6eaa0b1d05977e5badc.ctex"]
 
 [params]
 

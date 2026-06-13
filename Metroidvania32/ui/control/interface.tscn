@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://cct0e8c4ujhqa" path="res://ui/control/interface.gd" id="1_rm7hh"]
 [ext_resource type="PackedScene" uid="uid://dwcic17kcqxcw" path="res://ui/bar/health_bar/healthbar.tscn" id="1_y0u1y"]
 [ext_resource type="PackedScene" uid="uid://c5gw6h433d3en" path="res://ui/notifications/notification.tscn" id="2_5wrt2"]
-[ext_resource type="Texture2D" uid="uid://xb28ob5hd8da" path="res://ui/icons/gear_icon.png" id="4_badti"]
+[ext_resource type="Texture2D" uid="uid://b1o3wiyvmdcex" path="res://ui/ui_resources/HUD_scrapCount_scrapIcon.png" id="5_5wrt2"]
 [ext_resource type="PackedScene" uid="uid://ctiivlc441vqu" path="res://ui/limb_display/limb_display.tscn" id="5_hfser"]
 [ext_resource type="PackedScene" uid="uid://ckyc2pfe3x07t" path="res://ui/counter/counter.tscn" id="6_5wrt2"]
+[ext_resource type="Texture2D" uid="uid://hevxsmy4ie1w" path="res://ui/ui_resources/HUD_scrapCount_frame.png" id="6_matnj"]
 
 [node name="Interface" type="Control" unique_id=1735007707]
 layout_mode = 3
@@ -18,39 +19,47 @@ script = ExtResource("1_rm7hh")
 
 [node name="Notification" parent="." unique_id=1639322358 instance=ExtResource("2_5wrt2")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 328.0
-offset_right = 125.0
-offset_bottom = 358.0
+offset_left = 8.0
+offset_top = 320.0
+offset_right = 129.0
+offset_bottom = 350.0
 
 [node name="HealthBar" parent="." unique_id=77891363 instance=ExtResource("1_y0u1y")]
 layout_mode = 1
+offset_left = 80.0
+offset_top = 14.0
+offset_right = 280.0
+offset_bottom = 52.0
 
 [node name="ScrapCounter" parent="." unique_id=901551686 instance=ExtResource("6_5wrt2")]
 layout_mode = 0
-offset_left = 541.0
-offset_top = 6.0
-offset_right = 636.0
-offset_bottom = 46.0
+offset_left = 504.0
+offset_top = 24.0
+offset_right = 547.0
+offset_bottom = 64.0
 
 [node name="Sprite2D" parent="ScrapCounter" index="0" unique_id=1417807379]
-position = Vector2(24, 20)
-scale = Vector2(0.06, 0.052)
-texture = ExtResource("4_badti")
+position = Vector2(22, 15)
+scale = Vector2(1, 1)
+texture = ExtResource("5_5wrt2")
 
 [node name="Label" parent="ScrapCounter" index="1" unique_id=1353080062]
-offset_left = 47.0
-offset_top = -16.0
-offset_right = 92.0
-offset_bottom = 15.0
+anchors_preset = 14
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = 4.0
+offset_right = 0.0
+offset_bottom = 9.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
 
-[node name="LimbDisplay" parent="." unique_id=1159084191 instance=ExtResource("5_hfser")]
+[node name="Border" parent="ScrapCounter" index="2" unique_id=1604224949]
+position = Vector2(18.75, 20.875)
+texture = ExtResource("6_matnj")
+
+[node name="LimbDisplay" parent="." unique_id=724642003 instance=ExtResource("5_hfser")]
 layout_mode = 0
-offset_left = 380.0
-offset_right = 784.0
 
 [connection signal="health_changed" from="." to="HealthBar" method="_on_interface_health_changed"]
 
-[editable path="HealthBar"]
-[editable path="HealthBar/Counter"]
 [editable path="ScrapCounter"]

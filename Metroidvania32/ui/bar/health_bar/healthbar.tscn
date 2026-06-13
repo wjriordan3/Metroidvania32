@@ -1,38 +1,19 @@
 [gd_scene format=3 uid="uid://dwcic17kcqxcw"]
 
 [ext_resource type="Script" uid="uid://ber2j7sei2vh1" path="res://ui/bar/health_bar/healthbar.gd" id="1_kjo6j"]
-[ext_resource type="PackedScene" uid="uid://ckyc2pfe3x07t" path="res://ui/counter/counter.tscn" id="1_sjkjf"]
-[ext_resource type="Texture2D" uid="uid://duj66cpughvlt" path="res://ui/ui_resources/bar_bg.png" id="2_snfvg"]
-[ext_resource type="Texture2D" uid="uid://bp1ghts0gm7c" path="res://ui/ui_resources/life_bar.png" id="3_kjo6j"]
+[ext_resource type="Texture2D" uid="uid://bcn3718hc63ws" path="res://ui/ui_resources/HUD_Health_Bar.png" id="2_qime3"]
+[ext_resource type="Texture2D" uid="uid://bfc7k5rkysxtd" path="res://ui/ui_resources/HUD_HealthBar_Full.png" id="3_snfvg"]
 
 [node name="HealthBar" type="HBoxContainer" unique_id=77891363]
-offset_right = 734.0
-offset_bottom = 105.0
-scale = Vector2(0.5, 0.5)
+offset_right = 200.0
+offset_bottom = 38.0
 script = ExtResource("1_kjo6j")
-
-[node name="Counter" parent="." unique_id=1837503517 instance=ExtResource("1_sjkjf")]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-
-[node name="Sprite2D" parent="Counter" index="0" unique_id=1417807379]
-position = Vector2(50, 52.5)
-scale = Vector2(0.308, 0.25)
-
-[node name="Label" parent="Counter" index="1" unique_id=1353080062]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 0.0
-offset_top = -38.5
-offset_right = 90.0
-offset_bottom = 39.5
 
 [node name="HPBar" type="TextureProgressBar" parent="." unique_id=1329561051]
 unique_name_in_owner = true
 layout_mode = 2
-value = 50.0
-texture_under = ExtResource("2_snfvg")
-texture_progress = ExtResource("3_kjo6j")
-
-[editable path="Counter"]
+max_value = 1.0
+value = 1.0
+texture_under = ExtResource("2_qime3")
+texture_progress = ExtResource("3_snfvg")
+texture_progress_offset = Vector2(15, 14)

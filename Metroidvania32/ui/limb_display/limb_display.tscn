@@ -1,44 +1,45 @@
 [gd_scene format=3 uid="uid://ctiivlc441vqu"]
 
 [ext_resource type="Script" uid="uid://b3h0llta0l8gj" path="res://ui/limb_display/limb_display.gd" id="1_f2ihv"]
-[ext_resource type="PackedScene" uid="uid://dwcic17kcqxcw" path="res://ui/bar/health_bar/healthbar.tscn" id="2_1ohfp"]
+[ext_resource type="Texture2D" uid="uid://d27rnbd5kgin1" path="res://ui/ui_resources/limb_ui/border/HUD_partStatus_frame.png" id="2_1ohfp"]
+[ext_resource type="Texture2D" uid="uid://qjmhflxe4erh" path="res://ui/ui_resources/limb_ui/arm/good_arm.png" id="3_1ohfp"]
+[ext_resource type="Texture2D" uid="uid://cs1rp4a18m127" path="res://ui/ui_resources/limb_ui/border/HUD_partStatus_BG.png" id="3_ki71m"]
+[ext_resource type="Texture2D" uid="uid://cm6t6o6e1tnoh" path="res://ui/ui_resources/limb_ui/body/good_body.png" id="4_ki71m"]
+[ext_resource type="Texture2D" uid="uid://bdn377r6je83o" path="res://ui/ui_resources/limb_ui/leg/good_leg.png" id="5_moyf5"]
 
-[node name="LimbDisplay" type="GridContainer" unique_id=1159084191]
-offset_right = 404.0
-offset_bottom = 204.0
-scale = Vector2(0.25, 0.25)
-columns = 2
+[node name="LimbDisplay" type="Control" unique_id=724642003]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 102.0
+offset_bottom = 75.0
 script = ExtResource("1_f2ihv")
 
-[node name="LeftArm" parent="." unique_id=77891363 instance=ExtResource("2_1ohfp")]
-layout_mode = 2
+[node name="Border" type="Sprite2D" parent="." unique_id=1684916485]
+position = Vector2(51, 37.5)
+texture = ExtResource("2_1ohfp")
 
-[node name="TextureProgressBar" parent="LeftArm" index="1" unique_id=1329561051]
-visible = false
+[node name="Background" type="Sprite2D" parent="." unique_id=1783607033]
+z_index = -1
+z_as_relative = false
+position = Vector2(39, 37.5)
+texture = ExtResource("3_ki71m")
 
-[node name="RightArm" parent="." unique_id=1634843416 instance=ExtResource("2_1ohfp")]
-layout_mode = 2
+[node name="LeftArm" type="Sprite2D" parent="." unique_id=295455523]
+position = Vector2(23, 29.5)
+texture = ExtResource("3_1ohfp")
 
-[node name="TextureProgressBar" parent="RightArm" index="1" unique_id=1329561051]
-visible = false
+[node name="RightArm" type="Sprite2D" parent="." unique_id=1493899977]
+position = Vector2(55, 29.5)
+texture = ExtResource("3_1ohfp")
 
-[node name="LeftLeg" parent="." unique_id=1159179228 instance=ExtResource("2_1ohfp")]
-layout_mode = 2
+[node name="LeftLeg" type="Sprite2D" parent="." unique_id=1497126894]
+position = Vector2(47, 49.5)
+texture = ExtResource("5_moyf5")
 
-[node name="TextureProgressBar" parent="LeftLeg" index="1" unique_id=1329561051]
-visible = false
+[node name="RightLeg" type="Sprite2D" parent="." unique_id=641328094]
+position = Vector2(31, 49.5)
+texture = ExtResource("5_moyf5")
 
-[node name="RightLeg" parent="." unique_id=201874733 instance=ExtResource("2_1ohfp")]
-layout_mode = 2
-
-[node name="TextureProgressBar" parent="RightLeg" index="1" unique_id=1329561051]
-visible = false
-
-[editable path="LeftArm"]
-[editable path="LeftArm/Counter"]
-[editable path="RightArm"]
-[editable path="RightArm/Counter"]
-[editable path="LeftLeg"]
-[editable path="LeftLeg/Counter"]
-[editable path="RightLeg"]
-[editable path="RightLeg/Counter"]
+[node name="Body" type="Sprite2D" parent="." unique_id=1363789175]
+position = Vector2(39, 25.5)
+texture = ExtResource("4_ki71m")

@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var interface: Interface = $Interface
 @onready var health_bar = $Interface/HealthBar
 @onready var scrap_counter: Counter = $Interface/ScrapCounter
-@onready var limb_display: GridContainer = $Interface/LimbDisplay
+@onready var limb_display: Control = $Interface/LimbDisplay
 @onready var hp_bar: TextureProgressBar = $Interface/HealthBar/HPBar
 @onready var game_over: Control = %GameOver
 @onready var load_button: Button = $Interface/GameOver/HBoxContainer/LoadButton
