@@ -1,0 +1,10 @@
+join ermine right
+ermine (ermine_neutral): Hey! You brought back a Soul Chip!
+ermine (ermine_neutral): With this Data I can get the schematics to build a set of Mecha Parts for you!
+ermine (ermine_stress): Though, I’ll still need SCRAP to build and repair them.
+join weasel left
+weasel (weasel_neutral): ...
+ermine (ermine_neutral): ...
+weasel (weasel_neutral): ... Let me guess, g-
+update weasel (weasel_stress)
+ermine (ermine_sneaky_smile): GET THE KEYS!!!

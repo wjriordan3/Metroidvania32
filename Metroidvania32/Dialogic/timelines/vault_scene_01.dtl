@@ -1,0 +1,24 @@
+join ermine right
+Did the Bruiser give you trouble?
+join weasel (weasel_smirk) left
+weasel: No sweat.
+weasel (weasel_neutral): Wait, you’re here and the vault’s still closed!? Whats the hold up?
+weasel (weasel_cheese): Need me to bust it up?
+update weasel (weasel_think)
+ermine (ermine_sneaky_smile): Use your brain. We hit another snag.
+update weasel (weasel_neutral)
+ermine (ermine_stress): I can’t believe this. They-they’ve changed the locks.
+weasel (weasel_stress): They WHAT?
+update weasel (weasel_neutral)
+ermine (ermine_neutral): Hold on, I think we can still salvage this mission, the new keys must still be around here.
+ermine (ermine_neutral):  The keys… you already got one from the muscle you just threw down with! The cops must’ve thought to split them up. There’s five of them.
+ermine (ermine_neutral): There must be one in SECURITY, Probably one in the OFFICES, and another in the VIP TOWER, and in the CASINO below us.
+weasel (weasel_laugh): um. Sure. I’ll hop to it. But can we fix up the MK II first?
+ermine (ermine_neutral): I’ll provide the repairs here at the WORKBENCH. Bring me any SCRAP metal you can find and I’ll use it for repairs and constructing new parts.
+ermine (ermine_sneaky_smile):  I’ll  tally your bill later.
+weasel (weasel_stress): T-thanks…
+update weasel (weasel_neutral)
+ermine (ermine_neutral): If I need to get a hold of you; I’ll tap in to your call channel with these trusty antenna of mine.
+ermine: I'll also be following along in the support car to save your progress.
+update weasel (weasel_stress)
+ermine (ermine_sneaky_smile): Now go find those keys!

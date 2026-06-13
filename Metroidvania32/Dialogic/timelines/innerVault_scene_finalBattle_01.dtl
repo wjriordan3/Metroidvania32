@@ -1,0 +1,15 @@
+join weasel left
+weasel (weasel_pissed): I knew it, the client had to be you! Traitorous scum!
+weasel (weasel_neutral): PALE WOLF!
+weasel (weasel_think): (...those jokes could only come from you, after all)
+update weasel (weasel_pissed)
+join Pale_Wolf right
+Pale_Wolf: Hey, that’s D A D to you son!
+Pale_Wolf: it's time you give up on the crime life, follow in your Old man's footsteps.
+Pale_Wolf: If its about money you should’ve come to me!
+update weasel (weasel_stress)
+Pale_Wolf: I hardly know you now, you’re like some kind of...
+Pale_Wolf: miserable little pile of secrets!!
+weasel (weasel_neutral): You can KEEP the MONEY! But I'll be taking that GEM!
+Pale_Wolf: Time to teach this Weasel the might of the Wolf
+Pale_Wolf:  enough talk... Have at you!

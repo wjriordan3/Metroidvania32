@@ -1,0 +1,8 @@
+join Pale_Wolf right [animation="Fade In Up" length="2.0" wait="true"]
+Pale_Wolf: Y-you, if you don’t need the money,
+Pale_Wolf: then why take the job? Why break into here and face me?
+leave Pale_Wolf [animation="Fade Out Down" length="2.0" wait="true"]
+Boss: Sqqueeek!~~
+join weasel (weasel_neutral) left
+join ermine (ermine_neutral) right
+"Ermine and Weasel": BOSS!

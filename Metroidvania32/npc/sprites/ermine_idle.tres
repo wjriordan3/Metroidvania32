@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cje78mjqdtu7y"]
+
+[ext_resource type="Texture2D" uid="uid://drqdx283oy7rm" path="res://npc/sprites/comms_girl_ermine_idle.png" id="1_3jqby"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxvpq"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64xmg"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhlgq"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwxpb"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4eth"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbbur"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnres"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51jwp"]
+atlas = ExtResource("1_3jqby")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxvpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64xmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhlgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwxpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4eth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbbur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnres")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51jwp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]

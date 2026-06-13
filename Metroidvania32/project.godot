@@ -42,17 +42,39 @@ GameManager="*uid://823mkh0uf2qh"
 [dialogic]
 
 directories/dch_directory={
+"Boss": "res://Dialogic/characters/Boss.dch",
+"Ermine and Weasel": "res://Dialogic/characters/Ermine and Weasel.dch",
+"Pale_Wolf": "res://Dialogic/characters/Pale_Wolf.dch",
+"Pale_Wolf_Dark": "res://Dialogic/characters/Pale_Wolf_Dark.dch",
 "cop": "res://Dialogic/characters/cop.dch",
+"ermine": "res://Dialogic/characters/ermine.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch",
 "weasel": "res://Dialogic/characters/weasel.dch"
 }
 directories/dtl_directory={
-"cop_test_timeline_00": "res://Dialogic/timelines/cop_test_timeline_00.dtl"
+"VIP_scene_beforeBoss_01": "res://Dialogic/timelines/VIP_scene_beforeBoss_01.dtl",
+"casino_scene_01": "res://Dialogic/timelines/casino_scene_01.dtl",
+"casino_scene_beforeBoss_01": "res://Dialogic/timelines/casino_scene_beforeBoss_01.dtl",
+"cop_test_timeline_00": "res://Dialogic/timelines/cop_test_timeline_00.dtl",
+"defeat_allBosses_scene_01": "res://Dialogic/timelines/defeat_allBosses_scene_01.dtl",
+"ermine_test_timeline_00": "res://Dialogic/timelines/ermine_test_timeline_00.dtl",
+"innerVault_scene_finalBattle_01": "res://Dialogic/timelines/innerVault_scene_finalBattle_01.dtl",
+"innerVault_scene_finalBattle_02": "res://Dialogic/timelines/innerVault_scene_finalBattle_02.dtl",
+"offices_scene_beforeBoss_01": "res://Dialogic/timelines/offices_scene_beforeBoss_01.dtl",
+"roof_scene_01": "res://Dialogic/timelines/roof_scene_01.dtl",
+"roof_scene_02": "res://Dialogic/timelines/roof_scene_02.dtl",
+"roof_scene_03": "res://Dialogic/timelines/roof_scene_03.dtl",
+"security_scene_beforeBoss_01": "res://Dialogic/timelines/security_scene_beforeBoss_01.dtl",
+"vault_scene_01": "res://Dialogic/timelines/vault_scene_01.dtl",
+"vault_scene_soulChip_01": "res://Dialogic/timelines/vault_scene_soulChip_01.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://Dialogic/styles/custom_default_style.tres",
+"custom_default_style": "res://Dialogic/styles/custom_default_style.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://Dialogic/styles/custom_default_style.tres"]
+layout/default_style="res://Dialogic/styles/custom_default_style.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01

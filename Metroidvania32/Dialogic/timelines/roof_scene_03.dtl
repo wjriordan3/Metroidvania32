@@ -1,0 +1,4 @@
+join cop right
+cop: Who goes there?!
+join weasel (weasel_neutral) left
+weasel: Yo, out of the way, Fuzz!

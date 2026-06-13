@@ -1,0 +1,13 @@
+join ermine (ermine_neutral) right
+join weasel (weasel_think) left
+ermine: Hey, wait a minute.
+ermine: I think I know who-
+update weasel (weasel_pissed)
+ermine (ermine_stress): GASP Its you! H-hey! Unhand me!!
+leave ermine [animation="Slide To Right"]
+update weasel (weasel_stress)
+join Pale_Wolf_Dark right
+Pale_Wolf_Dark: If you want to see your Moth-Girl Partner again...
+Pale_Wolf_Dark: you’ll bring those keys back to me at the VAULT.
+leave Pale_Wolf_Dark
+weasel (weasel_pissed): ERMINE!!!!
