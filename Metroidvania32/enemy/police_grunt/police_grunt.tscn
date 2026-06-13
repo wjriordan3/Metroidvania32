@@ -289,6 +289,9 @@ script = ExtResource("13_iq4ev")
 metadata/_custom_type_script = "uid://87pk5x165cqe"
 
 [node name="EdgeSensor" type="RayCast2D" parent="." unique_id=1874635038]
+position = Vector2(3, 13)
+scale = Vector2(1, 0.22317402)
+target_position = Vector2(0, 35.846462)
 script = ExtResource("7_hg4ff")
 metadata/_custom_type_script = "uid://bu0rjv74ymgwp"
 
@@ -319,11 +322,11 @@ position = Vector2(0, 5)
 scale = Vector2(0.67800117, 0.66798764)
 shape = SubResource("CapsuleShape2D_ixi1r")
 
-[node name="EnemyGun" type="Marker2D" parent="." unique_id=968487392]
-script = ExtResource("12_b81mh")
-metadata/_custom_type_script = "uid://bqklbgwkqk4ne"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=86639592]
 position = Vector2(0, 5)
 scale = Vector2(0.67800117, 0.66798764)
 shape = SubResource("CapsuleShape2D_ixi1r")
+
+[node name="EnemyGun" type="Marker2D" parent="." unique_id=318548784]
+script = ExtResource("12_b81mh")
+metadata/_custom_type_script = "uid://bqklbgwkqk4ne"

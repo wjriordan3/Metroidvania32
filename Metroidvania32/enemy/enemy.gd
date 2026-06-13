@@ -24,6 +24,7 @@ var blackboard : Blackboard
 
 
 func _ready() -> void :
+	print( name, name.contains( 'Tank' ))
 	if Engine.is_editor_hint() :
 		set_physics_process( false )
 		return
@@ -74,11 +75,15 @@ func _physics_process( delta : float ) -> void :
 func change_dir( new_dir : float ) -> void :
 	blackboard.dir = new_dir
 	direction_changed.emit( new_dir )
-	if sprite:
-		if new_dir < 0 :
-			sprite.flip_h = true
-		elif new_dir > 0 :
-			sprite.flip_h = false
+	if not name.contains( 'Tank' ) :
+		if sprite:
+			if new_dir < 0:
+				sprite.flip_h = true
+			elif new_dir > 0:
+				sprite.flip_h = false
+	if enemy_gun:
+		enemy_gun.flip( new_dir )
+	
 	pass
 	
 func play_animation( anim_name : String ) -> void :

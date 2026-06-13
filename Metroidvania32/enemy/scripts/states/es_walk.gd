@@ -22,6 +22,7 @@ func exit() -> void :
 	pass
 	
 func physics_update( _delta : float ):
+	print( "Walking" )
 	if enemy.is_on_wall():
 		enemy.change_dir( -blackboard.dir )
 	enemy.velocity.x = walk_speed * blackboard.dir

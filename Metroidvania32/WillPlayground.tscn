@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap_100.tres" id="15_1it0o"]
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_ue2lf"]
 [ext_resource type="PackedScene" uid="uid://cn2jbq8a76061" path="res://enemy/police_grunt/police_grunt.tscn" id="18_cefoj"]
-[ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/spike_tank/spike_tank.tscn" id="18_jjrpu"]
+[ext_resource type="PackedScene" uid="uid://cgerti54web81" path="res://enemy/gun_tank/gun_tank.tscn" id="18_jjrpu"]
 
 [sub_resource type="Resource" id="Resource_jjrpu"]
 resource_local_to_scene = true
@@ -122,11 +122,10 @@ item_data = ExtResource("15_1it0o")
 [node name="TrainingDummy" parent="." unique_id=1609752943 instance=ExtResource("16_ue2lf")]
 position = Vector2(56, 224)
 
-[node name="Enemy2" parent="." unique_id=1232269429 instance=ExtResource("18_jjrpu")]
-position = Vector2(535, 274)
-
-[node name="Enemy" parent="." unique_id=784409238 instance=ExtResource("18_jjrpu")]
-position = Vector2(1149, 161)
-
 [node name="PoliceGrunt" parent="." unique_id=1176319828 instance=ExtResource("18_cefoj")]
 position = Vector2(74, 75)
+
+[node name="GunTank" parent="." unique_id=2095753835 instance=ExtResource("18_jjrpu")]
+position = Vector2(856, 226)
+collision_layer = 0
+collision_mask = 3
