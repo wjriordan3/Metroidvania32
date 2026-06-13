@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://c3ami1qla7ktc" path="res://level/tilesets/sprites/03_Offices_BG_sky2.png" id="13_dl815"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_0uot8"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_dl815"]
+[ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_b75ob"]
 
-[sub_resource type="Resource" id="Resource_0uot8"]
+[sub_resource type="Resource" id="Resource_ocqfv"]
 resource_local_to_scene = true
 script = ExtResource("8_ocqfv")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -92,7 +93,7 @@ position = Vector2(86, -240)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_b75ob")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_0uot8")
+stats = SubResource("Resource_ocqfv")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_ca6er")
@@ -257,3 +258,7 @@ position = Vector2(1168, -336)
 rotation = 1.5707964
 scale = Vector2(-1, 1)
 switch_type = 0
+
+[node name="DialogueArea" parent="." unique_id=1895709866 instance=ExtResource("16_b75ob")]
+position = Vector2(3085, -612)
+timeline = "offices_scene_beforeBoss_01"

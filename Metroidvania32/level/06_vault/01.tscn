@@ -22,7 +22,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cje78mjqdtu7y" path="res://npc/sprites/ermine_idle.tres" id="20_dxnnf"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="21_6l0iq"]
 
-[sub_resource type="Resource" id="Resource_wml05"]
+[sub_resource type="Resource" id="Resource_6l0iq"]
 resource_local_to_scene = true
 script = ExtResource("9_3x7cr")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -90,7 +90,7 @@ position = Vector2(83, 285)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_bknrm")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_wml05")
+stats = SubResource("Resource_6l0iq")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1407369649]
 script = ExtResource("10_dxnnf")
