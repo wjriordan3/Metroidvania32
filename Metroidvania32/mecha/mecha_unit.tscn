@@ -235,6 +235,8 @@ debug_color = Color(0.8039216, 0.30588236, 0.29411766, 0.41960785)
 unique_name_in_owner = true
 position = Vector2(60, 0)
 scale = Vector2(2.129626, 2.8187985)
+collision_layer = 3584
+collision_mask = 192
 
 [connection signal="body_entered" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_entered"]
 [connection signal="body_exited" from="MechAreaCollision" to="." method="_on_mech_area_collision_body_exited"]

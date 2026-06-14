@@ -15,7 +15,7 @@ size = Vector2(32, 144)
 
 [node name="Door" type="StaticBody2D" unique_id=2031919350]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 2560
 script = ExtResource("1_yajji")
 punch_door = ExtResource("2_r32yf")
 kick_door = ExtResource("3_xykiq")
@@ -28,7 +28,7 @@ lock_door = ExtResource("7_n2ch0")
 
 [node name="DamageArea" parent="." unique_id=1086178816 instance=ExtResource("2_8c0rp")]
 scale = Vector2(0.1, 0.45)
-collision_layer = 0
+collision_layer = 384
 collision_mask = 2560
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609638363]

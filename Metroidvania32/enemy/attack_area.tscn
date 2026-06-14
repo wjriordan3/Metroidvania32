@@ -7,7 +7,7 @@
 [node name="AttackArea" type="Area2D" unique_id=1600257482 groups=["damage"]]
 scale = Vector2(1.1200004, 1.0399996)
 collision_layer = 192
-collision_mask = 0
+collision_mask = 480
 script = ExtResource("1_43p2n")
 metadata/_custom_type_script = "uid://bxc5n4gal30q4"
 
