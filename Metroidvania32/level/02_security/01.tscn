@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_41prx"]
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="17_1yoey"]
 
-[sub_resource type="Resource" id="Resource_mkokt"]
+[sub_resource type="Resource" id="Resource_1yoey"]
 resource_local_to_scene = true
 script = ExtResource("8_1yoey")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -115,7 +115,7 @@ position = Vector2(66, 272)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_41prx")]
 position = Vector2(224, 249)
-stats = SubResource("Resource_mkokt")
+stats = SubResource("Resource_1yoey")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mkokt")
@@ -205,16 +205,35 @@ z_as_relative = false
 position = Vector2(560, 144)
 switch_type = 0
 
+[node name="Switch3" parent="." unique_id=611773465 instance=ExtResource("14_q001h")]
+z_index = -1
+z_as_relative = false
+position = Vector2(1201, 670)
+switch_type = 1
+
+[node name="Switch4" parent="." unique_id=233089431 instance=ExtResource("14_q001h")]
+z_index = -1
+z_as_relative = false
+position = Vector2(703, 867)
+switch_type = 1
+
+[node name="Switch5" parent="." unique_id=711667388 instance=ExtResource("14_q001h")]
+z_index = -1
+z_as_relative = false
+position = Vector2(731, 1315)
+switch_type = 1
+
 [node name="Switch2" parent="." unique_id=1132419544 instance=ExtResource("14_q001h")]
 z_index = -1
 z_as_relative = false
 position = Vector2(2325, 293)
 
-[node name="Door" parent="." unique_id=2031919350 instance=ExtResource("14_sgym0")]
+[node name="Door" parent="." unique_id=2031919350 node_paths=PackedStringArray("switches") instance=ExtResource("14_sgym0")]
 position = Vector2(1264, 240)
 collision_layer = 1
 door_type = 1
 is_interactable = true
+switches = [NodePath("../Switch3"), NodePath("../Switch4"), NodePath("../Switch5")]
 
 [node name="Door6" parent="." unique_id=951755075 instance=ExtResource("14_sgym0")]
 position = Vector2(2256, 240)

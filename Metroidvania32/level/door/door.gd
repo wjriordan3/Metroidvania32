@@ -93,12 +93,13 @@ func _on_messages_switch_activated(switch: Switch):
 
 # Only punch and drill doors have hitbox
 func _on_damage_area_damage_taken(attack_area: Variant) -> void:
-	print("Door hit" + attack_area.name)
+	print("Door hit" + attack_area.name + "and collision layer " + str(attack_area.collision_layer))
 	
 	# Check if correct limb was used
-	if door_type == DoorType.PUNCH && attack_area.collision_layer == 10:
+	if door_type == DoorType.PUNCH and attack_area.get_collision_layer_value(10):
 		print("Punch door open")
 		open_door()
-	elif door_type == DoorType.DRILL && attack_area.collision_layer == 12:
+
+	elif door_type == DoorType.DRILL and attack_area.get_collision_layer_value(12):
 		print("Drill door open")
 		open_door()
