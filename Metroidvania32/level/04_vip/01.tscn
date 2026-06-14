@@ -16,8 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_mjnka"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="15_5q5a4"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_hqb3m"]
+[ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="17_drko3"]
 
-[sub_resource type="Resource" id="Resource_drko3"]
+[sub_resource type="Resource" id="Resource_t1w30"]
 resource_local_to_scene = true
 script = ExtResource("8_drko3")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -128,7 +129,7 @@ position = Vector2(223, 267)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_hqb3m")]
 position = Vector2(46, 256)
-stats = SubResource("Resource_drko3")
+stats = SubResource("Resource_t1w30")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_t1w30")
@@ -391,3 +392,79 @@ switch_type = 0
 [node name="DialogueArea" parent="." unique_id=1895709866 instance=ExtResource("16_hqb3m")]
 position = Vector2(1184, -1504)
 timeline = "VIP_scene_beforeBoss_01"
+
+[node name="MapRooms" type="Node2D" parent="." unique_id=1837044149]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MapRoom" parent="MapRooms" unique_id=1411601609 instance=ExtResource("17_drko3")]
+position = Vector2(-320, -1620)
+map_coord = Vector2i(3, 0)
+room_color = Color(0, 0.62, 0.07233341, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom2" parent="MapRooms" unique_id=244223603 instance=ExtResource("17_drko3")]
+position = Vector2(-320, -1260)
+map_coord = Vector2i(3, 1)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom3" parent="MapRooms" unique_id=1899283016 instance=ExtResource("17_drko3")]
+position = Vector2(320, -1260)
+map_coord = Vector2i(4, 1)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom4" parent="MapRooms" unique_id=1888471038 instance=ExtResource("17_drko3")]
+position = Vector2(960, -1260)
+map_coord = Vector2i(5, 1)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom5" parent="MapRooms" unique_id=962006141 instance=ExtResource("17_drko3")]
+position = Vector2(960, -1620)
+map_coord = Vector2i(5, 0)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom6" parent="MapRooms" unique_id=1991301619 instance=ExtResource("17_drko3")]
+position = Vector2(1600, -1620)
+map_coord = Vector2i(6, 0)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom7" parent="MapRooms" unique_id=716523647 instance=ExtResource("17_drko3")]
+position = Vector2(1600, -1260)
+map_coord = Vector2i(6, 1)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom8" parent="MapRooms" unique_id=1629337324 instance=ExtResource("17_drko3")]
+position = Vector2(1600, -900)
+map_coord = Vector2i(6, 2)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom9" parent="MapRooms" unique_id=1514839694 instance=ExtResource("17_drko3")]
+position = Vector2(320, -900)
+map_coord = Vector2i(4, 2)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom10" parent="MapRooms" unique_id=1220236887 instance=ExtResource("17_drko3")]
+position = Vector2(320, -540)
+map_coord = Vector2i(4, 3)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom11" parent="MapRooms" unique_id=1926332112 instance=ExtResource("17_drko3")]
+position = Vector2(320, -180)
+map_coord = Vector2i(4, 4)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom12" parent="MapRooms" unique_id=923900268 instance=ExtResource("17_drko3")]
+position = Vector2(320, 180)
+map_coord = Vector2i(4, 5)
+room_color = Color(0, 0.61960787, 0.07058824, 1)
+metadata/_edit_lock_ = true

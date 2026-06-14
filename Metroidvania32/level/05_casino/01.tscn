@@ -14,8 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="12_5277p"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="13_w47h5"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="14_xbb2n"]
+[ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="15_fb0p4"]
 
-[sub_resource type="Resource" id="Resource_fb0p4"]
+[sub_resource type="Resource" id="Resource_ycc86"]
 resource_local_to_scene = true
 script = ExtResource("8_rxfhw")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -96,7 +97,7 @@ position = Vector2(-213, 73)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_ycc86")]
 position = Vector2(-334, 98)
-stats = SubResource("Resource_fb0p4")
+stats = SubResource("Resource_ycc86")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_6m37s")
@@ -221,3 +222,73 @@ timeline = "casino_scene_01"
 [node name="DialogueArea2" parent="." unique_id=1892896316 instance=ExtResource("14_xbb2n")]
 position = Vector2(256, 1306)
 timeline = "casino_scene_beforeBoss_01"
+
+[node name="MapRooms" type="Node2D" parent="." unique_id=219162183]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MapRoom" parent="MapRooms" unique_id=1411601609 instance=ExtResource("15_fb0p4")]
+position = Vector2(-320, 180)
+map_coord = Vector2i(3, 7)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom2" parent="MapRooms" unique_id=1085087285 instance=ExtResource("15_fb0p4")]
+position = Vector2(320, 180)
+map_coord = Vector2i(4, 7)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom3" parent="MapRooms" unique_id=1572030401 instance=ExtResource("15_fb0p4")]
+position = Vector2(960, 180)
+map_coord = Vector2i(5, 7)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom4" parent="MapRooms" unique_id=512536854 instance=ExtResource("15_fb0p4")]
+position = Vector2(-320, 540)
+map_coord = Vector2i(3, 8)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom5" parent="MapRooms" unique_id=781374927 instance=ExtResource("15_fb0p4")]
+position = Vector2(-320, 900)
+map_coord = Vector2i(3, 9)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom6" parent="MapRooms" unique_id=863199501 instance=ExtResource("15_fb0p4")]
+position = Vector2(320, 900)
+map_coord = Vector2i(4, 9)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom7" parent="MapRooms" unique_id=1904604360 instance=ExtResource("15_fb0p4")]
+position = Vector2(960, 900)
+map_coord = Vector2i(5, 9)
+room_color = Color(0.8, 0, 0.01333313, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom8" parent="MapRooms" unique_id=1071495908 instance=ExtResource("15_fb0p4")]
+position = Vector2(320, 1260)
+map_coord = Vector2i(4, 10)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom9" parent="MapRooms" unique_id=25323928 instance=ExtResource("15_fb0p4")]
+position = Vector2(960, 1260)
+map_coord = Vector2i(5, 10)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom10" parent="MapRooms" unique_id=720398449 instance=ExtResource("15_fb0p4")]
+position = Vector2(320, 1620)
+map_coord = Vector2i(4, 11)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true
+
+[node name="MapRoom11" parent="MapRooms" unique_id=883029175 instance=ExtResource("15_fb0p4")]
+position = Vector2(960, 1620)
+map_coord = Vector2i(5, 11)
+room_color = Color(0.8, 0, 0.011764706, 1)
+metadata/_edit_lock_ = true

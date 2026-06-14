@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://x1gj6qk7qrlf" path="res://level/tilesets/sprites/SavePoint_static.png" id="19_guott"]
 [ext_resource type="SpriteFrames" uid="uid://cje78mjqdtu7y" path="res://npc/sprites/ermine_idle.tres" id="20_dxnnf"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="21_6l0iq"]
+[ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="22_guott"]
 
 [sub_resource type="Resource" id="Resource_6l0iq"]
 resource_local_to_scene = true
@@ -168,3 +169,13 @@ frame_progress = 0.60304713
 position = Vector2(457, 282)
 scale = Vector2(0.3535328, 0.3535328)
 timeline = "vault_scene_01"
+
+[node name="MapRooms" type="Node2D" parent="." unique_id=639420839]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MapRoom" parent="MapRooms" unique_id=1411601609 instance=ExtResource("22_guott")]
+position = Vector2(320, 180)
+map_coord = Vector2i(4, 6)
+room_color = Color(1, 1, 1, 1)
+metadata/_edit_lock_ = true
