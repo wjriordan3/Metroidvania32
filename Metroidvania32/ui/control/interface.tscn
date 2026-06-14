@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctiivlc441vqu" path="res://ui/limb_display/limb_display.tscn" id="5_hfser"]
 [ext_resource type="PackedScene" uid="uid://ckyc2pfe3x07t" path="res://ui/counter/counter.tscn" id="6_5wrt2"]
 [ext_resource type="Texture2D" uid="uid://hevxsmy4ie1w" path="res://ui/ui_resources/HUD_scrapCount_frame.png" id="6_matnj"]
+[ext_resource type="PackedScene" uid="uid://7rjl3o7pf4g5" path="res://ui/minimap/minimap.tscn" id="8_rhied"]
 
 [node name="Interface" type="Control" unique_id=1735007707]
 layout_mode = 3
@@ -33,10 +34,10 @@ offset_bottom = 52.0
 
 [node name="ScrapCounter" parent="." unique_id=901551686 instance=ExtResource("6_5wrt2")]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 24.0
-offset_right = 547.0
-offset_bottom = 64.0
+offset_left = 480.0
+offset_top = 18.0
+offset_right = 523.0
+offset_bottom = 58.0
 
 [node name="Sprite2D" parent="ScrapCounter" index="0" unique_id=1417807379]
 position = Vector2(22, 15)
@@ -59,6 +60,13 @@ texture = ExtResource("6_matnj")
 
 [node name="LimbDisplay" parent="." unique_id=724642003 instance=ExtResource("5_hfser")]
 layout_mode = 0
+
+[node name="Minimap" parent="." unique_id=236776460 instance=ExtResource("8_rhied")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 40.0
+offset_right = 576.0
+offset_bottom = 40.0
 
 [connection signal="health_changed" from="." to="HealthBar" method="_on_interface_health_changed"]
 

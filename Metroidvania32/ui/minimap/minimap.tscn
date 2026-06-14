@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://7rjl3o7pf4g5"]
+
+[ext_resource type="Script" uid="uid://bcrt5ytbhn1rn" path="res://ui/minimap/minimap.gd" id="1_gltnd"]
+[ext_resource type="Texture2D" uid="uid://b3md8tox6llpj" path="res://ui/ui_resources/minimap/HUD_miniMap_frame.png" id="1_m6qbg"]
+[ext_resource type="Texture2D" uid="uid://bi35gy2p1r63y" path="res://ui/ui_resources/minimap/HUD_miniMap_room.png" id="2_5f016"]
+[ext_resource type="Texture2D" uid="uid://dxofl45rspvvy" path="res://ui/ui_resources/minimap/HUD_miniMap_BG.png" id="2_nfbjl"]
+[ext_resource type="Texture2D" uid="uid://bocnjgwxft264" path="res://ui/ui_resources/minimap/HUD_miniMap_currentRoom.png" id="3_buwfp"]
+
+[node name="Minimap" type="Control" unique_id=236776460]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gltnd")
+room_texture = ExtResource("2_5f016")
+
+[node name="Border" type="Sprite2D" parent="." unique_id=429734617]
+z_index = 1
+texture = ExtResource("1_m6qbg")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1711780694]
+z_index = -1
+texture = ExtResource("2_nfbjl")
+
+[node name="MinimapArea" type="Control" parent="." unique_id=2083467548]
+clip_contents = true
+anchors_preset = 0
+offset_left = -48.0
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+
+[node name="Room" type="Control" parent="MinimapArea" unique_id=659957340]
+anchors_preset = 0
+offset_left = -56.0
+offset_right = 48.0
+offset_bottom = 56.0
+
+[node name="PlayerRoom" type="TextureRect" parent="MinimapArea" unique_id=616450902]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 56.0
+offset_bottom = 40.0
+texture = ExtResource("3_buwfp")

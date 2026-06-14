@@ -9,7 +9,7 @@ signal pause_screen_hidden
 @onready var pause_screen: Control = %PauseScreen
 @onready var system: Control = %System
 @onready var gear: Control = %Gear
-@onready var map: Control = %Map
+@onready var map: Control = %MapUi
 @onready var vitals: Control = %Vitals
 
 # Menu Navigation Tabs
