@@ -22,8 +22,9 @@
 [ext_resource type="SpriteFrames" uid="uid://cje78mjqdtu7y" path="res://npc/sprites/ermine_idle.tres" id="20_dxnnf"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="21_6l0iq"]
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="22_guott"]
+[ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="23_wml05"]
 
-[sub_resource type="Resource" id="Resource_6l0iq"]
+[sub_resource type="Resource" id="Resource_wml05"]
 resource_local_to_scene = true
 script = ExtResource("9_3x7cr")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -52,7 +53,7 @@ collision_enabled = false
 [node name="TileMapLayer_floors" type="TileMapLayer" parent="." unique_id=2063485541]
 z_index = -5
 z_as_relative = false
-tile_map_data = PackedByteArray("AAAAAAkAAAALAAEAAAABAAkAAAALAAEAAAACAAkAAAALAAEAAAADAAkAAAALAAEAAAAEAAkAAAALAAEAAAAFAAkAAAALAAEAAAAGAAkAAAALAAEAAAAHAAkAAAALAAEAAAAMAAkAAAALAAEAAAANAAkAAAALAAEAAAAOAAkAAAALAAEAAAAPAAkAAAALAAEAAAAQAAkAAAALAAEAAAARAAkAAAALAAEAAAASAAkAAAALAAEAAAATAAkAAAALAAEAAAATAAMAAAALAAEAAAASAAMAAAALAAEAAAABAAMAAAALAAEAAAAAAAMAAAALAAEAAAAIAAkAAAAPAAIAAAAJAAkAAAAPAAIAAAAKAAkAAAAPAAIAAAALAAkAAAAPAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAAALAAEAAAABAAkAAAALAAEAAAACAAkAAAALAAEAAAADAAkAAAALAAEAAAAEAAkAAAALAAEAAAAFAAkAAAALAAEAAAAGAAkAAAALAAEAAAAHAAkAAAALAAEAAAAMAAkAAAALAAEAAAANAAkAAAALAAEAAAAOAAkAAAALAAEAAAAPAAkAAAALAAEAAAAQAAkAAAALAAEAAAARAAkAAAALAAEAAAASAAkAAAALAAEAAAATAAkAAAALAAEAAAATAAMAAAALAAEAAAASAAMAAAALAAEAAAABAAMAAAALAAEAAAAAAAMAAAALAAEAAAA=")
 tile_set = ExtResource("4_lqnxr")
 
 [node name="TileMapLayer_blocks" type="TileMapLayer" parent="." unique_id=1330898239]
@@ -91,7 +92,7 @@ position = Vector2(83, 285)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_bknrm")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_6l0iq")
+stats = SubResource("Resource_wml05")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1407369649]
 script = ExtResource("10_dxnnf")
@@ -179,3 +180,27 @@ position = Vector2(320, 180)
 map_coord = Vector2i(4, 6)
 room_color = Color(1, 1, 1, 1)
 metadata/_edit_lock_ = true
+
+[node name="BreakableLevel" parent="." unique_id=464987776 instance=ExtResource("23_wml05")]
+position = Vector2(368, 304)
+level_type = 5
+tile_type = 1
+collision_height_percentage = 0.55
+
+[node name="BreakableLevel2" parent="." unique_id=389925101 instance=ExtResource("23_wml05")]
+position = Vector2(336, 304)
+level_type = 5
+tile_type = 1
+collision_height_percentage = 0.55
+
+[node name="BreakableLevel3" parent="." unique_id=1030033397 instance=ExtResource("23_wml05")]
+position = Vector2(304, 304)
+level_type = 5
+tile_type = 1
+collision_height_percentage = 0.55
+
+[node name="BreakableLevel4" parent="." unique_id=1060155814 instance=ExtResource("23_wml05")]
+position = Vector2(272, 304)
+level_type = 5
+tile_type = 1
+collision_height_percentage = 0.55

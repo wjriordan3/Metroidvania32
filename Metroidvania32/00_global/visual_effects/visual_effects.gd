@@ -3,28 +3,37 @@
 extends Node
 
 const DUST_EFFECT = preload("uid://bu422nxeksqfu")
+const EXPLOSION_EFFECT = preload("res://00_global/visual_effects/explosion_effect/explosion_effect.tscn")
 
 # Creates new instance of a dust effect
-func _create_dust_effect( pos : Vector2 ) -> DustEffect:
-	var dust : DustEffect = DUST_EFFECT.instantiate()
-	add_child( dust )
-	dust.global_position = pos  
+func _create_dust_effect(pos: Vector2) -> DustEffect:
+	var dust: DustEffect = DUST_EFFECT.instantiate()
+	add_child(dust)
+	dust.global_position = pos
 	return dust
 
+# Creates new instance of an explosion effect
+func _create_explosion_effect(pos: Vector2) -> Node:
+	var explosion := EXPLOSION_EFFECT.instantiate()
+	add_child(explosion)
+	explosion.global_position = pos
+	return explosion
+
 # create jump dust
-func jump_dust( pos : Vector2 ) -> void:
-	var dust: DustEffect = _create_dust_effect( pos )
-	dust.start( DustEffect.TYPE.JUMP )
-	pass
+func jump_dust(pos: Vector2) -> void:
+	var dust: DustEffect = _create_dust_effect(pos)
+	dust.start(DustEffect.TYPE.JUMP)
 
 # create land dust
-func land_dust( pos : Vector2 ) -> void:
-	var dust: DustEffect = _create_dust_effect( pos )
-	dust.start( DustEffect.TYPE.LAND )
-	pass
+func land_dust(pos: Vector2) -> void:
+	var dust: DustEffect = _create_dust_effect(pos)
+	dust.start(DustEffect.TYPE.LAND)
 
 # hit dust
-func hit_dust( pos : Vector2 ) -> void:
-	var dust: DustEffect = _create_dust_effect( pos )
-	dust.start( DustEffect.TYPE.HIT )
-	pass
+func hit_dust(pos: Vector2) -> void:
+	var dust: DustEffect = _create_dust_effect(pos)
+	dust.start(DustEffect.TYPE.HIT)
+
+# create explosion
+func explosion(pos: Vector2) -> void:
+	_create_explosion_effect(pos)

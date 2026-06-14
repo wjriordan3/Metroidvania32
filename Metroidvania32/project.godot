@@ -289,6 +289,7 @@ aim_down={
 2d_physics/layer_11="KickAtk"
 2d_physics/layer_12="DrillAtk"
 2d_physics/layer_13="GunAtk"
+2d_physics/layer_14="Layer 14"
 
 [physics]
 
