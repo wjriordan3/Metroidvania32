@@ -17,9 +17,9 @@ enum TileType {
 @export var level_type: LevelType = LevelType.ROOFS
 @export var tile_type: TileType = TileType.WALL
 
-# Percentage of sprite height used by collisions.
-# 1.0 = full height, 0.5 = half height, etc.
-@export_range(0.0, 1.0, 0.05) var collision_height_percentage: float = 1.0
+# Hit and collision box adjustables
+@export var physics_collision_height_percentage: float = 1.0
+@export var damage_collision_height_percentage: float = 1.0
 
 const ROOF_WALL_TILE = preload("res://level/breakable_level/assets/roofs/roofs_wall_breakable.png")
 const ROOF_FLOOR_TILE = preload("res://level/breakable_level/assets/roofs/roofs_floor_breakable.png")
@@ -100,17 +100,24 @@ func _resize_collisions_to_sprite() -> void:
 		return
 
 	var original_size := sprite.texture.get_size() * sprite.scale
-	var collision_size := original_size
 
-	collision_size.y *= collision_height_percentage
+	var offset_y: float
+
+	var physics_size := original_size
+	physics_size.y *= physics_collision_height_percentage
+	offset_y = (original_size.y - physics_size.y) * 0.5
 
 	if body_collision.shape is RectangleShape2D:
-		body_collision.shape.size = collision_size
-		body_collision.position.y = (original_size.y - collision_size.y) * 0.5
+		body_collision.shape.size = physics_size
+		body_collision.position.y = offset_y
+
+	var damage_size := original_size
+	damage_size.y *= damage_collision_height_percentage
+	offset_y = (original_size.y - damage_size.y) * 0.5
 
 	if damage_collision.shape is RectangleShape2D:
-		damage_collision.shape.size = collision_size
-		damage_collision.position.y = (original_size.y - collision_size.y) * 0.5
+		damage_collision.shape.size = damage_size
+		damage_collision.position.y = offset_y
 
 func break_tile() -> void:
 	if is_broken:
@@ -128,6 +135,6 @@ func _on_damage_area_damage_taken(attack_area: Variant) -> void:
 	if is_broken:
 		return
 
-	# Allows for drill to break for now
+	# Uses drill collision layer
 	if attack_area.get_collision_layer_value(12):
 		break_tile()

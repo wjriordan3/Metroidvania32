@@ -328,6 +328,7 @@ z_index = -5
 z_as_relative = false
 position = Vector2(1136, -176)
 level_type = 2
+damage_collision_height_percentage = 2.0
 
 [node name="BreakableLevel6" parent="." unique_id=460121110 instance=ExtResource("18_ca6er")]
 z_index = -5
@@ -336,7 +337,7 @@ position = Vector2(1136, -198)
 scale = Vector2(1, 0.38)
 level_type = 2
 tile_type = 1
-collision_height_percentage = 0.15
+physics_collision_height_percentage = 0.15
 
 [node name="BreakableLevel7" parent="." unique_id=1138672576 instance=ExtResource("18_ca6er")]
 z_index = -5
@@ -345,7 +346,7 @@ position = Vector2(1168, -197.99998)
 scale = Vector2(1, 0.38)
 level_type = 2
 tile_type = 1
-collision_height_percentage = 0.15
+physics_collision_height_percentage = 0.15
 
 [node name="BreakableLevel8" parent="." unique_id=1247057829 instance=ExtResource("18_ca6er")]
 z_index = -5
@@ -354,7 +355,7 @@ position = Vector2(1200, -198)
 scale = Vector2(1, 0.38)
 level_type = 2
 tile_type = 1
-collision_height_percentage = 0.15
+physics_collision_height_percentage = 0.15
 
 [node name="BreakableLevel9" parent="." unique_id=1468886177 instance=ExtResource("18_ca6er")]
 z_index = -5
@@ -363,13 +364,14 @@ position = Vector2(1232, -197.99998)
 scale = Vector2(1, 0.38)
 level_type = 2
 tile_type = 1
-collision_height_percentage = 0.15
+physics_collision_height_percentage = 0.15
 
 [node name="BreakableLevel5" parent="." unique_id=1902454086 instance=ExtResource("18_ca6er")]
 z_index = -5
 z_as_relative = false
 position = Vector2(1328, -16)
 level_type = 2
+damage_collision_height_percentage = 2.0
 
 [node name="BreakableLevel10" parent="." unique_id=364466401 instance=ExtResource("18_ca6er")]
 z_index = -5
@@ -377,22 +379,25 @@ z_as_relative = false
 position = Vector2(1328, -48)
 level_type = 2
 tile_type = 1
-collision_height_percentage = 0.15
+physics_collision_height_percentage = 0.15
 
 [node name="BreakableLevel2" parent="." unique_id=1556085616 instance=ExtResource("18_ca6er")]
 z_index = -5
 z_as_relative = false
 position = Vector2(1168, -176)
 level_type = 2
+damage_collision_height_percentage = 2.0
 
 [node name="BreakableLevel3" parent="." unique_id=7476152 instance=ExtResource("18_ca6er")]
 z_index = -5
 z_as_relative = false
 position = Vector2(1200, -176)
 level_type = 2
+damage_collision_height_percentage = 2.0
 
 [node name="BreakableLevel4" parent="." unique_id=1458982988 instance=ExtResource("18_ca6er")]
 z_index = -5
 z_as_relative = false
 position = Vector2(1232, -176)
 level_type = 2
+damage_collision_height_percentage = 2.0

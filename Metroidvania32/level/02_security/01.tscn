@@ -356,6 +356,7 @@ z_index = -2
 z_as_relative = false
 position = Vector2(592, 336)
 level_type = 1
+damage_collision_height_percentage = 2.0
 
 [node name="BreakableLevel2" parent="." unique_id=1413770234 instance=ExtResource("18_mkokt")]
 z_index = -2
@@ -363,7 +364,6 @@ z_as_relative = false
 position = Vector2(592, 304)
 level_type = 1
 tile_type = 1
-collision_height_percentage = 0.15
 
 [node name="BreakableLevel3" parent="." unique_id=710955041 instance=ExtResource("18_mkokt")]
 z_index = -2
