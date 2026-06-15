@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_ycc86"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_rxfhw"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_6m37s"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_0jlqg"]
+[ext_resource type="AudioStream" uid="uid://c05cmvul7pees" path="res://music/IcyCole/MUSIC/Casino - LVL5/Level 5 - Gamble _ The Casino.wav" id="11_fb0p4"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="12_5277p"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="13_w47h5"]
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="14_xbb2n"]
@@ -101,7 +101,7 @@ stats = SubResource("Resource_ycc86")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_6m37s")
-track = ExtResource("10_0jlqg")
+track = ExtResource("11_fb0p4")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="Door" parent="." unique_id=2031919350 node_paths=PackedStringArray("switches") instance=ExtResource("12_5277p")]

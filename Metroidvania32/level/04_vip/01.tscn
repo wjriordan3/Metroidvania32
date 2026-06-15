@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_hqb3m"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_drko3"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_t1w30"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_2y35o"]
+[ext_resource type="AudioStream" uid="uid://bswgshamd4bwd" path="res://music/IcyCole/MUSIC/VIP Room - LVL4/Level 4 - VIP Room.wav" id="11_drko3"]
 [ext_resource type="Texture2D" uid="uid://d3kspcmlwt4rh" path="res://level/tilesets/sprites/04_VIP_BG_sky.png" id="12_jq56t"]
 [ext_resource type="Texture2D" uid="uid://b71lc1q6enpd1" path="res://level/tilesets/sprites/04_VIP_BG_sky2.png" id="13_mjnka"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_mjnka"]
@@ -133,7 +133,7 @@ stats = SubResource("Resource_t1w30")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_t1w30")
-track = ExtResource("10_2y35o")
+track = ExtResource("11_drko3")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="Sky_BG" type="FoldableContainer" parent="." unique_id=1175841121]

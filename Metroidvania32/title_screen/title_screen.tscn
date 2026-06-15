@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://df2cw40nlss5t"]
 
 [ext_resource type="Script" uid="uid://doebn0wx4yj56" path="res://title_screen/title_screen.gd" id="1_2dq6q"]
-[ext_resource type="Texture2D" uid="uid://6ohj4psmejoy" path="res://assets/concepts/pilot_concept.png" id="1_g2mvh"]
-[ext_resource type="Texture2D" uid="uid://bnif6nxl5t2sc" path="res://HardenedCriminalsLogo.png" id="2_dxpbd"]
+[ext_resource type="Texture2D" uid="uid://el28n3ystr2r" path="res://title_screen/Title Screen/BG_comp.png" id="2_vbjqi"]
+[ext_resource type="Texture2D" uid="uid://py67fwa78ofd" path="res://title_screen/Title Screen/Title Menu/HARDENED CRIMINALS LOGO.png" id="3_0m3ch"]
+[ext_resource type="Texture2D" uid="uid://v1vfrwlxcfmp" path="res://title_screen/Title Screen/Title Menu/Game Select/frame.png" id="4_fk0fn"]
 
 [sub_resource type="Gradient" id="Gradient_2dq6q"]
 
@@ -22,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=1554173155]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,14 +41,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control/BackgroundContainer" unique_id=1192943737]
-modulate = Color(0.61960787, 0.38431373, 0.38431373, 0.75686276)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_g2mvh")
+texture = ExtResource("2_vbjqi")
 expand_mode = 2
 
 [node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=2011425308]
@@ -65,37 +66,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
+[node name="Frame" type="Sprite2D" parent="Control/MainMenu" unique_id=589981517]
+position = Vector2(80, 183.9756)
+scale = Vector2(0.8377115, 0.79263437)
+texture = ExtResource("4_fk0fn")
+region_enabled = true
+region_rect = Rect2(185, 106, 270, 251)
+
 [node name="GameLogo" type="Control" parent="Control/MainMenu" unique_id=226861824]
 custom_minimum_size = Vector2(0, 105)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/MainMenu/GameLogo" unique_id=2020702073]
-visible = false
-position = Vector2(0, 26)
-texture = ExtResource("2_dxpbd")
-
-[node name="Label" type="Label" parent="Control/MainMenu/GameLogo" unique_id=2090526374]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -28.0
-offset_right = 184.0
-offset_bottom = 28.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 49
-text = "HARDENED CRIMINALS"
-horizontal_alignment = 1
+position = Vector2(8, 21.5)
+scale = Vector2(0.675, 0.65416664)
+texture = ExtResource("3_0m3ch")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 120)
 
 [node name="NewGameButton" type="Button" parent="Control/MainMenu" unique_id=524785741]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Game"
+expand_icon = true
 
 [node name="LoadGameButton" type="Button" parent="Control/MainMenu" unique_id=1584577594]
 unique_name_in_owner = true

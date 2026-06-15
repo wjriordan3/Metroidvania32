@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://5uuhbwjqbd0c"
+path="res://.godot/imported/Hardened Criminals - Main Menu Theme .wav-0bc0c44ae166e45d6b7cd9228674fecb.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/MUSIC/Main Menu Theme/Hardened Criminals - Main Menu Theme .wav"
+dest_files=["res://.godot/imported/Hardened Criminals - Main Menu Theme .wav-0bc0c44ae166e45d6b7cd9228674fecb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

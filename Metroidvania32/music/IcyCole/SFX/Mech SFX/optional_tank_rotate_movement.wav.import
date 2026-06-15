@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ie5yyqvxje6s"
+path="res://.godot/imported/optional_tank_rotate_movement.wav-d4f2294da84a102437789db17e6e9f90.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Mech SFX/optional_tank_rotate_movement.wav"
+dest_files=["res://.godot/imported/optional_tank_rotate_movement.wav-d4f2294da84a102437789db17e6e9f90.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://drxnv0caq5qk8"
+valid=false
+
+[deps]
+
+source_file="res://music/IcyCole/HARDENED CRIMINALS MUSIC/Security - LVL2/Level 2 - Stealth Mission _ Security.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
