@@ -38,7 +38,7 @@ func _ready() -> void:
 	
 	# add audio to buttons
 	Audio.setup_button_audio( self )
-	Audio.play_music( preload("uid://7vg4nkki40en") )
+	Audio.play_music( preload("uid://5uuhbwjqbd0c") )
 	# show main menu
 	show_main_menu()
 	# setup anim transitions

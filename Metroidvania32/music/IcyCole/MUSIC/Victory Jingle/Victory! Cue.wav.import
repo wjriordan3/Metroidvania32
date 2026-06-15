@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwtecxb48d0jo"
+path="res://.godot/imported/Victory! Cue.wav-58c5287c86b1bcd4e7cd0d86006c2063.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/MUSIC/Victory Jingle/Victory! Cue.wav"
+dest_files=["res://.godot/imported/Victory! Cue.wav-58c5287c86b1bcd4e7cd0d86006c2063.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

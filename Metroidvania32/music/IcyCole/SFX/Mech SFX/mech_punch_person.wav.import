@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d12jag6a4ub2d"
+path="res://.godot/imported/mech_punch_person.wav-37365e6f467c238173b7a38b68fed74e.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Mech SFX/mech_punch_person.wav"
+dest_files=["res://.godot/imported/mech_punch_person.wav-37365e6f467c238173b7a38b68fed74e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

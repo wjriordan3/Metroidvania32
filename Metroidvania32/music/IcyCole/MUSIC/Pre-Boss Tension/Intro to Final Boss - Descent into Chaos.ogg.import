@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://oo2stsp00fl0"
+valid=false
+
+[deps]
+
+source_file="res://music/IcyCole/HARDENED CRIMINALS MUSIC/Pre-Boss Tension/Intro to Final Boss - Descent into Chaos.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

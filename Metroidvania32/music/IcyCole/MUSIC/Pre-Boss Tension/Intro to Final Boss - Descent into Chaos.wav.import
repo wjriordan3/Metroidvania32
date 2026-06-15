@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv48lgxt86tf4"
+path="res://.godot/imported/Intro to Final Boss - Descent into Chaos.wav-d041e2688e52d128272101d16058d8ec.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/MUSIC/Pre-Boss Tension/Intro to Final Boss - Descent into Chaos.wav"
+dest_files=["res://.godot/imported/Intro to Final Boss - Descent into Chaos.wav-d041e2688e52d128272101d16058d8ec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

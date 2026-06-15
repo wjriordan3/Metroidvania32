@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://pbcr1cqsokxq"
+valid=false
+
+[deps]
+
+source_file="res://music/IcyCole/HARDENED CRIMINALS MUSIC/Victory Jingle/Victory! Cue.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
