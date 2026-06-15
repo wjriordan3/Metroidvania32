@@ -185,22 +185,22 @@ metadata/_edit_lock_ = true
 position = Vector2(368, 304)
 level_type = 5
 tile_type = 1
-collision_height_percentage = 0.55
+physics_collision_height_percentage = 0.55
 
 [node name="BreakableLevel2" parent="." unique_id=389925101 instance=ExtResource("23_wml05")]
 position = Vector2(336, 304)
 level_type = 5
 tile_type = 1
-collision_height_percentage = 0.55
+physics_collision_height_percentage = 0.55
 
 [node name="BreakableLevel3" parent="." unique_id=1030033397 instance=ExtResource("23_wml05")]
 position = Vector2(304, 304)
 level_type = 5
 tile_type = 1
-collision_height_percentage = 0.55
+physics_collision_height_percentage = 0.55
 
 [node name="BreakableLevel4" parent="." unique_id=1060155814 instance=ExtResource("23_wml05")]
 position = Vector2(272, 304)
 level_type = 5
 tile_type = 1
-collision_height_percentage = 0.55
+physics_collision_height_percentage = 0.55

@@ -135,6 +135,6 @@ func _on_damage_area_damage_taken(attack_area: Variant) -> void:
 	if is_broken:
 		return
 
-	# Uses drill collision layer
-	if attack_area.get_collision_layer_value(12):
+	# Drills and bombs can destroy
+	if attack_area.get_collision_layer_value(12) or attack_area.get_collision_layer_value(14):
 		break_tile()
