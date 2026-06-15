@@ -15,3 +15,13 @@ func update_distance_to_target( pos : Vector2 ) -> void :
 	else:
 		distance_to_target = -1
 	pass
+	
+func is_level_with_target( pos : Vector2 ) -> bool :
+	
+	var target_y : float
+	var this_y : float = pos.y
+	if target :
+		target_y = target.global_position.y
+		if target_y - this_y > -20 and target_y - this_y < 20 :
+			return true
+	return false

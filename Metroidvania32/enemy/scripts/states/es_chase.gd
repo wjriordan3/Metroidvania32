@@ -1,4 +1,5 @@
-class_name ESWalk extends EnemyState
+class_name ESChase
+extends EnemyState
 
 
 # EnemyState class will inherit the following variables:
@@ -7,6 +8,7 @@ class_name ESWalk extends EnemyState
 # var enemy : Enemy
 # var blackboard : Blackboard
 @export var walk_speed : float = 50
+@export var jump_speed : float = 450
 
 
 
@@ -22,8 +24,14 @@ func exit() -> void :
 	pass
 	
 func physics_update( _delta : float ):
-	print( "Walking" )
-	if enemy.is_on_wall():
-		enemy.change_dir( -blackboard.dir )
+	if enemy.global_position.x > blackboard.target.global_position.x:
+		blackboard.dir = -1
+		enemy.change_dir( blackboard.dir )
+	elif enemy.global_position.x < blackboard.target.global_position.x:
+		blackboard.dir = 1
+		enemy.change_dir( blackboard.dir )
 	enemy.velocity.x = walk_speed * blackboard.dir
+	
+	if enemy.is_on_wall():
+		enemy.velocity.y = -jump_speed
 	pass
