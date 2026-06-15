@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_gn33i"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_q7uqs"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_psvd7"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_q3a5g"]
+[ext_resource type="AudioStream" uid="uid://di0rx357hrrb" path="res://music/IcyCole/MUSIC/Rooftops - LVL1/Level 1 - Rooftop Run.wav" id="11_rht5h"]
 [ext_resource type="PackedScene" uid="uid://dkr61ejcql1ak" path="res://level/pitfall/pitfall.tscn" id="12_6j3fw"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="13_r67j7"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_dii0f"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="20_eq2m3"]
 [ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="21_rht5h"]
 
-[sub_resource type="Resource" id="Resource_rht5h"]
+[sub_resource type="Resource" id="Resource_4hlqw"]
 resource_local_to_scene = true
 script = ExtResource("8_q7uqs")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -83,11 +83,11 @@ position = Vector2(60, 196)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_gn33i")]
 position = Vector2(1017, 255)
-stats = SubResource("Resource_rht5h")
+stats = SubResource("Resource_4hlqw")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_psvd7")
-track = ExtResource("10_q3a5g")
+track = ExtResource("11_rht5h")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="Pitfall" parent="." unique_id=1614727682 instance=ExtResource("12_6j3fw")]

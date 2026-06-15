@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://df35dxmpc5b5d"
+valid=false
+
+[deps]
+
+source_file="res://music/IcyCole/HARDENED CRIMINALS MUSIC/Casino - LVL5/Level 5 - Gamble _ The Casino.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

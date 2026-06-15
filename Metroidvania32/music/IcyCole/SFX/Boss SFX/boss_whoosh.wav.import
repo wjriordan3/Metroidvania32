@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://coga73uclkel5"
+path="res://.godot/imported/boss_whoosh.wav-7d614ab9e6e79b8f6a9b83ee8a4e05de.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Boss SFX/boss_whoosh.wav"
+dest_files=["res://.godot/imported/boss_whoosh.wav-7d614ab9e6e79b8f6a9b83ee8a4e05de.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

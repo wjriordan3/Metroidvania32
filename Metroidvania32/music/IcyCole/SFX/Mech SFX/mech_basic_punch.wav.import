@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crxqjcc0w60rp"
+path="res://.godot/imported/mech_basic_punch.wav-49316933b4d8248c2f6098ec2e040bf6.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Mech SFX/mech_basic_punch.wav"
+dest_files=["res://.godot/imported/mech_basic_punch.wav-49316933b4d8248c2f6098ec2e040bf6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

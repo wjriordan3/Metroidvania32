@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_41prx"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_1yoey"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_mkokt"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_fmg58"]
+[ext_resource type="AudioStream" uid="uid://do0qgni1r48dt" path="res://music/IcyCole/MUSIC/Security - LVL2/Level 2 - Stealth Mission _ Security.wav" id="11_mkokt"]
 [ext_resource type="Texture2D" uid="uid://bssvldjtry4uo" path="res://level/tilesets/sprites/02_security_gradient_MG.png" id="12_kirbt"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_q001h"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="14_sgym0"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="17_1yoey"]
 [ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="18_mkokt"]
 
-[sub_resource type="Resource" id="Resource_mkokt"]
+[sub_resource type="Resource" id="Resource_fmg58"]
 resource_local_to_scene = true
 script = ExtResource("8_1yoey")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -111,11 +111,11 @@ position = Vector2(66, 272)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_41prx")]
 position = Vector2(224, 249)
-stats = SubResource("Resource_mkokt")
+stats = SubResource("Resource_fmg58")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mkokt")
-track = ExtResource("10_fmg58")
+track = ExtResource("11_mkokt")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="02SecurityGradientMg" type="Sprite2D" parent="." unique_id=1173674925]

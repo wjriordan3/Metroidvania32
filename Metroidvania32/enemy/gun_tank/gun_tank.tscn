@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://cgerti54web81"]
+
+[ext_resource type="Script" uid="uid://bqklbgwkqk4ne" path="res://enemy/weapons/enemy_gun.gd" id="1_2d1r7"]
+[ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_24byq"]
+[ext_resource type="Texture2D" uid="uid://btd48ifog5n6c" path="res://enemy/sprites/gun_tank/police_gun_tank_tread_right.png" id="1_vjfm7"]
+[ext_resource type="Script" uid="uid://cqnhxnlobu27m" path="res://enemy/scripts/decision_engines/decision_engine_grunt.gd" id="2_24byq"]
+[ext_resource type="Script" uid="uid://dd1lv64ebg68h" path="res://enemy/scripts/enemy_state_machine.gd" id="3_1r0xs"]
+[ext_resource type="Script" uid="uid://dt5us522vloka" path="res://enemy/scripts/states/es_walk.gd" id="4_dwj2p"]
+[ext_resource type="Script" uid="uid://i5ecga03fhwa" path="res://enemy/scripts/states/es_death.gd" id="5_46t0a"]
+[ext_resource type="Script" uid="uid://blx6n0buj1rem" path="res://enemy/scripts/states/es_stun.gd" id="6_iylcc"]
+[ext_resource type="Script" uid="uid://87pk5x165cqe" path="res://enemy/scripts/states/es_shoot.gd" id="9_vcfho"]
+[ext_resource type="Script" uid="uid://bu0rjv74ymgwp" path="res://enemy/scripts/sensors/edge_sensor.gd" id="10_drgyy"]
+[ext_resource type="Script" uid="uid://bkji5633llvrn" path="res://enemy/scripts/sensors/player_sensor.gd" id="11_1iyfo"]
+[ext_resource type="Script" uid="uid://i0l20hll14ud" path="res://enemy/scripts/hazard_area.gd" id="12_wvg5b"]
+[ext_resource type="Script" uid="uid://bxc5n4gal30q4" path="res://enemy/scripts/damage_area.gd" id="13_dd43e"]
+[ext_resource type="Texture2D" uid="uid://bimi2o8cyw5ga" path="res://enemy/sprites/gun_tank/standardGunSet_armR_sprite.png" id="15_sywwl"]
+
+[sub_resource type="Animation" id="Animation_vjfm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vjfm7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_24byq"]
+resource_name = "walk"
+length = 0.40001002
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_vjfm7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7nxn"]
+_data = {
+&"RESET": SubResource("Animation_vjfm7"),
+&"walk": SubResource("Animation_24byq")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b863c"]
+
+[node name="GunTank" type="CharacterBody2D" unique_id=2095753835]
+script = ExtResource("1_24byq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415503060]
+z_index = 1
+texture = ExtResource("1_vjfm7")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=84163653]
+libraries/ = SubResource("AnimationLibrary_v7nxn")
+
+[node name="DecisionEngineGrunt" type="Node" parent="." unique_id=1497376722]
+script = ExtResource("2_24byq")
+metadata/_custom_type_script = "uid://cqnhxnlobu27m"
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1805769471]
+script = ExtResource("3_1r0xs")
+metadata/_custom_type_script = "uid://dd1lv64ebg68h"
+
+[node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=1113671541]
+unique_name_in_owner = true
+script = ExtResource("4_dwj2p")
+metadata/_custom_type_script = "uid://dt5us522vloka"
+
+[node name="ESDeath" type="Node" parent="EnemyStateMachine" unique_id=586214896]
+unique_name_in_owner = true
+script = ExtResource("5_46t0a")
+metadata/_custom_type_script = "uid://i5ecga03fhwa"
+
+[node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=662455529]
+unique_name_in_owner = true
+script = ExtResource("6_iylcc")
+animation_name = "hurt"
+metadata/_custom_type_script = "uid://blx6n0buj1rem"
+
+[node name="ESShoot" type="Node" parent="EnemyStateMachine" unique_id=608514759]
+unique_name_in_owner = true
+script = ExtResource("9_vcfho")
+metadata/_custom_type_script = "uid://87pk5x165cqe"
+
+[node name="EdgeSensor" type="RayCast2D" parent="." unique_id=1694833579]
+position = Vector2(27, 1)
+target_position = Vector2(0, 42)
+script = ExtResource("10_drgyy")
+metadata/_custom_type_script = "uid://bu0rjv74ymgwp"
+
+[node name="PlayerSensor" type="Node" parent="." unique_id=1922462502]
+unique_name_in_owner = true
+script = ExtResource("11_1iyfo")
+metadata/_custom_type_script = "uid://bkji5633llvrn"
+
+[node name="HazardArea" type="Area2D" parent="." unique_id=160439598]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("12_wvg5b")
+metadata/_custom_type_script = "uid://i0l20hll14ud"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HazardArea" unique_id=354562984]
+position = Vector2(0, -1)
+rotation = 1.5707964
+scale = Vector2(1.9527018, -2.0720735)
+shape = SubResource("CapsuleShape2D_b863c")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1815463672]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("13_dd43e")
+metadata/_custom_type_script = "uid://bxc5n4gal30q4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1438455949]
+position = Vector2(0, -1)
+rotation = 1.5707964
+scale = Vector2(1.9527018, -2.0720735)
+shape = SubResource("CapsuleShape2D_b863c")
+
+[node name="EnemyGun" type="Marker2D" parent="." unique_id=1126791415]
+position = Vector2(0, -34)
+script = ExtResource("1_2d1r7")
+metadata/_custom_type_script = "uid://bqklbgwkqk4ne"
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyGun" unique_id=275646020]
+position = Vector2(2, 26.000004)
+rotation = 0.003855026
+texture = ExtResource("15_sywwl")
+
+[node name="Timer" type="Timer" parent="EnemyGun" unique_id=1201329962]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=227611762]
+position = Vector2(0, -1)
+rotation = 1.5707964
+scale = Vector2(1.9527018, -2.0720735)
+shape = SubResource("CapsuleShape2D_b863c")
