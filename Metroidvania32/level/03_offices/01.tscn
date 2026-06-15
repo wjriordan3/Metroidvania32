@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_b75ob"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_ocqfv"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_ca6er"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_1vchp"]
+[ext_resource type="AudioStream" uid="uid://dcog26r0d5nwt" path="res://music/IcyCole/MUSIC/Office - LVL3/Level 3 - The Paperwork _ Office.wav" id="11_ca6er"]
 [ext_resource type="Texture2D" uid="uid://be5wl0eatnbc0" path="res://level/tilesets/sprites/03_Offices_BG_sky.png" id="12_k6qn3"]
 [ext_resource type="Texture2D" uid="uid://c3ami1qla7ktc" path="res://level/tilesets/sprites/03_Offices_BG_sky2.png" id="13_dl815"]
 [ext_resource type="PackedScene" uid="uid://d38s6kbs31qxh" path="res://level/door/switch.tscn" id="14_0uot8"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="18_ca6er"]
 [ext_resource type="TileSet" uid="uid://b6m3dhp60sgnd" path="res://level/tilesets/scifimapset.tres" id="19_1vchp"]
 
-[sub_resource type="Resource" id="Resource_wk1on"]
+[sub_resource type="Resource" id="Resource_1vchp"]
 resource_local_to_scene = true
 script = ExtResource("8_ocqfv")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -109,11 +109,11 @@ position = Vector2(124, 271)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_b75ob")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_wk1on")
+stats = SubResource("Resource_1vchp")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_ca6er")
-track = ExtResource("10_1vchp")
+track = ExtResource("11_ca6er")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=379701605]

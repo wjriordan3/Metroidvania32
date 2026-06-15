@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c367tnopv2jaq"
+path="res://.godot/imported/baby_boss_squeek.wav-0091f70c4c0d26dfe39939b09b3d7b32.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Boss (baby) SFX/baby_boss_squeek.wav"
+dest_files=["res://.godot/imported/baby_boss_squeek.wav-0091f70c4c0d26dfe39939b09b3d7b32.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

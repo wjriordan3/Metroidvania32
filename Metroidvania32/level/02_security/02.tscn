@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_no5n3"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_fra82"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_g88xd"]
-[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="10_wuamj"]
+[ext_resource type="AudioStream" uid="uid://do0qgni1r48dt" path="res://music/IcyCole/MUSIC/Security - LVL2/Level 2 - Stealth Mission _ Security.wav" id="10_if2c8"]
 
-[sub_resource type="Resource" id="Resource_if2c8"]
+[sub_resource type="Resource" id="Resource_yhmok"]
 resource_local_to_scene = true
 script = ExtResource("8_fra82")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -45,9 +45,9 @@ position = Vector2(83, 285)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_no5n3")]
 position = Vector2(224, 256)
-stats = SubResource("Resource_if2c8")
+stats = SubResource("Resource_yhmok")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_g88xd")
-track = ExtResource("10_wuamj")
+track = ExtResource("10_if2c8")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"

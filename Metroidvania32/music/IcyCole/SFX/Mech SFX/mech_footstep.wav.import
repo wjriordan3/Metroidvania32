@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dd01w31qrt13x"
+path="res://.godot/imported/mech_footstep.wav-674167ba41a7fbdfd8a633ce1b2eb9a1.sample"
+
+[deps]
+
+source_file="res://music/IcyCole/SFX/Mech SFX/mech_footstep.wav"
+dest_files=["res://.godot/imported/mech_footstep.wav-674167ba41a7fbdfd8a633ce1b2eb9a1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
