@@ -11,7 +11,7 @@ size = Vector2(32, 32)
 
 [node name="BreakableLevel" type="StaticBody2D" unique_id=464987776]
 collision_layer = 385
-collision_mask = 2048
+collision_mask = 10240
 script = ExtResource("1_a1pda")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=173329044]

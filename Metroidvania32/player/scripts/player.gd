@@ -57,6 +57,12 @@ var ceiling_grab_buffer : float = 0.0
 const CEILING_GRAB_BUFFER_TIME := 0.15
 #endregion 
 
+# Bomb vars and consts
+const BOMB_SCENE = preload("res://combat/bomb/bomb.tscn")
+var bomb_unlocked = true # should be false by default but set to true for now for testing
+var max_bombs = 3
+var active_bombs = 0
+
 func _ready() -> void:
 	add_to_group("player")
 	initalize_states()
@@ -74,6 +80,12 @@ func _ready() -> void:
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "interact" ):
 		Messages.player_interacted.emit( self )
+
+	# Bomb input = down + arm_L (H)
+	if bomb_unlocked:
+		if event.is_action_pressed("arm_L"):
+			if Input.is_action_pressed("down"):
+				spawn_bomb()
 	
 	if OS.is_debug_build():
 		# For testing health, remove later
@@ -167,7 +179,19 @@ func change_state( new_state : PlayerState ) -> void:
 	$Label.text = current_state.name
 	
 	pass
-	
+
+func spawn_bomb() -> void:
+	if active_bombs >= max_bombs:
+		return
+
+	var bomb = BOMB_SCENE.instantiate()
+	get_tree().current_scene.add_child(bomb)
+	bomb.global_position = global_position
+	active_bombs += 1
+	bomb.tree_exited.connect(_on_bomb_removed)
+
+func _on_bomb_removed() -> void:
+	active_bombs = max(active_bombs - 1, 0)
 
 func is_climb_ceiling():
 	print(ceiling_ray_cast_2d.is_colliding())
