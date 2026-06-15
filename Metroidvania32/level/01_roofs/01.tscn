@@ -490,3 +490,7 @@ position = Vector2(1936, 592)
 
 [node name="BreakableLevel4" parent="." unique_id=1383542611 instance=ExtResource("21_rht5h")]
 position = Vector2(1936, 560)
+
+[node name="DialogueArea4" parent="." unique_id=489369465 instance=ExtResource("19_q3a5g")]
+position = Vector2(2017, 246)
+timeline = "roof_scene_03"
