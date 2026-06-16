@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="21_rht5h"]
 [ext_resource type="PackedScene" uid="uid://cn2jbq8a76061" path="res://enemy/police_grunt/police_grunt.tscn" id="22_06m5e"]
 [ext_resource type="PackedScene" uid="uid://beow2xudhsmfb" path="res://enemy/spike_tank/spike_tank.tscn" id="23_rerwc"]
+[ext_resource type="PackedScene" uid="uid://cgerti54web81" path="res://enemy/gun_tank/gun_tank.tscn" id="24_rerwc"]
 
 [sub_resource type="Resource" id="Resource_6u4fr"]
 resource_local_to_scene = true
@@ -492,29 +493,67 @@ position = Vector2(1936, 592)
 [node name="BreakableLevel4" parent="." unique_id=1383542611 instance=ExtResource("21_rht5h")]
 position = Vector2(1936, 560)
 
-[node name="PoliceGrunt" parent="." unique_id=1176319828 instance=ExtResource("22_06m5e")]
-position = Vector2(1984, 623)
-
-[node name="DecisionEngineGrunt" parent="PoliceGrunt" index="2" unique_id=309025030]
-patrol = false
-
 [node name="PoliceGrunt2" parent="." unique_id=614246763 instance=ExtResource("22_06m5e")]
 position = Vector2(2012, 624)
 
 [node name="DecisionEngineGrunt" parent="PoliceGrunt2" index="2" unique_id=309025030]
 patrol = false
 
-[node name="PoliceGrunt" parent="PoliceGrunt2" unique_id=1008884594 instance=ExtResource("22_06m5e")]
-position = Vector2(285, -351)
+[node name="PoliceGrunt7" parent="." unique_id=1176319828 instance=ExtResource("22_06m5e")]
+position = Vector2(476, 271)
+face_left_on_start = true
 
-[node name="PoliceGrunt2" parent="PoliceGrunt2" unique_id=1318285363 instance=ExtResource("22_06m5e")]
-position = Vector2(330, -353)
+[node name="AnimationPlayer" parent="PoliceGrunt7" index="1" unique_id=815900993]
+root_node = NodePath("../../PoliceGrunt7")
 
-[node name="SpikeTank" parent="PoliceGrunt2" unique_id=784409238 instance=ExtResource("23_rerwc")]
-position = Vector2(61, -358)
+[node name="DecisionEngineGrunt" parent="PoliceGrunt7" index="2" unique_id=309025030]
+patrol = false
 
-[node name="SpikeTank2" parent="PoliceGrunt2" unique_id=833616391 instance=ExtResource("23_rerwc")]
-position = Vector2(410, -354)
+[node name="SpikeTank2" parent="." unique_id=833616391 instance=ExtResource("23_rerwc")]
+position = Vector2(2422, 270)
 
-[editable path="PoliceGrunt"]
+[node name="SpikeTank" parent="." unique_id=784409238 instance=ExtResource("23_rerwc")]
+position = Vector2(2073, 266)
+
+[node name="PoliceGrunt6" parent="." unique_id=1318285363 instance=ExtResource("22_06m5e")]
+position = Vector2(2342, 271)
+
+[node name="SpikeTank3" parent="." unique_id=1979536770 instance=ExtResource("23_rerwc")]
+position = Vector2(284, 239)
+
+[node name="PoliceGrunt3" parent="." unique_id=77642050 instance=ExtResource("22_06m5e")]
+position = Vector2(887, 273)
+
+[node name="AnimationPlayer" parent="PoliceGrunt3" index="1" unique_id=815900993]
+root_node = NodePath("../../PoliceGrunt3")
+
+[node name="DecisionEngineGrunt" parent="PoliceGrunt3" index="2" unique_id=309025030]
+patrol = false
+
+[node name="PoliceGrunt4" parent="." unique_id=1082757638 instance=ExtResource("22_06m5e")]
+position = Vector2(922, 275)
+face_left_on_start = true
+
+[node name="AnimationPlayer" parent="PoliceGrunt4" index="1" unique_id=815900993]
+root_node = NodePath("../../PoliceGrunt4")
+
+[node name="DecisionEngineGrunt" parent="PoliceGrunt4" index="2" unique_id=309025030]
+patrol = false
+
+[node name="PoliceGrunt5" parent="." unique_id=1008884594 instance=ExtResource("22_06m5e")]
+position = Vector2(2297, 273)
+
+[node name="GunTank" parent="." unique_id=2095753835 instance=ExtResource("24_rerwc")]
+position = Vector2(1147, 278)
+
+[node name="PoliceGrunt" parent="." unique_id=764790023 instance=ExtResource("22_06m5e")]
+position = Vector2(1984, 623)
+
+[node name="DecisionEngineGrunt" parent="PoliceGrunt" index="2" unique_id=309025030]
+patrol = false
+
 [editable path="PoliceGrunt2"]
+[editable path="PoliceGrunt7"]
+[editable path="PoliceGrunt3"]
+[editable path="PoliceGrunt4"]
+[editable path="PoliceGrunt"]
