@@ -32,7 +32,9 @@ func exit() -> void :
 	pass
 
 func physics_update( delta : float ) -> void :
-	timer += delta
-	if timer >= duration :
-		blackboard.can_decide = true
+	if enemy.decision_engine is DecisionEngineGrunt :
+		timer += delta
+		if timer >= duration :
+			blackboard.can_decide = true
+		pass
 	pass

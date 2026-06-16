@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bqklbgwkqk4ne" path="res://enemy/weapons/enemy_gun.gd" id="1_2d1r7"]
 [ext_resource type="Script" uid="uid://ymmfny6rahds" path="res://enemy/enemy.gd" id="1_24byq"]
 [ext_resource type="Texture2D" uid="uid://btd48ifog5n6c" path="res://enemy/sprites/gun_tank/police_gun_tank_tread_right.png" id="1_vjfm7"]
-[ext_resource type="Script" uid="uid://cqnhxnlobu27m" path="res://enemy/scripts/decision_engines/decision_engine_grunt.gd" id="2_24byq"]
 [ext_resource type="Script" uid="uid://dd1lv64ebg68h" path="res://enemy/scripts/enemy_state_machine.gd" id="3_1r0xs"]
+[ext_resource type="Script" uid="uid://c0yxff7uex8lf" path="res://enemy/scripts/decision_engines/decision_engine_gun_tank.gd" id="3_4r3lw"]
 [ext_resource type="Script" uid="uid://dt5us522vloka" path="res://enemy/scripts/states/es_walk.gd" id="4_dwj2p"]
 [ext_resource type="Script" uid="uid://i5ecga03fhwa" path="res://enemy/scripts/states/es_death.gd" id="5_46t0a"]
 [ext_resource type="Script" uid="uid://blx6n0buj1rem" path="res://enemy/scripts/states/es_stun.gd" id="6_iylcc"]
@@ -80,6 +80,20 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b863c"]
 
+[sub_resource type="GDScript" id="GDScript_4r3lw"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="GunTank" type="CharacterBody2D" unique_id=2095753835]
 script = ExtResource("1_24byq")
 
@@ -91,9 +105,9 @@ hframes = 4
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=84163653]
 libraries/ = SubResource("AnimationLibrary_v7nxn")
 
-[node name="DecisionEngineGrunt" type="Node" parent="." unique_id=1497376722]
-script = ExtResource("2_24byq")
-metadata/_custom_type_script = "uid://cqnhxnlobu27m"
+[node name="DecisionEngineGunTank" type="Node" parent="." unique_id=723838396]
+script = ExtResource("3_4r3lw")
+metadata/_custom_type_script = "uid://c0yxff7uex8lf"
 
 [node name="EnemyStateMachine" type="Node" parent="." unique_id=1805769471]
 script = ExtResource("3_1r0xs")
@@ -158,14 +172,19 @@ shape = SubResource("CapsuleShape2D_b863c")
 [node name="EnemyGun" type="Marker2D" parent="." unique_id=1126791415]
 position = Vector2(0, -34)
 script = ExtResource("1_2d1r7")
+firing_mode = 1
 metadata/_custom_type_script = "uid://bqklbgwkqk4ne"
 
-[node name="Sprite2D" type="Sprite2D" parent="EnemyGun" unique_id=275646020]
+[node name="Timer" type="Timer" parent="EnemyGun" unique_id=1201329962]
+
+[node name="Pivot" type="Node2D" parent="EnemyGun" unique_id=1935211852]
+script = SubResource("GDScript_4r3lw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="EnemyGun/Pivot" unique_id=275646020]
 position = Vector2(2, 26.000004)
 rotation = 0.003855026
+scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("15_sywwl")
-
-[node name="Timer" type="Timer" parent="EnemyGun" unique_id=1201329962]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=227611762]
 position = Vector2(0, -1)

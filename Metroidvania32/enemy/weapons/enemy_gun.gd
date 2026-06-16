@@ -6,47 +6,69 @@ class_name EnemyGun extends Marker2D
 const BULLET_VELOCITY = 850.0
 const BULLET_SCENE = preload("res://enemy/weapons/enemy_bullet.tscn")
 
-enum FiringMode { GRUNT, TANK, BOSS }
+enum FiringMode { GRUNT, TANK, DRONE, BOSS }
 
 @export var firing_mode : FiringMode
 
 @onready var sound_shoot := $Shoot as AudioStreamPlayer2D
 @onready var timer := $Timer as Timer 
-var sprite_2d: Sprite2D
+@onready var pivot : Node2D = $Pivot
 
 var canFire = false
-var target : CharacterBody2D
+var has_target : bool = false
 
-var d := 0.0
-var radius := 150.0
-var speed := 2.0
-var sprite_rotation : float
+var speed := .1
+var sprite_rotation : float = deg_to_rad( 0 )
+var gundir : float = -1
 
 var min_rot = deg_to_rad(-180.0)
 var max_rot = deg_to_rad(0.0)
 
-func setup() -> void :
-	for c in get_children():
-		if c is Sprite2D and not sprite_2d:
-			sprite_2d = c
+var direction : float = 1
+
 
 #Save starting rotation
 func _ready() -> void :
-	setup()
-	if sprite_2d:
-		sprite_2d.rotation = 0
-		sprite_rotation = 0
-		timer.timeout.connect( print_abc )
-	
-#func rotate() -> void :
-	#gun_sprite.rotation = clampf(gun_sprite.rotation, min_rot, max_rot)
-	#d += delta
-	#position = Vector2( sin(d * speed) * radius, cos(d * speed) * radius ) + get_global_mouse_position()
-	#pass
+	if firing_mode == FiringMode.TANK :
+		timer.timeout.connect( rotate_and_shoot )
 
-func print_abc() -> void :
-	print( "abc" )
+func shoot_once( direction : float = 1.0 ) -> void :
+	var bullet := BULLET_SCENE.instantiate() as EnemyBullet
+	bullet.global_position = global_position
+	bullet.dir = direction
+	#bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
+
+	bullet.set_as_top_level(true)
+	add_child(bullet)
 	
+	
+func rotate_and_shoot() -> void :
+	var start : float = sprite_rotation
+	sprite_rotation += (.2 * gundir)
+	pivot.rotation = rotate_toward( start, sprite_rotation + (.2 * gundir), speed)
+	
+	if gundir < 0 :
+		if sprite_rotation < min_rot :
+			gundir = 1.0
+	else :
+		if sprite_rotation > max_rot :
+			gundir = -1.0
+			
+	var bullet := BULLET_SCENE.instantiate() as EnemyBullet
+	bullet.global_position = global_position
+	bullet.rotation = sprite_rotation
+	bullet.dir = 1
+	#bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
+
+	bullet.set_as_top_level(true)
+	add_child(bullet)
+	
+	if has_target :
+		timer.start( .1 )
+	else :
+		timer.stop()
+		sprite_rotation = deg_to_rad( 0 )
+		pivot.rotation = sprite_rotation
 func _process(delta: float) -> void:
 	
 	pass
@@ -62,62 +84,10 @@ func _process(delta: float) -> void:
 # This method is only called by Player.gd.
 func shoot(direction: float = 1.0) -> bool:
 	if firing_mode == FiringMode.GRUNT :
-			#
-		#if not timer.is_stopped():
-			#return false
-		var bullet := BULLET_SCENE.instantiate() as EnemyBullet
-		bullet.global_position = global_position
-		bullet.dir = direction
-		#bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
-
-		bullet.set_as_top_level(true)
-		add_child(bullet)
-		##sound_shoot.play()
-		#timer.start()
-	elif firing_mode == FiringMode.TANK and sprite_2d:
-		pass
-		#var start : float = .6 * direction
-		#var end : float = .6 * -direction
-		#var temp : float
-		#if start < end :
-			#temp = start
-			#while start < end : 
-				#var bullet := BULLET_SCENE.instantiate() as EnemyBullet
-				#bullet.global_position = global_position
-				##bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
-#
-				#bullet.set_as_top_level(true)
-				#add_child(bullet)
-				#start += .3
-			#end = temp
-			#while start > end :
-				#var bullet := BULLET_SCENE.instantiate() as EnemyBullet
-				#bullet.global_position = global_position
-				##bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
-#
-				#bullet.set_as_top_level(true)
-				#add_child(bullet)
-				#start -= .3
-		#elif start > end :
-			#temp = start
-			#while start > end :
-				#var bullet := BULLET_SCENE.instantiate() as EnemyBullet
-				#bullet.global_position = global_position
-				##bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
-#
-				#bullet.set_as_top_level(true)
-				#add_child(bullet)
-				#start -= .3
-			#end = temp
-			#while start < end :
-				#var bullet := BULLET_SCENE.instantiate() as EnemyBullet
-				#bullet.global_position = global_position
-				##bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0.0)
-#
-				#bullet.set_as_top_level(true)
-				#add_child(bullet)
-				#start += .3
-		#direction -= .33
+		shoot_once( direction )
+	elif firing_mode == FiringMode.TANK :
+		timer.start(.1)
+	
 	return true
 #
 func flip( new_dir : float ):
@@ -126,9 +96,6 @@ func flip( new_dir : float ):
 	#	scale.x *= 1
 	#elif direction_x < 0:
 	#	scale.x *= -1
-	if sprite_2d :
-		if new_dir < 0 : sprite_2d.flip_h = true
-		if new_dir > 0 : sprite_2d.flip_h = false
 	# changed from the prior version so we can flip it as a child of whatever its parent is
 	# this way it'll work closer to have a hitbox would be flipped upon changing sides in a fighting game
 	if new_dir < 0 and position.x > 0 or new_dir > 0 and position.x < 0 :
