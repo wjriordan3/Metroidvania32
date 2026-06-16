@@ -37,11 +37,13 @@ func decide() -> EnemyState :
 	else:
 		blackboard.update_distance_to_target( enemy.global_position )
 		#print( blackboard.distance_to_target )
-		if blackboard.distance_to_target < 100 and blackboard.is_level_with_target( enemy.global_position ):
+		if blackboard.distance_to_target < 100 :
+			enemy.enemy_gun.has_target = true
 			#print( "Attack!")
 			return es_shoot
 			
 		if player_sensor.target_changed :
 			blackboard.target = null
+			enemy.enemy_gun.has_target = false
 		
 	return es_walk
