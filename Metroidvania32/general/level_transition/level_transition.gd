@@ -16,7 +16,8 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 		apply_area_settings()
 
 @export_file( "*.tscn" ) var target_level : String = ""
-@export var target_area_name : String = "LevelTransition"
+## Set this to the name of the level transition to spawn at on scene transition
+@export var target_area_name : String = "LevelTransition" # This needs to 
 
 @onready var area_2d: Area2D = $Area2D 
 

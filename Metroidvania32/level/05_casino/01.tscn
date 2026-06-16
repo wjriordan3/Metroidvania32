@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="14_xbb2n"]
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="15_fb0p4"]
 
-[sub_resource type="Resource" id="Resource_ycc86"]
+[sub_resource type="Resource" id="Resource_fb0p4"]
 resource_local_to_scene = true
 script = ExtResource("8_rxfhw")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -28,8 +28,8 @@ z_index = 256
 z_index = 256
 position = Vector2(-640, 0)
 script = ExtResource("1_7dsvl")
-width = 2560
-height = 1440
+width = 1920
+height = 1760
 metadata/_custom_type_script = "uid://bb28nwnywj8tm"
 
 [node name="SavePoint" parent="." unique_id=69750532 instance=ExtResource("2_548hs")]
@@ -80,24 +80,30 @@ tile_set = ExtResource("3_7dsvl")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_w47h5")]
 
-[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_xbb2n")]
+[node name="LT_to_Security_Upper" parent="." unique_id=183463144 instance=ExtResource("5_xbb2n")]
 position = Vector2(1280, 185)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://bfdhe5kgt1eix"
 
-[node name="LevelTransition2" parent="." unique_id=318557821 instance=ExtResource("5_xbb2n")]
+[node name="LT_to_Security_Lower" parent="." unique_id=318557821 instance=ExtResource("5_xbb2n")]
 position = Vector2(1280, 1024)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://bfdhe5kgt1eix"
+
+[node name="LT_to_Vault" parent="." unique_id=276765562 instance=ExtResource("5_xbb2n")]
+position = Vector2(256, -30)
+size = 4
+location = 2
+target_level = "uid://dvaxf5udf7f2b"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_fb0p4")]
 position = Vector2(-213, 73)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_ycc86")]
 position = Vector2(-334, 98)
-stats = SubResource("Resource_ycc86")
+stats = SubResource("Resource_fb0p4")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_6m37s")

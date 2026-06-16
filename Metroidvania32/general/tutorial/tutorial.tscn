@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://diwuv0gr4vgj"]
+
+[ext_resource type="Script" uid="uid://c8fbcswte06yw" path="res://general/tutorial/tutorial.gd" id="1_7mk46"]
+
+[node name="Tutorial" type="Node2D" unique_id=851817430]
+script = ExtResource("1_7mk46")
+
+[node name="Label" type="Label" parent="." unique_id=387691846]
+z_index = -2
+offset_left = -120.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 18
+text = "Press WASD to Move
+Spacebar to Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="7_gn33i"]
 [ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="8_q7uqs"]
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="9_psvd7"]
+[ext_resource type="PackedScene" uid="uid://diwuv0gr4vgj" path="res://general/tutorial/tutorial.tscn" id="10_4hlqw"]
 [ext_resource type="AudioStream" uid="uid://di0rx357hrrb" path="res://music/IcyCole/MUSIC/Rooftops - LVL1/Level 1 - Rooftop Run.wav" id="11_rht5h"]
 [ext_resource type="PackedScene" uid="uid://dkr61ejcql1ak" path="res://level/pitfall/pitfall.tscn" id="12_6j3fw"]
 [ext_resource type="PackedScene" uid="uid://6xh71xexs3yo" path="res://level/door/door.tscn" id="13_r67j7"]
@@ -65,17 +66,26 @@ tile_set = ExtResource("3_ldcy3")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_r67j7")]
 
-[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_dii0f")]
+[node name="LT_to_Vault_Upper" parent="." unique_id=183463144 instance=ExtResource("5_dii0f")]
 position = Vector2(2560, 322)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://dvaxf5udf7f2b"
+target_area_name = "LT_to_Roofs_Upper"
 
-[node name="LevelTransition2" parent="." unique_id=2122067008 instance=ExtResource("5_dii0f")]
+[node name="LT_to_Vault_Lower" parent="." unique_id=2122067008 instance=ExtResource("5_dii0f")]
 position = Vector2(2560, 656)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://dvaxf5udf7f2b"
+target_area_name = "LT_to_Roofs_Lower"
+
+[node name="LT_to_VIP" parent="." unique_id=227458845 instance=ExtResource("5_dii0f")]
+position = Vector2(640, -1048)
+size = 40
+location = 2
+target_level = "uid://b1nkyuwevfopw"
+target_area_name = "LT_VIP_to_Roofs"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_i88bv")]
 position = Vector2(60, 196)
@@ -84,13 +94,26 @@ position = Vector2(60, 196)
 position = Vector2(1017, 255)
 stats = SubResource("Resource_4hlqw")
 
+[node name="Tutorial" parent="." unique_id=1633090332 instance=ExtResource("10_4hlqw")]
+z_index = -2
+position = Vector2(296, 203)
+description = "Press WASD to Move
+Spacebar to Jump"
+
+[node name="Tutorial2" parent="." unique_id=851817430 instance=ExtResource("10_4hlqw")]
+z_index = -2
+position = Vector2(1016, 136)
+description = "Press F to Enter Mech
+Press Q to Exit Mech
+HJKL to control limbs"
+
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_psvd7")
 track = ExtResource("11_rht5h")
 metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
 
 [node name="Pitfall" parent="." unique_id=1614727682 instance=ExtResource("12_6j3fw")]
-position = Vector2(982, 353)
+position = Vector2(984, 353)
 scale = Vector2(70, 1)
 
 [node name="Door" parent="." unique_id=2031919350 instance=ExtResource("13_r67j7")]

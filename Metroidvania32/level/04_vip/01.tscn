@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ciw5yah2gjel2" path="res://dialogue/dialogue_area.tscn" id="16_hqb3m"]
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="17_drko3"]
 
-[sub_resource type="Resource" id="Resource_t1w30"]
+[sub_resource type="Resource" id="Resource_drko3"]
 resource_local_to_scene = true
 script = ExtResource("8_drko3")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -70,66 +70,71 @@ tile_set = ExtResource("3_r5scd")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_jq56t")]
 
-[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_mjnka")]
+[node name="LT_VIP_to_Offices" parent="." unique_id=183463144 instance=ExtResource("5_mjnka")]
 position = Vector2(640, 320)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ciisj6nt1tt7a"
+target_area_name = "LT_to_VIP"
 
-[node name="LevelTransition2" parent="." unique_id=953644410 instance=ExtResource("5_mjnka")]
-position = Vector2(-32, 320)
+[node name="LT_VIP_to_Roofs" parent="." unique_id=953644410 instance=ExtResource("5_mjnka")]
+position = Vector2(0, 320)
 size = 4
-location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ds408t27584uc"
+target_area_name = "LT_to_VIP"
 
-[node name="LevelTransition3" parent="." unique_id=667910803 instance=ExtResource("5_mjnka")]
-position = Vector2(96, 352)
-rotation = 1.5707964
+[node name="LT_VIP_to_Vault_A" parent="." unique_id=1259813901 instance=ExtResource("5_mjnka")]
+position = Vector2(80, 352)
 size = 4
-location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+location = 3
+target_level = "uid://dvaxf5udf7f2b"
+target_area_name = "LT_to_VIP_A"
 
-[node name="LevelTransition4" parent="." unique_id=1549415085 instance=ExtResource("5_mjnka")]
-position = Vector2(256, 352)
-rotation = 1.5707964
-size = 4
-location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+[node name="LT_VIP_to_Vault_B" parent="." unique_id=744842159 instance=ExtResource("5_mjnka")]
+position = Vector2(248, 352)
+size = 5
+location = 3
+target_level = "uid://dvaxf5udf7f2b"
+target_area_name = "LT_to_VIP_B"
 
 [node name="LevelTransition5" parent="." unique_id=1909151079 instance=ExtResource("5_mjnka")]
 position = Vector2(-1280, -1088)
 rotation = 1.5707964
 size = 20
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ds408t27584uc"
+target_area_name = "LT_to_VIP"
 
 [node name="LevelTransition6" parent="." unique_id=41962416 instance=ExtResource("5_mjnka")]
 position = Vector2(-1921, -1088)
 rotation = 1.5707964
 size = 20
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ds408t27584uc"
+target_area_name = "LT_to_VIP"
 
 [node name="LevelTransition7" parent="." unique_id=266264377 instance=ExtResource("5_mjnka")]
 position = Vector2(-2564, -1088)
 rotation = 1.5707964
 size = 20
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ds408t27584uc"
+target_area_name = "LT_to_VIP"
 
 [node name="LevelTransition8" parent="." unique_id=1778766427 instance=ExtResource("5_mjnka")]
 position = Vector2(-3206, -1088)
 rotation = 1.5707964
 size = 20
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://ds408t27584uc"
+target_area_name = "LT_to_VIP"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_5q5a4")]
 position = Vector2(223, 267)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_hqb3m")]
 position = Vector2(46, 256)
-stats = SubResource("Resource_t1w30")
+stats = SubResource("Resource_drko3")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_t1w30")
