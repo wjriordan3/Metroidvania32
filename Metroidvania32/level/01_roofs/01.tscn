@@ -65,11 +65,12 @@ tile_set = ExtResource("3_ldcy3")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_r67j7")]
 
-[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_dii0f")]
+[node name="Roof_VIP_Transition_01" parent="." unique_id=183463144 instance=ExtResource("5_dii0f")]
 position = Vector2(2560, 322)
 size = 4
 location = 1
-target_level = "uid://dm4pd5nxnrnf3"
+target_level = "uid://b1nkyuwevfopw"
+target_area_name = "VIP_Roof_Transition_01"
 
 [node name="LevelTransition2" parent="." unique_id=2122067008 instance=ExtResource("5_dii0f")]
 position = Vector2(2560, 656)
@@ -118,7 +119,7 @@ door_type = 2
 [node name="Door3" parent="." unique_id=668642000 instance=ExtResource("13_r67j7")]
 position = Vector2(2546, 239)
 collision_layer = 1
-door_type = 6
+door_type = 5
 
 [node name="Door2" parent="." unique_id=1969006949 node_paths=PackedStringArray("switches") instance=ExtResource("13_r67j7")]
 position = Vector2(2544, 592)
@@ -489,3 +490,7 @@ position = Vector2(1936, 592)
 
 [node name="BreakableLevel4" parent="." unique_id=1383542611 instance=ExtResource("21_rht5h")]
 position = Vector2(1936, 560)
+
+[node name="DialogueArea4" parent="." unique_id=489369465 instance=ExtResource("19_q3a5g")]
+position = Vector2(2017, 246)
+timeline = "roof_scene_03"

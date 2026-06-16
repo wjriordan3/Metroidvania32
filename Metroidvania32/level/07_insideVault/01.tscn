@@ -1,0 +1,144 @@
+[gd_scene format=4 uid="uid://fvumcebpqd03"]
+
+[ext_resource type="Script" uid="uid://bb28nwnywj8tm" path="res://general/scripts/level_bounds.gd" id="1_a11nx"]
+[ext_resource type="PackedScene" uid="uid://bjtgr6n8j2te0" path="res://general/save_point/save_point.tscn" id="2_ta2ue"]
+[ext_resource type="TileSet" uid="uid://dqaqihjtibo0x" path="res://level/tilesets/door_test_tileset.tres" id="3_am28j"]
+[ext_resource type="TileSet" uid="uid://buyh4p43rgand" path="res://level/tilesets/07_innerVault.tres" id="4_34ock"]
+[ext_resource type="PackedScene" uid="uid://bkhnso7gtsdyr" path="res://general/camera_2d.tscn" id="5_xky7f"]
+[ext_resource type="PackedScene" uid="uid://dkhegwopp7wae" path="res://general/level_transition/level_transition.tscn" id="6_tyctn"]
+[ext_resource type="PackedScene" uid="uid://b8rmtkm8cog7a" path="res://general/player_spawn/player_spawn.tscn" id="7_xpfdw"]
+[ext_resource type="PackedScene" uid="uid://ky517mlsqfg5" path="res://mecha/mecha_unit.tscn" id="8_8jatg"]
+[ext_resource type="Script" uid="uid://boiy5gsl4xmnk" path="res://combat/stats.gd" id="9_q3kle"]
+[ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="10_y8ijs"]
+[ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="11_m40wb"]
+[ext_resource type="Texture2D" uid="uid://cmocc4u6xxxix" path="res://level/tilesets/sprites/07_InnerVault_GemCase.png" id="13_18hbl"]
+[ext_resource type="Texture2D" uid="uid://bwgxl0b5h63ph" path="res://level/tilesets/sprites/07_InnerVault_FrontGold.png" id="14_ta2fh"]
+[ext_resource type="Texture2D" uid="uid://c0o74ycw1ig2g" path="res://level/tilesets/sprites/07_InnerVault_Gem.png" id="15_qhfp7"]
+[ext_resource type="Texture2D" uid="uid://ih887apj7bt8" path="res://level/tilesets/sprites/07_InnerVault_MG_Gold.png" id="16_gqcyk"]
+[ext_resource type="Texture2D" uid="uid://bwm0pca3o80qt" path="res://level/tilesets/sprites/07_InnerVault_MG_GoldPile.png" id="17_a11nx"]
+[ext_resource type="Texture2D" uid="uid://blrc17dfg673e" path="res://level/tilesets/sprites/07_InnerVault_BG.png" id="18_ta2ue"]
+[ext_resource type="SpriteFrames" uid="uid://d0cvahiw62nv5" path="res://level/tilesets/sprites/Gem_transparent_frames.tres" id="19_18hbl"]
+[ext_resource type="SpriteFrames" uid="uid://c75ah67jqc5dk" path="res://level/tilesets/sprites/Boss_eat_gem_frames.tres" id="20_ta2fh"]
+[ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="22_q264u"]
+
+[sub_resource type="Resource" id="Resource_ta2fh"]
+resource_local_to_scene = true
+script = ExtResource("9_q3kle")
+metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
+
+[node name="01" type="Node2D" unique_id=757676931]
+
+[node name="LevelBounds" type="Node2D" parent="." unique_id=439307979]
+z_index = 256
+script = ExtResource("1_a11nx")
+width = 1504
+metadata/_custom_type_script = "uid://bb28nwnywj8tm"
+
+[node name="SavePoint" parent="." unique_id=69750532 instance=ExtResource("2_ta2ue")]
+visible = false
+z_index = -4
+z_as_relative = false
+position = Vector2(417, 293)
+
+[node name="TileMapLayer_doors" type="TileMapLayer" parent="." unique_id=629119068]
+visible = false
+z_index = 1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAAAAUAAAADAAAAAAAAAAYAAAADAAIAAAAAAAcAAAADAAMAAAAAAAgAAAADAAQAAAAAAAkAAAADAAUAAAATAAUAAAAFAAAAAAATAAYAAAAFAAIAAAATAAcAAAAFAAMAAAATAAgAAAAFAAQAAAATAAkAAAAFAAUAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAMAAAAAAAUAAAAHAAoAAAACAAAAAAAIAAoAAAACAAIAAGAJAAoAAAACAAMAAGAKAAoAAAACAAIAAGALAAoAAAACAAMAAGAMAAoAAAACAAAAAAA=")
+tile_set = ExtResource("3_am28j")
+collision_enabled = false
+
+[node name="TileMapLayer_floors" type="TileMapLayer" parent="." unique_id=2063485541]
+z_index = -5
+z_as_relative = false
+tile_map_data = PackedByteArray("AAABAAkAAAALAAEAAAACAAkAAAALAAEAAAADAAkAAAALAAEAAAAEAAkAAAALAAEAAAAFAAkAAAALAAEAAAAGAAkAAAALAAEAAAAHAAkAAAALAAEAAAAMAAkAAAALAAEAAAANAAkAAAALAAEAAAAOAAkAAAALAAEAAAAPAAkAAAALAAEAAAAQAAkAAAALAAEAAAARAAkAAAALAAEAAAASAAkAAAALAAEAAAAIAAkAAAALAAEAAAAJAAkAAAALAAEAAAAKAAkAAAALAAEAAAALAAkAAAALAAEAAAA=")
+tile_set = ExtResource("4_34ock")
+
+[node name="TileMapLayer_blocks" type="TileMapLayer" parent="." unique_id=1330898239]
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAAAAUAAAALAAIAAAAAAAsAAAALAAIAAAABAAsAAAALAAIAAAATAAoAAAALAAIAAAACAAsAAAALAAIAAAADAAsAAAALAAIAAAAEAAsAAAALAAIAAAAFAAsAAAALAAIAAAAGAAsAAAALAAIAAAAHAAsAAAALAAIAAAAMAAsAAAALAAIAAAANAAsAAAALAAIAAAAOAAsAAAALAAIAAAAPAAsAAAALAAIAAAAQAAsAAAALAAIAAAARAAsAAAALAAIAAAASAAsAAAALAAIAAAATAAsAAAALAAIAAAATAAUAAAALAAIAAAAAAAoAAAALAAIAAAABAAoAAAALAAIAAAACAAoAAAALAAIAAAADAAoAAAALAAIAAAAEAAoAAAALAAIAAAAFAAoAAAALAAIAAAAGAAoAAAALAAIAAAAHAAoAAAALAAIAAAAMAAoAAAALAAIAAAANAAoAAAALAAIAAAAOAAoAAAALAAIAAAAPAAoAAAALAAIAAAAQAAoAAAALAAIAAAARAAoAAAALAAIAAAASAAoAAAALAAIAAAAAAAQAAAALAAIAAAATAAQAAAALAAIAAAAIAAoAAAALAAIAAAAJAAoAAAALAAIAAAAKAAoAAAALAAIAAAALAAoAAAALAAIAAAALAAsAAAALAAIAAAAKAAsAAAALAAIAAAAJAAsAAAALAAIAAAAIAAsAAAALAAIAAAAAAAkAAAALAAIAAAAAAAgAAAALAAIAAAAAAAcAAAALAAIAAAAAAAYAAAALAAIAAAAAAAMAAAALAAIAAAAAAAIAAAALAAIAAAAAAAEAAAALAAIAAAAAAAAAAAALAAIAAAATAAkAAAALAAIAAAATAAgAAAALAAIAAAATAAcAAAALAAIAAAATAAYAAAALAAIAAAATAAMAAAALAAIAAAATAAIAAAALAAIAAAATAAEAAAALAAIAAAATAAAAAAALAAIAAAA=")
+tile_set = ExtResource("4_34ock")
+
+[node name="TileMapLayer_BG" type="TileMapLayer" parent="." unique_id=1218881317]
+z_index = -10
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAAAAAAAAAJAAUAAAAAAAEAAAAJAAUAAAAAAAIAAAAJAAUAAAAAAAMAAAAJAAUAAAAAAAQAAAAJAAUAAAAAAAUAAAAJAAUAAAAAAAYAAAAJAAUAAAAAAAcAAAAJAAUAAAAAAAgAAAAJAAUAAAAAAAkAAAAJAAUAAAAAAAoAAAAJAAUAAAABAAAAAAAJAAUAAAABAAEAAAAJAAUAAAABAAIAAAAJAAUAAAABAAMAAAAJAAUAAAABAAQAAAAJAAUAAAABAAUAAAAJAAUAAAABAAYAAAAJAAUAAAABAAcAAAAJAAUAAAABAAgAAAAJAAUAAAABAAkAAAAJAAUAAAABAAoAAAAJAAUAAAACAAAAAAAJAAUAAAACAAEAAAAJAAUAAAACAAIAAAAJAAUAAAACAAMAAAAJAAUAAAACAAQAAAAJAAUAAAACAAUAAAAJAAUAAAACAAYAAAAJAAUAAAACAAcAAAAJAAUAAAACAAgAAAAJAAUAAAACAAkAAAAJAAUAAAACAAoAAAAJAAUAAAADAAAAAAAJAAUAAAADAAEAAAAJAAUAAAADAAIAAAAJAAUAAAADAAMAAAAJAAUAAAADAAQAAAAJAAUAAAADAAUAAAAJAAUAAAADAAYAAAAJAAUAAAADAAcAAAAJAAUAAAADAAgAAAAJAAUAAAADAAkAAAAJAAUAAAADAAoAAAAJAAUAAAAEAAAAAAAJAAUAAAAEAAEAAAAJAAUAAAAEAAIAAAAJAAUAAAAEAAMAAAAJAAUAAAAEAAQAAAAJAAUAAAAEAAUAAAAJAAUAAAAEAAYAAAAJAAUAAAAEAAcAAAAJAAUAAAAEAAgAAAAJAAUAAAAEAAkAAAAJAAUAAAAEAAoAAAAJAAUAAAAFAAAAAAAJAAUAAAAFAAEAAAAJAAUAAAAFAAIAAAAJAAUAAAAFAAMAAAAJAAUAAAAFAAQAAAAJAAUAAAAFAAUAAAAJAAUAAAAFAAYAAAAJAAUAAAAFAAcAAAAJAAUAAAAFAAgAAAAJAAUAAAAFAAkAAAAJAAUAAAAFAAoAAAAJAAUAAAAGAAAAAAAJAAUAAAAGAAEAAAAJAAUAAAAGAAIAAAAJAAUAAAAGAAMAAAAJAAUAAAAGAAQAAAAJAAUAAAAGAAUAAAAJAAUAAAAGAAYAAAAJAAUAAAAGAAcAAAAJAAUAAAAGAAgAAAAJAAUAAAAGAAkAAAAJAAUAAAAGAAoAAAAJAAUAAAAHAAAAAAAJAAUAAAAHAAEAAAAJAAUAAAAHAAIAAAAJAAUAAAAHAAMAAAAJAAUAAAAHAAQAAAAJAAUAAAAHAAUAAAAJAAUAAAAHAAYAAAAJAAUAAAAHAAcAAAAJAAUAAAAHAAgAAAAJAAUAAAAHAAkAAAAJAAUAAAAHAAoAAAAJAAUAAAAIAAAAAAAJAAUAAAAIAAEAAAAJAAUAAAAIAAIAAAAJAAUAAAAIAAMAAAAJAAUAAAAIAAQAAAAJAAUAAAAIAAUAAAAJAAUAAAAIAAYAAAAJAAUAAAAIAAcAAAAJAAUAAAAIAAgAAAAJAAUAAAAIAAkAAAAJAAUAAAAIAAoAAAAJAAUAAAAJAAAAAAAJAAUAAAAJAAEAAAAJAAUAAAAJAAIAAAAJAAUAAAAJAAMAAAAJAAUAAAAJAAQAAAAJAAUAAAAJAAUAAAAJAAUAAAAJAAYAAAAJAAUAAAAJAAcAAAAJAAUAAAAJAAgAAAAJAAUAAAAJAAkAAAAJAAUAAAAJAAoAAAAJAAUAAAAKAAAAAAAJAAUAAAAKAAEAAAAJAAUAAAAKAAIAAAAJAAUAAAAKAAMAAAAJAAUAAAAKAAQAAAAJAAUAAAAKAAUAAAAJAAUAAAAKAAYAAAAJAAUAAAAKAAcAAAAJAAUAAAAKAAgAAAAJAAUAAAAKAAkAAAAJAAUAAAAKAAoAAAAJAAUAAAALAAAAAAAJAAUAAAALAAEAAAAJAAUAAAALAAIAAAAJAAUAAAALAAMAAAAJAAUAAAALAAQAAAAJAAUAAAALAAUAAAAJAAUAAAALAAYAAAAJAAUAAAALAAcAAAAJAAUAAAALAAgAAAAJAAUAAAALAAkAAAAJAAUAAAALAAoAAAAJAAUAAAAMAAAAAAAJAAUAAAAMAAEAAAAJAAUAAAAMAAIAAAAJAAUAAAAMAAMAAAAJAAUAAAAMAAQAAAAJAAUAAAAMAAUAAAAJAAUAAAAMAAYAAAAJAAUAAAAMAAcAAAAJAAUAAAAMAAgAAAAJAAUAAAAMAAkAAAAJAAUAAAAMAAoAAAAJAAUAAAANAAAAAAAJAAUAAAANAAEAAAAJAAUAAAANAAIAAAAJAAUAAAANAAMAAAAJAAUAAAANAAQAAAAJAAUAAAANAAUAAAAJAAUAAAANAAYAAAAJAAUAAAANAAcAAAAJAAUAAAANAAgAAAAJAAUAAAANAAkAAAAJAAUAAAANAAoAAAAJAAUAAAAOAAAAAAAJAAUAAAAOAAEAAAAJAAUAAAAOAAIAAAAJAAUAAAAOAAMAAAAJAAUAAAAOAAQAAAAJAAUAAAAOAAUAAAAJAAUAAAAOAAYAAAAJAAUAAAAOAAcAAAAJAAUAAAAOAAgAAAAJAAUAAAAOAAkAAAAJAAUAAAAOAAoAAAAJAAUAAAAPAAAAAAAJAAUAAAAPAAEAAAAJAAUAAAAPAAIAAAAJAAUAAAAPAAMAAAAJAAUAAAAPAAQAAAAJAAUAAAAPAAUAAAAJAAUAAAAPAAYAAAAJAAUAAAAPAAcAAAAJAAUAAAAPAAgAAAAJAAUAAAAPAAkAAAAJAAUAAAAPAAoAAAAJAAUAAAAQAAAAAAAJAAUAAAAQAAEAAAAJAAUAAAAQAAIAAAAJAAUAAAAQAAMAAAAJAAUAAAAQAAQAAAAJAAUAAAAQAAUAAAAJAAUAAAAQAAYAAAAJAAUAAAAQAAcAAAAJAAUAAAAQAAgAAAAJAAUAAAAQAAkAAAAJAAUAAAAQAAoAAAAJAAUAAAARAAAAAAAJAAUAAAARAAEAAAAJAAUAAAARAAIAAAAJAAUAAAARAAMAAAAJAAUAAAARAAQAAAAJAAUAAAARAAUAAAAJAAUAAAARAAYAAAAJAAUAAAARAAcAAAAJAAUAAAARAAgAAAAJAAUAAAARAAkAAAAJAAUAAAARAAoAAAAJAAUAAAASAAAAAAAJAAUAAAASAAEAAAAJAAUAAAASAAIAAAAJAAUAAAASAAMAAAAJAAUAAAASAAQAAAAJAAUAAAASAAUAAAAJAAUAAAASAAYAAAAJAAUAAAASAAcAAAAJAAUAAAASAAgAAAAJAAUAAAASAAkAAAAJAAUAAAASAAoAAAAJAAUAAAATAAAAAAAJAAUAAAATAAEAAAAJAAUAAAATAAIAAAAJAAUAAAATAAMAAAAJAAUAAAATAAQAAAAJAAUAAAATAAUAAAAJAAUAAAATAAYAAAAJAAUAAAATAAcAAAAJAAUAAAATAAgAAAAJAAUAAAATAAkAAAAJAAUAAAATAAoAAAAJAAUAAAA=")
+tile_set = ExtResource("4_34ock")
+
+[node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("5_xky7f")]
+
+[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("6_tyctn")]
+position = Vector2(640, 320)
+size = 4
+location = 1
+target_level = "uid://bfdhe5kgt1eix"
+
+[node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("7_xpfdw")]
+position = Vector2(83, 285)
+
+[node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("8_8jatg")]
+position = Vector2(224, 256)
+stats = SubResource("Resource_ta2fh")
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1407369649]
+script = ExtResource("10_y8ijs")
+track = ExtResource("11_m40wb")
+metadata/_custom_type_script = "uid://cjhdm1eoibi5c"
+
+[node name="innerVault_frontGoldPile_01" type="Sprite2D" parent="." unique_id=845238862]
+z_index = 10
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("14_ta2fh")
+
+[node name="innerVault_gem" type="Sprite2D" parent="." unique_id=2092671432]
+visible = false
+z_index = -4
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("15_qhfp7")
+
+[node name="innerVault_goldPile_02" type="Sprite2D" parent="." unique_id=1586872878]
+z_index = -6
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("16_gqcyk")
+
+[node name="innerVault_goldPile_01" type="Sprite2D" parent="." unique_id=1519277796]
+z_index = -6
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("17_a11nx")
+
+[node name="innerVault_BG" type="Sprite2D" parent="." unique_id=1202619977]
+z_index = -9
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("18_ta2ue")
+
+[node name="MapRooms" type="Node2D" parent="." unique_id=639420839]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MapRoom" parent="MapRooms" unique_id=1411601609 instance=ExtResource("22_q264u")]
+position = Vector2(320, 180)
+map_coord = Vector2i(4, 6)
+room_color = Color(1, 1, 1, 1)
+metadata/_edit_lock_ = true
+
+[node name="innerVault_case_01" type="Sprite2D" parent="." unique_id=312742247]
+z_index = -4
+z_as_relative = false
+position = Vector2(320, 180)
+texture = ExtResource("13_18hbl")
+
+[node name="AnimatedSprite2D_01" type="AnimatedSprite2D" parent="." unique_id=1665554313]
+position = Vector2(320, 256)
+sprite_frames = ExtResource("19_18hbl")
+autoplay = "default"
+
+[node name="AnimatedSprite2D_02" type="AnimatedSprite2D" parent="." unique_id=1320412633]
+visible = false
+position = Vector2(320, 256)
+sprite_frames = ExtResource("20_ta2fh")
+autoplay = "default"
