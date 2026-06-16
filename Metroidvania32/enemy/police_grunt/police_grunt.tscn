@@ -330,3 +330,5 @@ shape = SubResource("CapsuleShape2D_ixi1r")
 [node name="EnemyGun" type="Marker2D" parent="." unique_id=318548784]
 script = ExtResource("12_b81mh")
 metadata/_custom_type_script = "uid://bqklbgwkqk4ne"
+
+[node name="Pivot" type="Node2D" parent="EnemyGun" unique_id=1010399277]

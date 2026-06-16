@@ -12,14 +12,13 @@
 [ext_resource type="Script" uid="uid://cjhdm1eoibi5c" path="res://music/music_auto_trigger.gd" id="10_8gwar"]
 [ext_resource type="AudioStream" uid="uid://dvw4gpjalxq78" path="res://music/IcyCole/audio test 2.mp3" id="11_kobct"]
 [ext_resource type="PackedScene" uid="uid://dmmst6d5eohc5" path="res://items/item_pickup/item_pickup.tscn" id="12_2gg2g"]
-[ext_resource type="Resource" uid="uid://b0uyl5b8lq715" path="res://mecha/parts/standard/standard_left_arm.tres" id="13_v3m6a"]
 [ext_resource type="Resource" uid="uid://cbq3toqotv6tn" path="res://items/itemresources/quikfix.tres" id="14_3frxk"]
 [ext_resource type="Resource" uid="uid://c3fxaxn6squnm" path="res://items/itemresources/scrap_100.tres" id="15_1it0o"]
 [ext_resource type="PackedScene" uid="uid://ebcsgdk2mhej" path="res://enemy/trainingdummy/training_dummy.tscn" id="16_ue2lf"]
 [ext_resource type="PackedScene" uid="uid://cn2jbq8a76061" path="res://enemy/police_grunt/police_grunt.tscn" id="18_cefoj"]
 [ext_resource type="PackedScene" uid="uid://cgerti54web81" path="res://enemy/gun_tank/gun_tank.tscn" id="18_jjrpu"]
 
-[sub_resource type="Resource" id="Resource_jjrpu"]
+[sub_resource type="Resource" id="Resource_8kew5"]
 resource_local_to_scene = true
 script = ExtResource("9_gjbl7")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -83,7 +82,7 @@ position = Vector2(83, 285)
 [node name="MechaUnit" parent="." unique_id=1485163958 groups=["player"] instance=ExtResource("8_xgeyd")]
 z_index = 0
 position = Vector2(224, 257)
-stats = SubResource("Resource_jjrpu")
+stats = SubResource("Resource_8kew5")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("10_8gwar")
@@ -101,7 +100,6 @@ collision_enabled = false
 
 [node name="ItemPickup" parent="." unique_id=368888410 instance=ExtResource("12_2gg2g")]
 position = Vector2(1231, 266)
-item_data = ExtResource("13_v3m6a")
 
 [node name="ItemPickup2" parent="." unique_id=1495269914 instance=ExtResource("12_2gg2g")]
 position = Vector2(568, 258)

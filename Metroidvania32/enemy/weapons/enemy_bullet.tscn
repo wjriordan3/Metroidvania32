@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d0xov07nqsi4v"]
 
 [ext_resource type="Script" uid="uid://xuvlpui1h43q" path="res://enemy/weapons/enemy_bullet.gd" id="1_wv088"]
-[ext_resource type="Texture2D" uid="uid://bmajdduueu4i5" path="res://assets/placeholder/bullet.png" id="2_ifs4g"]
+[ext_resource type="Texture2D" uid="uid://bb2jirhv5ghxm" path="res://enemy/sprites/bullet_enemy_01.png" id="2_wv088"]
 [ext_resource type="PackedScene" uid="uid://b16u8a6rqpdq0" path="res://enemy/attack_area.tscn" id="3_0mrxr"]
 
 [node name="EnemyBullet" type="Node2D" unique_id=1768208399]
 script = ExtResource("1_wv088")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1213947669]
-texture = ExtResource("2_ifs4g")
+texture = ExtResource("2_wv088")
 region_enabled = true
 region_rect = Rect2(11, 11, 48, 48)
 
