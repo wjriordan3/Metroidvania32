@@ -47,6 +47,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("2_m4xse")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
 
 [sub_resource type="Animation" id="Animation_xoplw"]
 resource_name = "attack"
@@ -76,6 +88,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
 }
 
 [sub_resource type="Animation" id="Animation_o3pv7"]
@@ -107,6 +131,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xoplw"]
 _data = {
@@ -132,7 +168,7 @@ shape = SubResource("CapsuleShape2D_78jik")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542454403]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_m4xse")
-hframes = 4
+hframes = 14
 
 [node name="HazardArea" parent="." unique_id=491208512 instance=ExtResource("2_epg4t")]
 position = Vector2(0, -4.7683716e-07)
