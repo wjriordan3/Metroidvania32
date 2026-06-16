@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mow3jy4a56j" path="res://level/map_rooms/map_room.tscn" id="17_1yoey"]
 [ext_resource type="PackedScene" uid="uid://bkughj7t5d67b" path="res://level/breakable_level/breakable_level.tscn" id="18_mkokt"]
 
-[sub_resource type="Resource" id="Resource_fmg58"]
+[sub_resource type="Resource" id="Resource_mkokt"]
 resource_local_to_scene = true
 script = ExtResource("8_1yoey")
 metadata/_custom_type_script = "uid://boiy5gsl4xmnk"
@@ -88,30 +88,51 @@ tile_set = ExtResource("3_wanp5")
 
 [node name="Camera2D" parent="." unique_id=618193592 instance=ExtResource("4_pvtsm")]
 
-[node name="LevelTransition" parent="." unique_id=183463144 instance=ExtResource("5_sgym0")]
-position = Vector2(580, 540)
+[node name="LT_to_Casino_Upper" parent="." unique_id=183463144 instance=ExtResource("5_sgym0")]
+position = Vector2(608, 540)
 size = 4
-location = 1
-target_level = "uid://bu33vmq77g23t"
+target_level = "uid://wd7s0b7b4if4"
+target_area_name = "LT_to_Security_Upper"
 
-[node name="LevelTransition3" parent="." unique_id=490170497 instance=ExtResource("5_sgym0")]
+[node name="LT_to_Vault_Lower" parent="." unique_id=490170497 instance=ExtResource("5_sgym0")]
 position = Vector2(-33, 321)
 size = 4
 location = 1
-target_level = "uid://bu33vmq77g23t"
+target_level = "uid://dvaxf5udf7f2b"
 
-[node name="LevelTransition2" parent="." unique_id=1166221439 instance=ExtResource("5_sgym0")]
-position = Vector2(601, 1338)
+[node name="LT_to_Casino_Lower" parent="." unique_id=1166221439 instance=ExtResource("5_sgym0")]
+position = Vector2(576, 1338)
 size = 4
 location = 1
-target_level = "uid://bu33vmq77g23t"
+target_level = "uid://wd7s0b7b4if4"
+target_area_name = "LT_to_Security_Lower"
+
+[node name="LT_to_Vault_Upper" parent="." unique_id=1841785219 instance=ExtResource("5_sgym0")]
+position = Vector2(-33, 112)
+size = 4
+location = 1
+target_level = "uid://wd7s0b7b4if4"
+
+[node name="LT_to_Offices_A" parent="." unique_id=1947430653 instance=ExtResource("5_sgym0")]
+position = Vector2(384, 0)
+size = 6
+location = 2
+target_level = "uid://wd7s0b7b4if4"
+target_area_name = "LT_to_Security_A"
+
+[node name="LT_to_Offices_B" parent="." unique_id=1177769184 instance=ExtResource("5_sgym0")]
+position = Vector2(1648, 0)
+size = 3
+location = 2
+target_level = "uid://wd7s0b7b4if4"
+target_area_name = "LT_to_Security_B"
 
 [node name="PlayerSpawn" parent="." unique_id=465789814 instance=ExtResource("6_q001h")]
 position = Vector2(66, 272)
 
 [node name="MechaUnit" parent="." unique_id=1485163958 instance=ExtResource("7_41prx")]
 position = Vector2(224, 249)
-stats = SubResource("Resource_fmg58")
+stats = SubResource("Resource_mkokt")
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1382910196]
 script = ExtResource("9_mkokt")

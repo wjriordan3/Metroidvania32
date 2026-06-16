@@ -2,8 +2,8 @@
 @icon("res://general/icons/level_bounds.svg")
 class_name LevelBounds extends Node2D
 
-@export_range( 640, 640*6, 32, "suffix:px" ) var width : int = 640 : set = _on_width_changed
-@export_range( 352, 360*6, 32, "suffix:px" ) var height : int = 352 : set = _on_height_changed
+@export_range( 640, 640*8, 32, "suffix:px" ) var width : int = 640 : set = _on_width_changed
+@export_range( 352, 360*8, 32, "suffix:px" ) var height : int = 352 : set = _on_height_changed
 
 func _ready() -> void:
 	add_to_group("level_bounds")
