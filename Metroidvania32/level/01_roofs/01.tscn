@@ -527,9 +527,6 @@ position = Vector2(887, 273)
 [node name="AnimationPlayer" parent="PoliceGrunt3" index="1" unique_id=815900993]
 root_node = NodePath("../../PoliceGrunt3")
 
-[node name="DecisionEngineGrunt" parent="PoliceGrunt3" index="2" unique_id=309025030]
-patrol = false
-
 [node name="PoliceGrunt4" parent="." unique_id=1082757638 instance=ExtResource("22_06m5e")]
 position = Vector2(922, 275)
 face_left_on_start = true
